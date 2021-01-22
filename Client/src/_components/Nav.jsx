@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Route } from 'react-router-dom';
+import {MenuWrapper} from '../style/styledcomponents';
 
 import { Role } from '@/_helpers';
 import { accountService } from '@/_services';
@@ -16,9 +17,9 @@ function Nav() {
     if (!user) return null;
 
     return (
-        <div>
+        <MenuWrapper>
             <nav className="navbar navbar-expand navbar-dark bg-dark">
-                <div className="navbar-nav">
+                <div className="navbar-nav navMenu">
                     <NavLink exact to="/" className="nav-item nav-link">Home</NavLink>
                     <NavLink to="/profile" className="nav-item nav-link">Profile</NavLink>
                     <NavLink to="/map" className="nav-item nav-link">Map</NavLink>
@@ -29,7 +30,7 @@ function Nav() {
                 </div>
             </nav>
             <Route path="/admin" component={AdminNav} />
-        </div>
+        </MenuWrapper>
     );
 }
 
