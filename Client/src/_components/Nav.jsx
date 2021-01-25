@@ -43,7 +43,7 @@ function AdminNav({ match }) {
         //<nav className="admin-nav navbar-light">
         <nav className="AdminNav">
             {/*</nav>/<div className="navbar-nav">*/}
-            <div className="">
+            <div>
                 {/*<NavLink to={`${path}/users`} className="nav-item nav-link">Users</NavLink>*/}
                 <NavLink to={`${path}/users`} className="AdminLink">Users</NavLink>
             </div>
