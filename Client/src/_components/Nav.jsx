@@ -18,26 +18,16 @@ function Nav() {
 
     return (
         <MenuWrapper>
-            {/*<nav className="navbar navbar-expand navbar-dark bg-dark">*/}
             <nav className="MenuBar">
                 
-                {/*<div className="navbar-nav navMenu">*/}
                 <div className="MenuLinks">
 
-                    {/*<NavLink exact to="/" className="nav-item nav-link">Home</NavLink>*/}
                     <NavLink exact to="/" className="NavLink">Home</NavLink>
-
-                    {/*<NavLink to="/profile" className="nav-item nav-link">Profile</NavLink>*/}
                     <NavLink to="/profile" className="NavLink">Profile</NavLink>
-
-                    {/*<NavLink to="/map" className="nav-item nav-link">Map</NavLink>*/}
                     <NavLink to="/map" className="NavLink">Map</NavLink>
-
-                        {/*<NavLink to="/admin" className="nav-item nav-link">Admin</NavLink>*/}
                     {user.role === Role.Admin &&
                         <NavLink to="/admin" className="NavLink">Admin</NavLink>
                     }
-                    {/*<a onClick={accountService.logout} className="nav-item nav-link">Logout</a>*/}
                     <a onClick={accountService.logout} className="NavLink">Logout</a>
                 </div>
             </nav>
@@ -50,9 +40,12 @@ function AdminNav({ match }) {
     const { path } = match;
 
     return (
-        <nav className="admin-nav navbar navbar-expand navbar-light">
-            <div className="navbar-nav">
-                <NavLink to={`${path}/users`} className="nav-item nav-link">Users</NavLink>
+        //<nav className="admin-nav navbar-light">
+        <nav className="AdminNav">
+            {/*</nav>/<div className="navbar-nav">*/}
+            <div className="">
+                {/*<NavLink to={`${path}/users`} className="nav-item nav-link">Users</NavLink>*/}
+                <NavLink to={`${path}/users`} className="AdminLink">Users</NavLink>
             </div>
         </nav>
     );
