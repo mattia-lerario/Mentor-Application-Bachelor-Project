@@ -124,6 +124,8 @@ function AddEdit({ history, match }) {
                                 <Field name="role" as="select" className={'form-control' + (errors.role && touched.role ? ' is-invalid' : '')}>
                                     <option value=""></option>
                                     <option value="User">User</option>
+                                    <option value="Mentor">Mentor</option>
+                                    <option value="Company">Company</option>
                                     <option value="Admin">Admin</option>
                                 </Field>
                                 <ErrorMessage name="role" component="div" className="invalid-feedback" />

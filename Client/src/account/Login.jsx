@@ -53,7 +53,6 @@ function Login({ history, location }) {
                                     {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
                                     Login
                                 </button>
-                                <Link to="register" className="btn btn-link">Register</Link>
                             </div>
                             <div className="form-group col text-right">
                                 <Link to="forgot-password" className="btn btn-link pr-0">Forgot Password?</Link>
