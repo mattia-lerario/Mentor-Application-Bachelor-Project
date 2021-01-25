@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Route } from 'react-router-dom';
-import {MenuWrapper} from '../style/styledcomponents';
 
+import {MenuWrapper} from '../style/styledcomponents';
 import { Role } from '@/_helpers';
 import { accountService } from '@/_services';
 
@@ -18,15 +18,27 @@ function Nav() {
 
     return (
         <MenuWrapper>
-            <nav className="navbar navbar-expand navbar-dark bg-dark">
+            {/*<nav className="navbar navbar-expand navbar-dark bg-dark">*/}
+            <nav className="MenuBar">
+                
+                {/*<div className="navbar-nav navMenu">*/}
                 <div className="navbar-nav navMenu">
-                    <NavLink exact to="/" className="nav-item nav-link">Home</NavLink>
-                    <NavLink to="/profile" className="nav-item nav-link">Profile</NavLink>
-                    <NavLink to="/map" className="nav-item nav-link">Map</NavLink>
+
+                    {/*<NavLink exact to="/" className="nav-item nav-link">Home</NavLink>*/}
+                    <NavLink exact to="/" className="NavLink">Home</NavLink>
+
+                    {/*<NavLink to="/profile" className="nav-item nav-link">Profile</NavLink>*/}
+                    <NavLink to="/profile" className="NavLink">Profile</NavLink>
+
+                    {/*<NavLink to="/map" className="nav-item nav-link">Map</NavLink>*/}
+                    <NavLink to="/map" className="NavLink">Map</NavLink>
+
+                        {/*<NavLink to="/admin" className="nav-item nav-link">Admin</NavLink>*/}
                     {user.role === Role.Admin &&
-                        <NavLink to="/admin" className="nav-item nav-link">Admin</NavLink>
+                        <NavLink to="/admin" className="NavLink">Admin</NavLink>
                     }
-                    <a onClick={accountService.logout} className="nav-item nav-link">Logout</a>
+                    {/*<a onClick={accountService.logout} className="nav-item nav-link">Logout</a>*/}
+                    <a onClick={accountService.logout} className="NavLink">Logout</a>
                 </div>
             </nav>
             <Route path="/admin" component={AdminNav} />
