@@ -22,7 +22,7 @@ function Nav() {
             <nav className="MenuBar">
                 
                 {/*<div className="navbar-nav navMenu">*/}
-                <div className="navbar-nav navMenu">
+                <div className="MenuLinks">
 
                     {/*<NavLink exact to="/" className="nav-item nav-link">Home</NavLink>*/}
                     <NavLink exact to="/" className="NavLink">Home</NavLink>
