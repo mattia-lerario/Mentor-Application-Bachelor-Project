@@ -1,13 +1,13 @@
 ﻿{
     "connectionString": "mongodb://localhost/node-mongo-signup-verification-api",
     "secret": "issecret",
-    "emailFrom": "althea.borer@ethereal.email",
+    "emailFrom": "zelma.kris@ethereal.email",
     "smtpOptions": {
         "host": "smtp.ethereal.email",
         "port": 587,
         "auth": {
-            "user": "althea.borer@ethereal.email",
-            "pass": "man1Jy7Mkmza5ERrhZ"
+            "user": "zelma.kris@ethereal.email",
+            "pass": "wZCpyTmx35uPzcGaPe"
         }
     }
 }
