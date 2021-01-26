@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { accountService } from '@/_services';
+import { BtnWrapper } from '../../style/styledcomponents';
 
 function List({ match }) {
     const { path } = match;
@@ -42,13 +43,15 @@ function List({ match }) {
                             <td>{user.email}</td>
                             <td>{user.role}</td>
                             <td style={{ whiteSpace: 'nowrap' }}>
-                                <Link to={`${path}/edit/${user.id}`} className="btn btn-sm btn-primary mr-1">Edit</Link>
-                                <button onClick={() => deleteUser(user.id)} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={user.isDeleting}>
+                                <BtnWrapper>
+                                <Link to={`${path}/edit/${user.id}`} className="Btn MainBtn LinkBtn">Edit</Link>
+                                <button onClick={() => deleteUser(user.id)} className="Btn DeleteBtn" style={{ width: '60px' }} disabled={user.isDeleting}>
                                     {user.isDeleting 
                                         ? <span className="spinner-border spinner-border-sm"></span>
                                         : <span>Delete</span>
                                     }
                                 </button>
+                                </BtnWrapper>
                             </td>
                         </tr>
                     )}

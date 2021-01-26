@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
+import {BtnWrapper} from '../style/styledcomponents';
 import { accountService, alertService } from '@/_services';
 
 function Update({ history }) {
@@ -104,19 +105,21 @@ function Update({ history }) {
                             <ErrorMessage name="confirmPassword" component="div" className="invalid-feedback" />
                         </div>
                     </div>
-                    <div className="form-group">
-                        <button type="submit" disabled={isSubmitting} className="btn btn-primary mr-2">
+                    <BtnWrapper>
+                        <button type="submit" disabled={isSubmitting} className="Btn MainBtn">
+                            {/* Hva brukes classnames = spinner-border etc. til? Design eller programkode? */}
                             {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
                             Update
                         </button>
-                        <button type="button" onClick={() => onDelete()} className="btn btn-danger" style={{ width: '75px' }} disabled={isDeleting}>
+                        <button type="button" onClick={() => onDelete()} className="Btn DeleteBtn" style={{ width: '75px' }} disabled={isDeleting}>
                             {isDeleting
+                            // Hva brukes classnames = spinner-border etc. til? Design eller programkode?
                                 ? <span className="spinner-border spinner-border-sm"></span>
                                 : <span>Delete</span>
                             }
                         </button>
-                        <Link to="." className="btn btn-link">Cancel</Link>
-                    </div>
+                        <Link to="." className="CancelBtn">Cancel</Link>
+                    </BtnWrapper>
                 </Form>
             )}
         </Formik>
