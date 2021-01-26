@@ -4,6 +4,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import {BtnWrapper} from '../style/styledcomponents';
+import {FormWrapper} from '../style/styledcomponents';
 import { accountService, alertService } from '@/_services';
 
 function Update({ history }) {
@@ -61,12 +62,12 @@ function Update({ history }) {
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
             {({ errors, touched, isSubmitting }) => (
-                <Form>
+                <FormWrapper>
                     <h1>Update Profile</h1>
-                    <div className="form-row">
-                        <div className="form-group col">
+                    <div className="FormRow">
+                        <div>
                             <label>Title</label>
-                            <Field name="title" as="select" className={'form-control' + (errors.title && touched.title ? ' is-invalid' : '')}>
+                            <Field name="title" as="select" className={'FormGroups' + (errors.title && touched.title ? ' is-invalid' : '')}>
                                 <option value=""></option>
                                 <option value="Mr">Mr</option>
                                 <option value="Mrs">Mrs</option>
@@ -75,33 +76,33 @@ function Update({ history }) {
                             </Field>
                             <ErrorMessage name="title" component="div" className="invalid-feedback" />
                         </div>
-                        <div className="form-group col-5">
+                        <div>
                             <label>First Name</label>
-                            <Field name="firstName" type="text" className={'form-control' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
+                            <Field name="firstName" type="text" className={'FormGroups' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
                             <ErrorMessage name="firstName" component="div" className="invalid-feedback" />
                         </div>
-                        <div className="form-group col-5">
+                        <div>
                             <label>Last Name</label>
-                            <Field name="lastName" type="text" className={'form-control' + (errors.lastName && touched.lastName ? ' is-invalid' : '')} />
+                            <Field name="lastName" type="text" className={'FormGroups' + (errors.lastName && touched.lastName ? ' is-invalid' : '')} />
                             <ErrorMessage name="lastName" component="div" className="invalid-feedback" />
                         </div>
                     </div>
-                    <div className="form-group">
+                    <div>
                         <label>Email</label>
-                        <Field name="email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
+                        <Field name="email" type="text" className={'FormGroups' + (errors.email && touched.email ? ' is-invalid' : '')} />
                         <ErrorMessage name="email" component="div" className="invalid-feedback" />
                     </div>
                     <h3 className="pt-3">Change Password</h3>
                     <p>Leave blank to keep the same password</p>
-                    <div className="form-row">
-                        <div className="form-group col">
+                    <div className="FormRow">
+                        <div>
                             <label>Password</label>
-                            <Field name="password" type="password" className={'form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
+                            <Field name="password" type="password" className={'FormGroups' + (errors.password && touched.password ? ' is-invalid' : '')} />
                             <ErrorMessage name="password" component="div" className="invalid-feedback" />
                         </div>
-                        <div className="form-group col">
+                        <div>
                             <label>Confirm Password</label>
-                            <Field name="confirmPassword" type="password" className={'form-control' + (errors.confirmPassword && touched.confirmPassword ? ' is-invalid' : '')} />
+                            <Field name="confirmPassword" type="password" className={'FormGroups' + (errors.confirmPassword && touched.confirmPassword ? ' is-invalid' : '')} />
                             <ErrorMessage name="confirmPassword" component="div" className="invalid-feedback" />
                         </div>
                     </div>
@@ -120,7 +121,7 @@ function Update({ history }) {
                         </button>
                         <Link to="." className="CancelBtn">Cancel</Link>
                     </BtnWrapper>
-                </Form>
+                </FormWrapper>
             )}
         </Formik>
     )
