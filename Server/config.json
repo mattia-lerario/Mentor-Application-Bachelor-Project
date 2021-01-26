@@ -1,13 +1,22 @@
 ﻿{
     "connectionString": "mongodb://localhost/node-mongo-signup-verification-api",
     "secret": "issecret",
+<<<<<<< Updated upstream
     "emailFrom": "zelma.kris@ethereal.email",
+=======
+    "emailFrom": "susie32@ethereal.email",
+>>>>>>> Stashed changes
     "smtpOptions": {
         "host": "smtp.ethereal.email",
         "port": 587,
         "auth": {
+<<<<<<< Updated upstream
             "user": "zelma.kris@ethereal.email",
             "pass": "wZCpyTmx35uPzcGaPe"
+=======
+            "user": "susie32@ethereal.email",
+            "pass": "TjuG5DrXTjGeUMmaRD"
+>>>>>>> Stashed changes
         }
     }
 }
