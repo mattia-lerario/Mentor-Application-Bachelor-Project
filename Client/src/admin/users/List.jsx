@@ -27,7 +27,9 @@ function List({ match }) {
             <h1>Users</h1>
             <p>All users from secure (admin only) api end point:</p>
             <BtnWrapper>
-                <Link to={`${path}/add`} className="Btn MainBtn LinkBtn mb-2">Add User</Link>
+                <button className="Btn MainBtn">
+                    <Link to={`${path}/add`} className="LinkBtn">Add User</Link>
+                </button>
             </BtnWrapper>
 
             <table className="table table-striped">
@@ -47,7 +49,9 @@ function List({ match }) {
                             <td>{user.role}</td>
                             <td style={{ whiteSpace: 'nowrap' }}>
                                 <BtnWrapper>
-                                <Link to={`${path}/edit/${user.id}`} className="Btn MainBtn LinkBtn">Edit</Link>
+                                <button className="Btn MainBtn">
+                                    <Link to={`${path}/edit/${user.id}`} className="LinkBtn">Edit</Link>
+                                </button>
                                 <button onClick={() => deleteUser(user.id)} className="Btn DeleteBtn" style={{ width: '60px' }} disabled={user.isDeleting}>
                                     {user.isDeleting 
                                         ? <span className="spinner-border spinner-border-sm"></span>

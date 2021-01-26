@@ -1,10 +1,16 @@
 import styled from 'styled-components';  
 
+/*
+List of what elements are getting styled here, in listed order:
+- Menu
+- Buttons
+*/
+
 
 /* ---MENU--- */
-/* Nav.jsx */
+/* File: Nav.jsx */
 export const MenuWrapper = styled.div`
-//---makes the background of the menu darkblue
+//---makes the background of the menu slategrey
 .MenuBar {
     background-color: #273855;
     padding: 10px;
@@ -14,20 +20,22 @@ export const MenuWrapper = styled.div`
     display: inline;
     padding: 10px;
 }
-//---making the menu-links white
+//---making the text in the menu white
 .NavLink{
     color: white;
     padding: 10px;
 }
 //---gives the links a underscore and grey-color when hovered.
 .NavLink:hover{
-    text-decoration: underline;
-    color: #6D7B93;
+    text-decoration: none;
+    background-color: #38507a;
+    color: black;
 }
 `;
 
-/* ---UPDATE PROFILE--- */
-/* details.jsx and update.jsx */
+
+/* ---BUTTONS--- */
+/* Files: Details.jsx, Update.jsx, List.jsx, Overview.jsx */
 export const BtnWrapper = styled.div`
 //---Button with same background-color as the menu, and white text.
 .Btn {
@@ -55,13 +63,12 @@ export const BtnWrapper = styled.div`
 .DeleteBtn:hover{
     background-color: #b30000;
 }
-//---makes the link-text white(details.jsx)
+//---makes the link-text white(because of link-tag)
 .LinkBtn{
     color:white;
 }
-//---removes underscore on link when hovered(details.jsx)
+//---removes underscore on link when hovered(because of link-tag)
 .LinkBtn:hover{
     text-decoration: none;
 }
-
 `;
