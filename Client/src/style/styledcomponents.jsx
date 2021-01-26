@@ -72,3 +72,35 @@ export const BtnWrapper = styled.div`
     text-decoration: none;
 }
 `;
+
+
+/* ---UPDATE PROFILE-FORM--- */
+/* File: Update.jsx */
+export const FormWrapper = styled.div`
+/*
+Resource:
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_inline_form
+26.01.2021
+W3Schools.com
+*/
+
+//---Making the parameters displayed inline.
+.FormRow{
+    display: flex;
+    flex-flow: row wrap;
+}
+//---Giving space inbetween the different paramenters(eg. Title, Name etc.)
+.FormRow div{
+    margin: 5px 20px 5px 0;
+}
+//---Styling the input-fields. 
+.FormGroups{
+    border-radius: 4px;
+    display: block;
+    margin: 5px 10px 5px 0;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+`;
