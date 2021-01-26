@@ -26,7 +26,10 @@ function List({ match }) {
         <div>
             <h1>Users</h1>
             <p>All users from secure (admin only) api end point:</p>
-            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">Add User</Link>
+            <BtnWrapper>
+                <Link to={`${path}/add`} className="Btn MainBtn LinkBtn mb-2">Add User</Link>
+            </BtnWrapper>
+
             <table className="table table-striped">
                 <thead>
                     <tr>
