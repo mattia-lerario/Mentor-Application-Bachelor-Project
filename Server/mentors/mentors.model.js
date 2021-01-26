@@ -1,3 +1,4 @@
+const { array } = require('joi');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -9,15 +10,7 @@ const schema = new Schema({
     lastName: { type: String, required: true },
     acceptTerms: Boolean,
     role: { type: String, required: true },
-    verificationToken: String,
-    verified: Date,
-    resetToken: {
-        token: String,
-        expires: Date
-    },
-    passwordReset: Date,
-    created: { type: Date, default: Date.now },
-    updated: Date
+    inkubatorID: {type: array, }, 
 });
 
 schema.virtual('isVerified').get(function () {
