@@ -14,8 +14,8 @@ function Profile({ match }) {
         <div className="p-4">
             <div className="container">
                 <Switch>
-                    <Route exact path={path} component={MentorDetails} />
-                    <Route path={`${path}/update`} component={UpdateMentor} />
+                    <Route exact path={path} component={Details} />
+                    <Route path={`${path}/update`} component={Update} />
                 </Switch>
             </div>
         </div>
@@ -25,4 +25,12 @@ function Profile({ match }) {
 export { Profile };
 
 /*<Route exact path={path} component={Details} />
-                    <Route path={`${path}/update`} component={Update} /> */
+    <Route path={`${path}/update`} component={Update} /> 
+                    
+   <Route exact path={path} component={MentorDetails} />
+                    <Route path={`${path}/update`} component={UpdateMentor} />                 
+                    
+                    
+                    
+                    
+*/
