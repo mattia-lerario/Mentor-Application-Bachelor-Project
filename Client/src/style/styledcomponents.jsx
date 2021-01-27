@@ -43,6 +43,7 @@ export const BtnWrapper = styled.div`
     border-radius: 3px;
     height: 35px;
     color: white;
+    margin: 2px;
 }
 .CancelBtn{
     margin: 15px;
@@ -89,7 +90,7 @@ W3Schools.com
     display: flex;
     flex-flow: row wrap;
 }
-//---Giving space inbetween the different paramenters(eg. Title, Name etc.)
+//---Giving space between the different paramenters(eg. Title, Name etc.)
 .FormRow div{
     margin: 5px 20px 5px 0;
 }
@@ -102,5 +103,16 @@ W3Schools.com
     background-color: #fff;
     border: 1px solid #ddd;
 }
-
+//---centering all the elements inside FormWrapper.
+.Center{
+    margin: auto;
+    width: 55%;
+}
+.InvalidFeedback{
+    color: red;
+    font-size: 12px;
+}
+.PaddingTop{
+    padding-top: 20px;
+}
 `;
