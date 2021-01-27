@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 
 import { accountService, alertService } from '@/_services';
 
-function AddEditMentor({ history, match }) {
+function UpdateMentor({ history, match }) {
     const { id } = match.params;
     const isAddMode = !id;
     
@@ -16,8 +16,8 @@ function AddEditMentor({ history, match }) {
         email: '',
         role: '',
         password: '',
-        confirmPassword: ''
-       // age: ''
+        confirmPassword: '',
+        dateOfBirth: ''
     };
 
     const validationSchema = Yup.object().shape({
@@ -39,9 +39,10 @@ function AddEditMentor({ history, match }) {
             .when('password', (password, schema) => {
                 if (password) return schema.required('Confirm Password is required');
             })
-            .oneOf([Yup.ref('password')], 'Passwords must match')
-        /*age: Yup.string()
-            .required("Age is requiered")*/
+            .oneOf([Yup.ref('password')], 'Passwords must match'),
+
+        dateOfBirth: Yup.string()
+            .required("DoB is requiered")
     });
 
     function onSubmit(fields, { setStatus, setSubmitting }) {
@@ -84,7 +85,7 @@ function AddEditMentor({ history, match }) {
                     if (!isAddMode) {
                         // get user and set form fields
                         accountService.getById(id).then(user => {
-                            const fields = ['title', 'firstName', 'lastName', 'email', 'role'];
+                            const fields = ['title', 'firstName', 'lastName', 'email', 'role', 'dateOfBirth'];
                             fields.forEach(field => setFieldValue(field, user[field], false));
                         });
                     }
@@ -130,6 +131,17 @@ function AddEditMentor({ history, match }) {
                                 </Field>
                                 <ErrorMessage name="role" component="div" className="invalid-feedback" />
                             </div>
+
+                            <div className="form-group col">
+                                
+                                <label>Date of birth</label>
+                                <Field name="DoB" as="select" className={'form-control' + (errors.role && touched.role ? ' is-invalid' : '')}>
+                                    
+                                    <option value="">01.01.2000</option>
+                
+                                </Field>
+                                <ErrorMessage name="role" component="div" className="invalid-feedback" />
+                            </div>
                         </div>
                         {!isAddMode &&
                             <div>
@@ -163,4 +175,4 @@ function AddEditMentor({ history, match }) {
     );
 }
 
-export { AddEditMentor };
+export { UpdateMentor };
