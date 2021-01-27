@@ -9,6 +9,7 @@ function Details({ match }) {
     const user = accountService.userValue;
 
     return (
+        
         <BtnWrapper>
             <h1>My Profile</h1>
             <p>
@@ -17,6 +18,7 @@ function Details({ match }) {
             </p>
             <button className="Btn MainBtn"><Link to={`${path}/update`} className="LinkBtn">Update Profile</Link></button>
         </BtnWrapper>
+        
     );
 }
 

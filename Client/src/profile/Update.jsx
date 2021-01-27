@@ -49,7 +49,7 @@ function Update({ history }) {
                 alertService.error(error);
             });
     }
-
+    
     const [isDeleting, setIsDeleting] = useState(false);
     function onDelete() {
         if (confirm('Are you sure?')) {

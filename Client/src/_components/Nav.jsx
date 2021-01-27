@@ -24,9 +24,12 @@ function Nav() {
 
                     <NavLink exact to="/" className="NavLink">Home</NavLink>
                     <NavLink to="/profile" className="NavLink">Profile</NavLink>
-                    <NavLink to="/map" className="NavLink">Map</NavLink>
+                    <NavLink to="/map" className="NavLink">Dashboard</NavLink>
                     {user.role === Role.Admin &&
                         <NavLink to="/admin" className="NavLink">Admin</NavLink>
+                    }
+                     {user.role === Role.Mentor &&
+                        <NavLink to="/companies" className="NavLink">Companies</NavLink>
                     }
                     <a onClick={accountService.logout} className="NavLink">Logout</a>
                 </div>
