@@ -4,10 +4,44 @@ import { NavLink, Route } from 'react-router-dom';
 import {MenuWrapper} from '../style/styledcomponents';
 import { Role } from '@/_helpers';
 import { accountService } from '@/_services';
-
+import {Sidebar} from './Sidebar';
 function Nav() {
     const [user, setUser] = useState({});
-
+    const items = [
+  { name: 'home', label: 'Home' },
+  {
+    name: 'billing',
+    label: 'Billing',
+    items: [
+      { name: 'statements', label: 'Statements' },
+      { name: 'reports', label: 'Reports' },
+    ],
+  },
+  {
+    name: 'settings',
+    label: 'Settings',
+    items: [
+      { name: 'profile', label: 'Profile' },
+      { name: 'insurance', label: 'Insurance' },
+      {
+        name: 'notifications',
+        label: 'Notifications',
+        items: [
+          { name: 'email', label: 'Email' },
+          {
+            name: 'desktop',
+            label: 'Desktop',
+            items: [
+              { name: 'schedule', label: 'Schedule' },
+              { name: 'frequency', label: 'Frequency' },
+            ],
+          },
+          { name: 'sms', label: 'SMS' },
+        ],
+      },
+    ],
+  },
+]
     useEffect(() => {
         const subscription = accountService.user.subscribe(x => setUser(x));
         return subscription.unsubscribe;
@@ -35,7 +69,10 @@ function Nav() {
                 </div>
             </nav>
             <Route path="/admin" component={AdminNav} />
+            <Sidebar items={items}/>
         </MenuWrapper>
+        
+        
     );
 }
 
