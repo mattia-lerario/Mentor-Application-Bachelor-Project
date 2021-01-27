@@ -14,7 +14,8 @@ function Details({ match }) {
             <h1>My Profile</h1>
             <p>
                 <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
-                <strong>Email: </strong> {user.email}
+                <strong>Email: </strong> {user.email}<br />
+                <strong>Etternavn: </strong>{user.role}
             </p>
             <button className="Btn MainBtn"><Link to={`${path}/update`} className="LinkBtn">Update Profile</Link></button>
         </BtnWrapper>

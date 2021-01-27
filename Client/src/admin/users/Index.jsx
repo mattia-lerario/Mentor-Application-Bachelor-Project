@@ -3,20 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import { List } from './List';
 import { AddEdit } from './AddEdit';
-import { AddEditMentor } from './AddEditMentor';
 
-
-function Mentors({ match }) {
-    const { path } = match;
-    
-    return (
-        <Switch>
-            <Route exact path={path} component={List} />
-            <Route path={`${path}/addMentor`} component={AddEditMentor} />
-            <Route path={`${path}/edit/:id`} component={AddEditMentor} />
-        </Switch>
-    );
-}
 
 function Users({ match }) {
     const { path } = match;
@@ -31,4 +18,4 @@ function Users({ match }) {
 }
 
 
-export { Users, Mentors };
+export { Users};
