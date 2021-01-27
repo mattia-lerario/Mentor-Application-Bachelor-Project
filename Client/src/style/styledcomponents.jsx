@@ -116,3 +116,12 @@ W3Schools.com
     padding-top: 20px;
 }
 `;
+
+/* ---PROFILE INDEX--- */
+/* Files: Index.jsx */
+export const ProfileWrapper = styled.div`
+.Padding{
+    padding: 20px;
+    margin-left: 10px;
+}
+`;
