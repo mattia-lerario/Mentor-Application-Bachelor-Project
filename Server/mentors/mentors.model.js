@@ -10,7 +10,7 @@ const schema = new Schema({
     lastName: { type: String, required: true },
     acceptTerms: Boolean,
     role: { type: String, required: true },
-    inkubatorID: {type: array, }, 
+    
 });
 
 schema.virtual('isVerified').get(function () {

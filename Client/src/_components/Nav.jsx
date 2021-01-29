@@ -58,7 +58,9 @@ function Nav() {
 
                     <NavLink exact to="/" className="NavLink">Home</NavLink>
                     <NavLink to="/profile" className="NavLink">Profile</NavLink>
-                    <NavLink to="/map" className="NavLink">Dashboard</NavLink>
+                    
+                    <NavLink to="/dashboard" className="NavLink">Dashboard</NavLink> 
+                    
                     {user.role === Role.Admin &&
                         <NavLink to="/admin" className="NavLink">Admin</NavLink>
                     }
