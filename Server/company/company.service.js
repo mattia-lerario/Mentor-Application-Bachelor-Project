@@ -154,6 +154,6 @@ function basicDetails(account) {
     return { id, title, firstName, lastName, email, role, created, updated, isVerified };
 }
 
-.
+
 
 
