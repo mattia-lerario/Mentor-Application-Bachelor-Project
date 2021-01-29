@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 import { accountService } from '@/_services';
 
+
 function PrivateRoute({ component: Component, roles, ...rest }) {
     return (
         <Route {...rest} render={props => {
