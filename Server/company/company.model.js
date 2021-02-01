@@ -1,16 +1,19 @@
 const { array } = require('joi');
+const { Int32, Long } = require('mongodb');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
+    companyName: { type : String, required: true },
+    companyNumber: {type : Int32}, //muligens endre til require
+    tlfnumber: {type : Int32},
     email: { type: String, unique: true, required: true },
     passwordHash: { type: String, required: true },
-    title: { type: String, required: true },
-    firstName: { type: String, required: true },
+    salesRevenue: { type: Int32},
+    companyDescription: { type: String, required: true },
     lastName: { type: String, required: true },
     acceptTerms: Boolean,
-    role: { type: String, required: true },
-    inkubatorID: {type: array, }, 
+    role: { type: String, required: true },    
 });
 
 schema.virtual('isVerified').get(function () {
