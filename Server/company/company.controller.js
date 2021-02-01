@@ -4,7 +4,7 @@ const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
 const authorize = require('_middleware/authorize')
 const Role = require('_helpers/role');
-const accountService = require('./company.service');
+const companyService = require('./company.service');
 
 // routes
 router.post('/authenticate', authenticateSchema, authenticate);
@@ -28,7 +28,7 @@ function authenticateSchema(req, res, next) {
 function authenticate(req, res, next) {
     const { email, password } = req.body;
     const ipAddress = req.ip;
-    accountService.authenticate({ email, password, ipAddress })
+    companyService.authenticate({ email, password, ipAddress })
         .then(({ refreshToken, ...account }) => {
             setTokenCookie(res, refreshToken);
             res.json(account);
@@ -55,14 +55,14 @@ function revokeToken(req, res, next) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
 
-    accountService.revokeToken({ token, ipAddress })
+    companyService.revokeToken({ token, ipAddress })
         .then(() => res.json({ message: 'Token revoked' }))
         .catch(next);
 }
 
 
 function getAll(req, res, next) {
-    accountService.getAll()
+    companyService.getAll()
         .then(accounts => res.json(accounts))
         .catch(next);
 }
@@ -73,26 +73,26 @@ function getById(req, res, next) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
 
-    accountService.getById(req.params.id)
+    companyService.getById(req.params.id)
         .then(account => account ? res.json(account) : res.sendStatus(404))
         .catch(next);
 }
 
 function createSchema(req, res, next) {
     const schema = Joi.object({
-        title: Joi.string().required(),
-        firstName: Joi.string().required(),
-        lastName: Joi.string().required(),
+        companyName: Joi.string().required(),
+        companyNumber: Joi.string().required(),
+        tlfNumber: Joi.string().required(),
         email: Joi.string().email().required(),
         password: Joi.string().min(6).required(),
-        confirmPassword: Joi.string().valid(Joi.ref('password')).required(),
+        salesRevenue: Joi.string().valid(Joi.ref('password')).required(),
         role: Joi.string().valid(Role.Admin, Role.User).required()
     });
     validateRequest(req, next, schema);
 }
 
 function create(req, res, next) {
-    accountService.create(req.body)
+    companyService.create(req.body)
         .then(account => res.json(account))
         .catch(next);
 }
@@ -122,8 +122,8 @@ function update(req, res, next) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
 
-    accountService.update(req.params.id, req.body)
-        .then(account => res.json(account))
+    companyService.update(req.params.id, req.body)
+        .then(company => res.json(company))
         .catch(next);
 }
 
@@ -133,7 +133,7 @@ function _delete(req, res, next) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
 
-    accountService.delete(req.params.id)
+    companyService.delete(req.params.id)
         .then(() => res.json({ message: 'Account deleted successfully' }))
         .catch(next);
 }
