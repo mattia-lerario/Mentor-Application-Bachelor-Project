@@ -1,15 +1,13 @@
-const { array } = require('joi');
-const { Int32, Long } = require('mongodb');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
     companyName: { type : String, required: true },
-    companyNumber: {type : Int32}, //muligens endre til require
-    tlfnumber: {type : Int32},
+    companyNumber: {type : String}, //muligens endre til require
+    tlfNumber: {type : String},
     email: { type: String, unique: true, required: true },
     passwordHash: { type: String, required: true },
-    salesRevenue: { type: Int32},
+    salesRevenue: { type: String},
     companyDescription: { type: String, required: true },
     lastName: { type: String, required: true },
     acceptTerms: Boolean,
@@ -25,9 +23,9 @@ schema.set('toJSON', {
     versionKey: false,
     transform: function (doc, ret) {
         // remove these props when object is serialized
-        delete ret._id;
-        delete ret.passwordHash;
+        //delete ret._id;
+        //delete ret.passwordHash;
     }
 });
 
-module.exports = mongoose.model('Account', schema);
+module.exports = mongoose.model('Company', schema);
