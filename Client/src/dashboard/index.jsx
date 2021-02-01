@@ -4,9 +4,9 @@ import { Route, Switch } from 'react-router-dom';
 import { DashboardList } from './DashboardList';
 import { accountService, companyService } from '@/_services';
 
-function Dashboard() {
+function Dashboard({ match }) {
     const user = accountService.userValue;
-    const copmany = companyService.userValue;
+    const company = companyService.userValue;
 
     const { path } = match;
     
@@ -17,11 +17,11 @@ function Dashboard() {
                 <p>You're logged in with React & JWT!!</p>
                 <p>Dashboard!!!!!</p>
 
-                <p>{copmany.copmanyName}</p>
+                <p>{company.companyName}</p>
 
                 <Switch>
                     <Route exact path={path} component={DashboardList} />
-                    <Route path={`${path}/DashboardList`} component={DashboardList} />
+                    
                 </Switch>
 
             </div>
