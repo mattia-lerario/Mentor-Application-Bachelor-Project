@@ -4,11 +4,13 @@ import styled from 'styled-components';
 List of what elements are getting styled here, in listed order:
 - Menu
 - Buttons
+- Update Profile Form
+- Profile Index
 */
 
 
 /* ---MENU--- */
-/* Nav.jsx */
+/* File: Nav.jsx */
 export const MenuWrapper = styled.div`
 //---makes the background of the menu slategrey
 .MenuBar {
@@ -44,6 +46,7 @@ export const BtnWrapper = styled.div`
     height: 35px;
     color: white;
     margin: 2px;
+    padding: 5px;
 }
 .CancelBtn{
     margin: 15px;

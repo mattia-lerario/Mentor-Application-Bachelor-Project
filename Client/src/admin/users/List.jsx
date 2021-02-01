@@ -26,8 +26,10 @@ function List({ match }) {
         <div>
             <h1>Users</h1>
             <p>All users from secure (admin only) api end point:</p>
-            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">Add User</Link>
-            <Link to={`${path}/addMentor`} className="btn btn-sm btn-success mb-2">Add Mentor</Link>
+            <BtnWrapper>
+                <Link to={`${path}/add`} className="Btn MainBtn LinkBtn">Add User</Link>
+                <Link to={`${path}/addMentor`} className="Btn MainBtn LinkBtn">Add Mentor</Link>
+            </BtnWrapper>
             <table className="table table-striped">
                 <thead>
                     <tr>
@@ -46,12 +48,12 @@ function List({ match }) {
                             <td style={{ whiteSpace: 'nowrap' }}>
                                 <BtnWrapper>
                                 <Link to={`${path}/edit/${user.id}`} className="Btn MainBtn LinkBtn">Edit</Link>
-                                <button onClick={() => deleteUser(user.id)} className="Btn DeleteBtn" style={{ width: '60px' }} disabled={user.isDeleting}>
+                                <Link onClick={() => deleteUser(user.id)} className="Btn DeleteBtn LinkBtn" style={{ width: '60px' }} disabled={user.isDeleting}>
                                     {user.isDeleting 
                                         ? <span className="spinner-border spinner-border-sm"></span>
                                         : <span>Delete</span>
                                     }
-                                </button>
+                                </Link>
                                 </BtnWrapper>
                             </td>
                         </tr>
