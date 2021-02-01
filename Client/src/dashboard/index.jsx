@@ -17,8 +17,6 @@ function Dashboard({ match }) {
                 <p>Company Dashboard</p>
                 <p>Dashboard!!!!!</p>
 
-                <p>{company.companyName}</p>
-
                 <Switch>
                     <Route exact path={path} component={DashboardList} />
                     

@@ -6,11 +6,9 @@ const schema = new Schema({
     companyNumber: {type : String}, //muligens endre til require
     tlfNumber: {type : String},
     email: { type: String, unique: true, required: true },
-    passwordHash: { type: String, required: true },
     salesRevenue: { type: String},
     companyDescription: { type: String, required: true },
     lastName: { type: String, required: true },
-    acceptTerms: Boolean,
     role: { type: String, required: true },    
 });
 

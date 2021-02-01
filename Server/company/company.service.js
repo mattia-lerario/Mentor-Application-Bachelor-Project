@@ -131,7 +131,7 @@ function hash(password) {
     return bcrypt.hashSync(password, 10);
 }
 
-function generateJwtToken(account) {
+function generateJwtToken(company) {
     // create a jwt token containing the account id that expires in 15 minutes
     return jwt.sign({ sub: company.id, id: company.id }, config.secret, { expiresIn: '15m' });
 }
@@ -151,8 +151,8 @@ function randomTokenString() {
 }
 
 function basicDetails(company) {
-    const { id, companyName, compnayNumber, tlfNumber, email, salesRevenue, companyDescription} = company;
-    return { id, companyName, compnayNumber, tlfNumber, email, salesRevenue, companyDescription };
+    const { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription} = company;
+    return { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription };
 }
 
 
