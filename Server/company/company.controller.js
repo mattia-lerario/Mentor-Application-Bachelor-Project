@@ -9,7 +9,7 @@ const companyService = require('./company.service');
 // routes
 router.post('/authenticate', authenticateSchema, authenticate);
 router.post('/revoke-token', authorize(), revokeTokenSchema, revokeToken);
-router.get('/', authorize(Role.Admin), getAll);
+router.get('/',authorize(), getAll);
 router.get('/:id', authorize(), getById);
 router.post('/', authorize(Role.Admin), createSchema, create);
 router.put('/:id', authorize(), updateSchema, update);
@@ -63,7 +63,7 @@ function revokeToken(req, res, next) {
 
 function getAll(req, res, next) {
     companyService.getAll()
-        .then(accounts => res.json(accounts))
+        .then(company => res.json(company))
         .catch(next);
 }
 

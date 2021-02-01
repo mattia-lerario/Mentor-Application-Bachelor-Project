@@ -59,7 +59,7 @@ async function revokeToken({ token, ipAddress }) {
 
 
 async function getAll() {
-    const company = await db.company.find();
+    const company = await db.Company.find();
     return company.map(x => basicDetails(x));
 }
 

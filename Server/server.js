@@ -23,7 +23,7 @@ app.use('/api-docs', require('_helpers/swagger'));
 app.use(errorHandler);
 
 // company api route
-app.use('/api-docs', require('./company/company.controller'));
+app.use('/company', require('./company/company.controller'));
 
 // start server
 const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 4000;

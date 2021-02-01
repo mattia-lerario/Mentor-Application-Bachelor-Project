@@ -4,6 +4,7 @@ import { NavLink, Route } from 'react-router-dom';
 import {MenuWrapper} from '../style/styledcomponents';
 import { Role } from '@/_helpers';
 import { accountService } from '@/_services';
+import { companyService } from '@/_services';
 import {Sidebar} from './Sidebar';
 function Nav() {
     const [user, setUser] = useState({});

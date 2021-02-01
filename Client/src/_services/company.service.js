@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import config from 'config';
 import { fetchWrapper, history } from '@/_helpers';
 
-const userSubject = new BehaviorSubject(null);
+const companySubject = new BehaviorSubject(null);
 const baseUrl = `${config.apiUrl}/company`;
 
 export const companyService = {
@@ -14,8 +14,8 @@ export const companyService = {
     create,
     update,
     delete: _delete,
-    user: userSubject.asObservable(),
-    get userValue () { return userSubject.value }
+    company: companySubject.asObservable(),
+    get companyValue () { return companySubject.value }
 };
 
 
