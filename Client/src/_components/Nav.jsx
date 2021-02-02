@@ -59,6 +59,7 @@ function Nav() {
     return (
       <MenuWrapper>
         <nav className="MenuBar">
+                
           <div className="MenuLinks">
 
             {/*
@@ -66,6 +67,7 @@ function Nav() {
             <NavLink to="/sidebar" className="NavLink"> <FaIcons.FaBars/> </NavLink>
             */}
             
+
             <NavLink exact to="/" className="NavLink">Home</NavLink>
             <NavLink to="/profile" className="NavLink">Profile</NavLink>
                     
@@ -87,7 +89,11 @@ function Nav() {
                 </div>
             </nav>
             <Route path="/admin" component={AdminNav} />
-            <Sidebar items={items}/>
+            
+            {/* Wrapper for the design of the sidebar */} 
+            <SidebarWrapper>
+              <Sidebar items={items}/>
+            </SidebarWrapper>
         </MenuWrapper>
         
         

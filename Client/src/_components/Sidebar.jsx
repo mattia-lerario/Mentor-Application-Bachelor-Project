@@ -30,21 +30,18 @@ function SidebarItem({ label, items, depthStep = 10, depth = 0, ...rest }) {
 function Sidebar({ items, depthStep, depth }) {
 
   return (
-    //<SidebarWrapper>
-      <div className="Sidebar">
-        <List disablePadding dense>
-          {items.map((sidebarItem, index) => (
-            <SidebarItem
-              key={`${sidebarItem.name}${index}`}
-              depthStep={depthStep}
-              depth={depth}
-              {...sidebarItem}
-            />
-          ))}
-        </List>
-      </div>
-    //</SidebarWrapper>
-
+    <div className="Sidebar">
+      <List disablePadding dense>
+        {items.map((sidebarItem, index) => (
+          <SidebarItem
+            key={`${sidebarItem.name}${index}`}
+            depthStep={depthStep}
+            depth={depth}
+            {...sidebarItem}
+          />
+        ))}
+      </List>
+    </div>
   )
 }
 
