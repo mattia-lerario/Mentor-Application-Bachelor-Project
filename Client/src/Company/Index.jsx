@@ -14,9 +14,8 @@ function Company({ match }) {
     return (
         <div className="p-4">
             <div className="container">
-                <h1>Hi {user.lastName}, how are you?!</h1>
+                <h1>Hi {user.firstName}!</h1>
                 <p>Company Dashboard</p>
-                <p>Dashboard!!!!!</p>
 
                 <Switch>
                     <Route exact path={path} component={CompanyList} />
