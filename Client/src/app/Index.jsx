@@ -8,6 +8,7 @@ import { Nav, PrivateRoute, Alert, Sidebar } from '@/_components';
 import { Home } from '@/home';
 import { Profile } from '@/profile';
 import { Company } from '@/Company';
+import { Mentor } from '@/Mentor';
 
 import { Admin } from '@/admin';
 import { Account } from '@/account';
@@ -33,6 +34,7 @@ function App() {
 
                 <PrivateRoute path="/dashboard" component={Dashboard} />
                 <PrivateRoute path="/companies" component={Company} />
+                <PrivateRoute path="/mentors" component={Mentor} />
                 <PrivateRoute path="/profile" component={Profile} />
 
                 <PrivateRoute path="/admin" roles={[Role.Admin]} component={Admin} />

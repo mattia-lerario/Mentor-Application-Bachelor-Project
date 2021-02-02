@@ -8,6 +8,8 @@ module.exports = {
     Account: require('accounts/account.model'),
     RefreshToken: require('accounts/refresh-token.model'),
     Company: require('company/company.model'),
+    Mentor: require('mentors/mentor.model'),
+
     //Account: require('accounts/mentors.model'),
     isValidId
 };

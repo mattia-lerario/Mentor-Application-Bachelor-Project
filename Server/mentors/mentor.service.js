@@ -8,13 +8,13 @@ const Role = require('_helpers/role');
 
 module.exports = {
     authenticate,
-    refreshToken,
+    //refreshToken,
     revokeToken,
-    register,
-    verifyEmail,
-    forgotPassword,
-    validateResetToken,
-    resetPassword,
+    //register,
+    //verifyEmail,
+    //forgotPassword,
+    //validateResetToken,
+    //resetPassword,
     getAll,
     getById,
     create,
@@ -23,7 +23,7 @@ module.exports = {
 };
 
 async function authenticate({ email, password, ipAddress }) {
-    const mentorsModel = await db.mentorsModel.findOne({ email });
+    const mentorsModel = await db.Mentors.findOne({ email });
 
     if (!mentorsModel || !mentorsModel.isVerified || !bcrypt.compareSync(password, mentorsModel.passwordHash)) {
         throw 'Email or password is incorrect';
@@ -78,16 +78,16 @@ async function revokeToken({ token, ipAddress }) {
 
 async function register(params, origin) {
     // validate
-    if (await db.mentorsModel.findOne({ email: params.email })) {
+    if (await db.Mentors.findOne({ email: params.email })) {
         // send already registered error in email to prevent mentorsModel enumeration
         return await sendAlreadyRegisteredEmail(params.email, origin);
     }
 
     // create mentorsModel object
-    const mentorsModel = new db.mentorsModel(params);
+    const mentorsModel = new db.Mentors(params);
 
     // first registered mentorsModel is an admin
-    const isFirstmentorsModel = (await db.mentorsModel.countDocuments({})) === 0;
+    const isFirstmentorsModel = (await db.Mentors.countDocuments({})) === 0;
     mentorsModel.role = isFirstmentorsModel ? Role.Admin : Role.User;
     mentorsModel.verificationToken = randomTokenString();
 
@@ -102,7 +102,7 @@ async function register(params, origin) {
 }
 
 async function verifyEmail({ token }) {
-    const mentorsModel = await db.mentorsModel.findOne({ verificationToken: token });
+    const mentorsModel = await db.Mentors.findOne({ verificationToken: token });
 
     if (!mentorsModel) throw 'Verification failed';
 
@@ -112,7 +112,7 @@ async function verifyEmail({ token }) {
 }
 
 async function forgotPassword({ email }, origin) {
-    const mentorsModel = await db.mentorsModel.findOne({ email });
+    const mentorsModel = await db.Mentors.findOne({ email });
 
     // always return ok response to prevent email enumeration
     if (!mentorsModel) return;
@@ -129,7 +129,7 @@ async function forgotPassword({ email }, origin) {
 }
 
 async function validateResetToken({ token }) {
-    const mentorsModel = await db.mentorsModel.findOne({
+    const mentorsModel = await db.Mentors.findOne({
         'resetToken.token': token,
         'resetToken.expires': { $gt: Date.now() }
     });
@@ -138,7 +138,7 @@ async function validateResetToken({ token }) {
 }
 
 async function resetPassword({ token, password }) {
-    const mentorsModel = await db.mentorsModel.findOne({
+    const mentorsModel = await db.Mentors.findOne({
         'resetToken.token': token,
         'resetToken.expires': { $gt: Date.now() }
     });
@@ -153,7 +153,7 @@ async function resetPassword({ token, password }) {
 }
 
 async function getAll() {
-    const mentorsModels = await db.mentorsModel.find();
+    const mentorsModels = await db.Mentor.find();
     return mentorsModels.map(x => basicDetails(x));
 }
 
@@ -164,11 +164,11 @@ async function getById(id) {
 
 async function create(params) {
     // validate
-    if (await db.mentorsModel.findOne({ email: params.email })) {
+    if (await db.Mentors.findOne({ email: params.email })) {
         throw 'Email "' + params.email + '" is already registered';
     }
 
-    const mentorsModel = new db.mentorsModel(params);
+    const mentorsModel = new db.Mentors(params);
     mentorsModel.verified = Date.now();
 
     // hash password
@@ -184,7 +184,7 @@ async function update(id, params) {
     const mentorsModel = await getmentorsModel(id);
 
     // validate (if email was changed)
-    if (params.email && mentorsModel.email !== params.email && await db.mentorsModel.findOne({ email: params.email })) {
+    if (params.email && mentorsModel.email !== params.email && await db.Mentors.findOne({ email: params.email })) {
         throw 'Email "' + params.email + '" is already taken';
     }
 
@@ -210,7 +210,7 @@ async function _delete(id) {
 
 async function getmentorsModel(id) {
     if (!db.isValidId(id)) throw 'mentorsModel not found';
-    const mentorsModel = await db.mentorsModel.findById(id);
+    const mentorsModel = await db.Mentors.findById(id);
     if (!mentorsModel) throw 'mentorsModel not found';
     return mentorsModel;
 }

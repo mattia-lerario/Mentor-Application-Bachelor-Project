@@ -24,6 +24,8 @@ app.use(errorHandler);
 
 // company api route
 app.use('/company', require('./company/company.controller'));
+// Mentor api route
+app.use('/mentor', require('./mentors/mentor.controller'));
 
 // start server
 const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 4000;
