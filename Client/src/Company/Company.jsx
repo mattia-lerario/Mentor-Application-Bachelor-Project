@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 import { companyService } from '@/_services';
-import {accountService} from '@/_services';
-
 
 function CompanyList({ match }) {
     const { path } = match;
@@ -13,25 +11,31 @@ function CompanyList({ match }) {
         companyService.getAll().then(x => setUsers(x));
     }, []);
 
-
     return (
         
         <div>
+            <h1>All Companies</h1>
             
             <table>
+            <thead>
+                    <tr>
+                        <th style={{ width: '30%' }}>Company ID</th>
+                        <th style={{ width: '30%' }}>Company Name</th>
+                        <th style={{ width: '30%' }}>Sales Revenue</th>
+                        <th style={{ width: '30%' }}>Email</th>
+                        <th style={{ width: '10%' }}>Company number</th>
+                    </tr>
+                </thead>
                 <tbody>
                     {company && company.map(company =>
                         <tr key={company.id}>
-                        
-                            <span>
-                                <h2>{company.companyName}</h2>
-                                <h2>{company.companyNumber}</h2>
+                            <td>{company.companyName}</td>
+                            <td>{company.salesRevenue}</td>
+                            <td>{company.email}</td>
+                            <td>{company.companyNumber}</td>
+                            <td style={{ whiteSpace: 'nowrap' }}>
                                 
-                            </span>
-                            <p>{company.email}</p>
-                            <p>{company.companyDescription}</p>
-                            <p>{company.salesRevenue} NOK</p>
-                                
+                            </td>
                         </tr>
                     )}
                     {!company &&
