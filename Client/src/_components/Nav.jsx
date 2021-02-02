@@ -5,6 +5,11 @@ import {MenuWrapper} from '../style/styledcomponents';
 import { Role } from '@/_helpers';
 import { accountService } from '@/_services';
 import {Sidebar} from './Sidebar';
+
+/*for the hamburger-menu-icon: 
+import * as FaIcons from "react-icons/fa"; //(because of the * it's possible to import any icon from the react-icons(weblink: https://react-icons.github.io/react-icons/))
+*/
+
 function Nav() {
     const [user, setUser] = useState({});
     const items = [
@@ -47,32 +52,43 @@ function Nav() {
         return subscription.unsubscribe;
     }, []);
 
+
     // only show nav when logged in
     if (!user) return null;
 
     return (
-        <MenuWrapper>
-            <nav className="MenuBar">
+      <MenuWrapper>
+        <nav className="MenuBar">
                 
-                <div className="MenuLinks">
+          <div className="MenuLinks">
 
-                    <NavLink exact to="/" className="NavLink">Home</NavLink>
-                    <NavLink to="/profile" className="NavLink">Profile</NavLink>
+            {/*
+            Hamburger-menu-icon
+            <NavLink to="/sidebar" className="NavLink"> <FaIcons.FaBars/> </NavLink>
+            */}
+            
+
+            <NavLink exact to="/" className="NavLink">Home</NavLink>
+            <NavLink to="/profile" className="NavLink">Profile</NavLink>
                     
-                    <NavLink to="/dashboard" className="NavLink">Dashboard</NavLink> 
+            <NavLink to="/dashboard" className="NavLink">Dashboard</NavLink> 
                     
-                    {user.role === Role.Admin &&
-                        <NavLink to="/admin" className="NavLink">Admin</NavLink>
-                    }
-                     {user.role === Role.Mentor &&
-                        <NavLink to="/companies" className="NavLink">Companies</NavLink>
-                    }
-                    <a onClick={accountService.logout} className="NavLink">Logout</a>
-                </div>
-            </nav>
-            <Route path="/admin" component={AdminNav} />
-            <Sidebar items={items}/>
-        </MenuWrapper>
+            {user.role === Role.Admin &&
+              <NavLink to="/admin" className="NavLink">Admin</NavLink>
+            }
+            {user.role === Role.Mentor &&
+              <NavLink to="/companies" className="NavLink">Companies</NavLink>
+            }
+                  
+            <a onClick={accountService.logout} className="NavLink">Logout</a>
+
+          </div>
+        </nav>
+        
+        <Route path="/admin" component={AdminNav} />
+        <Sidebar items={items}/> 
+
+      </MenuWrapper>
         
         
     );
@@ -82,11 +98,8 @@ function AdminNav({ match }) {
     const { path } = match;
 
     return (
-        //<nav className="admin-nav navbar-light">
         <nav className="AdminNav">
-            {/*</nav>/<div className="navbar-nav">*/}
             <div>
-                {/*<NavLink to={`${path}/users`} className="nav-item nav-link">Users</NavLink>*/}
                 <NavLink to={`${path}/users`} className="AdminLink">Users</NavLink>
             </div>
         </nav>

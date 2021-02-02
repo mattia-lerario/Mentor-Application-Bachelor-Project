@@ -50,7 +50,7 @@ function List({ match }) {
                                 <Link to={`${path}/edit/${user.id}`} className="Btn MainBtn LinkBtn">Edit</Link>
                                 <Link onClick={() => deleteUser(user.id)} className="Btn DeleteBtn LinkBtn" style={{ width: '60px' }} disabled={user.isDeleting}>
                                     {user.isDeleting 
-                                        ? <span className="spinner-border spinner-border-sm"></span>
+                                        ? <span></span>
                                         : <span>Delete</span>
                                     }
                                 </Link>
@@ -61,7 +61,7 @@ function List({ match }) {
                     {!users &&
                         <tr>
                             <td colSpan="4" className="text-center">
-                                <span className="spinner-border spinner-border-lg align-center"></span>
+                                <span></span>
                             </td>
                         </tr>
                     }

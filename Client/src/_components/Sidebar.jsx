@@ -28,6 +28,7 @@ function SidebarItem({ label, items, depthStep = 10, depth = 0, ...rest }) {
 }
 
 function Sidebar({ items, depthStep, depth }) {
+
   return (
     <div className="sidebar">
       <List disablePadding dense>
@@ -43,5 +44,6 @@ function Sidebar({ items, depthStep, depth }) {
     </div>
   )
 }
+
 
 export {Sidebar};
