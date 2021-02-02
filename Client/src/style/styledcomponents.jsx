@@ -34,6 +34,13 @@ export const MenuWrapper = styled.div`
     background-color: #38507a;
     color: black;
 }
+//adding the background-color for the Admin-menu
+.AdminNav{
+    background-color: #e6e6e6;
+}
+.AdminLink:hover{
+    color: black;
+}
 `;
 
 
@@ -137,7 +144,13 @@ export const SidebarWrapper = styled.div`
 //Light blue backgroundcolor and width on the sidebar-menu
 .Sidebar{
     float: left;
-    background-color: #38507a;
+    //same background-color as the admin-menu.
+    background-color: #e6e6e6;
     margin-right: 15px;
+}
+//Changing the background-color when hovering an item in the sidebar.
+.SidebarItem:hover{
+    color: black;
+    background-color: #38507a;
 }
 `;

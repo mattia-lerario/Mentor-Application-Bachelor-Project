@@ -12,6 +12,7 @@ import * as FaIcons from "react-icons/fa"; //(because of the * it's possible to 
 
 function Nav() {
     const [user, setUser] = useState({});
+    {/* Listing the items in the sidebar-menu: */}
     const items = [
   { name: 'home', label: 'Home' },
   {

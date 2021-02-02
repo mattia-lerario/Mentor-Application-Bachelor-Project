@@ -6,7 +6,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 function SidebarItem({ label, items, depthStep = 10, depth = 0, ...rest }) {
   return (
     <>
-      <ListItem button dense {...rest}>
+      <ListItem className="SidebarItem" button dense {...rest}>
         <ListItemText style={{ paddingLeft: depth * depthStep }}>
           <span>{label}</span>
         </ListItemText>
