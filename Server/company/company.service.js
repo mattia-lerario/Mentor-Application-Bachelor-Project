@@ -23,22 +23,22 @@ module.exports = {
 };
 
 async function authenticate({ email, password, ipAddress }) {
-    const account = await db.Account.findOne({ email });
+    const company = await db.company.findOne({ email });
 
-    if (!account || !account.isVerified || !bcrypt.compareSync(password, account.passwordHash)) {
+    if (!company || !company.isVerified || !bcrypt.compareSync(password, company.passwordHash)) {
         throw 'Email or password is incorrect';
     }
 
     // authentication successful so generate jwt and refresh tokens
-    const jwtToken = generateJwtToken(account);
-    const refreshToken = generateRefreshToken(account, ipAddress);
+    const jwtToken = generateJwtToken(company);
+    const refreshToken = generateRefreshToken(company, ipAddress);
 
     // save refresh token
     await refreshToken.save();
 
     // return basic details and tokens
     return {
-        ...basicDetails(account),
+        ...basicDetails(company),
         jwtToken,
         refreshToken: refreshToken.token
     };
@@ -59,35 +59,36 @@ async function revokeToken({ token, ipAddress }) {
 
 
 async function getAll() {
-    const accounts = await db.Account.find();
-    return accounts.map(x => basicDetails(x));
+    const company = await db.Company.find();
+    return company.map(x => basicDetails(x));
 }
 
+
 async function getById(id) {
-    const account = await getAccount(id);
-    return basicDetails(account);
+    const company = await getAccount(id);
+    return basicDetails(company);
 }
 
 async function create(params) {
     // validate
-    if (await db.Account.findOne({ email: params.email })) {
+    if (await db.Company.findOne({ email: params.email })) {
         throw 'Email "' + params.email + '" is already registered';
     }
 
-    const account = new db.Account(params);
-    account.verified = Date.now();
+    const company = new db.Company(params);
+    company.verified = Date.now();
 
     // hash password
-    account.passwordHash = hash(params.password);
+    company.passwordHash = hash(params.password);
 
     // save account
-    await account.save();
+    await company.save();
 
-    return basicDetails(account);
+    return basicDetails(company);
 }
 
 async function update(id, params) {
-    const account = await getAccount(id);
+    const company = await getAccount(id);
 
     // validate (if email was changed)
     if (params.email && account.email !== params.email && await db.Account.findOne({ email: params.email })) {
@@ -100,24 +101,24 @@ async function update(id, params) {
     }
 
     // copy params to account and save
-    Object.assign(account, params);
-    account.updated = Date.now();
-    await account.save();
-    return basicDetails(account);
+    Object.assign(company, params);
+    company.updated = Date.now();
+    await company.save();
+    return basicDetails(company);
 }
 
 async function _delete(id) {
-    const account = await getAccount(id);
-    await account.remove();
+    const company = await getAccount(id);
+    await company.remove();
 }
 
 // helper functions
 
 async function getAccount(id) {
     if (!db.isValidId(id)) throw 'Account not found';
-    const account = await db.Account.findById(id);
-    if (!account) throw 'Account not found';
-    return account;
+    const company = await db.Company.findById(id);
+    if (!company) throw 'Account not found';
+    return company;
 }
 
 async function getRefreshToken(token) {
@@ -130,15 +131,15 @@ function hash(password) {
     return bcrypt.hashSync(password, 10);
 }
 
-function generateJwtToken(account) {
+function generateJwtToken(company) {
     // create a jwt token containing the account id that expires in 15 minutes
-    return jwt.sign({ sub: account.id, id: account.id }, config.secret, { expiresIn: '15m' });
+    return jwt.sign({ sub: company.id, id: company.id }, config.secret, { expiresIn: '15m' });
 }
 
-function generateRefreshToken(account, ipAddress) {
+function generateRefreshToken(company, ipAddress) {
     // create a refresh token that expires in 7 days
     return new db.RefreshToken({
-        account: account.id,
+        account: company.id,
         token: randomTokenString(),
         expires: new Date(Date.now() + 7*24*60*60*1000),
         createdByIp: ipAddress
@@ -149,9 +150,9 @@ function randomTokenString() {
     return crypto.randomBytes(40).toString('hex');
 }
 
-function basicDetails(account) {
-    const { id, title, firstName, lastName, email, role, created, updated, isVerified } = account;
-    return { id, title, firstName, lastName, email, role, created, updated, isVerified };
+function basicDetails(company) {
+    const { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription} = company;
+    return { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription };
 }
 
 
