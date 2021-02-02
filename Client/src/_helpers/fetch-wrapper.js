@@ -65,7 +65,6 @@ function authHeader(url) {
 function handleResponse(response) {
     return response.text().then(text => {
         const data = text && JSON.parse(text);
-        console.log(text);
         if (!response.ok) {
             if ([401, 403].includes(response.status) && accountService.userValue) {
                 // auto logout if 401 Unauthorized or 403 Forbidden response returned from api

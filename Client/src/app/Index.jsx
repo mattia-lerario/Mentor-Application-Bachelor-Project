@@ -3,9 +3,12 @@ import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 
 import { Role } from '@/_helpers';
 import { accountService } from '@/_services';
+
 import { Nav, PrivateRoute, Alert, Sidebar } from '@/_components';
 import { Home } from '@/home';
 import { Profile } from '@/profile';
+import { Company } from '@/Company';
+
 import { Admin } from '@/admin';
 import { Account } from '@/account';
 import { Dashboard } from '@/dashboard';
@@ -29,7 +32,7 @@ function App() {
                 <PrivateRoute exact path="/" component={Home} />
 
                 <PrivateRoute path="/dashboard" component={Dashboard} />
-
+                <PrivateRoute path="/companies" component={Company} />
                 <PrivateRoute path="/profile" component={Profile} />
 
                 <PrivateRoute path="/admin" roles={[Role.Admin]} component={Admin} />

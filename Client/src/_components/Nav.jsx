@@ -65,6 +65,12 @@ function Nav() {
                     {user.role === Role.Admin &&
                         <NavLink to="/admin" className="NavLink">Admin</NavLink>
                     }
+                    {user.role === Role.Admin &&
+                        <NavLink to="/companies" className="NavLink">Companies</NavLink>
+                    }
+                    {user.role === Role.Admin &&
+                        <NavLink to="/mentors" className="NavLink">Mentors</NavLink>
+                    }
                      {user.role === Role.Mentor &&
                         <NavLink to="/companies" className="NavLink">Companies</NavLink>
                     }
