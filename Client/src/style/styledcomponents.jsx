@@ -6,6 +6,7 @@ List of what elements are getting styled here, in listed order:
 - Buttons
 - Update Profile Form
 - Profile Index
+- Sidebar(Menu)
 */
 
 
@@ -126,5 +127,18 @@ export const ProfileWrapper = styled.div`
 .Padding{
     padding: 20px;
     margin-left: 10px;
+}
+`;
+
+/* ---SIDEBAR--- */
+/* File: Sidebar.jsx */
+export const SidebarWrapper = styled.div`
+.Sidebar{
+    float: left;
+    margin-right: 10px;
+    background-color: #38507a;
+}
+SidebarItem:hover{
+    background-color: #273855;
 }
 `;

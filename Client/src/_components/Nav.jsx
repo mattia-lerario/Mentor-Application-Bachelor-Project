@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Route } from 'react-router-dom';
 
-import {MenuWrapper} from '../style/styledcomponents';
+import {MenuWrapper, SidebarWrapper} from '../style/styledcomponents';
 import { Role } from '@/_helpers';
 import { accountService } from '@/_services';
-import { companyService } from '@/_services';
 import {Sidebar} from './Sidebar';
 
 /*for the hamburger-menu-icon: 
@@ -60,7 +59,6 @@ function Nav() {
     return (
       <MenuWrapper>
         <nav className="MenuBar">
-                
           <div className="MenuLinks">
 
             {/*
@@ -68,7 +66,6 @@ function Nav() {
             <NavLink to="/sidebar" className="NavLink"> <FaIcons.FaBars/> </NavLink>
             */}
             
-
             <NavLink exact to="/" className="NavLink">Home</NavLink>
             <NavLink to="/profile" className="NavLink">Profile</NavLink>
                     
@@ -87,7 +84,10 @@ function Nav() {
         </nav>
         
         <Route path="/admin" component={AdminNav} />
-        <Sidebar items={items}/> 
+
+        <SidebarWrapper>
+          <Sidebar items={items}/> 
+        </SidebarWrapper>
 
       </MenuWrapper>
         
