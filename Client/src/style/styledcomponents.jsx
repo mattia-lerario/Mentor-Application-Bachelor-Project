@@ -32,7 +32,6 @@ export const MenuWrapper = styled.div`
 .NavLink:hover{
     text-decoration: none;
     background-color: #38507a;
-    color: black;
 }
 //adding the background-color for the Admin-menu
 .AdminNav{
@@ -150,7 +149,7 @@ export const SidebarWrapper = styled.div`
 }
 //Changing the background-color when hovering an item in the sidebar.
 .SidebarItem:hover{
-    color: black;
+    color: white;
     background-color: #38507a;
 }
 `;
