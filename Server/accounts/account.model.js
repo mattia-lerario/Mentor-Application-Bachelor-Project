@@ -8,7 +8,7 @@ const schema = new Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     acceptTerms: Boolean,
-    dateOfBirth: {type: Date, required: true}, ///lagt til fødselsdato
+    dateOfBirth: {type: Date}, ///lagt til fødselsdato
     role: { type: String, required: true },
     verificationToken: String,
     verified: Date,

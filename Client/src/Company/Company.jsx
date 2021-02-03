@@ -23,11 +23,11 @@ function CompanyList({ match }) {
                     {company && company.map(company =>
                         <tr key={company.id}>
                         
-                            <span>
+                            <div>
                                 <h2>{company.companyName}</h2>
                                 <h2>{company.companyNumber}</h2>
                                 
-                            </span>
+                            </div>
                             <p>{company.email}</p>
                             <p>{company.companyDescription}</p>
                             <p>{company.salesRevenue} NOK</p>
