@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
+import {ListWrapper} from '../style/styledcomponents';
 import { companyService } from '@/_services';
 import { mentorService } from '@/_services';
 
@@ -13,18 +14,18 @@ function DashboardList({ match }) {
     }, []);
 
     return (
-        
+        <ListWrapper>
         <div>
             <h1>All Companies</h1>
             <p>All companies showcased in dashboard</p>
               
-            <table>
+            <table className="ListTable">
             <thead>
                     <tr>
                         <th style={{ width: '30%' }}>Company Name</th>
                         <th style={{ width: '30%' }}>Sales Revenue</th>
-                        <th style={{ width: '30%' }}>Company number</th>
-                        <th style={{ width: '10%' }}>Email</th>
+                        <th style={{ width: '15%' }}>Company number</th>
+                        <th style={{ width: '30%' }}>Email</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,6 +55,7 @@ function DashboardList({ match }) {
             </table>
 
         </div>
+        </ListWrapper>
         
         );
 }

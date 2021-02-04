@@ -161,25 +161,24 @@ export const ListWrapper = styled.div`
 // Resource: https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy
 
 //Frame
-.CompanyListTable{
+.ListTable{
     border-collapse: collapse;
     margin-left: 50px;
-    //border: 2px solid black;
 }
-.CompanyListTable th, .CompanyListTable td{
+.ListTable th, .ListTable td{
     border: 1px solid #ddd;
     padding: 8px;
 }
 //every second line grey
-.CompanyListTable tr:nth-child(even){
+.ListTable tr:nth-child(even){
     background-color: #f2f2f2;
 }
-//when hovered turned blue
-.CompanyListTable tr:hover {
+//when hovered line turnes blue
+.ListTable tr:hover {
     background-color: #38507a;
 }
 //Styling the first line in the table with the 'titles'
-.CompanyListTable th {
+.ListTable th {
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: left;
