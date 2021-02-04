@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
+import {ListWrapper} from '../style/styledcomponents';
 import { companyService } from '@/_services';
-import {accountService} from '@/_services';
-
 
 function CompanyList({ match }) {
     const { path } = match;
@@ -13,40 +12,48 @@ function CompanyList({ match }) {
         companyService.getAll().then(x => setUsers(x));
     }, []);
 
-
     return (
-        
-        <div>
-            
-            <table>
-                <tbody>
-                    {company && company.map(company =>
-                        <tr key={company.id}>
-                        
-                            <div>
-                                <h2>{company.companyName}</h2>
-                                <h2>{company.companyNumber}</h2>
-                                
-                            </div>
-                            <p>{company.email}</p>
-                            <p>{company.companyDescription}</p>
-                            <p>{company.salesRevenue} NOK</p>
-                                
-                        </tr>
-                    )}
-                    {!company &&
+                <ListWrapper>
+            <div>
+                <h1>All Companies</h1>
+                
+                <table className="CompanyListTable">
+                    <thead className="CompanyListLine">
+
                         <tr>
-                            <td colSpan="4" className="text-center">
-                                <span className="spinner-border spinner-border-lg align-center"></span>
-                            </td>
+                            <th style={{ width: '30%' }}>Company ID</th>
+                            <th style={{ width: '30%' }}>Company Name</th>
+                            <th style={{ width: '30%' }}>Sales Revenue</th>
+                            <th style={{ width: '30%' }}>Email</th>
+                            <th style={{ width: '10%' }}>Company number</th>
                         </tr>
-                    }
+                    </thead>
+                    <tbody>
+                        {company && company.map(company =>
+                            <tr key={company.id}>
+                                <td>{company.companyName}</td>
+                                <td>{company.salesRevenue}</td>
+                                <td>{company.email}</td>
+                                <td>{company.companyNumber}</td>
+                                <td style={{ whiteSpace: 'nowrap' }}>
+                                    
+                                </td>
+                            </tr>
+                        )}
+                        {!company &&
+                            <tr>
+                                <td colSpan="4" className="text-center">
+                                    <span className="spinner-border spinner-border-lg align-center"></span>
+                                </td>
+                            </tr>
+                        }
 
-                </tbody>
+                    </tbody>
 
-            </table>
+                </table>
 
-        </div>
+            </div>
+        </ListWrapper>
         
         );
 }
