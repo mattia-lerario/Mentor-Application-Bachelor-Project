@@ -7,6 +7,7 @@ List of what elements are getting styled here, in listed order:
 - Update Profile Form
 - Profile Index
 - Sidebar (menu)
+- Company list table
 */
 
 
@@ -32,7 +33,6 @@ export const MenuWrapper = styled.div`
 .NavLink:hover{
     text-decoration: none;
     background-color: #38507a;
-    color: black;
 }
 //adding the background-color for the Admin-menu
 .AdminNav{
@@ -129,7 +129,7 @@ W3Schools.com
 `;
 
 /* ---PROFILE INDEX--- */
-/* Files: Index.jsx */
+/* File: Index.jsx */
 export const ProfileWrapper = styled.div`
 .Padding{
     padding: 20px;
@@ -138,7 +138,7 @@ export const ProfileWrapper = styled.div`
 `;
 
 /* ---SIDEBAR--- */
-/* File: Nav.jsx, Sidebar.jsx */
+/* Files: Nav.jsx, Sidebar.jsx */
 export const SidebarWrapper = styled.div`
 
 //Light blue backgroundcolor and width on the sidebar-menu
@@ -150,7 +150,40 @@ export const SidebarWrapper = styled.div`
 }
 //Changing the background-color when hovering an item in the sidebar.
 .SidebarItem:hover{
-    color: black;
+    color: white;
     background-color: #38507a;
 }
+`;
+
+/* ---COMPANY LISTTABLE--- */
+/* File: Company.jsx */
+export const ListWrapper = styled.div`
+// Resource: https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy
+
+//Frame
+.ListTable{
+    border-collapse: collapse;
+    margin-left: 50px;
+}
+.ListTable th, .ListTable td{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+//every second line grey
+.ListTable tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+//when hovered line turnes blue
+.ListTable tr:hover {
+    background-color: #38507a;
+}
+//Styling the first line in the table with the 'titles'
+.ListTable th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+  background-color: #273855;
+  color: white;
+}
+
 `;
