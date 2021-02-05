@@ -23,7 +23,8 @@ function authenticateSchema(req, res, next) {
         password: Joi.string().required()
     });
     validateRequest(req, next, schema);
-}
+}All Accounts
+
 
 function authenticate(req, res, next) {
     const { email, password } = req.body;
