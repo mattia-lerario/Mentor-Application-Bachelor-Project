@@ -14,6 +14,7 @@ function DashboardList({ match }) {
     }, []);
 
     return (
+        
         <ListWrapper>
         <div>
             <h1>All Companies</h1>

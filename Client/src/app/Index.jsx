@@ -24,11 +24,36 @@ function App() {
         const subscription = accountService.user.subscribe(x => setUser(x));
         return subscription.unsubscribe;
     }, []);
-
-    return (
+    if(!user){
+return (
          
         <div className={'app-container'}>
-             <SidebarWrapper>
+            <Alert />
+            <Switch>
+                <Redirect from="/:url*(/+)" to={pathname.slice(0, -1)} />
+                <PrivateRoute exact path="/" component={Home} />
+
+                <PrivateRoute path="/dashboard" component={Dashboard} />
+                <PrivateRoute path="/companies" component={Company} />
+                <PrivateRoute path="/mentors" component={Mentor} />
+                <PrivateRoute path="/profile" component={Profile} />
+                <PrivateRoute path="/admin" roles={[Role.Admin]} component={Admin} />
+
+                <Route path="/account" component={Account} />
+                <Redirect from="*" to="/" />
+                  
+            </Switch>
+           
+            
+        </div>
+    );
+
+
+    }else{
+        return (
+         
+        <div className={'app-container'}>
+          <SidebarWrapper>
               <Sidebar/>
             </SidebarWrapper>
             <Alert />
@@ -40,16 +65,18 @@ function App() {
                 <PrivateRoute path="/companies" component={Company} />
                 <PrivateRoute path="/mentors" component={Mentor} />
                 <PrivateRoute path="/profile" component={Profile} />
-
                 <PrivateRoute path="/admin" roles={[Role.Admin]} component={Admin} />
 
                 <Route path="/account" component={Account} />
                 <Redirect from="*" to="/" />
+                  
             </Switch>
            
             
         </div>
     );
+    }
+    
 } 
 
 export { App }; 

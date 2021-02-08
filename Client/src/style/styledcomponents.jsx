@@ -137,6 +137,10 @@ export const ProfileWrapper = styled.div`
     margin-left: 10px;
 }
 `;
+/* ----FORM STYLE ----- */
+export const GlassForm = styled.div`
+    
+`;
 
 /* ---SIDEBAR--- */
 /* Files: Nav.jsx, Sidebar.jsx */
@@ -144,13 +148,14 @@ export const SidebarWrapper = styled.div`
 
 //Light blue backgroundcolor and width on the sidebar-menu
 .Sidebar{
+    margin-right:1rem;
     max-width:240px;
     display:flex;
     flex:1;
     flex-direction:column;
     align-items:center;
     justify-content:space-evenly;
-    border-radius:1rem;
+    border-radius:2rem;
     padding:20px;
     background: linear-gradient(
     to right bottom,

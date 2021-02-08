@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
+import {GlassForm} from '../style/styledcomponents';
 import * as Yup from 'yup';
 
 import { accountService, alertService } from '@/_services';
@@ -32,6 +33,7 @@ function Login({ history, location }) {
     }
 
     return (
+        <GlassForm>
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
             {({ errors, touched, isSubmitting }) => (
                 <Form>
@@ -62,6 +64,7 @@ function Login({ history, location }) {
                 </Form>
             )}
         </Formik>
+        </GlassForm>
     )
 }
 
