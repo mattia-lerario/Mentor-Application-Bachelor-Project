@@ -177,6 +177,8 @@ async function create(params) {
     // save account
     await account.save();
 
+    // await account.sendRegistrationEmail();
+
     return basicDetails(account);
 }
 

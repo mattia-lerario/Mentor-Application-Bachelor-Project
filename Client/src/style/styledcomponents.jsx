@@ -16,7 +16,7 @@ List of what elements are getting styled here, in listed order:
 export const MenuWrapper = styled.div`
 //---makes the background of the menu slategrey
 .MenuBar {
-    background-color: #273855;
+    
     padding: 10px;
 }
 //---displays the links horizontal(inline). 
@@ -143,17 +143,27 @@ export const SidebarWrapper = styled.div`
 
 //Light blue backgroundcolor and width on the sidebar-menu
 .Sidebar{
-    float: left;
-    //same background-color as the admin-menu.
-    background-color: #e6e6e6;
-    margin-right: 15px;
+    float:left; 
+    display:flex;
+    flex:1;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-evenly;
+    border-radius:1rem;
+    padding:20px;
+    background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
 }
-//Changing the background-color when hovering an item in the sidebar.
-.SidebarItem:hover{
-    color: white;
-    background-color: #38507a;
+.Avatar{
+    width:120px;
+    border-radius:20px;
 }
 `;
+
+
 
 /* ---COMPANY LISTTABLE--- */
 /* File: Company.jsx */

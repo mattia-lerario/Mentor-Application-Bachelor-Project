@@ -13,7 +13,7 @@ function Mentor({ match }) {
     return (
         <div className="p-4">
             <div className="container">
-                <h1>Hi {user.lastName}, Welcome to the Mentor View</h1>
+                
                 <p>Mentor Dashboard</p>
 
                 <Switch>
