@@ -3,6 +3,7 @@ import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 
 import { Role } from '@/_helpers';
 import { accountService } from '@/_services';
+import {MenuWrapper, SidebarWrapper} from '../style/styledcomponents';
 
 import { Nav, PrivateRoute, Alert, Sidebar } from '@/_components';
 import { Home } from '@/home';
@@ -25,8 +26,11 @@ function App() {
     }, []);
 
     return (
-        <div className={'app-container' + (user)}>
-            <Nav />
+         
+        <div className={'app-container'}>
+             <SidebarWrapper>
+              <Sidebar/>
+            </SidebarWrapper>
             <Alert />
             <Switch>
                 <Redirect from="/:url*(/+)" to={pathname.slice(0, -1)} />
@@ -42,6 +46,7 @@ function App() {
                 <Route path="/account" component={Account} />
                 <Redirect from="*" to="/" />
             </Switch>
+           
             
         </div>
     );

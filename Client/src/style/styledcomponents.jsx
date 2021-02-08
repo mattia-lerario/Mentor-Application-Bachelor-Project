@@ -16,7 +16,8 @@ List of what elements are getting styled here, in listed order:
 export const MenuWrapper = styled.div`
 //---makes the background of the menu slategrey
 .MenuBar {
-    
+    display:flex;
+    flex-direction:row;
     padding: 10px;
 }
 //---displays the links horizontal(inline). 
@@ -99,7 +100,7 @@ W3Schools.com
 //---Making the parameters displayed inline.
 .FormRow{
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
 }
 //---Giving space between the different paramenters(eg. Title, Name etc.)
 .FormRow div{
@@ -143,7 +144,7 @@ export const SidebarWrapper = styled.div`
 
 //Light blue backgroundcolor and width on the sidebar-menu
 .Sidebar{
-    float:left; 
+    max-width:240px;
     display:flex;
     flex:1;
     flex-direction:column;

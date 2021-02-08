@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Route } from 'react-router-dom';
 
-import {MenuWrapper, SidebarWrapper} from '../style/styledcomponents';
+import {MenuWrapper} from '../style/styledcomponents';
 import { Role } from '@/_helpers';
 import { accountService } from '@/_services';
-import {Sidebar} from './Sidebar';
+
 
 /*for the hamburger-menu-icon: 
 import * as FaIcons from "react-icons/fa"; //(because of the * it's possible to import any icon from the react-icons(weblink: https://react-icons.github.io/react-icons/))
@@ -58,10 +58,9 @@ function Nav() {
             <Route path="/admin" component={AdminNav} />
             
             {/* Wrapper for the design of the sidebar */} 
-            <SidebarWrapper>
-              <Sidebar/>
-            </SidebarWrapper>
+            
         </MenuWrapper>
+        
         
         
     );
