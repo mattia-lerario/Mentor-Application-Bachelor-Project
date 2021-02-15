@@ -40,7 +40,7 @@ function UpdateCompanies({ history, match }) {
 
     function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
-            companyService.create(fields)
+        companyService.update(company.email, fields)
             .then(() => {
                 alertService.success('Update successful', { keepAfterRouteChange: true });
                 history.push('.');
@@ -49,12 +49,20 @@ function UpdateCompanies({ history, match }) {
                 setSubmitting(false);
                 alertService.error(error);
             });
-
-       
     }
 
 
-   
+    function updateCompany(id, fields, setSubmitting) {
+        companyService.update(id, fields)
+            .then(() => {
+                alertService.success('Update successful', { keepAfterRouteChange: true });
+                history.push('..');
+            })
+            .catch(error => {
+                setSubmitting(false);
+                alertService.error(error);
+            });
+    }
 
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
