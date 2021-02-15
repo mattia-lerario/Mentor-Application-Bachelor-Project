@@ -12,6 +12,7 @@ function UpdateCompanies({ history, match }) {
     const company = companyService.companyValue;
     const userType = user.role;
     const initialValues = {
+        companyId: user.id,
         companyName: '',
         companyNumber: '',
         tlfNumber: '',
@@ -21,6 +22,7 @@ function UpdateCompanies({ history, match }) {
     };
 
     const validationSchema = Yup.object().shape({
+        companyId: Yup.string(),
         companyName: Yup.string()
             .required('Title is required'),
         companyNumber: Yup.string()
