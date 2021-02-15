@@ -7,7 +7,8 @@ import { BtnWrapper } from '../style/styledcomponents';
 function Details({ match }) {
     const { path } = match;
     const user = accountService.userValue;
-
+    const isUserType = user.role;
+    
     return (
         
         <BtnWrapper>
@@ -17,7 +18,9 @@ function Details({ match }) {
                 <strong>Email: </strong> {user.email}<br />
                 <strong>Role: </strong>{user.role}
             </p>
-            <button className="Btn MainBtn"><Link to={`${path}/update`} className="LinkBtn">Update Profile</Link></button>
+            <button className="Btn MainBtn"><Link to={`${path}/update`} className="LinkBtn">Update Account</Link></button>
+            
+             <button className="Btn MainBtn"><Link to={`${path}/updateCompanies`} className="LinkBtn">Update {user.role} Information</Link></button>
         </BtnWrapper>
         
     );

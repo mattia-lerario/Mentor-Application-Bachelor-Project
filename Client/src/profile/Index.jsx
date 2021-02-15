@@ -4,8 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import {ProfileWrapper} from '../style/styledcomponents';
 import { Details } from './Details';
 import { Update } from './Update';
-
-import { MentorDetails } from './MentorDetails';
+import { UpdateCompanies } from './UpdateCompanies';
 import { UpdateMentor } from './UpdateMentor';
 
 function Profile({ match }) {
@@ -17,6 +16,8 @@ function Profile({ match }) {
                     <Switch>
                         <Route exact path={path} component={Details} />
                         <Route path={`${path}/update`} component={Update} />
+                        <Route path={`${path}/updateCompanies`} component={UpdateCompanies} />
+                        <Route path={`${path}/updateMentor`} component={UpdateMentor} />
                     </Switch>
             </div>
         </ProfileWrapper>
