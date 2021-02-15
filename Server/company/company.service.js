@@ -7,9 +7,9 @@ const db = require('_helpers/db');
 const Role = require('_helpers/role');
 
 module.exports = {
-    //authenticate,
+    authenticate,
     //refreshToken,
-    //revokeToken,
+    revokeToken,
     //register,
     //verifyEmail,
     //forgotPassword,
