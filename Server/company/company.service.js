@@ -77,9 +77,9 @@ async function create(params) {
 
     const company = new db.Company(params);
     company.verified = Date.now();
-
+    
     // hash password
-    company.passwordHash = hash(params.password);
+   
 
     // save account
     await company.save();
@@ -127,9 +127,7 @@ async function getRefreshToken(token) {
     return refreshToken;
 }
 
-function hash(password) {
-    return bcrypt.hashSync(password, 10);
-}
+
 
 function generateJwtToken(company) {
     // create a jwt token containing the account id that expires in 15 minutes

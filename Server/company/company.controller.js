@@ -84,9 +84,8 @@ function createSchema(req, res, next) {
         companyNumber: Joi.string().required(),
         tlfNumber: Joi.string().required(),
         email: Joi.string().email().required(),
-        password: Joi.string().min(6).required(),
-        salesRevenue: Joi.string().valid(Joi.ref('password')).required(),
-        role: Joi.string().valid(Role.Admin, Role.User).required()
+        salesRevenue: Joi.string().required(),
+        companyDescription: Joi.string().required()
     });
     validateRequest(req, next, schema);
 }
