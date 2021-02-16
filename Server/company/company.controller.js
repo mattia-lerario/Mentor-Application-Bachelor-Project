@@ -94,14 +94,6 @@ function create(req, res, next) {
     companyService.create(req.body)
         .then(account => res.json(account))
         .catch(next);
-        getAccountWithCompany(company.email);
-}
-
-function getAccountWithCompany(email){
-  return Account.findOne({ email: email })
-    .populate('Company').exec((err, company) => {
-      console.log("Populated Account " + company);
-    })
 }
 
 function updateSchema(req, res, next) {

@@ -69,11 +69,9 @@ async function getById(id) {
     return basicDetails(company);
 }
 
-
-
 async function create(params) {
     // validate
-    if (await db.Company.findOne({ email: params.email }).populate('account')) {
+    if (await db.Company.findOne({ email: params.email })) {
         throw 'Email "' + params.email + '" is already registered';
     }
 
@@ -119,6 +117,7 @@ async function _delete(id) {
 async function getAccount(id) {
     if (!db.isValidId(id)) throw 'Account not found';
     const company = await db.Company.findById(id);
+    if (!company) throw 'Account not found';
     return company;
 }
 
@@ -127,8 +126,6 @@ async function getRefreshToken(token) {
     if (!refreshToken || !refreshToken.isActive) throw 'Invalid token';
     return refreshToken;
 }
-
-
 
 function hash(password) {
     return bcrypt.hashSync(password, 10);
@@ -148,7 +145,6 @@ function generateRefreshToken(company, ipAddress) {
         createdByIp: ipAddress
     });
 }
-
 
 function randomTokenString() {
     return crypto.randomBytes(40).toString('hex');

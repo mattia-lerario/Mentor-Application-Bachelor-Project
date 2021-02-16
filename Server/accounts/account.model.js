@@ -11,10 +11,6 @@ const schema = new Schema({
     role: { type: String, required: true },
     verificationToken: String,
     verified: Date,
-    company: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Company'
-    }],
     resetToken: {
         token: String,
         expires: Date
