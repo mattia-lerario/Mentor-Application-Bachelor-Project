@@ -7,9 +7,9 @@ const db = require('_helpers/db');
 const Role = require('_helpers/role');
 
 module.exports = {
-    authenticate,
+    //authenticate,
     //refreshToken,
-    revokeToken,
+    //revokeToken,
     //register,
     //verifyEmail,
     //forgotPassword,
@@ -22,7 +22,7 @@ module.exports = {
     delete: _delete
 };
 
-async function authenticate({ email, password, ipAddress }) {
+/*async function authenticate({ email, password, ipAddress }) {
     const company = await db.company.findOne({ email });
 
     if (!company || !company.isVerified || !bcrypt.compareSync(password, company.passwordHash)) {
@@ -52,7 +52,7 @@ async function revokeToken({ token, ipAddress }) {
     refreshToken.revoked = Date.now();
     refreshToken.revokedByIp = ipAddress;
     await refreshToken.save();
-}
+}*/
 
 
 
@@ -71,9 +71,9 @@ async function getById(id) {
 
 
 
-async function create(params) {
+async function create(id,params) {
     // validate
-    if (await db.Company.findOne({ email: params.email }).populate('account')) {
+    if (await db.Company.findOne({ email: params.email }).populate('company')) {
         throw 'Email "' + params.email + '" is already registered';
     }
 
@@ -93,14 +93,14 @@ async function update(id, params) {
     const company = await getAccount(id);
 
     // validate (if email was changed)
-    if (params.email && account.email !== params.email && await db.Account.findOne({ email: params.email })) {
+    if (params.email && company.email !== params.email && await db.Company.findOne({ email: params.email })) {
         throw 'Email "' + params.email + '" is already taken';
     }
 
-    // hash password if it was entered
+   /* // hash password if it was entered
     if (params.password) {
         params.passwordHash = hash(params.password);
-    }
+    }*/
 
     // copy params to account and save
     Object.assign(company, params);
@@ -122,15 +122,15 @@ async function getAccount(id) {
     return company;
 }
 
-async function getRefreshToken(token) {
+/*async function getRefreshToken(token) {
     const refreshToken = await db.RefreshToken.findOne({ token }).populate('account');
     if (!refreshToken || !refreshToken.isActive) throw 'Invalid token';
     return refreshToken;
-}
+}*/
 
 
 
-function hash(password) {
+/*function hash(password) {
     return bcrypt.hashSync(password, 10);
 }
 
@@ -152,7 +152,7 @@ function generateRefreshToken(company, ipAddress) {
 
 function randomTokenString() {
     return crypto.randomBytes(40).toString('hex');
-}
+}*/
 
 function basicDetails(company) {
     const { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription} = company;

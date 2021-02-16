@@ -4,7 +4,7 @@ import config from 'config';
 import { fetchWrapper, history } from '@/_helpers';
 
 const companySubject = new BehaviorSubject(null);
-const baseUrl = `${config.apiUrl}/company`;
+const baseUrl = `${config.apiUrl}/companies`;
 
 export const companyService = {
     refreshToken,
@@ -56,14 +56,14 @@ function create(params) {
 
 function update(id, params) {
     return fetchWrapper.put(`${baseUrl}/${id}`, params)
-        .then(user => {
+        .then(company => {
             // update stored user if the logged in user updated their own record
-            if (user.id === userSubject.value.id) {
+            if (company.id === companySubject.value.id) {
                 // publish updated user to subscribers
-                user = { ...userSubject.value, ...user };
-                userSubject.next(user);
+                company = { ...userSubject.value, ...company };
+                companySubject.next(company);
             }
-            return user;
+            return company;
         });
 }
 

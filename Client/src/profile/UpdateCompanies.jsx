@@ -38,8 +38,8 @@ function UpdateCompanies({ history, match }) {
 
     function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
-        if(isAddMode){
-            companyService.update(user.id, fields)
+        
+            companyService.create(user.id,fields)
             .then(() => {
                 alertService.success('Update successful', { keepAfterRouteChange: true });
                 history.push('.');
@@ -48,17 +48,7 @@ function UpdateCompanies({ history, match }) {
                 setSubmitting(false);
                 alertService.error(error);
             });
-        }else{
-            companyService.create(fields)
-            .then(() => {
-                alertService.success('Update successful', { keepAfterRouteChange: true });
-                history.push('.');
-            })
-            .catch(error => {
-                setSubmitting(false);
-                alertService.error(error);
-            });
-        }
+        
         
     }
 
