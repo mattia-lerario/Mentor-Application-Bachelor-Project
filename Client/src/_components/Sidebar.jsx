@@ -1,46 +1,19 @@
 import React from 'react'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
+import avatar from '../media/avatar.jpg'
 
-function SidebarItem({ label, items, depthStep = 10, depth = 0, ...rest }) {
-  return (
-    <>
-      <ListItem className="SidebarItem" button dense {...rest}>
-        <ListItemText style={{ paddingLeft: depth * depthStep }}>
-          <span>{label}</span>
-        </ListItemText>
-      </ListItem>
-      {Array.isArray(items) ? (
-        <List disablePadding dense>
-          {items.map((subItem) => (
-            <SidebarItem
-              key={subItem.name}
-              depth={depth + 1}
-              depthStep={depthStep}
-              {...subItem}
-            />
-          ))}
-        </List>
-      ) : null}
-    </>
-  )
-}
 
-function Sidebar({ items, depthStep, depth }) {
+
+function Sidebar() {
 
   return (
     <div className="Sidebar">
-      <List disablePadding dense>
-        {items.map((sidebarItem, index) => (
-          <SidebarItem
-            key={`${sidebarItem.name}${index}`}
-            depthStep={depthStep}
-            depth={depth}
-            {...sidebarItem}
-          />
-        ))}
-      </List>
+      <ul className="SideList">
+        <img className="Avatar" src={avatar}></img>
+        <li>Profile</li>
+        <li>Mattia</li>
+        <li>Dashboard</li>
+        <li>Your Alumni</li>
+      </ul>
     </div>
   )
 }

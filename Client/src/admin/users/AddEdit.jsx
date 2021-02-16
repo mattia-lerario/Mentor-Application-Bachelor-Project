@@ -92,6 +92,7 @@ function AddEdit({ history, match }) {
 
                 return (
                     <FormWrapper>
+                        <Form>
                         <div className="Center">
                             <h1>{isAddMode ? 'Add User' : 'Edit User'}</h1>
                             <div className="FormRow">
@@ -156,13 +157,14 @@ function AddEdit({ history, match }) {
                             <div className="form-group">
                                 <BtnWrapper>
                                     <button type="submit" disabled={isSubmitting} className="Btn MainBtn">
-                                        {isSubmitting && <span className=""></span>}
+                                        {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
                                         Save
                                     </button>
                                     <Link to={isAddMode ? '.' : '..'} className="CancelBtn">Cancel</Link>
                                 </BtnWrapper>
                             </div>
                         </div>
+                        </Form>
                     </FormWrapper>
                 );
             }}

@@ -16,7 +16,8 @@ List of what elements are getting styled here, in listed order:
 export const MenuWrapper = styled.div`
 //---makes the background of the menu slategrey
 .MenuBar {
-    background-color: #273855;
+    display:flex;
+    flex-direction:row;
     padding: 10px;
 }
 //---displays the links horizontal(inline). 
@@ -99,7 +100,7 @@ W3Schools.com
 //---Making the parameters displayed inline.
 .FormRow{
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
 }
 //---Giving space between the different paramenters(eg. Title, Name etc.)
 .FormRow div{
@@ -136,6 +137,10 @@ export const ProfileWrapper = styled.div`
     margin-left: 10px;
 }
 `;
+/* ----FORM STYLE ----- */
+export const GlassForm = styled.div`
+    
+`;
 
 /* ---SIDEBAR--- */
 /* Files: Nav.jsx, Sidebar.jsx */
@@ -143,17 +148,28 @@ export const SidebarWrapper = styled.div`
 
 //Light blue backgroundcolor and width on the sidebar-menu
 .Sidebar{
-    float: left;
-    //same background-color as the admin-menu.
-    background-color: #e6e6e6;
-    margin-right: 15px;
+    margin-right:1rem;
+    max-width:240px;
+    display:flex;
+    flex:1;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-evenly;
+    border-radius:2rem;
+    padding:20px;
+    background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
 }
-//Changing the background-color when hovering an item in the sidebar.
-.SidebarItem:hover{
-    color: white;
-    background-color: #38507a;
+.Avatar{
+    width:120px;
+    border-radius:20px;
 }
 `;
+
+
 
 /* ---COMPANY LISTTABLE--- */
 /* File: Company.jsx */
@@ -161,25 +177,24 @@ export const ListWrapper = styled.div`
 // Resource: https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy
 
 //Frame
-.CompanyListTable{
+.ListTable{
     border-collapse: collapse;
     margin-left: 50px;
-    //border: 2px solid black;
 }
-.CompanyListTable th, .CompanyListTable td{
+.ListTable th, .ListTable td{
     border: 1px solid #ddd;
     padding: 8px;
 }
 //every second line grey
-.CompanyListTable tr:nth-child(even){
+.ListTable tr:nth-child(even){
     background-color: #f2f2f2;
 }
-//when hovered turned blue
-.CompanyListTable tr:hover {
+//when hovered line turnes blue
+.ListTable tr:hover {
     background-color: #38507a;
 }
 //Styling the first line in the table with the 'titles'
-.CompanyListTable th {
+.ListTable th {
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: left;

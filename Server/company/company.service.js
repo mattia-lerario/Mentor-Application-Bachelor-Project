@@ -79,7 +79,7 @@ async function create(params) {
     company.verified = Date.now();
 
     // hash password
-    company.passwordHash = hash(params.password);
+    //company.passwordHash = hash(params.password);
 
     // save account
     await company.save();

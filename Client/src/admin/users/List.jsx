@@ -25,8 +25,8 @@ function List({ match }) {
 
     return (
         <div>
-            <h1>Users</h1>
-            <p>All users from secure (admin only) api end point:</p>
+            <h1>All Accounts</h1>
+            <p>View of all Users in the System</p>
             <BtnWrapper>
                 <Link to={`${path}/add`} className="Btn MainBtn LinkBtn">Add User</Link>
                 <Link to={`${path}/addMentor`} className="Btn MainBtn LinkBtn">Add Mentor</Link>

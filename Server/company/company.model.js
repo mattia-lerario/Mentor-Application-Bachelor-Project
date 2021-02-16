@@ -5,11 +5,10 @@ const schema = new Schema({
     companyName: { type : String, required: true },
     companyNumber: {type : String}, //muligens endre til require
     tlfNumber: {type : String},
-    email: { type: String, unique: true, required: true },
-    salesRevenue: { type: String},
+    email: { type: String, required: true },
+    salesRevenue: { type: String,required: true},
     companyDescription: { type: String, required: true },
-    lastName: { type: String, required: true },
-    role: { type: String, required: true },    
+    role: { type: String},    
 });
 
 schema.virtual('isVerified').get(function () {

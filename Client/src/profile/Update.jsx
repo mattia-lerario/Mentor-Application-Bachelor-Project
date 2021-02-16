@@ -17,6 +17,11 @@ function Update({ history }) {
         password: '',
         confirmPassword: ''
     };
+  
+   
+    
+    
+    
 
     const validationSchema = Yup.object().shape({
         title: Yup.string()
@@ -63,6 +68,7 @@ function Update({ history }) {
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
             {({ errors, touched, isSubmitting }) => (
                 <FormWrapper>
+                    <Form>
                 <div  className="Center">
                     <h1>Update Profile</h1>
                     <div className="FormRow">
@@ -125,7 +131,9 @@ function Update({ history }) {
                         <Link to="." className="CancelBtn">Cancel</Link>
                     </BtnWrapper>
                     </div>
+                    </Form>
                 </FormWrapper>
+                
             )}
         </Formik>
     )

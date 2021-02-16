@@ -11,7 +11,7 @@ router.post('/authenticate', authenticateSchema, authenticate);
 router.post('/revoke-token', authorize(), revokeTokenSchema, revokeToken);
 router.get('/',authorize(), getAll);
 router.get('/:id', authorize(), getById);
-router.post('/', authorize(Role.Admin), createSchema, create);
+router.post('/', authorize(Role.Company,Role.Admin,Role.Mentor), createSchema, create);
 router.put('/:id', authorize(), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
 
@@ -74,7 +74,7 @@ function getById(req, res, next) {
     }
 
     companyService.getById(req.params.id)
-        .then(account => account ? res.json(account) : res.sendStatus(404))
+        .then(company => company ? res.json(company) : res.sendStatus(404))
         .catch(next);
 }
 
@@ -84,9 +84,8 @@ function createSchema(req, res, next) {
         companyNumber: Joi.string().required(),
         tlfNumber: Joi.string().required(),
         email: Joi.string().email().required(),
-        password: Joi.string().min(6).required(),
-        salesRevenue: Joi.string().valid(Joi.ref('password')).required(),
-        role: Joi.string().valid(Role.Admin, Role.User).required()
+        salesRevenue: Joi.string().required(),
+        companyDescription: Joi.string().required()
     });
     validateRequest(req, next, schema);
 }

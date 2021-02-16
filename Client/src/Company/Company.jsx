@@ -21,11 +21,11 @@ function CompanyList({ match }) {
                     <thead className="CompanyListLine">
 
                         <tr>
-                            <th style={{ width: '30%' }}>Company ID</th>
-                            <th style={{ width: '30%' }}>Company Name</th>
-                            <th style={{ width: '30%' }}>Sales Revenue</th>
-                            <th style={{ width: '30%' }}>Email</th>
-                            <th style={{ width: '10%' }}>Company number</th>
+                            <th style={{ width: '15%' }}>Company ID</th>
+                            <th style={{ width: '25%' }}>Company Name</th>
+                            <th style={{ width: '20%' }}>Sales Revenue</th>
+                            <th style={{ width: '20%' }}>Email</th>
+                            <th style={{ width: '15%' }}>Company number</th>
                         </tr>
                     </thead>
                     <tbody>
