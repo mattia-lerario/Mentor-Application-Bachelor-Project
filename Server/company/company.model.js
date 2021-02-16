@@ -7,8 +7,11 @@ const schema = new Schema({
     tlfNumber: {type : String},
     email: { type: String, required: true },
     salesRevenue: { type: String,required: true},
-    companyDescription: { type: String, required: true },
-    role: { type: String},    
+    companyDescription: { type: String, required: true }, 
+    owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Account'
+    }
 });
 
 schema.virtual('isVerified').get(function () {
