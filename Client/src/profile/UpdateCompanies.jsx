@@ -10,7 +10,6 @@ function UpdateCompanies({ history, match }) {
     const isAddMode = !id;
     const user = accountService.userValue;
     const company = companyService.companyValue;
-    const userType = user.role;
     const initialValues = {
         companyName: '',
         companyNumber: '',
@@ -18,7 +17,7 @@ function UpdateCompanies({ history, match }) {
         email: '',
         salesRevenue: '',
         companyDescription: ''
-    };
+    }
 
     const validationSchema = Yup.object().shape({
         companyName: Yup.string()
@@ -46,6 +45,7 @@ function UpdateCompanies({ history, match }) {
             .catch(error => {
                 setSubmitting(false);
                 alertService.error(error);
+                console.log(error);
             });
     }
 

@@ -17,7 +17,13 @@ const schema = new Schema({
     },
     passwordReset: Date,
     created: { type: Date, default: Date.now },
-    updated: Date
+    updated: Date,
+    companies: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Company"
+      }
+    ]
 });
 
 schema.virtual('isVerified').get(function () {
