@@ -7,7 +7,7 @@ const schema = new Schema({
     tlfNumber: {type : String},
     email: { type: String, required: true },
     salesRevenue: { type: String,required: true},
-    companyDescription: { type: String, required: true }
+    companyDescription: { type: String, required: true }, 
     
 });
 

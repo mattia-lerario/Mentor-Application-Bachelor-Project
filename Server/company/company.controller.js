@@ -7,8 +7,8 @@ const Role = require('_helpers/role');
 const companyService = require('./company.service');
 
 // routes
-router.post('/authenticate', authenticateSchema, authenticate);
-router.post('/revoke-token', authorize(), revokeTokenSchema, revokeToken);
+//router.post('/authenticate', authenticateSchema, authenticate);
+//router.post('/revoke-token', authorize(), revokeTokenSchema, revokeToken);
 router.get('/',authorize(), getAll);
 router.get('/:id', authorize(), getById);
 router.post('/', authorize(Role.Company,Role.Admin,Role.Mentor), createSchema, create);
@@ -17,15 +17,15 @@ router.delete('/:id', authorize(), _delete);
 
 module.exports = router;    
 
- function authenticateSchema(req, res, next) {
+ /*function authenticateSchema(req, res, next) {
     const schema = Joi.object({
         email: Joi.string().required(),
         password: Joi.string().required()
     });
     validateRequest(req, next, schema);
-}
+}*/
 
-function authenticate(req, res, next) {
+/*function authenticate(req, res, next) {
     const { email, password } = req.body;
     const ipAddress = req.ip;
     companyService.authenticate({ email, password, ipAddress })
@@ -34,9 +34,9 @@ function authenticate(req, res, next) {
             res.json(account);
         })
         .catch(next);
-}
+}*/
 
-function revokeTokenSchema(req, res, next) {
+/*function revokeTokenSchema(req, res, next) {
     const schema = Joi.object({
         token: Joi.string().empty('')
     });
@@ -58,7 +58,7 @@ function revokeToken(req, res, next) {
     companyService.revokeToken({ token, ipAddress })
         .then(() => res.json({ message: 'Token revoked' }))
         .catch(next);
-}
+}*/
 
 
 function getAll(req, res, next) {
