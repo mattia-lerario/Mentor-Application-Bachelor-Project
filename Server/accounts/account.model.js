@@ -18,12 +18,20 @@ const schema = new Schema({
     passwordReset: Date,
     created: { type: Date, default: Date.now },
     updated: Date,
+    
     companies: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Company"
       }
-    ]
+    ],
+
+    mentors: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Mentor"
+        }
+      ]
 });
 
 schema.virtual('isVerified').get(function () {
