@@ -65,7 +65,7 @@ async function getAll() {
 
 
 async function getById(id) {
-    const company = await getAccount(id);
+    const company = await getCompany(id);
     return basicDetails(company);
 }
 
@@ -77,18 +77,28 @@ async function create(params) {
 
     const company = new db.Company(params);
     company.verified = Date.now();
-
+    //Connect Account to Company
+    company.accounts = [params.user.id];
+    
     // hash password
     //company.passwordHash = hash(params.password);
-
+    
     // save account
     await company.save();
 
     return basicDetails(company);
 }
 
+const addAccountToCompany = function(companyId, account) {
+  return db.Company.findByIdAndUpdate(
+    companyId,
+    { $push: { accounts: account._id } },
+    { new: true, useFindAndModify: false }
+  );
+};
+
 async function update(id, params) {
-    const company = await getAccount(id);
+    const company = await getCompany(id);
 
     // validate (if email was changed)
     if (params.email && account.email !== params.email && await db.Account.findOne({ email: params.email })) {
@@ -108,13 +118,13 @@ async function update(id, params) {
 }
 
 async function _delete(id) {
-    const company = await getAccount(id);
+    const company = await getCompany(id);
     await company.remove();
 }
 
 // helper functions
 
-async function getAccount(id) {
+async function getCompany(id) {
     if (!db.isValidId(id)) throw 'Account not found';
     const company = await db.Company.findById(id);
     if (!company) throw 'Account not found';

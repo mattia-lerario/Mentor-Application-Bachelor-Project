@@ -91,8 +91,8 @@ function createSchema(req, res, next) {
 }
 
 function create(req, res, next) {
-    companyService.create(req.body)
-        .then(account => res.json(account))
+    companyService.create({...req.body, user:req.user})
+        .then(company => res.json(company))
         .catch(next);
 }
 
