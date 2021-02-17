@@ -80,8 +80,6 @@ async function create(params) {
     //Connect Account to Company
     company.accounts = [params.user.id];
     
-    // hash password
-    //company.passwordHash = hash(params.password);
     
     // save account
     await company.save();
@@ -89,13 +87,13 @@ async function create(params) {
     return basicDetails(company);
 }
 
-const addAccountToCompany = function(companyId, account) {
+/*const addAccountToCompany = function(companyId, account) {
   return db.Company.findByIdAndUpdate(
     companyId,
     { $push: { accounts: account._id } },
     { new: true, useFindAndModify: false }
   );
-};
+};*/
 
 async function update(id, params) {
     const company = await getCompany(id);

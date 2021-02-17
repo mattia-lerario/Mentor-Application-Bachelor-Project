@@ -17,37 +17,18 @@ function MentorList({ match }) {
     return (
         <ListWrapper>
         <div>
-            <h1>All mentorService</h1>
-
+            <h1>All Mentors</h1>
             
-            <div className="card">
-                <p className="companyName">Mentor</p>
-                <p>Mentor ID:</p>
-                <p>Sales Revenue: </p>
-                <p><HiOutlineMail/>: </p>
-                <p><GiPhone/>: </p>
+            {mentor && mentor.map(mentor =>
+
+            <div className="card" key={mentor.id}>
+            <p className="companyName">{mentor.lastName}</p>
+            <p><HiOutlineMail/>{mentor.mail} </p>
+            <p><GiPhone/>mentor.phone</p>
             </div> 
-            <div className="card">
-                <p className="companyName">Mentor</p>
-                <p>Mentor ID:</p>
-                <p>Sales Revenue: </p>
-                <p><HiOutlineMail/>: </p>
-                <p><GiPhone/>: </p>
-            </div> 
-            <div className="card">
-                <p className="companyName">Mentor</p>
-                <p>Mentor ID:</p>
-                <p>Sales Revenue: </p>
-                <p><HiOutlineMail/>: </p>
-                <p><GiPhone/>: </p>
-            </div> 
-            <div className="card">
-                <p className="companyName">Mentor</p>
-                <p>Mentor ID:</p>
-                <p>Sales Revenue: </p>
-                <p><HiOutlineMail/>: </p>
-                <p><GiPhone/>: </p>
-            </div> 
+            
+            )}
+
         </div>
 
         </ListWrapper>

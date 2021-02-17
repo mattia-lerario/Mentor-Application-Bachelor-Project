@@ -35,23 +35,21 @@ function Nav() {
             */}
             
 
-            <NavLink exact to="/" className="NavLink">Home</NavLink>
+            {/*Nav for all roles*/}
             <NavLink to="/profile" className="NavLink">Profile</NavLink>
                     
             <NavLink to="/dashboard" className="NavLink">Dashboard</NavLink> 
-                    
+
                     {user.role === Role.Admin &&
                         <NavLink to="/admin" className="NavLink">Admin</NavLink>
                     }
-                    {user.role === Role.Admin &&
-                        <NavLink to="/companies" className="NavLink">Companies</NavLink>
+                    {user.role === Role.Admin || user.role === Role.Mentor &&
+                        <NavLink to="/companies" className="NavLink">Companies</NavLink> 
                     }
                     {user.role === Role.Admin &&
                         <NavLink to="/mentors" className="NavLink">Mentors</NavLink>
                     }
-                     {user.role === Role.Mentor &&
-                        <NavLink to="/companies" className="NavLink">Companies</NavLink>
-                    }
+
                     <a onClick={accountService.logout} className="NavLink">Logout</a>
                 </div>
             </nav>
@@ -79,3 +77,5 @@ function AdminNav({ match }) {
 }
 
 export { Nav }; 
+
+/*<NavLink exact to="/" className="NavLink">Home</NavLink>*/ 

@@ -1,0 +1,22 @@
+
+
+{
+    "title": "Mr",
+    "firstName": "Jens",
+    "lastName": "Mentor",
+    "email": "mentor@mentor.com",
+    "role": "Mentor",
+    "created": {
+        "$date": "2021-02-16T14:52:26.636Z"
+    },
+    "verified": {
+        "$date": "2021-02-16T14:52:26.636Z"
+    },
+    "passwordHash": "$2a$10$jGZBkMdGchTG5Tzc1W1GPu54zWeCBKGMde1ZNeO9K3uefXK21uGcW",
+    "__v": 1,
+    "companies": [],
+    "mentors": [],
+    "updated": {
+        "$date": "2021-02-17T12:14:00.221Z"
+    }
+}
