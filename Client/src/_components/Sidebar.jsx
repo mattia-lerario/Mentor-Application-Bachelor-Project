@@ -1,6 +1,9 @@
 import React from 'react'
 import avatar from '../media/avatar.jpg'
 
+import { NavLink } from 'react-router-dom';
+import {CgProfile} from 'react-icons/cg';
+import {RiDashboardFill} from 'react-icons/Ri';
 
 
 function Sidebar() {
@@ -9,9 +12,9 @@ function Sidebar() {
     <div className="Sidebar">
       <ul className="SideList">
         <img className="Avatar" src={avatar}></img>
-        <li>Profile</li>
+        <NavLink to="/profile" className="SideLink"><CgProfile /> Profile</NavLink>
+        <NavLink to="/dashboard" className="SideLink"><RiDashboardFill /> Dashboard</NavLink>
         <li>Mattia</li>
-        <li>Dashboard</li>
         <li>Your Alumni</li>
       </ul>
     </div>
