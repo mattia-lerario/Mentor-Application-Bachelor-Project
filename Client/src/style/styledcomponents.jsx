@@ -193,7 +193,7 @@ export const ListWrapper = styled.div`
       rgba(255, 255, 255, 0.7),
       rgba(255, 255, 255, 0.3)
     );
-    width: 12rem;
+    width: 15rem;
     height: 12rem;
     padding: 0.5rem;
     margin: 0.5rem;
