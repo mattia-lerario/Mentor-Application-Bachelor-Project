@@ -18,17 +18,18 @@ export const MenuWrapper = styled.div`
 .MenuBar {
     display:flex;
     flex-direction:row;
-    padding: 10px;
+    padding: 1rem;
 }
 //---displays the links horizontal(inline). 
 .MenuLinks{
     display: inline;
-    padding: 10px;
+    padding: 0.5rem;
 }
 //---making the text in the menu white
 .NavLink{
     color: white;
-    padding: 10px;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
 }
 //---gives the links a underscore and grey-color when hovered.
 .NavLink:hover{
@@ -150,18 +151,26 @@ export const SidebarWrapper = styled.div`
 .Sidebar{
     margin-right:1rem;
     max-width:240px;
+    height: 100%;
     display:flex;
     flex:1;
     flex-direction:column;
     align-items:center;
-    justify-content:space-evenly;
     border-radius:2rem;
-    padding:20px;
+    padding: 1rem;
     background: linear-gradient(
     to right bottom,
     rgba(255, 255, 255, 0.7),
     rgba(255, 255, 255, 0.3)
   );
+}
+.SideLink {
+    display: block;
+    color: black;
+}
+.SideLink:hover {
+    text-decoration: none;
+    font-weight: bolder;
 }
 .Avatar{
     width:120px;
@@ -171,7 +180,7 @@ export const SidebarWrapper = styled.div`
 
 
 
-/* ---COMPANY LISTTABLE--- */
+/* ---COMPANY LISTTABLE/CARDS--- */
 /* File: Company.jsx */
 export const ListWrapper = styled.div`
 // Resource: https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy
@@ -202,4 +211,21 @@ export const ListWrapper = styled.div`
   color: white;
 }
 
-`;
+.card{
+    flex: 3;
+    border-radius: 0.5rem;
+    background: linear-gradient(
+      to right bottom,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.3)
+    );
+    width: 12rem;
+    height: 12rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    display: inline-block;
+  }
+  .companyName{
+    text-decoration: underline;
+  }
+  `;
