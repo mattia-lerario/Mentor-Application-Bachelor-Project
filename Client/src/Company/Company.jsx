@@ -14,7 +14,7 @@ function CompanyList({ match }) {
     }, []);
 
     return (
-        <ListWrapper>
+                <ListWrapper>
             <div>
                 <h1>All Companies</h1>
 

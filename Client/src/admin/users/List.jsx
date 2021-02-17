@@ -17,6 +17,7 @@ function List({ match }) {
             if (x.id === id) { x.isDeleting = true; }
             return x;
         }));
+        
         accountService.delete(id).then(() => {
             setUsers(users => users.filter(x => x.id !== id));
         });
