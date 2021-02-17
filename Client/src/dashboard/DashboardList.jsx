@@ -49,43 +49,6 @@ function DashboardList({ match }) {
                 <p>Email: </p>
             </div>  
 
-{/*
-            <table className="ListTable">
-                <thead>
-                    <tr>
-                        <th style={{ width: '30%' }}>Company Name</th>
-                        <th style={{ width: '30%' }}>Sales Revenue</th>
-                        <th style={{ width: '15%' }}>Company number</th>
-                        <th style={{ width: '30%' }}>Email</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    {company && company.map(company =>
-                        <tr key={company.id}>
-                            <td>{company.companyName}</td>
-                            <td>{company.salesRevenue}</td>
-                            <td>{company.companyNumber}</td>
-                            <td>{company.email}</td>
-                            <td style={{ whiteSpace: 'nowrap' }}>
-                            </td>
-                        </tr>
-                    )}
-
-                    {!company &&
-
-                    <tr>
-                            <td colSpan="4" className="text-center">
-                                <span className="spinner-border spinner-border-lg align-center"></span>
-                            </td>
-                        </tr>
-                    }
-
-                </tbody>
-
-            </table>
-*/}
-
         </div>
         </ListWrapper>
         

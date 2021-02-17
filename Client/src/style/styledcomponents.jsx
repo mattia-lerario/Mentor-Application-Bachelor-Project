@@ -185,32 +185,6 @@ export const SidebarWrapper = styled.div`
 export const ListWrapper = styled.div`
 // Resource: https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy
 
-//Frame
-.ListTable{
-    border-collapse: collapse;
-    margin-left: 50px;
-}
-.ListTable th, .ListTable td{
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-//every second line grey
-.ListTable tr:nth-child(even){
-    background-color: #f2f2f2;
-}
-//when hovered line turnes blue
-.ListTable tr:hover {
-    background-color: #38507a;
-}
-//Styling the first line in the table with the 'titles'
-.ListTable th {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-align: left;
-  background-color: #273855;
-  color: white;
-}
-
 .card{
     flex: 3;
     border-radius: 0.5rem;
@@ -219,7 +193,7 @@ export const ListWrapper = styled.div`
       rgba(255, 255, 255, 0.7),
       rgba(255, 255, 255, 0.3)
     );
-    width: 12rem;
+    width: 15rem;
     height: 12rem;
     padding: 0.5rem;
     margin: 0.5rem;
@@ -228,4 +202,8 @@ export const ListWrapper = styled.div`
   .companyName{
     text-decoration: underline;
   }
+.card:hover{
+    border: solid black;
+}
+
   `;
