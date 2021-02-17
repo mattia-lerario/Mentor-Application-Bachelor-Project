@@ -3,7 +3,7 @@ import avatar from '../media/avatar.jpg'
 
 import { NavLink } from 'react-router-dom';
 import {CgProfile} from 'react-icons/cg';
-import {RiDashboardFill} from 'react-icons/Ri';
+import {RiDashboardFill} from 'react-icons/ri';
 
 
 function Sidebar() {

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 import {ListWrapper} from '../style/styledcomponents';
 import { companyService } from '@/_services';
-import {HiOutlineMail} from 'react-icons/Hi';
+import {HiOutlineMail} from 'react-icons/hi';
 
 function CompanyList({ match }) {
     const { path } = match;

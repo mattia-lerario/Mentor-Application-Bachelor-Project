@@ -7,7 +7,7 @@ import { companyService } from '@/_services';
 import { mentorService } from '@/_services';
 
 //icon
-import {HiOutlineMail} from 'react-icons/Hi';
+import {HiOutlineMail} from 'react-icons/hi';
 
 function DashboardList({ match }) {
     const { path } = match;

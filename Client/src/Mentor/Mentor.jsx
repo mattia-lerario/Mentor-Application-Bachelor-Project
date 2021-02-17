@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 
 import { mentorService } from '@/_services';
-import {GiPhone} from 'react-icons/Gi';
-import {HiOutlineMail} from 'react-icons/Hi';
+import {GiPhone} from 'react-icons/gi';
+import {HiOutlineMail} from 'react-icons/hi';
 import {ListWrapper} from '../style/styledcomponents';
 
 function MentorList({ match }) {
