@@ -158,7 +158,7 @@ async function getAll() {
 }
 
 async function getById(id) {
-    const mentorsModel = await getmentorsModel(id);
+    const mentorsModel = await getm;ntorsModel(id);
     return basicDetails(mentorsModel);
 }
 
@@ -172,13 +172,22 @@ async function create(params) {
     mentorsModel.verified = Date.now();
 
     // hash password
-    mentorsModel.passwordHash = hash(params.password);
+    mentor.accounts = [params.user.id];
+   // mentorsModel.passwordHash = hash(params.password);
 
     // save mentorsModel
     await mentorsModel.save();
 
     return basicDetails(mentorsModel);
 }
+
+const addAccountToMentor = function(mentorId, account) {
+    return db.Mentor.findByIdAndUpdate(
+      mentorId,
+      { $push: { accounts: account._id } },
+      { new: true, useFindAndModify: false }
+    );
+  };
 
 async function update(id, params) {
     const mentorsModel = await getmentorsModel(id);

@@ -181,7 +181,7 @@ function createSchema(req, res, next) {
 }
 
 function create(req, res, next) {
-    mentorService.create(req.body)
+    mentorService.create({...req.body, user:req.user})
         .then(mentor => res.json(mentor))
         .catch(next);
 }

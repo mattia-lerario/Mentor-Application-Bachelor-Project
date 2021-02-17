@@ -10,7 +10,14 @@ const schema = new Schema({
     salesRevenue: { type: String},
     mentorDescription: { type: String, required: true },
     lastName: { type: String, required: true },
-    role: { type: String, required: true },    
+    role: { type: String, required: true },
+    
+    accounts: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Account"
+        }
+      ] 
     
 });
 
