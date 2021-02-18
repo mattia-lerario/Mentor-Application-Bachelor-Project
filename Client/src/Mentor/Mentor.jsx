@@ -17,37 +17,8 @@ function MentorList({ match }) {
     return (
         <ListWrapper>
         <div>
-            <h1>All mentorService</h1>
-
+            <h2>All Mentors</h2>        
             
-            <div className="card">
-                <p className="companyName">Mentor</p>
-                <p>Mentor ID:</p>
-                <p>Sales Revenue: </p>
-                <p><HiOutlineMail/>: </p>
-                <p><GiPhone/>: </p>
-            </div> 
-            <div className="card">
-                <p className="companyName">Mentor</p>
-                <p>Mentor ID:</p>
-                <p>Sales Revenue: </p>
-                <p><HiOutlineMail/>: </p>
-                <p><GiPhone/>: </p>
-            </div> 
-            <div className="card">
-                <p className="companyName">Mentor</p>
-                <p>Mentor ID:</p>
-                <p>Sales Revenue: </p>
-                <p><HiOutlineMail/>: </p>
-                <p><GiPhone/>: </p>
-            </div> 
-            <div className="card">
-                <p className="companyName">Mentor</p>
-                <p>Mentor ID:</p>
-                <p>Sales Revenue: </p>
-                <p><HiOutlineMail/>: </p>
-                <p><GiPhone/>: </p>
-            </div> 
         </div>
 
         </ListWrapper>

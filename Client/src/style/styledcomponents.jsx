@@ -1,6 +1,10 @@
 import styled from 'styled-components';  
 
 /*
+slate grey - #38507a
+*/
+
+/*
 List of what elements are getting styled here, in listed order:
 - Menu
 - Buttons
@@ -15,7 +19,7 @@ List of what elements are getting styled here, in listed order:
 /* File: Nav.jsx */
 export const MenuWrapper = styled.div`
 //---makes the background of the menu slategrey
-.MenuBar {
+.MenuBar{
     display:flex;
     flex-direction:row;
     padding: 1rem;
@@ -36,12 +40,12 @@ export const MenuWrapper = styled.div`
     text-decoration: none;
     background-color: #38507a;
 }
+// ---ADMIN-MENU---
 //adding the background-color for the Admin-menu
-.AdminNav{
-    background-color: #e6e6e6;
-}
-.AdminLink:hover{
+#AdminLink{
     color: black;
+}
+#AdminLink:hover{
 }
 `;
 
@@ -193,7 +197,7 @@ export const ListWrapper = styled.div`
       rgba(255, 255, 255, 0.7),
       rgba(255, 255, 255, 0.3)
     );
-    width: 15rem;
+    //width: 17rem;
     height: 12rem;
     padding: 0.5rem;
     margin: 0.5rem;
@@ -203,7 +207,7 @@ export const ListWrapper = styled.div`
     text-decoration: underline;
   }
 .card:hover{
-    border: solid black;
+    border: solid #38507a;
 }
 
   `;

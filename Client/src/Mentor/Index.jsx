@@ -14,7 +14,7 @@ function Mentor({ match }) {
         <div className="p-4">
             <div className="container">
                 
-                <p>Mentor Dashboard</p>
+                <h1>Mentor Dashboard</h1>
 
                 <Switch>
                     <Route exact path={path} component={MentorList} />

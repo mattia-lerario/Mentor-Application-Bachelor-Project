@@ -20,36 +20,21 @@ function DashboardList({ match }) {
     return (
         
         <ListWrapper>
-        <div>
-            <h1>All Companies</h1>
-            <p>All companies showcased in dashboard</p>
-              
-            <div className="card">
-                <p className="companyName">Company 1</p>
-                <p>Sales Revenue</p>
-                <p>Company number: </p>
-                <p><HiOutlineMail/>: </p>
-            </div>  
-            <div className="card">
-                <p className="companyName">Company 2</p>
-                <p>Sales Revenue</p>
-                <p>Company number: </p>
-                <p><HiOutlineMail/>: </p>
-            </div>  
-            <div className="card">
-                <p className="companyName">Company 3</p>
-                <p>Sales Revenue</p>
-                <p>Company number: </p>
-                <p>Email: </p>
-            </div>  
-            <div className="card">
-                <p className="companyName">Company 4</p>
-                <p>Sales Revenue</p>
-                <p>Company number: </p>
-                <p>Email: </p>
-            </div>  
+            <div>
+                <h2>All Companies</h2>
+                <p>All companies showcased in dashboard.</p>
 
-        </div>
+                {company && company.map(company =>
+
+                <div className="card">
+                    <p className="companyName">{company.companyName}</p>
+                    <p>Sales Revenue: {company.salesRevenue}</p>
+                    <p>Company number: {company.companyNumber}</p>
+                    <p><HiOutlineMail/>: {company.email}</p>
+                </div>
+                )}              
+                
+            </div>
         </ListWrapper>
         
         );
