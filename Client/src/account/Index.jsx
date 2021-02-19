@@ -23,7 +23,6 @@ function Account({ history, match }) {
         <div className="container">
             <div className="row">
                 <div className="col-sm-8 offset-sm-2 mt-5">
-                    <div className="card m-3">
                         <Switch>
                             <Route path={`${path}/login`} component={Login} />
                             <Route path={`${path}/register`} component={Register} />
@@ -31,7 +30,6 @@ function Account({ history, match }) {
                             <Route path={`${path}/forgot-password`} component={ForgotPassword} />
                             <Route path={`${path}/reset-password`} component={ResetPassword} />
                         </Switch>
-                    </div>
                 </div>
             </div>
         </div>
