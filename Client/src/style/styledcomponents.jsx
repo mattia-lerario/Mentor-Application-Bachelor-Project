@@ -151,7 +151,8 @@ export const GlassForm = styled.div`
     text-align: center;
 }
 .CardBodyLogin{
-    background: none;
+    width 20rem;
+    margin: auto auto;
 }
 `;
 
