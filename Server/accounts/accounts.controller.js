@@ -181,7 +181,7 @@ function createSchema(req, res, next) {
 }
 
 function create(req, res, next) {
-    accountService.create(req.body)
+    accountService.create({...req.body, user:req.user})
         .then(account => res.json(account))
         .catch(next);
 }
@@ -211,7 +211,7 @@ function update(req, res, next) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
 
-    accountService.update(req.params.id, req.body)
+    accountService.update({...req.body, user:req.user})
         .then(account => res.json(account))
         .catch(next);
 }

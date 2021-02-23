@@ -211,7 +211,7 @@ function update(req, res, next) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
 
-    mentorService.update(req.params.id, req.body)
+    mentorService.update({...req.body, user:req.user})
         .then(mentor => res.json(mentor))
         .catch(next);
 }

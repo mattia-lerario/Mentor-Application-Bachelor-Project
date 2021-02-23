@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-    account: { type: Schema.Types.ObjectId, ref: 'Account' },
+    company: { type: Schema.Types.ObjectId, ref: 'Company' },
+    token: String,
+    expires: Date,
+    leadmentor: { type: Schema.Types.ObjectId, ref: 'Mentor' },
     token: String,
     expires: Date,
     question1: {type: Int32Array, min: 0, max: 6},
@@ -16,11 +19,16 @@ const schema = new Schema({
     question9: {type: Int32Array, min: 0, max: 6},
     question10: {type: Int32Array, min: 0, max: 6},
     question11: {type: Int32Array, min: 0, max: 6},
+    quarter1: {type: Boolean, default: false},
+    quarter2: {type: Boolean, default: false},
+    quarter3: {type: Boolean, default: false},
+    quarter4: {type: Boolean, default: false},
     created: { type: Date, default: Date.now },
     createdByIp: String,
     revoked: Date,
     revokedByIp: String,
-    replacedByToken: String
+    replacedByToken: String,
+    verified: {type: Boolean, default: false}
 });
 
 schema.virtual('isExpired').get(function () {
