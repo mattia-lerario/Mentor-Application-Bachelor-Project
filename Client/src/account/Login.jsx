@@ -36,31 +36,29 @@ function Login({ history, location }) {
         <GlassForm>
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
             {({ errors, touched, isSubmitting }) => (
-                <Form>
-                    <h3 className="card-header">Login</h3>
-                    <div className="card-body">
-                        <div className="form-group">
+                <Form className="GlassBox">
+                    <h3 className="CardHeaderLogin">Login</h3>
+                    <section className="CardBodyLogin">
+                        <div>
                             <label>Email</label>
                             <Field name="email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
-                            <ErrorMessage name="email" component="div" className="invalid-feedback" />
+                            <ErrorMessage name="email" component="div" className="InvalidFeedback" />
                         </div>
-                        <div className="form-group">
+                        <div>
                             <label>Password</label>
                             <Field name="password" type="password" className={'form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
-                            <ErrorMessage name="password" component="div" className="invalid-feedback" />
+                            <ErrorMessage name="password" component="div" className="InvalidFeedback" />
                         </div>
                         <div className="form-row">
-                            <div className="form-group col">
-                                <button type="submit" disabled={isSubmitting} className="btn btn-primary">
+                            <div className="col">
+                                <button type="submit" disabled={isSubmitting} className={'Btn MainBtn'}>
                                     {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
                                     Login
                                 </button>
                             </div>
-                            <div className="form-group col text-right">
-                                <Link to="forgot-password" className="btn btn-link pr-0">Forgot Password?</Link>
-                            </div>
+                                <Link to="forgot-password" className="CancelBtn">Forgot Password?</Link>
                         </div>
-                    </div>
+                    </section>
                 </Form>
             )}
         </Formik>

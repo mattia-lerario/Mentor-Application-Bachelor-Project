@@ -187,6 +187,23 @@ async function create(params) {
     return basicDetails(account);
 }
 
+const addCompanyToAccount = function(accountId, company) {
+  return db.Account.findByIdAndUpdate(
+    accountId,
+    { $push: { companies: company._id } },
+    { new: true, useFindAndModify: false }
+  );
+};
+
+const addMentorToAccount = function(accountId, mentor) {
+  return db.Account.findByIdAndUpdate(
+    accountId,
+    { $push: { mentors: mentor._id } },
+    { new: true, useFindAndModify: false }
+  );
+};
+
+
 async function update(id, params) {
     const account = await getAccount(id);
 

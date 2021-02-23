@@ -43,8 +43,10 @@ function Nav() {
                     {user.role === Role.Admin &&
                         <NavLink to="/admin" className="NavLink">Admin</NavLink>
                     }
-                    {user.role === Role.Admin || user.role === Role.Mentor &&
-                        <NavLink to="/companies" className="NavLink">Companies</NavLink> 
+                        <Route path="/admin" component={AdminNav} />
+                    
+                    {user.role === Role.Admin &&
+                        <NavLink to="/companies" className="NavLink">Companies</NavLink>
                     }
                     {user.role === Role.Admin &&
                         <NavLink to="/mentors" className="NavLink">Mentors</NavLink>
@@ -53,7 +55,6 @@ function Nav() {
                     <a onClick={accountService.logout} className="NavLink">Logout</a>
                 </div>
             </nav>
-            <Route path="/admin" component={AdminNav} />
             
             {/* Wrapper for the design of the sidebar */} 
             
@@ -68,11 +69,7 @@ function AdminNav({ match }) {
     const { path } = match;
 
     return (
-        <nav className="AdminNav">
-            <div>
-                <NavLink to={`${path}/users`} className="AdminLink">Users</NavLink>
-            </div>
-        </nav>
+                <NavLink to={`${path}/users`} className="NavLink" id="AdminLink">Users</NavLink>
     );
 }
 

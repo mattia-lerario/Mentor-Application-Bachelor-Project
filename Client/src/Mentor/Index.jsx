@@ -10,6 +10,8 @@ function Mentor({ match }) {
     return (
         <div className="p-4">
             <div className="container">
+                
+                <h1>Mentor Dashboard</h1>
 
                 <Switch>
                     <Route exact path={path} component={MentorList} />
