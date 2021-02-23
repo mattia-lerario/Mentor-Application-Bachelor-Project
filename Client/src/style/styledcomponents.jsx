@@ -144,7 +144,16 @@ export const ProfileWrapper = styled.div`
 `;
 /* ----FORM STYLE ----- */
 export const GlassForm = styled.div`
-    
+
+.CardHeaderLogin{
+    backdrop-filter: blur(10px);
+    text-decoration: underline;
+    text-align: center;
+}
+.CardBodyLogin{
+    width 20rem;
+    margin: auto auto;
+}
 `;
 
 /* ---SIDEBAR--- */
