@@ -4,6 +4,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import {accountService, companyService, alertService } from '@/_services';
+import { BtnWrapper } from '../style/styledcomponents';
 
 function UpdateCompanies({ history, match }) {
     const { id } = match.params;
@@ -104,6 +105,7 @@ function UpdateCompanies({ history, match }) {
                                 <ErrorMessage name="companyDescription" component="div" className="invalid-feedback" />
                             </div>
                         </div>
+                        
                         <div className="form-group">
                             <button type="submit" disabled={isSubmitting} className="btn btn-primary">
                                 {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
@@ -111,6 +113,7 @@ function UpdateCompanies({ history, match }) {
                             </button>
                             <Link to={isAddMode ? '.' : '..'} className="btn btn-link">Cancel</Link>
                         </div>
+                       
                     </Form>
                 );
             }}

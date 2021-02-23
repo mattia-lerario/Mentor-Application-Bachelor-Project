@@ -61,14 +61,14 @@ async function getAll() {
 }
 
 async function getById(id) {
-    const mentorsModel = await getm;ntorsModel(id);
+    const mentorsModel = await getmentorsModel(id);
     return basicDetails(mentorsModel);
 }
 
 async function create(params) {
     // validate
     if (await db.Mentors.findOne({ email: params.email })) {
-        throw 'Email "' + params.email + '" is already registered';
+       throw 'Email "' + params.email + '" is already registered';
     }
 
     const mentorsModel = new db.Mentors(params);
@@ -80,9 +80,9 @@ async function create(params) {
 
     // save mentorsModel
     await mentorsModel.save();
-
     return basicDetails(mentorsModel);
-}
+   
+}   
 
 const addAccountToMentor = function(mentorId, account) {
     return db.Mentor.findByIdAndUpdate(
@@ -157,6 +157,6 @@ function randomTokenString() {
 }
 
 function basicDetails(mentorsModel) {
-    const { id, title, firstName, lastName, email, role, created, updated, isVerified } = mentorsModel;
-    return { id, title, firstName, lastName, email, role, created, updated, isVerified };
+    const {id, mentorName, mentorNumber, tlfNumber,email,mentorDescription } = mentorsModel;
+    return {id, mentorName, mentorNumber, tlfNumber,email,mentorDescription };
 }

@@ -7,17 +7,13 @@ const schema = new Schema({
     mentorNumber: {type : String}, //muligens endre til require
     tlfNumber: {type : String},
     email: { type: String, unique: true, required: true },
-    salesRevenue: { type: String},
     mentorDescription: { type: String, required: true },
-    lastName: { type: String, required: true },
-    role: { type: String, required: true },
-    
     accounts: [
         {
           type: mongoose.Schema.Types.ObjectId,
           ref: "Account"
         }
-      ] 
+      ]
     
 });
 
