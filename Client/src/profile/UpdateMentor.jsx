@@ -10,6 +10,8 @@ function UpdateMentor({ history, match }) {
     const isAddMode = !id;
     const user = accountService.userValue;
     const company = companyService.companyValue;
+    const mentor = mentorService.companyValue;
+
     const initialValues = {
         mentorName: '',
         mentorNumber: '',
@@ -43,7 +45,6 @@ function UpdateMentor({ history, match }) {
             .catch(error => {
                 setSubmitting(false);
                 alertService.error(error);
-                console.log(error);
             });
     }
     return (
@@ -76,8 +77,8 @@ function UpdateMentor({ history, match }) {
                             </div>
                             <div className="form-group col">
                                 <label>Phone Number</label>
-                                <Field name="mentorNumber"
-                                type="text" className={'form-control' + (errors.mentorNumber && touched.mentorNumber ? 'is-invalid' : '')} />
+                                <Field name="tlfNumber"
+                                type="text" className={'form-control' + (errors.tlfNumber && touched.tlfNumber ? 'is-invalid' : '')} />
                             </div>
                         </div>
                         <div className="form-row">

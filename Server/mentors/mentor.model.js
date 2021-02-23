@@ -13,13 +13,7 @@ const schema = new Schema({
           type: mongoose.Schema.Types.ObjectId,
           ref: "Account"
         }
-      ],
-      companies: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Companies"
-        }
-      ] 
+      ]
     
 });
 
