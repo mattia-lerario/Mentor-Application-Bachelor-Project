@@ -13,7 +13,7 @@ import {MdSchedule} from 'react-icons/md';
 function Sidebar() {
 
   return (
-    <div className="Sidebar">
+    <aside className="Sidebar">
       <ul className="SideList">
         <img className="Avatar" src={avatar}></img>
         <NavLink to="/profile" className="SideLink"><CgProfile /> Profile</NavLink>
@@ -22,7 +22,7 @@ function Sidebar() {
         <NavLink to="/home" className="SideLink"><GrScheduleNew/> Book meeting</NavLink>
         <NavLink to="/home" className="SideLink"><MdSchedule/> My schedule</NavLink>
       </ul>
-    </div>
+    </aside>
   )
 }
 

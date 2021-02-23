@@ -20,21 +20,19 @@ function DashboardList({ match }) {
     return (
         
         <ListWrapper>
-            <div>
                 <h2>All Companies</h2>
                 <p>All companies showcased in dashboard.</p>
 
                 {company && company.map(company =>
 
-                <div className="card">
+                <section className="card">
                     <p className="companyName">{company.companyName}</p>
+                    <img className="companyImg">{company.companyImg}</img>
                     <p>Sales Revenue: {company.salesRevenue}</p>
                     <p>Company number: {company.companyNumber}</p>
                     <p><HiOutlineMail/>: {company.email}</p>
-                </div>
+                </section>
                 )}              
-                
-            </div>
         </ListWrapper>
         
         );

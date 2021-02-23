@@ -24,42 +24,41 @@ function Nav() {
     if (!user) return null;
 
     return (
-      <MenuWrapper>
-        <nav className="MenuBar">
-                
-          <div className="MenuLinks">
+        <MenuWrapper>
+            <nav className="MenuBar">
+                <section className="MenuLinks">
 
-            {/*
-            Hamburger-menu-icon
-            <NavLink to="/sidebar" className="NavLink"> <FaIcons.FaBars/> </NavLink>
-            */}
-            
+                    {/*
+                    Hamburger-menu-icon
+                    <NavLink to="/sidebar" className="NavLink"> <FaIcons.FaBars/> </NavLink>
+                    */}
+                    
 
-            <NavLink exact to="/" className="NavLink">Home</NavLink>
-            <NavLink to="/profile" className="NavLink">Profile</NavLink>
-                    
-            <NavLink to="/dashboard" className="NavLink">Dashboard</NavLink> 
-                    
+                    <NavLink exact to="/" className="NavLink">Home</NavLink>
+                    <NavLink to="/profile" className="NavLink">Profile</NavLink>  
+                    <NavLink to="/dashboard" className="NavLink">Dashboard</NavLink> 
+                        
                     {user.role === Role.Admin &&
                         <NavLink to="/admin" className="NavLink">Admin</NavLink>
                     }
-                        <Route path="/admin" component={AdminNav} />
+                    <Route path="/admin" component={AdminNav} />
                     
                     {user.role === Role.Admin &&
                         <NavLink to="/companies" className="NavLink">Companies</NavLink>
                     }
+
                     {user.role === Role.Admin &&
                         <NavLink to="/mentors" className="NavLink">Mentors</NavLink>
                     }
-                     {user.role === Role.Mentor &&
+
+                    {user.role === Role.Mentor &&
                         <NavLink to="/companies" className="NavLink">Companies</NavLink>
                     }
+
                     <a onClick={accountService.logout} className="NavLink">Logout</a>
-                </div>
+            
+                </section>
             </nav>
-            
-            {/* Wrapper for the design of the sidebar */} 
-            
         </MenuWrapper>
         
         
