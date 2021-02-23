@@ -20,7 +20,7 @@ const schema = new Schema({
     question10: {type: Int32Array, min: 0, max: 6},
     question11: {type: Int32Array, min: 0, max: 6},
     quarter1: {type: Boolean, default: false},
-    quarter2: {type: Boolean, default: false},
+    quarter2: {type: Boolean, default: false}, 
     quarter3: {type: Boolean, default: false},
     quarter4: {type: Boolean, default: false},
     created: { type: Date, default: Date.now },

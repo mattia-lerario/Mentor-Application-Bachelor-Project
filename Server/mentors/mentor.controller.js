@@ -169,13 +169,11 @@ function getById(req, res, next) {
 
 function createSchema(req, res, next) {
     const schema = Joi.object({
-        title: Joi.string().required(),
-        firstName: Joi.string().required(),
-        lastName: Joi.string().required(),
+        mentorName: Joi.string().required(),
+        mentorNumber: Joi.string().required(),
+        tlfNumber: Joi.string().required(),
         email: Joi.string().email().required(),
-        password: Joi.string().min(6).required(),
-        confirmPassword: Joi.string().valid(Joi.ref('password')).required(),
-        role: Joi.string().valid(Role.Admin, Role.User).required()
+        mentorDescription: Joi.string().min(6).required(),
     });
     validateRequest(req, next, schema);
 }
@@ -188,12 +186,11 @@ function create(req, res, next) {
 
 function updateSchema(req, res, next) {
     const schemaRules = {
-        title: Joi.string().empty(''),
-        firstName: Joi.string().empty(''),
-        lastName: Joi.string().empty(''),
+        mentorName: Joi.string().empty(''),
+        mentorNumber: Joi.string().empty(''),
+        tlfNumber: Joi.string().empty(''),
         email: Joi.string().email().empty(''),
-        password: Joi.string().min(6).empty(''),
-        confirmPassword: Joi.string().valid(Joi.ref('password')).empty('')
+        mentorDescription: Joi.string().mentorDescription().empty('')
     };
 
     // only admins can update role

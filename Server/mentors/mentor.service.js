@@ -254,8 +254,8 @@ function randomTokenString() {
 }
 
 function basicDetails(mentorsModel) {
-    const { id, title, firstName, lastName, email, role, created, updated, isVerified } = mentorsModel;
-    return { id, title, firstName, lastName, email, role, created, updated, isVerified };
+    const { mentorName, mentorNumber, tlfNumber,email,mentorDescription } = mentorsModel;
+    return { mentorName, mentorNumber, tlfNumber,email,mentorDescription };
 }
 
 async function sendVerificationEmail(mentorsModel, origin) {
