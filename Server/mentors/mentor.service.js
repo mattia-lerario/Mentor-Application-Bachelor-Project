@@ -23,7 +23,7 @@ module.exports = {
 };
 
 async function authenticate({ email, password, ipAddress }) {
-    const mentorsModel = await db.Mentors.findOne({ email });
+    const mentorsModel = await db.mentors.findOne({ email });
 
     if (!mentorsModel || !mentorsModel.isVerified || !bcrypt.compareSync(password, mentorsModel.passwordHash)) {
         throw 'Email or password is incorrect';
@@ -78,7 +78,7 @@ async function revokeToken({ token, ipAddress }) {
 
 async function register(params, origin) {
     // validate
-    if (await db.Mentors.findOne({ email: params.email })) {
+    if (await db.mentors.findOne({ email: params.email })) {
         // send already registered error in email to prevent mentorsModel enumeration
         return await sendAlreadyRegisteredEmail(params.email, origin);
     }
@@ -164,15 +164,13 @@ async function getById(id) {
 
 async function create(params) {
     // validate
-    if (await db.Mentors.findOne({ email: params.email })) {
-       throw 'Email "' + params.email + '" is already registered';
-    }
+    
 
-    const mentorsModel = new db.Mentors(params);
+    const mentorsModel = new db.Mentor(params);
     mentorsModel.verified = Date.now();
 
     // hash password
-    mentor.accounts = [params.user.id];
+    mentorsModel.accounts = [params.user.id];
    // mentorsModel.passwordHash = hash(params.password);
 
     // save mentorsModel

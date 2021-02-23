@@ -12,7 +12,7 @@ router.post('/revoke-token', authorize(), revokeTokenSchema, revokeToken);
 router.get('/',authorize(), getAll);
 router.get('/:id', authorize(), getById);
 router.post('/', authorize(Role.Company,Role.Admin,Role.Mentor), createSchema, create);
-router.put('/:id', authorize(), updateSchema, update);
+router.put('/:id', authorize(Role.Company,Role.Admin,Role.Mentor), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
 
 module.exports = router;    
@@ -99,12 +99,12 @@ function create(req, res, next) {
 
 function updateSchema(req, res, next) {
     const schemaRules = {
-        title: Joi.string().empty(''),
-        firstName: Joi.string().empty(''),
-        lastName: Joi.string().empty(''),
-        email: Joi.string().email().empty(''),
-        password: Joi.string().min(6).empty(''),
-        confirmPassword: Joi.string().valid(Joi.ref('password')).empty('')
+        companyName: Joi.string().required(),
+        companyNumber: Joi.string().required(),
+        tlfNumber: Joi.string().required(),
+        email: Joi.string().email().required(),
+        salesRevenue: Joi.string().required(),
+        companyDescription: Joi.string().required()
     };
 
     // only admins can update role
@@ -112,19 +112,18 @@ function updateSchema(req, res, next) {
         schemaRules.role = Joi.string().valid(Role.Admin, Role.User).empty('');
     }
 
-    const schema = Joi.object(schemaRules).with('password', 'confirmPassword');
+    const schema = Joi.object(schemaRules);
     validateRequest(req, next, schema);
 }
 
-function update(req, res, next) {
+function update(req,res,next) {
     // users can update their own account and admins can update any account
-    if (req.params.id !== req.user.id && req.user.role !== Role.Admin) {
-        return res.status(401).json({ message: 'Unauthorized' });
-    }
-
-    companyService.update(req.params.id, req.body)
+    
+    console.log(req.body.token);
+    companyService.update(req.params.id,req.body)
         .then(company => res.json(company))
         .catch(next);
+        
 }
 
 function _delete(req, res, next) {
