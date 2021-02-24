@@ -200,42 +200,46 @@ export const ListWrapper = styled.div`
 
 .card{
     flex: 3;
-    border-radius: 0.5rem;
     background: linear-gradient(
       to right bottom,
       rgba(255, 255, 255, 0.7),
       rgba(255, 255, 255, 0.3)
-    );
+        );
     width: 30%;
     height: 15%;
-    padding: 0.5rem;
     margin: 0.5rem;
     display: inline-block;
+    //box-shadow: right bottom fade allsides color;
+    box-shadow: 0.09rem 0.19rem 0.5rem 0.1rem #38507a;
+    filter: grayscale(50%);
   }
+  .card:hover{
+    border: solid #38507a;
+    //box-shadow: right bottom fade allsides color;
+    box-shadow: 0.2rem 0.3rem 0.5rem 0.1rem #38507a;
+    filter: grayscale(0%);
+}
 .cardImg{
     background-image: url("https://images.frandroid.com/wp-content/uploads/2013/01/Samsung-Logo.jpg");
     background-position: center;
     background-size: 100%;
     height: 5rem;
+    border-radius: 0.1rem;
+}
+.cardMetric, .cardBottom{
+    margin: 1rem;
 }
 .cardMetric{
     height: 7rem;
 }
 .cardBottom{
     border-top: solid #38507a;
+    text-align: center;
 }
 .cardBottom p{
     display: inline;
-    margin-right: 1rem;
-}
-.companyImg{
-    
-}
-.companyName{
-    text-decoration: underline;
-}
-.card:hover{
-    border: solid #38507a;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 }
 
   `;
