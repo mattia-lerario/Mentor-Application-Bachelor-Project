@@ -23,8 +23,9 @@ function MentorList({ match }) {
 
             <div className="card">
             <p className="companyName">{mentor.mentorName}</p>
-            <p>Sales Revenue: {mentor.mentorNumber}</p>
-            <p>Company number: {mentor.mentorDescription}</p>
+            <p>Mentor Number: {mentor.mentorNumber}</p>
+            <p>Description: {mentor.mentorDescription}</p>
+            
             <p><HiOutlineMail/>: {mentor.email}</p>
             </div>
 )}     

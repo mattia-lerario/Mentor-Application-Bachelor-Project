@@ -11,6 +11,7 @@ function UpdateCompanies({ history, match }) {
     const isAddMode = !id;
     const user = accountService.userValue;
     const company = companyService.companyValue;
+
     const initialValues = {
         companyName: '',
         companyNumber: '',
@@ -22,11 +23,11 @@ function UpdateCompanies({ history, match }) {
 
     const validationSchema = Yup.object().shape({
         companyName: Yup.string()
-            .required('Title is required'),
+            .required('Company Name is required'),
         companyNumber: Yup.string()
-            .required('First Name is required'),
+            .required('Company Number is required'),
         tlfNumber: Yup.string()
-            .required('Last Name is required'),
+            .required('Tlf is required'),
         email: Yup.string()
             .email('Email is invalid')
             .required('Email is required'),
@@ -39,9 +40,13 @@ function UpdateCompanies({ history, match }) {
     function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
 
+        console.log(isAddMode);
+
         if (!isAddMode) {
             createCompany(fields, setSubmitting);
-        } else {
+        } 
+        
+        else {
             updateCompany(id, fields, setSubmitting);
         }
         
