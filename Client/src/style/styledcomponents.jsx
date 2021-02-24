@@ -194,7 +194,7 @@ export const SidebarWrapper = styled.div`
 
 
 /* ---COMPANY LISTTABLE/CARDS--- */
-/* File: Company.jsx */
+/* Files: Company.jsx, DashboardList.jsx*/
 export const ListWrapper = styled.div`
 // Resource: https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy
 
@@ -206,15 +206,34 @@ export const ListWrapper = styled.div`
       rgba(255, 255, 255, 0.7),
       rgba(255, 255, 255, 0.3)
     );
-    //width: 17rem;
-    height: 12rem;
+    width: 30%;
+    height: 15%;
     padding: 0.5rem;
     margin: 0.5rem;
     display: inline-block;
   }
-  .companyName{
+.cardImg{
+    background-image: url("https://images.frandroid.com/wp-content/uploads/2013/01/Samsung-Logo.jpg");
+    background-position: center;
+    background-size: 100%;
+    height: 5rem;
+}
+.cardMetric{
+    height: 7rem;
+}
+.cardBottom{
+    border-top: solid #38507a;
+}
+.cardBottom p{
+    display: inline;
+    margin-right: 1rem;
+}
+.companyImg{
+    
+}
+.companyName{
     text-decoration: underline;
-  }
+}
 .card:hover{
     border: solid #38507a;
 }
