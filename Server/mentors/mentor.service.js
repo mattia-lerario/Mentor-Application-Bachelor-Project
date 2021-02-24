@@ -23,7 +23,7 @@ module.exports = {
 };
 
 async function authenticate({ email, password, ipAddress }) {
-    const mentorsModel = await db.Mentors.findOne({ email });
+    const mentorsModel = await db.mentors.findOne({ email });
 
     if (!mentorsModel || !mentorsModel.isVerified || !bcrypt.compareSync(password, mentorsModel.passwordHash)) {
         throw 'Email or password is incorrect';
@@ -78,7 +78,7 @@ async function revokeToken({ token, ipAddress }) {
 
 async function register(params, origin) {
     // validate
-    if (await db.Mentors.findOne({ email: params.email })) {
+    if (await db.mentors.findOne({ email: params.email })) {
         // send already registered error in email to prevent mentorsModel enumeration
         return await sendAlreadyRegisteredEmail(params.email, origin);
     }
@@ -158,28 +158,23 @@ async function getAll() {
 }
 
 async function getById(id) {
-    const mentorsModel = await getm;ntorsModel(id);
+    const mentorsModel = await getmentorsModel(id);
     return basicDetails(mentorsModel);
 }
 
-async function create(params) {
-    // validate
-    if (await db.Mentors.findOne({ email: params.email })) {
-        throw 'Email "' + params.email + '" is already registered';
-    }
+async function create(params) {    
 
-    const mentorsModel = new db.Mentors(params);
+    const mentorsModel = new db.Mentor(params);
     mentorsModel.verified = Date.now();
 
-    // hash password
-    mentor.accounts = [params.user.id];
+    mentorsModel.accounts = [params.user.id];
    // mentorsModel.passwordHash = hash(params.password);
 
     // save mentorsModel
     await mentorsModel.save();
-
     return basicDetails(mentorsModel);
-}
+   
+}   
 
 const addAccountToMentor = function(mentorId, account) {
     return db.Mentor.findByIdAndUpdate(
@@ -210,6 +205,8 @@ async function update(id, params) {
     return basicDetails(mentorsModel);
 }
 
+
+
 async function _delete(id) {
     const mentorsModel = await getmentorsModel(id);
     await mentorsModel.remove();
@@ -219,8 +216,11 @@ async function _delete(id) {
 
 async function getmentorsModel(id) {
     if (!db.isValidId(id)) throw 'mentorsModel not found';
+
     const mentorsModel = await db.Mentors.findById(id);
+
     if (!mentorsModel) throw 'mentorsModel not found';
+
     return mentorsModel;
 }
 
@@ -254,8 +254,8 @@ function randomTokenString() {
 }
 
 function basicDetails(mentorsModel) {
-    const { id, title, firstName, lastName, email, role, created, updated, isVerified } = mentorsModel;
-    return { id, title, firstName, lastName, email, role, created, updated, isVerified };
+    const {id, mentorName, mentorNumber, tlfNumber,email,mentorDescription } = mentorsModel;
+    return {id, mentorName, mentorNumber, tlfNumber,email,mentorDescription };
 }
 
 async function sendVerificationEmail(mentorsModel, origin) {

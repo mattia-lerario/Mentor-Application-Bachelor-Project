@@ -4,12 +4,14 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import {accountService, companyService, alertService } from '@/_services';
+import { BtnWrapper } from '../style/styledcomponents';
 
 function UpdateCompanies({ history, match }) {
     const { id } = match.params;
     const isAddMode = !id;
     const user = accountService.userValue;
     const company = companyService.companyValue;
+
     const initialValues = {
         companyName: '',
         companyNumber: '',
@@ -21,11 +23,11 @@ function UpdateCompanies({ history, match }) {
 
     const validationSchema = Yup.object().shape({
         companyName: Yup.string()
-            .required('Title is required'),
+            .required('Company Name is required'),
         companyNumber: Yup.string()
-            .required('First Name is required'),
+            .required('Company Number is required'),
         tlfNumber: Yup.string()
-            .required('Last Name is required'),
+            .required('Tlf is required'),
         email: Yup.string()
             .email('Email is invalid')
             .required('Email is required'),
@@ -37,7 +39,37 @@ function UpdateCompanies({ history, match }) {
 
     function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
-        companyService.create(fields)
+
+        console.log(isAddMode);
+
+        if (!isAddMode) {
+            createCompany(fields, setSubmitting);
+        } 
+        
+        else {
+            updateCompany(id, fields, setSubmitting);
+        }
+        
+        }
+
+
+        function createCompany(fields, setSubmitting){
+            companyService.create(fields)
+            .then(() => {
+                alertService.success('Create successful', { keepAfterRouteChange: true });
+                history.push('.');
+            })
+            .catch(error => {
+                setSubmitting(false);
+                alertService.error(error);
+                console.log(error);
+            });
+
+
+        }
+
+        function updateCompany(id,fields,setSubmitting){
+            companyService.update(id,fields)    
             .then(() => {
                 alertService.success('Update successful', { keepAfterRouteChange: true });
                 history.push('.');
@@ -47,10 +79,8 @@ function UpdateCompanies({ history, match }) {
                 alertService.error(error);
                 console.log(error);
             });
-    }
 
-
-    
+        }
 
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
@@ -104,6 +134,7 @@ function UpdateCompanies({ history, match }) {
                                 <ErrorMessage name="companyDescription" component="div" className="invalid-feedback" />
                             </div>
                         </div>
+                        
                         <div className="form-group">
                             <button type="submit" disabled={isSubmitting} className="btn btn-primary">
                                 {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
@@ -111,6 +142,7 @@ function UpdateCompanies({ history, match }) {
                             </button>
                             <Link to={isAddMode ? '.' : '..'} className="btn btn-link">Cancel</Link>
                         </div>
+                       
                     </Form>
                 );
             }}

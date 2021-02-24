@@ -17,7 +17,18 @@ function MentorList({ match }) {
     return (
         <ListWrapper>
         <div>
-            <h2>All Mentors</h2>        
+            <h2>All Mentors</h2>  
+           
+            {mentor && mentor.map(mentor =>
+
+            <div className="card">
+            <p className="companyName">{mentor.mentorName}</p>
+            <p>Mentor Number: {mentor.mentorNumber}</p>
+            <p>Description: {mentor.mentorDescription}</p>
+            
+            <p><HiOutlineMail/>: {mentor.email}</p>
+            </div>
+)}     
             
         </div>
 

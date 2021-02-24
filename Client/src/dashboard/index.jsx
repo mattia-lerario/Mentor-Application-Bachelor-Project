@@ -14,7 +14,7 @@ function Dashboard({ match }) {
     return (
         <div className="p-4">
             <div className="container">
-                <h1>Hi {user.lastName}, how are you?!</h1>
+                <h1>Hi {user.lastName}</h1>
 
                 <Switch>
                     <Route exact path={path} component={DashboardList} />

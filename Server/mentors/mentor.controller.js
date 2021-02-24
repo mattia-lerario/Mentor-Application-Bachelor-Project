@@ -8,16 +8,10 @@ const mentorService = require('./mentor.service');
 
 // routes
 router.post('/authenticate', authenticateSchema, authenticate);
-router.post('/refresh-token', refreshToken);
 router.post('/revoke-token', authorize(), revokeTokenSchema, revokeToken);
-//router.post('/register', registerSchema, register);
-router.post('/verify-email', verifyEmailSchema, verifyEmail);
-router.post('/forgot-password', forgotPasswordSchema, forgotPassword);
-router.post('/validate-reset-token', validateResetTokenSchema, validateResetToken);
-router.post('/reset-password', resetPasswordSchema, resetPassword);
-router.get('/', authorize(Role.Admin), getAll);
+router.get('/',authorize(), getAll);
 router.get('/:id', authorize(), getById);
-router.post('/', authorize(Role.Admin), createSchema, create);
+router.post('/', authorize(Role.mentor), createSchema, create);
 router.put('/:id', authorize(), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
 
@@ -35,20 +29,9 @@ function authenticate(req, res, next) {
     const { email, password } = req.body;
     const ipAddress = req.ip;
     mentorService.authenticate({ email, password, ipAddress })
-        .then(({ refreshToken, ...mentor }) => {
+        .then(({ refreshToken, ...account }) => {
             setTokenCookie(res, refreshToken);
-            res.json(mentor);
-        })
-        .catch(next);
-}
-
-function refreshToken(req, res, next) {
-    const token = req.cookies.refreshToken;
-    const ipAddress = req.ip;
-    mentorService.refreshToken({ token, ipAddress })
-        .then(({ refreshToken, ...mentor }) => {
-            setTokenCookie(res, refreshToken);
-            res.json(mentor);
+            res.json(account);
         })
         .catch(next);
 }
@@ -88,6 +71,16 @@ function registerSchema(req, res, next) {
         acceptTerms: Joi.boolean().valid(true).required()
     });
     validateRequest(req, next, schema);
+
+}function refreshToken(req, res, next) {
+    const token = req.cookies.refreshToken;
+    const ipAddress = req.ip;
+    mentorService.refreshToken({ token, ipAddress })
+        .then(({ refreshToken, ...mentor }) => {
+            setTokenCookie(res, refreshToken);
+            res.json(mentor);
+        })
+        .catch(next);
 }
 
 function register(req, res, next) {
@@ -157,7 +150,7 @@ function getAll(req, res, next) {
 }
 
 function getById(req, res, next) {
-    // users can get their own mentor and admins can get any mentor
+    // users can get their own account and admins can get any account
     if (req.params.id !== req.user.id && req.user.role !== Role.Admin) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
@@ -169,13 +162,11 @@ function getById(req, res, next) {
 
 function createSchema(req, res, next) {
     const schema = Joi.object({
-        title: Joi.string().required(),
-        firstName: Joi.string().required(),
-        lastName: Joi.string().required(),
+        mentorName: Joi.string().required(),
+        mentorNumber: Joi.string().required(),
+        tlfNumber: Joi.string().required(),
         email: Joi.string().email().required(),
-        password: Joi.string().min(6).required(),
-        confirmPassword: Joi.string().valid(Joi.ref('password')).required(),
-        role: Joi.string().valid(Role.Admin, Role.User).required()
+        mentorDescription: Joi.string().min(6).required(),
     });
     validateRequest(req, next, schema);
 }
@@ -188,12 +179,11 @@ function create(req, res, next) {
 
 function updateSchema(req, res, next) {
     const schemaRules = {
-        title: Joi.string().empty(''),
-        firstName: Joi.string().empty(''),
-        lastName: Joi.string().empty(''),
+        mentorName: Joi.string().empty(''),
+        mentorNumber: Joi.string().empty(''),
+        tlfNumber: Joi.string().empty(''),
         email: Joi.string().email().empty(''),
-        password: Joi.string().min(6).empty(''),
-        confirmPassword: Joi.string().valid(Joi.ref('password')).empty('')
+        mentorDescription: Joi.string().mentorDescription().empty('')
     };
 
     // only admins can update role

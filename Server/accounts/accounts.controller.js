@@ -210,7 +210,7 @@ function update(req, res, next) {
     if (req.params.id !== req.user.id && req.user.role !== Role.Admin) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
-
+    
     accountService.update({...req.body, user:req.user})
         .then(account => res.json(account))
         .catch(next);

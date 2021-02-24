@@ -17,11 +17,6 @@ function Update({ history }) {
         password: '',
         confirmPassword: ''
     };
-  
-   
-    
-    
-    
 
     const validationSchema = Yup.object().shape({
         title: Yup.string()
