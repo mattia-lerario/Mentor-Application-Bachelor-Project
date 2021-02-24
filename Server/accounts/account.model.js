@@ -26,12 +26,12 @@ const schema = new Schema({
       }
     ],
 
-    mentors: [
+    mentors: 
         {
           type: mongoose.Schema.Types.ObjectId,
           ref: "Mentor"
         }
-      ]
+      
 });
 
 schema.virtual('isVerified').get(function () {
