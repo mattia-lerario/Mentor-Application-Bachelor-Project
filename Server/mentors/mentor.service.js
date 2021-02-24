@@ -197,3 +197,5 @@ function basicDetails(mentorsModel) {
     const {id, mentorName, mentorNumber, tlfNumber,email,mentorDescription } = mentorsModel;
     return {id, mentorName, mentorNumber, tlfNumber,email,mentorDescription };
 }
+
+}
