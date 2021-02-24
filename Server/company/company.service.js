@@ -22,8 +22,8 @@ module.exports = {
     delete: _delete
 };
 
-async function authenticate({ email, password, ipAddress }) {
-    const company = await db.company.findOne({ email });
+async function authenticate({ id, password, ipAddress }) {
+    const company = await db.Company.findOne({ id });
 
     if (!company || !company.isVerified || !bcrypt.compareSync(password, company.passwordHash)) {
         throw 'Email or password is incorrect';
@@ -99,16 +99,13 @@ async function update(id, params) {
     const company = await getCompany(id);
 
     // validate (if email was changed)
-    if (params.email && account.email !== params.email && await db.Account.findOne({ email: params.email })) {
-        throw 'Email "' + params.email + '" is already taken';
-    }
+   
 
     // hash password if it was entered
-    if (params.password) {
-        params.passwordHash = hash(params.password);
-    }
+   
 
     // copy params to account and save
+    
     Object.assign(company, params);
     company.updated = Date.now();
     await company.save();

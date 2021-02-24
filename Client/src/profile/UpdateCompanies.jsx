@@ -38,7 +38,33 @@ function UpdateCompanies({ history, match }) {
 
     function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
-        companyService.create(fields)
+
+        if (!isAddMode) {
+            createCompany(fields, setSubmitting);
+        } else {
+            updateCompany(id, fields, setSubmitting);
+        }
+        
+        }
+
+
+        function createCompany(fields, setSubmitting){
+            companyService.create(fields)
+            .then(() => {
+                alertService.success('Create successful', { keepAfterRouteChange: true });
+                history.push('.');
+            })
+            .catch(error => {
+                setSubmitting(false);
+                alertService.error(error);
+                console.log(error);
+            });
+
+
+        }
+
+        function updateCompany(id,fields,setSubmitting){
+            companyService.update(id,fields)    
             .then(() => {
                 alertService.success('Update successful', { keepAfterRouteChange: true });
                 history.push('.');
@@ -48,10 +74,8 @@ function UpdateCompanies({ history, match }) {
                 alertService.error(error);
                 console.log(error);
             });
-    }
 
-
-    
+        }
 
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>

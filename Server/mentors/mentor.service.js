@@ -23,7 +23,7 @@ module.exports = {
 };
 
 async function authenticate({ email, password, ipAddress }) {
-    const mentorsModel = await db.Mentors.findOne({ email });
+    const mentorsModel = await db.mentors.findOne({ email });
 
     if (!mentorsModel || !mentorsModel.isVerified || !bcrypt.compareSync(password, mentorsModel.passwordHash)) {
         throw 'Email or password is incorrect';
@@ -53,6 +53,43 @@ async function revokeToken({ token, ipAddress }) {
     await refreshToken.save();
 }
 
+async function register(params, origin) {
+    // validate
+    if (await db.mentors.findOne({ email: params.email })) {
+        // send already registered error in email to prevent mentorsModel enumeration
+        return await sendAlreadyRegisteredEmail(params.email, origin);
+    }
+
+    // create mentorsModel object
+    const mentorsModel = new db.Mentors(params);
+
+    // first registered mentorsModel is an admin
+    const isFirstmentorsModel = (await db.Mentors.countDocuments({})) === 0;
+    mentorsModel.role = isFirstmentorsModel ? Role.Admin : Role.User;
+    mentorsModel.verificationToken = randomTokenString();
+
+    // hash password
+    mentorsModel.passwordHash = hash(params.password);
+
+    // save mentorsModel
+    await mentorsModel.save();
+
+    // send email
+    await sendVerificationEmail(mentorsModel, origin);
+}
+
+async function verifyEmail({ token }) {
+    const mentorsModel = await db.Mentors.findOne({ verificationToken: token });
+
+    if (!mentorsModel) throw 'Verification failed';
+
+    mentorsModel.verified = Date.now();
+    mentorsModel.verificationToken = undefined;
+    await mentorsModel.save();
+}
+
+async function forgotPassword({ email }, origin) {
+    const mentorsModel = await db.Mentors.findOne({ email });
 
 
 async function getAll() {
@@ -67,15 +104,13 @@ async function getById(id) {
 
 async function create(params) {
     // validate
-    if (await db.Mentors.findOne({ email: params.email })) {
-       throw 'Email "' + params.email + '" is already registered';
-    }
+    
 
-    const mentorsModel = new db.Mentors(params);
+    const mentorsModel = new db.Mentor(params);
     mentorsModel.verified = Date.now();
 
     // hash password
-    mentor.accounts = [params.user.id];
+    mentorsModel.accounts = [params.user.id];
    // mentorsModel.passwordHash = hash(params.password);
 
     // save mentorsModel
