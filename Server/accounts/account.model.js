@@ -22,18 +22,20 @@ const schema = new Schema({
     created: { type: Date, default: Date.now },
     updated: Date,
     
-    companies:
+    companies: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Company"
       }
+    ]
     ,
 
-    mentors: 
+    mentors: [
         {
           type: mongoose.Schema.Types.ObjectId,
           ref: "Mentor"
-        }      
+        }   
+    ]       
 });
 
 schema.virtual('isVerified').get(function () {

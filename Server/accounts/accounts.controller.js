@@ -23,6 +23,7 @@ router.delete('/:id', authorize(), _delete);
 
 module.exports = router;
 
+
 function authenticateSchema(req, res, next) {
     const schema = Joi.object({
         email: Joi.string().required(),

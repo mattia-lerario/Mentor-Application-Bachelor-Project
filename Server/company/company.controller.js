@@ -91,11 +91,11 @@ function createSchema(req, res, next) {
 }
 
 function create(req, res, next) {
-    console.log(req.user);
     companyService.create({...req.body, user:req.user})
         .then(company => res.json(company))
         .catch(next);
 }
+
 
 function updateSchema(req, res, next) {
     const schemaRules = {
@@ -119,7 +119,6 @@ function updateSchema(req, res, next) {
 function update(req,res,next) {
     // users can update their own account and admins can update any account
     
-    console.log(req.body.token);
     companyService.update(req.params.id,req.body)
         .then(company => res.json(company))
         .catch(next);

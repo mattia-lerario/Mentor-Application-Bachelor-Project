@@ -5,7 +5,7 @@ const crypto = require("crypto");
 const sendEmail = require('_helpers/send-email');
 const db = require('_helpers/db');
 const Role = require('_helpers/role');
-
+const accountService = require('accounts/account.service');
 module.exports = {
     authenticate,
     //refreshToken,
@@ -55,9 +55,6 @@ async function revokeToken({ token, ipAddress }) {
 }
 
 
-
-
-
 async function getAll() {
     const company = await db.Company.find();
     return company.map(x => basicDetails(x));
@@ -78,24 +75,17 @@ async function create(params) {
     const company = new db.Company(params);
     company.verified = Date.now();
     //Connect Account to Company
-    company.accounts = [params.user.id];
+    company.accountId = [params.user.id];
     
-    // hash password
-    //company.passwordHash = hash(params.password);
     
     // save account
     await company.save();
-
+    console.log(company.id);
+    accountService.addCompanyToAccount(company.id, company.accountId);
     return basicDetails(company);
 }
 
-const addAccountToCompany = function(companyId, account) {
-  return db.Company.findByIdAndUpdate(
-    companyId,
-    { $push: { accounts: account._id } },
-    { new: true, useFindAndModify: false }
-  );
-};
+
 
 async function update(id, params) {
     const company = await getCompany(id);
