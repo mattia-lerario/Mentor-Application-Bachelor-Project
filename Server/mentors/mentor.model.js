@@ -8,13 +8,12 @@ const schema = new Schema({
     tlfNumber: {type : String},
     email: { type: String, unique: true, required: true },
     mentorDescription: { type: String, required: true },
-    accounts: [
+    accounts: 
         {
           type: mongoose.Schema.Types.ObjectId,
           ref: "Account"
         }
-      ]
-    
+   
 });
 
 schema.virtual('isVerified').get(function () {

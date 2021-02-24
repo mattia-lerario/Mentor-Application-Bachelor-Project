@@ -102,14 +102,11 @@ async function getById(id) {
     return basicDetails(mentorsModel);
 }
 
-async function create(params) {
-    // validate
-    
+async function create(params) {    
 
     const mentorsModel = new db.Mentor(params);
     mentorsModel.verified = Date.now();
 
-    // hash password
     mentorsModel.accounts = [params.user.id];
    // mentorsModel.passwordHash = hash(params.password);
 
@@ -148,6 +145,8 @@ async function update(id, params) {
     return basicDetails(mentorsModel);
 }
 
+
+
 async function _delete(id) {
     const mentorsModel = await getmentorsModel(id);
     await mentorsModel.remove();
@@ -157,8 +156,11 @@ async function _delete(id) {
 
 async function getmentorsModel(id) {
     if (!db.isValidId(id)) throw 'mentorsModel not found';
+
     const mentorsModel = await db.Mentors.findById(id);
+
     if (!mentorsModel) throw 'mentorsModel not found';
+
     return mentorsModel;
 }
 

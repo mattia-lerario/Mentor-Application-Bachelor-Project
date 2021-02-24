@@ -14,8 +14,7 @@ function Dashboard({ match }) {
     return (
         <div className="p-4">
             <div className="container">
-                <h1>Hi {user.firstName}</h1>
-                <p>Company Dashboard</p>
+                <h1>Hi {user.lastName}</h1>
 
                 <Switch>
                     <Route exact path={path} component={DashboardList} />
