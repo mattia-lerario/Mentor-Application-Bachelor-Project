@@ -8,7 +8,7 @@ const schema = new Schema({
     tlfNumber: {type : String},
     email: { type: String, unique: true, required: true },
     mentorDescription: { type: String, required: true },
-    account: 
+    accounts: 
         {
           type: mongoose.Schema.Types.ObjectId,
           ref: "Account"
