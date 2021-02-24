@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const sendEmail = require('_helpers/send-email');
 const db = require('_helpers/db');
 const Role = require('_helpers/role');
+const accountService = require('accounts/account.service');s
 
 module.exports = {
     authenticate,
@@ -167,22 +168,24 @@ async function create(params) {
     const mentorsModel = new db.Mentor(params);
     mentorsModel.verified = Date.now();
 
+     //Connect Account to Mentor
     mentorsModel.accounts = [params.user.id];
-   // mentorsModel.passwordHash = hash(params.password);
 
     // save mentorsModel
     await mentorsModel.save();
+    console.log(mentorsModel.id);
+    accountService.addMentorToAccount(mentorsModel.id, mentorsModel.accountId);
     return basicDetails(mentorsModel);
    
 }   
 
-const addAccountToMentor = function(mentorId, account) {
+/*const addAccountToMentor = function(mentorId, account) {
     return db.Mentor.findByIdAndUpdate(
       mentorId,
       { $push: { accounts: account._id } },
       { new: true, useFindAndModify: false }
     );
-  };
+  };*/
 
 async function update(id, params) {
     const mentorsModel = await getmentorsModel(id);
