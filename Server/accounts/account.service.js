@@ -199,12 +199,12 @@ async function addCompanyToAccount(companyId,accountId) {
 };
 
 async function addMentorToAccount(mentorId, accountId) {
-  return db.Account.findByIdAndUpdate(
-    accountId,
-    { $push: { mentors: mentorId} },
-    { new: true, useFindAndModify: false }
-  );
-};
+    return db.Account.findByIdAndUpdate(
+      accountId,
+      { $push: { mentors: mentorId} },
+      { new: true, useFindAndModify: false }
+    );
+  };
 
 
 async function update(id, params) {
