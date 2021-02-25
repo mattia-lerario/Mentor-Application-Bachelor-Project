@@ -2,11 +2,8 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { MentorList } from './Mentor';
 
-import { accountService, mentorService } from '@/_services';
-
 function Mentor({ match }) {
-    const user = accountService.userValue;
-    const mentor = mentorService.userValue;
+  
 
     const { path } = match;
     

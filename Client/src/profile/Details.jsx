@@ -8,6 +8,28 @@ function Details({ match }) {
     const { path } = match;
     const user = accountService.userValue;
     const isUserType = user.role;
+
+
+    if(isUserType == "Admin"){
+
+        return (
+            <BtnWrapper>
+                <section>
+                    <p>
+                      <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
+                      <strong>Email: </strong> {user.email}<br />
+                      <strong>Role: </strong>{user.role}
+                    </p>
+                
+                   <button className="Btn MainBtn"><Link to={`${path}/update`} className="LinkBtn">Update Account</Link></button>
+                
+
+                </section>
+            </BtnWrapper>
+        )
+
+    };
+
     if(isUserType == "Mentor"){
 
         

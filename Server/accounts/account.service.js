@@ -208,7 +208,10 @@ async function addMentorToAccount(mentorId, accountId) {
 
 
 async function update(id, params) {
+
     const account = await getAccount(id);
+
+    console.log(getAccount(id));
 
     // validate (if email was changed)
     if (params.email && account.email !== params.email && await db.Account.findOne({ email: params.email })) {
@@ -236,10 +239,18 @@ async function _delete(id) {
 // helper functions
 
 async function getAccount(id) {
+
+    console.log(isValidId(id));
+
     if (!db.isValidId(id)) throw 'Account not found';
+
     const account = await db.Account.findById(id);
+
     if (!account) throw 'Account not found';
+
     return account;
+
+
 }
 
 async function getRefreshToken(token) {
@@ -272,8 +283,8 @@ function randomTokenString() {
 }
 /////////////////////////////////////
 function basicDetails(account) {
-    const { id, title, firstName, lastName, email, role, created, updated, isVerified } = account;
-    return { id, title, firstName, lastName, email, role, created, updated, isVerified };
+    const {  title, firstName, lastName, email, role, created, updated, isVerified } = account;
+    return { title, firstName, lastName, email, role, created, updated, isVerified };
 }
 
 async function sendVerificationEmail(account, origin) {

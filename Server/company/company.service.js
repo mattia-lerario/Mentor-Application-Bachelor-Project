@@ -87,7 +87,6 @@ async function create(params) {
 }
 
 
-
 async function update(id, params) {
     const company = await getCompany(id);
 

@@ -30,6 +30,16 @@ function MentorList({ match }) {
             </div>
 )}     
             
+            {mentor && mentor.map(mentor =>
+
+            <div className="card" key={mentor.id}>
+            <p className="companyName">{mentor.lastName}</p>
+            <p><HiOutlineMail/>{mentor.mail} </p>
+            <p><GiPhone/>mentor.phone</p>
+            </div> 
+            
+            )}
+
         </div>
 
         </ListWrapper>

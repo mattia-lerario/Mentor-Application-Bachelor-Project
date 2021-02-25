@@ -75,3 +75,5 @@ function AdminNav({ match }) {
 }
 
 export { Nav }; 
+
+/*<NavLink exact to="/" className="NavLink">Home</NavLink>*/ 

@@ -26,7 +26,13 @@ function CompanyList({ match }) {
                     <p>Company number: {company.companyNumber}</p>
                     <p><HiOutlineMail/>: {company.email}</p>
                 </div>
-                )}              
+                )}
+
+            {!company}(
+                <div className="card">
+                    <p className="companyName">emty...</p>
+                </div>
+                )              
                 
             </div>
         </ListWrapper>
