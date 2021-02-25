@@ -8,7 +8,9 @@ import {FormWrapper} from '../style/styledcomponents';
 import { accountService, alertService } from '@/_services';
 
 function Update({ history }) {
+    
     const user = accountService.userValue;
+
     const initialValues = {
         title: user.title,
         firstName: user.firstName,
@@ -39,16 +41,20 @@ function Update({ history }) {
 
     function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
+
         accountService.update(user.id, fields)
+
             .then(() => {
                 alertService.success('Update successful', { keepAfterRouteChange: true });
                 history.push('.');
             })
-            .catch(error => {
+
+          .catch(error => {
                 setSubmitting(false);
                 alertService.error(error);
             });
     }
+
     
     const [isDeleting, setIsDeleting] = useState(false);
     function onDelete() {
@@ -110,9 +116,8 @@ function Update({ history }) {
                     </div>
                     <BtnWrapper>
                         <button type="submit" disabled={isSubmitting} className="Btn MainBtn">
-                            {/* Hva brukes classnames = spinner-border etc. til? Design eller programkode? 
-                            {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>} */}
-                            {isSubmitting && <span></span>}
+                          
+                            {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>} 
                             Update
                         </button>
                         <button type="button" onClick={() => onDelete()} className="Btn DeleteBtn" style={{ width: '75px' }} disabled={isDeleting}>

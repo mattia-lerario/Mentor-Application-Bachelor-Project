@@ -22,8 +22,11 @@ function App() {
 
     useEffect(() => {
         const subscription = accountService.user.subscribe(x => setUser(x));
+
         return subscription.unsubscribe;
+        //return subscription.subscribe
     }, []);
+    
     if(!user){
 return (
          
@@ -37,6 +40,7 @@ return (
                 <PrivateRoute path="/companies" component={Company} />
                 <PrivateRoute path="/mentors" component={Mentor} />
                 <PrivateRoute path="/profile" component={Profile} />
+
                 <PrivateRoute path="/admin" roles={[Role.Admin]} component={Admin} />
 
                 <Route path="/account" component={Account} />
