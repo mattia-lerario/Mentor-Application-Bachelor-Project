@@ -5,17 +5,11 @@ const crypto = require("crypto");
 const sendEmail = require('_helpers/send-email');
 const db = require('_helpers/db');
 const Role = require('_helpers/role');
-const accountService = require('accounts/account.service');s
+const accountService = require('accounts/account.service');
 
 module.exports = {
     authenticate,
-    //refreshToken,
     revokeToken,
-    //register,
-    //verifyEmail,
-    //forgotPassword,
-    //validateResetToken,
-    //resetPassword,
     getAll,
     getById,
     create,

@@ -29,7 +29,7 @@ function authorize(roles = []) {
             // authentication and authorization successful
             req.user.role = account.role;
             req.user.id = account.id;
-            console.log(account);
+            
             req.user.ownsToken = token => !!refreshTokens.find(x => x.token === token);
             next();
         }
