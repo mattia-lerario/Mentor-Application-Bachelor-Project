@@ -18,7 +18,8 @@ function Dashboard({ match }) {
 
                 <Switch>
                     <Route exact path={path} component={DashboardList} />
-                   
+                    <Route path={`${path}/companies`} component={Dashboard} />
+                    <Route path={`${path}/mentors`} component={Dashboard} />
                 </Switch>
 
             </section>

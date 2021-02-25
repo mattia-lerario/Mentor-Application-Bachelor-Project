@@ -48,7 +48,7 @@ function Update({ history }) {
                 alertService.success('Update successful', { keepAfterRouteChange: true });
                 history.push('.');
             })
-
+            
           .catch(error => {
                 setSubmitting(false);
                 alertService.error(error);
@@ -116,8 +116,11 @@ function Update({ history }) {
                     </div>
                     <BtnWrapper>
                         <button type="submit" disabled={isSubmitting} className="Btn MainBtn">
-                          
-                            {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>} 
+
+                            {
+                            /* Hva brukes classnames = spinner-border etc. til? Design eller programkode? 
+                            {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>} */
+                            isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>} 
                             Update
                         </button>
                         <button type="button" onClick={() => onDelete()} className="Btn DeleteBtn" style={{ width: '75px' }} disabled={isDeleting}>
