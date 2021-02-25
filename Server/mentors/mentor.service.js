@@ -85,7 +85,7 @@ async function verifyEmail({ token }) {
 
 async function forgotPassword({ email }, origin) {
     const mentorsModel = await db.Mentors.findOne({ email });
-
+}
 
 async function getAll() {
     const mentorsModels = await db.Mentor.find();
@@ -195,4 +195,3 @@ function basicDetails(mentorsModel) {
     return {id, mentorName, mentorNumber, tlfNumber,email,mentorDescription };
 }
 
-}
