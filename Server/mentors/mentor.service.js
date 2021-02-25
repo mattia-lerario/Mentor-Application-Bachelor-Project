@@ -5,17 +5,11 @@ const crypto = require("crypto");
 const sendEmail = require('_helpers/send-email');
 const db = require('_helpers/db');
 const Role = require('_helpers/role');
-const accountService = require('accounts/account.service');s
+const accountService = require('accounts/account.service');
 
 module.exports = {
     authenticate,
-    //refreshToken,
     revokeToken,
-    //register,
-    //verifyEmail,
-    //forgotPassword,
-    //validateResetToken,
-    //resetPassword,
     getAll,
     getById,
     create,
@@ -91,7 +85,7 @@ async function verifyEmail({ token }) {
 
 async function forgotPassword({ email }, origin) {
     const mentorsModel = await db.Mentors.findOne({ email });
-
+}
 
 async function getAll() {
     const mentorsModels = await db.Mentor.find();
@@ -201,4 +195,3 @@ function basicDetails(mentorsModel) {
     return {id, mentorName, mentorNumber, tlfNumber,email,mentorDescription };
 }
 
-}

@@ -11,25 +11,19 @@ const schema = new Schema({
     role: { type: String, required: true },
     verificationToken: String,
     verified: Date,
-
     resetToken: {
         token: String,
         expires: Date
     },
-
     passwordReset: Date,
-
     created: { type: Date, default: Date.now },
     updated: Date,
-    sync: Date.now(),
     companies: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Company"
       }
-    ]
-    ,
-
+    ],
     mentors: [
         {
           type: mongoose.Schema.Types.ObjectId,
