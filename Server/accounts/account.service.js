@@ -283,8 +283,8 @@ function randomTokenString() {
 }
 /////////////////////////////////////
 function basicDetails(account) {
-    const {  title, firstName, lastName, email, role, created, updated, isVerified } = account;
-    return { title, firstName, lastName, email, role, created, updated, isVerified };
+    const {  id, title, firstName, lastName, email, role, created, updated, isVerified } = account;
+    return { id, title, firstName, lastName, email, role, created, updated, isVerified };
 }
 
 async function sendVerificationEmail(account, origin) {

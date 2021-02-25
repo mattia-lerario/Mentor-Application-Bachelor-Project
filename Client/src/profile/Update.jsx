@@ -41,6 +41,8 @@ function Update({ history }) {
 
     function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
+        
+        console.log(user.id);
 
         accountService.update(user.id, fields)
 
