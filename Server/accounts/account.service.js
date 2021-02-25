@@ -19,6 +19,8 @@ module.exports = {
     getById,
     create,
     update,
+    addCompanyToAccount,
+    addMentorToAccount,
     delete: _delete
 };
 
@@ -187,21 +189,22 @@ async function create(params) {
     return basicDetails(account);
 }
 
-const addCompanyToAccount = function(accountId, company) {
+async function addCompanyToAccount(companyId,accountId) {
+    console.log(accountId,companyId);
   return db.Account.findByIdAndUpdate(
     accountId,
-    { $push: { companies: company._id } },
+    { $push: { companies: companyId } },
     { new: true, useFindAndModify: false }
   );
 };
 
-const addMentorToAccount = function(accountId, mentor) {
-  return db.Account.findByIdAndUpdate(
-    accountId,
-    { $push: { mentors: mentor._id } },
-    { new: true, useFindAndModify: false }
-  );
-};
+async function addMentorToAccount(mentorId, accountId) {
+    return db.Account.findByIdAndUpdate(
+      accountId,
+      { $push: { mentors: mentorId} },
+      { new: true, useFindAndModify: false }
+    );
+  };
 
 
 async function update(id, params) {
