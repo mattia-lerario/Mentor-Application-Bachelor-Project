@@ -7,8 +7,10 @@ const schema = new Schema({
     tlfNumber: {type : String},
     email: { type: String, required: true },
     salesRevenue: { type: String,required: true},
+    valuation: { type: String,required: true},
     companyDescription: { type: String, required: true },
     role: { type: String},
+    
     accounts: [
       {
         type: mongoose.Schema.Types.ObjectId,

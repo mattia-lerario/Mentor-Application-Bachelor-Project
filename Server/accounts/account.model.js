@@ -21,7 +21,7 @@ const schema = new Schema({
 
     created: { type: Date, default: Date.now },
     updated: Date,
-    
+    sync: Date.now();
     companies: [
       {
         type: mongoose.Schema.Types.ObjectId,
