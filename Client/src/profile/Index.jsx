@@ -11,18 +11,15 @@ function Profile({ match }) {
     const { path } = match;
     
     return (
-        <ProfileWrapper>
-            <article className="p-4">
-                <div className="Padding container">
-                        <Switch>
-                            <Route exact path={path} component={Details} />
-                            <Route path={`${path}/update`} component={Update} />
-                            <Route path={`${path}/updateCompanies`} component={UpdateCompanies} />
-                            <Route path={`${path}/updateMentor`} component={UpdateMentor} />
-                        </Switch>
-                </div>
+            <article className="p-4 container">
+                <h1>Your profile</h1>
+                <Switch>
+                    <Route exact path={path} component={Details} />
+                    <Route path={`${path}/update`} component={Update} />
+                    <Route path={`${path}/updateCompanies`} component={UpdateCompanies} />
+                    <Route path={`${path}/updateMentor`} component={UpdateMentor} />
+                </Switch>
             </article>
-        </ProfileWrapper>
 
     );
 }
