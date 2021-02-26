@@ -49,8 +49,7 @@ function DashboardList({ match }) {
                         Uten at hele mail-adressen står skrevet her. -Tora*/}
                         <p><AiFillPhone/></p>
                         <p><GrScheduleNew/></p>
-                        <p><AiOutlineNumber/>{company.phase}1</p> {/*Fungerer ikke, enda jeg har lagt det til i databasen også -Tora */}
-                        {/*Legge inn sortering etter phase-number? fra 1 til 5 el. -Tora */}
+                        <p><AiOutlineNumber/>{company.phase}</p>
                     </section>
                 </article>
                 )}              

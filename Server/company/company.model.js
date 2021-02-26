@@ -10,6 +10,7 @@ const schema = new Schema({
     valuation: { type: String,required: true},
     companyDescription: { type: String, required: true },
     role: { type: String},
+    phase : { type: String},
     
     accounts: [
       {
