@@ -89,14 +89,6 @@ async function create(params) {
 
 async function update(id, params) {
     const company = await getCompany(id);
-
-    // validate (if email was changed)
-   
-
-    // hash password if it was entered
-   
-
-    // copy params to account and save
     
     Object.assign(company, params);
     company.updated = Date.now();
