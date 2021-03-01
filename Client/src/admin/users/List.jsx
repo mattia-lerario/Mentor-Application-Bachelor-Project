@@ -24,14 +24,14 @@ function List({ match }) {
     }
 
     return (
-        <div>
+        <section>
             <h1>All Accounts</h1>
             <p>View of all Users in the System</p>
             <BtnWrapper>
                 <Link to={`${path}/add`} className="Btn MainBtn LinkBtn">Add User</Link>
                 <Link to={`${path}/addMentor`} className="Btn MainBtn LinkBtn">Add Mentor</Link>
             </BtnWrapper>
-            <table className="table table-striped">
+            <table className={'Table'}>
                 <thead>
                     <tr>
                         <th style={{ width: '30%' }}>Name</th>
@@ -48,13 +48,13 @@ function List({ match }) {
                             <td>{user.role}</td>
                             <td style={{ whiteSpace: 'nowrap' }}>
                                 <BtnWrapper>
-                                <Link to={`${path}/edit/${user.id}`} className="Btn MainBtn LinkBtn">Edit</Link>
-                                <Link onClick={() => deleteUser(user.id)} className="Btn DeleteBtn LinkBtn" style={{ width: '60px' }} disabled={user.isDeleting}>
-                                    {user.isDeleting 
-                                        ? <span></span>
-                                        : <span>Delete</span>
-                                    }
-                                </Link>
+                                    <Link to={`${path}/edit/${user.id}`} className="Btn MainBtn LinkBtn">Edit</Link>
+                                    <Link onClick={() => deleteUser(user.id)} className="Btn DeleteBtn LinkBtn" style={{ width: '60px' }} disabled={user.isDeleting}>
+                                        {user.isDeleting 
+                                            ? <span></span>
+                                            : <span>Delete</span>
+                                        }
+                                    </Link>
                                 </BtnWrapper>
                             </td>
                         </tr>
@@ -68,7 +68,7 @@ function List({ match }) {
                     }
                 </tbody>
             </table>
-        </div>
+        </section>
     );
 }
 
