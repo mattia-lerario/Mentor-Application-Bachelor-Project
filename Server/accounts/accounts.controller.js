@@ -16,9 +16,9 @@ router.post('/forgot-password', forgotPasswordSchema, forgotPassword);
 router.post('/validate-reset-token', validateResetTokenSchema, validateResetToken);
 router.post('/reset-password', resetPasswordSchema, resetPassword);
 router.get('/', authorize(Role.Admin), getAll);
-router.get('/:id', authorize(), getById);
+router.get('/:id', authorize(Role.Admin,Role.Company,Role.Mentor), getById);
 router.post('/', authorize(Role.Admin), createSchema, create);
-router.put('/:id', authorize(Role.Admin,Role.Mentor,Role.Company), updateSchema, update);
+router.put('/:id',authorize('Company'), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
 
 module.exports = router;
@@ -159,9 +159,9 @@ function getAll(req, res, next) {
 
 function getById(req, res, next) {
     // users can get their own account and admins can get any account
-    if (req.params.id !== req.user.id && req.user.role !== Role.Admin) {
+    /*if (req.params.id !== req.user.id && req.user.role !== Role.Admin) {
         return res.status(401).json({ message: 'Unauthorized' });
-    }
+    }*/
 
     accountService.getById(req.params.id)
         .then(account => account ? res.json(account) : res.sendStatus(404))
@@ -208,11 +208,11 @@ function updateSchema(req, res, next) {
 
 function update(req, res, next) {
     // users can update their own account and admins can update any account
-    if (req.params.id !== req.user.id && req.user.role !== Role.Admin) {
+    /*if (req.params.id !== req.user.id && req.user.role !== Role.Admin) {
         return res.status(401).json({ message: 'Unauthorized' });
-    }
+    }*/
     
-    accountService.update({...req.body, user:req.user})
+    accountService.update(req.params.id,req.body)
         .then(account => res.json(account))
         .catch(next);
 }
