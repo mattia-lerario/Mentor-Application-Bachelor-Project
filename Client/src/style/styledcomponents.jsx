@@ -142,6 +142,7 @@ export const ProfileWrapper = styled.div`
     margin-left: 10px;
 }
 `;
+
 /* ----FORM STYLE ----- */
 export const GlassForm = styled.div`
 

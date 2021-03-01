@@ -85,7 +85,8 @@ function createSchema(req, res, next) {
         tlfNumber: Joi.string().required(),
         email: Joi.string().email().required(),
         salesRevenue: Joi.string().required(),
-        companyDescription: Joi.string().required()
+        companyDescription: Joi.string().required(),
+        phase: Joi.string().required()
     });
     validateRequest(req, next, schema);
 }
@@ -104,7 +105,8 @@ function updateSchema(req, res, next) {
         tlfNumber: Joi.string().required(),
         email: Joi.string().email().required(),
         salesRevenue: Joi.string().required(),
-        companyDescription: Joi.string().required()
+        companyDescription: Joi.string().required(),
+        phase: Joi.string().required()
     };
 
     // only admins can update role

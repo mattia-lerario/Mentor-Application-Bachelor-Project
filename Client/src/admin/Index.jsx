@@ -8,14 +8,12 @@ function Admin({ match }) {
     const { path } = match;
 
     return (
-        <div className="p-4">
-            <div className="container">
+        <article className="p-4 container">
                 <Switch>
                     <Route exact path={path} component={Overview} />
                     <Route path={`${path}/users`} component={Users} />
                 </Switch>
-            </div>
-        </div>
+        </article>
     );
 }
 
