@@ -16,9 +16,9 @@ router.post('/forgot-password', forgotPasswordSchema, forgotPassword);
 router.post('/validate-reset-token', validateResetTokenSchema, validateResetToken);
 router.post('/reset-password', resetPasswordSchema, resetPassword);
 router.get('/', authorize(Role.Admin), getAll);
-router.get('/:id', authorize(), getById);
+router.get('/:id', authorize(Role.Admin,Role.Company,Role.Mentor), getById);
 router.post('/', authorize(Role.Admin), createSchema, create);
-router.put('/:id', authorize(Role.Admin,Role.Mentor,Role.Company), updateSchema, update);
+router.put('/:id',authorize(Role.Admin,Role.Company,Role.Mentor), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
 
 module.exports = router;
@@ -212,7 +212,7 @@ function update(req, res, next) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
     
-    accountService.update({...req.body, user:req.user})
+    accountService.update(req.params.id,req.body)
         .then(account => res.json(account))
         .catch(next);
 }

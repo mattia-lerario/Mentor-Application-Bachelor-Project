@@ -210,7 +210,7 @@ async function addMentorToAccount(mentorId, accountId) {
 async function update(id, params) {
 
     const account = await getAccount(id);
-    console.log(account);
+    
     console.log(getAccount(id));
 
     // validate (if email was changed)
@@ -240,9 +240,9 @@ async function _delete(id) {
 
 async function getAccount(id) {
 
-    console.log(isValidId(id));
+    console.log(id);
 
-    if (!db.isValidId(id)) throw 'Account not found';
+    //if (!db.isValidId(id)) throw 'Account not found';
 
     const account = await db.Account.findById(id);
 

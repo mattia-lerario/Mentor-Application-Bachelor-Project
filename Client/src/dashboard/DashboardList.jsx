@@ -18,6 +18,18 @@ function DashboardList({ match }) {
         companyService.getAll().then(x => setUsers(x));
     }, []);
 
+    
+    function email(){
+        window.open('mailto:{company.email}');
+    }
+    function phone(){
+        //ringe nr
+    }
+    function schedule(){
+        //til en annen side
+    }
+
+
     return (
         
         <ListWrapper>
@@ -26,7 +38,7 @@ function DashboardList({ match }) {
 
                 {company && company.map(company =>
 
-                <article className="card">
+                <article className="card" /*onClick={() => alert(company.companyName)}*/>
                     <section className="cardImg">
                         <img className="companyImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 
                         Tanken var å kunne legge ved et bilde som respresenterer bedriften når man legger de til i databasen. -Tora.*/}
@@ -42,13 +54,14 @@ function DashboardList({ match }) {
                     </section>
 
                     <section className="cardBottom">
-                        <p><HiOutlineMail/></p> 
                         {/*
                         <p id="cardMail"><HiOutlineMail/>: {company.email}</p> 
                         Evt bare ha mail-symbolet med en click funksjon for å sende mail til selskapet.
-                        Uten at hele mail-adressen står skrevet her. -Tora*/}
-                        <p><AiFillPhone/></p>
-                        <p><GrScheduleNew/></p>
+                        Uten at hele mail-adressen står skrevet her. -Tora
+                        */}
+                        <button onClick={email}><HiOutlineMail/></button>
+                        <button onClick={phone}><AiFillPhone/></button>
+                        <button onClick={schedule}><GrScheduleNew/></button>
                         <p><AiOutlineNumber/>{company.phase}</p>
                     </section>
                 </article>

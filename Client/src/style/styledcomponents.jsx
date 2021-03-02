@@ -225,7 +225,6 @@ export const ListWrapper = styled.div`
     background-position: center;
     background-size: 100%;
     height: 5rem;
-    border-radius: 0.1rem;
 }
 .cardMetric, .cardBottom{
     margin: 1rem;
@@ -237,10 +236,12 @@ export const ListWrapper = styled.div`
     border-top: solid #38507a;
     text-align: center;
 }
-.cardBottom p{
+.cardBottom p, .cardBottom button{
     display: inline;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+    border: 0;
+    background: none;
 }
 
   `;
