@@ -26,7 +26,7 @@ function DashboardList({ match }) {
 
                 {company && company.map(company =>
 
-                <article className="card">
+                <article className="card" onClick={() => alert(company.companyName)}>
                     <section className="cardImg">
                         <img className="companyImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 
                         Tanken var å kunne legge ved et bilde som respresenterer bedriften når man legger de til i databasen. -Tora.*/}

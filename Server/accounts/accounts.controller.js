@@ -18,7 +18,7 @@ router.post('/reset-password', resetPasswordSchema, resetPassword);
 router.get('/', authorize(Role.Admin), getAll);
 router.get('/:id', authorize(Role.Admin,Role.Company,Role.Mentor), getById);
 router.post('/', authorize(Role.Admin), createSchema, create);
-router.put('/:id',authorize('Company'), updateSchema, update);
+router.put('/:id',authorize(), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
 
 module.exports = router;
