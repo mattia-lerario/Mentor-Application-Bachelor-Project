@@ -30,7 +30,7 @@ function AssignedCompaniesList({ match }) {
         <ListWrapper>
                 <h2>Your companies</h2>
 
-                {company && company.map(company =>
+                {company && company.map(company => 
 
                 <article className="card" onClick={() => alert(company.companyName)}>
                     <section className="cardImg">

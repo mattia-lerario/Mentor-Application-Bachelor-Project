@@ -18,7 +18,7 @@ router.post('/reset-password', resetPasswordSchema, resetPassword);
 router.get('/', authorize(Role.Admin), getAll);
 router.get('/:id', authorize(Role.Admin,Role.Company,Role.Mentor), getById);
 router.post('/', authorize(Role.Admin), createSchema, create);
-router.put('/:id',authorize(), updateSchema, update);
+router.put('/:id',authorize(Role.Admin,Role.Company,Role.Mentor), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
 
 module.exports = router;
@@ -75,7 +75,7 @@ function revokeToken(req, res, next) {
 
     accountService.revokeToken({ token, ipAddress })
         .then(() => res.json({ message: 'Token revoked' }))
-        .catch(next);
+        .catch(next);Role.Admin,Role.Company,Role.Mentor
 }
 
 function registerSchema(req, res, next) {
