@@ -75,7 +75,7 @@ function revokeToken(req, res, next) {
 
     accountService.revokeToken({ token, ipAddress })
         .then(() => res.json({ message: 'Token revoked' }))
-        .catch(next);Role.Admin,Role.Company,Role.Mentor
+        .catch(next);
 }
 
 function registerSchema(req, res, next) {
