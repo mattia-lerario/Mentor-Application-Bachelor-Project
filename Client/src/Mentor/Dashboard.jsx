@@ -25,6 +25,17 @@ function AssignedCompaniesList({ match }) {
         mentorService.getAll().then(x => setUsers(x));
     }, []);
 
+    function email(){
+        //sende mail
+        <a href="mailto:company.email"></a>
+    }
+    function phone(){
+        //ringe nr
+    }
+    function schedule(){
+        //til en annen side
+    }
+
     return (
         
         <ListWrapper>
@@ -48,13 +59,14 @@ function AssignedCompaniesList({ match }) {
                     </section>
 
                     <section className="cardBottom">
-                        <p><HiOutlineMail/></p> 
+                        <button onClick={email}><HiOutlineMail/></button> 
                         {/*
                         <p id="cardMail"><HiOutlineMail/>: {company.email}</p> 
                         Evt bare ha mail-symbolet med en click funksjon for å sende mail til selskapet.
-                        Uten at hele mail-adressen står skrevet her. -Tora*/}
-                        <p><AiFillPhone/></p>
-                        <p><GrScheduleNew/></p>
+                        Uten at hele mail-adressen står skrevet her. -Tora
+                        */}
+                        <button onClick={phone}><AiFillPhone/></button>
+                        <button onClick={schedule}><GrScheduleNew/></button>
                         <p><AiOutlineNumber/>{company.phase}</p>
                     </section>
                 </article>
