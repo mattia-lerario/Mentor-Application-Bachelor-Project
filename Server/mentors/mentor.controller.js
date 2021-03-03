@@ -11,8 +11,8 @@ router.post('/authenticate', authenticateSchema, authenticate);
 router.post('/revoke-token', authorize(), revokeTokenSchema, revokeToken);
 router.get('/',authorize(), getAll);
 router.get('/:id', authorize(), getById);
-router.post('/', authorize(Role.mentor), createSchema, create);
-router.put('/:id', authorize(), updateSchema, update);
+router.post('/', authorize(), createSchema, create);
+router.put('/:id', authorize(Role.Mentor,Role.Admin), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
 
 module.exports = router;

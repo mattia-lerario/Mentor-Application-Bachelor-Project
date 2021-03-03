@@ -15,10 +15,10 @@ router.post('/verify-email', verifyEmailSchema, verifyEmail);
 router.post('/forgot-password', forgotPasswordSchema, forgotPassword);
 router.post('/validate-reset-token', validateResetTokenSchema, validateResetToken);
 router.post('/reset-password', resetPasswordSchema, resetPassword);
-router.get('/', authorize(Role.Admin), getAll);
-router.get('/:id', authorize(Role.Admin,Role.Company,Role.Mentor), getById);
+router.get('/', authorize(), getAll);
+router.get('/:id', authorize(), getById);
 router.post('/', authorize(Role.Admin), createSchema, create);
-router.put('/:id',authorize(Role.Admin,Role.Company,Role.Mentor), updateSchema, update);
+router.put('/:id',authorize(), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
 
 module.exports = router;
