@@ -10,6 +10,7 @@ function Overview({ match }) {
             <h1>Admin</h1>
             <p>This section can only be accessed by administrators.</p>
             <button className="Btn MainBtn"><Link to={`${path}/users`} className="LinkBtn">Manage Users</Link></button>
+            <button className="Btn MainBtn"><Link to={`${path}/companies`} className="LinkBtn">Manage companies</Link></button>
         </BtnWrapper>
     );
 }

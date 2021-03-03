@@ -11,8 +11,11 @@ function Users({ match }) {
     return (
         <Switch>
             <Route exact path={path} component={List} />
+
             <Route path={`${path}/add`} component={AddEdit} />
+
             <Route path={`${path}/edit/:id`} component={AddEdit} />
+
         </Switch>
     );
 }
