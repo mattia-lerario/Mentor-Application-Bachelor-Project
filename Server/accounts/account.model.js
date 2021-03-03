@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
+
 const schema = new Schema({
 
     email: { type: String, unique: true, required: true },
@@ -37,6 +39,7 @@ const schema = new Schema({
 schema.virtual('isVerified').get(function () {
     return !!(this.verified || this.passwordReset);
 });
+
 
 schema.set('toJSON', {
     virtuals: true,

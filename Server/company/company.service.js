@@ -19,6 +19,7 @@ module.exports = {
     getAll,
     getById,
     create,
+    addMentorToCompany,
     update,
     delete: _delete
 };
@@ -82,10 +83,17 @@ async function create(params) {
     
     // save account
     await company.save();
-    console.log(company.id);
     accountService.addCompanyToAccount(company.id, company.accountId);
     return basicDetails(company);
 }
+
+async function addMentorToCompany(mentorId,companyId) {
+  return db.Company.findByIdAndUpdate(
+    companyId,
+    { $push: { leadMentor: mentorId } },
+    { new: true, useFindAndModify: false }
+  );
+};
 
 
 async function update(id, params) {

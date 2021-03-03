@@ -11,8 +11,8 @@ router.post('/authenticate', authenticateSchema, authenticate);
 router.post('/revoke-token', authorize(), revokeTokenSchema, revokeToken);
 router.get('/',authorize(), getAll);
 router.get('/:id', authorize(), getById);
-router.post('/', authorize(Role.mentor), createSchema, create);
-router.put('/:id', authorize(), updateSchema, update);
+router.post('/', authorize(), createSchema, create);
+router.put('/:id', authorize(Role.Mentor,Role.Admin), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
 
 module.exports = router;
@@ -200,8 +200,8 @@ function update(req, res, next) {
     if (req.params.id !== req.user.id && req.user.role !== Role.Admin) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
-
-    mentorService.update({...req.body, user:req.user})
+    mentorService.addCompanyToMentor("602bfb34103ab7e94fb2b130",req.params.id);
+    mentorService.update(req.params.id,req.body)
         .then(mentor => res.json(mentor))
         .catch(next);
 }

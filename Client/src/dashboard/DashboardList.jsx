@@ -18,10 +18,8 @@ function DashboardList({ match }) {
         companyService.getAll().then(x => setUsers(x));
     }, []);
 
-    
-    function email(){
-        window.open('mailto:{company.email}');
-    }
+  
+  
     function phone(){
         //ringe nr
     }
@@ -59,7 +57,7 @@ function DashboardList({ match }) {
                         Evt bare ha mail-symbolet med en click funksjon for å sende mail til selskapet.
                         Uten at hele mail-adressen står skrevet her. -Tora
                         */}
-                        <button onClick={email}><HiOutlineMail/></button>
+                        <button><HiOutlineMail/></button>
                         <button onClick={phone}><AiFillPhone/></button>
                         <button onClick={schedule}><GrScheduleNew/></button>
                         <p><AiOutlineNumber/>{company.phase}</p>

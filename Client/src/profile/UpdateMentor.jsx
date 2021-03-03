@@ -10,7 +10,7 @@ function UpdateMentor({ history, match }) {
     const isAddMode = !id;
     const user = accountService.userValue;
     const company = companyService.companyValue;
-    const mentor = mentorService.companyValue;
+    const mentor = mentorService.mentorValue;
 
     const initialValues = {
         mentorName: '',
@@ -36,8 +36,36 @@ function UpdateMentor({ history, match }) {
 
     function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
-        console.log(fields);
-        mentorService.create(fields)
+
+        console.log(isAddMode);
+
+        if (isAddMode) {
+            createMentor(fields, setSubmitting);
+        } 
+        
+        else {
+            updateMentor(id, fields, setSubmitting);
+            
+        }
+        
+        }
+
+    function createMentor(fields, setSubmitting){
+            mentorService.create(fields)
+            .then(() => {
+                alertService.success('Create successful', { keepAfterRouteChange: true });
+                history.push('.');
+            })
+            .catch(error => {
+                setSubmitting(false);
+                alertService.error(error);
+                console.log(error);
+            });
+
+
+        }
+        function updateMentor(id,fields,setSubmitting){
+            mentorService.update(id,fields)    
             .then(() => {
                 alertService.success('Update successful', { keepAfterRouteChange: true });
                 history.push('.');
@@ -45,8 +73,11 @@ function UpdateMentor({ history, match }) {
             .catch(error => {
                 setSubmitting(false);
                 alertService.error(error);
+                console.log(error);
             });
-    }
+
+        }
+
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
             {({ errors, touched, isSubmitting, setFieldValue }) => {
