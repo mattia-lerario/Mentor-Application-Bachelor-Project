@@ -210,7 +210,7 @@ async function update(id, params) {
 
     const account = await getAccount(id);
     
-    console.log(getAccount(id));
+   
 
     // validate (if email was changed)
     if (params.email && account.email !== params.email && await db.Account.findOne({ email: params.email })) {
@@ -239,7 +239,7 @@ async function _delete(id) {
 
 async function getAccount(id) {
 
-    console.log(id);
+  
 
     //if (!db.isValidId(id)) throw 'Account not found';
 

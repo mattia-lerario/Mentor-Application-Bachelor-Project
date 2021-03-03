@@ -108,7 +108,6 @@ async function create(params) {
 
     // save mentorsModel
     await mentorsModel.save();
-    console.log(mentorsModel.id);
     accountService.addMentorToAccount(mentorsModel.id, mentorsModel.accountId);
     addCompanyToMentor("6036559fc770b589ce34db78",mentorsModel.id);
     return basicDetails(mentorsModel);
