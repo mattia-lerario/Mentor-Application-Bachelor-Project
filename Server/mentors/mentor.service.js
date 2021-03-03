@@ -13,6 +13,7 @@ module.exports = {
     getAll,
     getById,
     create,
+    addCompanyToMentor,
     update,
     delete: _delete
 };
@@ -109,17 +110,18 @@ async function create(params) {
     await mentorsModel.save();
     console.log(mentorsModel.id);
     accountService.addMentorToAccount(mentorsModel.id, mentorsModel.accountId);
+    addCompanyToMentor("6036559fc770b589ce34db78",mentorsModel.id);
     return basicDetails(mentorsModel);
    
 }   
 
-/*const addAccountToMentor = function(mentorId, account) {
+async function addCompanyToMentor(companyId,mentorId) {
     return db.Mentor.findByIdAndUpdate(
       mentorId,
-      { $push: { accounts: account._id } },
+      { $push: { companies: companyId } },
       { new: true, useFindAndModify: false }
     );
-  };*/
+  };
 
 async function update(id, params) {
     const mentorsModel = await getmentorsModel(id);

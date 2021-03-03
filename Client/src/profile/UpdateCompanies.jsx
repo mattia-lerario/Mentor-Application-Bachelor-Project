@@ -48,6 +48,7 @@ function UpdateCompanies({ history, match }) {
         
         else {
             updateCompany(id, fields, setSubmitting);
+            
         }
         
         }
@@ -67,6 +68,8 @@ function UpdateCompanies({ history, match }) {
 
 
         }
+
+       
 
         function updateCompany(id,fields,setSubmitting){
             companyService.update(id,fields)    

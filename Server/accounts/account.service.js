@@ -190,7 +190,6 @@ async function create(params) {
 }
 
 async function addCompanyToAccount(companyId,accountId) {
-    console.log(accountId,companyId);
   return db.Account.findByIdAndUpdate(
     accountId,
     { $push: { companies: companyId } },
