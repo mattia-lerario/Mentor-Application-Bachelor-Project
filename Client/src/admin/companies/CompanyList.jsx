@@ -7,20 +7,20 @@ import { BtnWrapper } from '../../style/styledcomponents';
 
 function CompanyList({ match }) {
     const { path } = match;
-    const [companies, setcompaniess] = useState(null);
+    const [companies, setCompanies] = useState(null);
 
     useEffect(() => {
-        companyService.getAll().then(x => setcompaniess(x));
+        companyService.getAll().then(x => setCompanies(x));
     }, []);
 
     function deleteCompany(id) {
-        setcompaniess(companies.map(x => {
+        setCompanies(companies.map(x => {
             if (x.id === id) { x.isDeleting = true; }
             return x;
         }));
         
         companyService.delete(id).then(() => {
-            setcompaniess(companies => companies.filter(x => x.id !== id));
+            setCompanies(companies => companies.filter(x => x.id !== id));
         });
     }
 
@@ -45,9 +45,9 @@ function CompanyList({ match }) {
                             <td>{companies.email}</td>
                             <td>Mentor</td>
                             <td style={{ whiteSpace: 'nowrap' }}>
-                            <BtnWrapper>
-                                    <Link to={`${path}/edit/${companies.id}`} className="Btn MainBtn LinkBtn">Details</Link>
-                                    <Link to={`${path}/addMentor/${companies.id}`} className="Btn MainBtn LinkBtn">Add Mentor</Link>
+                            <BtnWrapper>                                   
+                                    
+                                    <Link to={`${path}/addMentor/${companies.id}`} className="Btn MainBtn LinkBtn">Edit</Link>
                                     <Link onClick={() => deleteCompany(companies.id)} className="Btn DeleteBtn LinkBtn" style={{ width: '60px' }} disabled={companies.isDeleting}>
                                         {companies.isDeleting 
                                             ? <span></span>

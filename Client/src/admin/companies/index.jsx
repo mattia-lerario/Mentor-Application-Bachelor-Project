@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import { CompanyList } from './CompanyList';
-import { AddMentorToCompany } from './AddMentorToCompanies';
+import { AddEditMentor } from './AddMentorToCompanies';
 
 
 function Companies({ match }) {
@@ -11,7 +11,11 @@ function Companies({ match }) {
     return (
         <Switch>
             <Route exact path={path} component={CompanyList} />
-            <Route path={`${path}/addMentor/:id`} component={AddMentorToCompany} />
+
+            <Route path={`${path}/editMentor/:id`} component={AddEditMentor} />
+
+            <Route path={`${path}/addMentor/:id`} component={AddEditMentor} />
+
         </Switch>
     );
 }

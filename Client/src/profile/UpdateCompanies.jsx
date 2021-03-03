@@ -18,7 +18,8 @@ function UpdateCompanies({ history, match }) {
         tlfNumber: '',
         email: '',
         salesRevenue: '',
-        companyDescription: ''
+        companyDescription: '',
+        
     }
 
     const validationSchema = Yup.object().shape({
@@ -135,6 +136,8 @@ function UpdateCompanies({ history, match }) {
                                 <Field component="textarea" name="companyDescription" type="text" className={'form-control' + (errors.companyDescription && touched.companyDescription ? ' is-invalid' : '')} />
                                 <ErrorMessage name="companyDescription" component="div" className="invalid-feedback" />
                             </div>
+
+
                         </div>
                         
                         <div className="form-group">
@@ -144,6 +147,7 @@ function UpdateCompanies({ history, match }) {
                             </button>
                             <Link to={isAddMode ? '.' : '..'} className="btn btn-link">Cancel</Link>
                         </div>
+                        
                        
                     </Form>
                 );

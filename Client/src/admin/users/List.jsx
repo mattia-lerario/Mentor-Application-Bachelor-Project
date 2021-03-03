@@ -29,7 +29,6 @@ function List({ match }) {
             <p>View of all Users in the System</p>
             <BtnWrapper>
                 <Link to={`${path}/add`} className="Btn MainBtn LinkBtn">Add User</Link>
-                <Link to={`${path}/addMentor`} className="Btn MainBtn LinkBtn">Add Mentor</Link>
             </BtnWrapper>
             <table className={'Table'}>
                 <thead>
