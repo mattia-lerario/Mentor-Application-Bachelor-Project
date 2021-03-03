@@ -1,13 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import { companyService, alertService } from '@/_services';
+import { companyService, alertService, mentorService } from '@/_services';
 import { BtnWrapper } from '../../style/styledcomponents';
 import { FormWrapper } from '../../style/styledcomponents';
 
 function AddEditMentor({ history, match }) {
+
+    const [mentors, setMentors] = useState(null);
+
+    useEffect(() => {
+        mentorService.getAll().then(x => setMentors(x));
+    }, []);
 
     const { id } = match.params;
     const isAddMode = !id;
@@ -18,7 +24,7 @@ function AddEditMentor({ history, match }) {
         tlfNumber: '',
         email: '',
         salesRevenue: '',
-        companyDescription: ''
+        companyDescription: '',
     }
 
     const validationSchema = Yup.object().shape({
@@ -34,22 +40,18 @@ function AddEditMentor({ history, match }) {
         salesRevenue: Yup.string()
             .required('Sales Revenue is required'),
         companyDescription: Yup.string()
-            .required("Description of company is Required")
+            .required("Description of company is Required"),
+        
     });
 
     function onSubmit(fields, { setStatus, setSubmitting }) {
+
         setStatus();
 
-        console.log(isAddMode);
+        updateCompany(id, fields, setSubmitting);
 
-        if(!isAddMode) {
-            updateCompany(id, fields, setSubmitting);
         }
-        else{
-            alertService.error("fuck");
-        }
-        
-        }
+
     
         function updateCompany(id,fields,setSubmitting){
             companyService.update(id,fields)    
@@ -62,23 +64,39 @@ function AddEditMentor({ history, match }) {
                 alertService.error(error);
                 console.log(error);
             });
-
         }        
+        
+        /*useEffect(() => {
+           
+            async function fetchMentors(){
+                const mentorArray = await mentorService.getAll();
+                //const mentorArray1 = ["hei", "JAn", "Jørn"];
+                setMentors(mentorArray);
+            }
+
+             fetchMentors();
+
+        }, []);*/
+        
 
         return (
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                 {({ errors, touched, isSubmitting, setFieldValue }) => {
-                    useEffect(() => {
-                        if (!isAddMode) {
+                    useEffect(() => {                        
                             // get user and set form fields
                             companyService.getById(id).then(company => {
                                 const fields = ['companyName', 'companyNumber', 'tlfNumber', 'email', 'salesRevenue', 'companyDescription'];
                                 fields.forEach(field => setFieldValue(field, company[field], false));
-                            });
-                        }
+                            });                      
                     }, []);
-    
                     
+                    /*useEffect(() => {                        
+                        // get mentor and set form fields
+                        mentorService.getAll().then(mentor => {
+                            const field = ['mentor'];
+                            field.forEach(field => setFieldValue(field, mentor[field], false));
+                        });                      
+                }, []);*/
     
                     return (
                         <Form>
@@ -121,15 +139,18 @@ function AddEditMentor({ history, match }) {
 
                                 <div>
                                     <label>Assign Mentor</label>
-                                    
-                                    <Field name="title" as="select" className={'FormGroups' + (errors.title && touched.title ? ' is-invalid' : '')}>
-                                        <option value=""></option>
-                                        <option value="Mr">Mr</option>
-                                        <option value="Mrs">Mrs</option>
-                                        <option value="Miss">Miss</option>
-                                        <option value="Ms">Ms</option>
+
+                                    <Field name="mentor" as="select" className={'FormGroups' + (errors.mentor && touched.mentor ? ' is-invalid' : '')}>
+
+                                        {/*mentors.map((mentor, index) => 
+                                        <option key={index} value= {mentor._id}>{mentor.mentorName}</option>)*/}
+
+                                {mentors && mentors.map(mentor =>
+                                    <option key={mentor.id} value = {mentor.id}>{mentor.mentorName}</option>)}
+     
                                     </Field>
-                                    <ErrorMessage name="title" component="div" className="InvalidFeedback" />
+                                    <ErrorMessage name="mentor" component="div" className="InvalidFeedback" />
+
                                 </div>
     
     

@@ -45,7 +45,7 @@ function CompanyList({ match }) {
                             <td>{companies.email}</td>
                             <td>Mentor</td>
                             <td style={{ whiteSpace: 'nowrap' }}>
-                            <BtnWrapper>                                   
+                            <BtnWrapper>                                       
                                     
                                     <Link to={`${path}/addMentor/${companies.id}`} className="Btn MainBtn LinkBtn">Edit</Link>
                                     <Link onClick={() => deleteCompany(companies.id)} className="Btn DeleteBtn LinkBtn" style={{ width: '60px' }} disabled={companies.isDeleting}>
