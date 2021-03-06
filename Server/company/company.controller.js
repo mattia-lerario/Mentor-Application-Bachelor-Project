@@ -5,14 +5,15 @@ const validateRequest = require('_middleware/validate-request');
 const authorize = require('_middleware/authorize')
 const Role = require('_helpers/role');
 const companyService = require('./company.service');
+const { addMentorToCompany } = require('./company.service');
 
 // routes
 router.post('/authenticate', authenticateSchema, authenticate);
 router.post('/revoke-token', authorize(), revokeTokenSchema, revokeToken);
 router.get('/',authorize(), getAll);
 router.get('/:id', authorize(), getById);
-router.post('/', authorize(Role.Company,Role.Admin,Role.Mentor), createSchema, create);
-router.put('/:id', authorize(Role.Company,Role.Admin,Role.Mentor), updateSchema, update);
+router.post('/', authorize(), createSchema, create);
+router.put('/:id', authorize(), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
 
 module.exports = router;    
@@ -109,9 +110,9 @@ function updateSchema(req, res, next) {
         phase: Joi.string().required()
     };
 
-    // only admins can update role
+    // only admins can update mentor
     if (req.user.role === Role.Admin) {
-        schemaRules.role = Joi.string().valid(Role.Admin, Role.User).empty('');
+        schemaRules.mentor = Joi.string();
     }
 
     const schema = Joi.object(schemaRules);
@@ -119,8 +120,7 @@ function updateSchema(req, res, next) {
 }
 
 function update(req,res,next) {
-    // users can update their own account and admins can update any account
-    
+    companyService.addMentorToCompany(req.body.mentor,req.params.id);
     companyService.update(req.params.id,req.body)
         .then(company => res.json(company))
         .catch(next);

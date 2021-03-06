@@ -6,6 +6,7 @@ const sendEmail = require('_helpers/send-email');
 const db = require('_helpers/db');
 const Role = require('_helpers/role');
 const accountService = require('accounts/account.service');
+const { addCompanyToMentor } = require('../mentors/mentor.service');
 
 module.exports = {
     authenticate,
@@ -88,6 +89,7 @@ async function create(params) {
 }
 
 async function addMentorToCompany(mentorId,companyId) {
+    console.log(mentorId,companyId)
   return db.Company.findByIdAndUpdate(
     companyId,
     { $push: { leadMentor: mentorId } },
@@ -97,16 +99,16 @@ async function addMentorToCompany(mentorId,companyId) {
 
 
 async function update(id, params) {
+    console.log(params)
     const company = await getCompany(id);
 
     // validate (if email was changed)
    
 
     // hash password if it was entered
-   
+    
 
     // copy params to account and save
-    
     Object.assign(company, params);
     company.updated = Date.now();
     await company.save();
@@ -157,8 +159,8 @@ function randomTokenString() {
 }
 
 function basicDetails(company) {
-    const { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription, phase} = company;
-    return { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription, phase };
+    const { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription, phase,mentor} = company;
+    return { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription, phase,mentor };
 }
 
 

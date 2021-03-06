@@ -18,11 +18,12 @@ const schema = new Schema({
         ref: "Account"
       }
     ],
-    leadMentor:
+    leadMentor:[
         {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Mentor" 
-        }    
+        }
+        ]
 });
 
 schema.virtual('isVerified').get(function () {

@@ -10,6 +10,7 @@ import { FormWrapper } from '../../style/styledcomponents';
 function AddEditMentor({ history, match }) {
 
     const [mentors, setMentors] = useState(null);
+    const company = companyService.userValue;
 
     useEffect(() => {
         mentorService.getAll().then(x => setMentors(x));
@@ -25,6 +26,7 @@ function AddEditMentor({ history, match }) {
         email: '',
         salesRevenue: '',
         companyDescription: '',
+        mentor: '',
     }
 
     const validationSchema = Yup.object().shape({
@@ -41,20 +43,15 @@ function AddEditMentor({ history, match }) {
             .required('Sales Revenue is required'),
         companyDescription: Yup.string()
             .required("Description of company is Required"),
+        phase: Yup.string()
+            .required("Description of company is Required"),
+        mentor: Yup.string(),
         
     });
 
     function onSubmit(fields, { setStatus, setSubmitting }) {
-
         setStatus();
-
-        updateCompany(id, fields, setSubmitting);
-
-        }
-
-    
-        function updateCompany(id,fields,setSubmitting){
-            companyService.update(id,fields)    
+        companyService.update(id,fields)      
             .then(() => {
                 alertService.success('Update successful', { keepAfterRouteChange: true });
                 history.push('.');
@@ -64,7 +61,7 @@ function AddEditMentor({ history, match }) {
                 alertService.error(error);
                 console.log(error);
             });
-        }        
+    }  
         
         /*useEffect(() => {
            
@@ -85,7 +82,7 @@ function AddEditMentor({ history, match }) {
                     useEffect(() => {                        
                             // get user and set form fields
                             companyService.getById(id).then(company => {
-                                const fields = ['companyName', 'companyNumber', 'tlfNumber', 'email', 'salesRevenue', 'companyDescription'];
+                                const fields = ['companyName', 'companyNumber', 'tlfNumber', 'email', 'salesRevenue', 'companyDescription','phase','mentor'];
                                 fields.forEach(field => setFieldValue(field, company[field], false));
                             });                      
                     }, []);
@@ -136,8 +133,14 @@ function AddEditMentor({ history, match }) {
                                     <Field component="textarea" name="companyDescription" type="text" className={'form-control' + (errors.companyDescription && touched.companyDescription ? ' is-invalid' : '')} />
                                     <ErrorMessage name="companyDescription" component="div" className="invalid-feedback" />
                                 </div>
+                                <div className="form-group col-7">
+                                    <label>Quarter</label>
+                                    <Field name="phase" type="text" className={'form-control' + (errors.phase && touched.phase ? ' is-invalid' : '')} />
+                                    <ErrorMessage name="phase" component="div" className="invalid-feedback" />
+                                </div>
+                                
 
-                                <div>
+                                <div className="form-group col-7">
                                     <label>Assign Mentor</label>
 
                                     <Field name="mentor" as="select" className={'FormGroups' + (errors.mentor && touched.mentor ? ' is-invalid' : '')}>
@@ -146,7 +149,7 @@ function AddEditMentor({ history, match }) {
                                         <option key={index} value= {mentor._id}>{mentor.mentorName}</option>)*/}
 
                                 {mentors && mentors.map(mentor =>
-                                    <option key={mentor.id} value = {mentor.id}>{mentor.mentorName}</option>)}
+                                    <option key={mentor.id} value ={mentor.id}>{mentor.mentorName}</option>)}
      
                                     </Field>
                                     <ErrorMessage name="mentor" component="div" className="InvalidFeedback" />
