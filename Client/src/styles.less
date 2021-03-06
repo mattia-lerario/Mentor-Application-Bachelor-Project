@@ -5,9 +5,14 @@
   box-sizing: border-box;
 }
 
+.container {
+  overflow-y: scroll;
+  height: 100%;
+}
+
 .app-container {
   display: flex;
-  min-height: 80vh;
+  height: 80vh;
   width: 70vw;
   border-radius: 2rem;
   backdrop-filter: blur(10px);
@@ -19,7 +24,11 @@ a {
 
 body {
   min-height: 100vh;
-  background: linear-gradient(to right top, #5072ae,	#38717a); // #65dfc9 #6d7b93
+  background: linear-gradient(
+    to right top,
+    #5072ae,
+    #38717a
+  ); // #65dfc9 #6d7b93
   background-image: url(https://images.hdqwalls.com/download/forest-mountains-3v-2880x1800.jpg);
   display: flex;
   align-items: center;
@@ -36,7 +45,6 @@ body {
   border-radius: 2rem;
 }
 
-
 //---BUTTONS---
 .Btn {
   background-color: #273855;
@@ -46,39 +54,38 @@ body {
   margin: 0.2rem;
   padding: 0.2rem;
 }
-.CancelBtn{
+.CancelBtn {
   margin: 1rem;
   color: black;
 }
-.MainBtn{
+.MainBtn {
   border: 1px solid #182234;
 }
 //---Red Delete Button
-.DeleteBtn{
+.DeleteBtn {
   background-color: #800000;
   border: 1px solid #4d0000;
 }
 //---lighter color when hovered
-.MainBtn:hover{
+.MainBtn:hover {
   background-color: #38507a;
 }
-.DeleteBtn:hover{
+.DeleteBtn:hover {
   background-color: #b30000;
 }
 //---makes the link-text white(because of link-tag)
-.LinkBtn{
-  color:white;
+.LinkBtn {
+  color: white;
 }
 //---removes underscore on link when hovered(because of link-tag)
-.LinkBtn:hover{
+.LinkBtn:hover {
   text-decoration: none;
 }
 
-.Table{
+.Table {
   margin-top: 1rem;
-
 }
 
-.Table thead{
+.Table thead {
   background-color: #8c8c8c;
 }
