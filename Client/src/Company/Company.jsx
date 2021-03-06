@@ -20,7 +20,7 @@ function CompanyList({ match }) {
 
                 {company && company.map(company =>
 
-                <div className="card">
+                <div className="card" key={company.id}>
                     <p className="companyName">{company.companyName}</p>
                     <p>Sales Revenue: {company.salesRevenue}</p>
                     <p>Company number: {company.companyNumber}</p>
