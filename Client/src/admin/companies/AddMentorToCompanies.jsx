@@ -135,7 +135,16 @@ function AddEditMentor({ history, match }) {
                                 </div>
                                 <div className="form-group col-7">
                                     <label>Quarter</label>
-                                    <Field name="phase" type="text" className={'form-control' + (errors.phase && touched.phase ? ' is-invalid' : '')} />
+
+                                    <Field name="phase" as="select" className={'form-control' + (errors.phase && touched.phase ? ' is-invalid' : '')}>
+                                    <option value="">Unknown</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                       
+                                    </Field>
+
                                     <ErrorMessage name="phase" component="div" className="invalid-feedback" />
                                 </div>
                                 
