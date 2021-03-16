@@ -13,14 +13,15 @@ function CompanyList({ match }) {
         companyService.getAll().then(x => setUsers(x));
     }, []);
 
-    return (        
+    return (   
 
-        <ListWrapper>
+    <ListWrapper>
 
 <button className="Btn MainBtn"><Link to={`${path}/updateWorkingHoursMentor`} className="LinkBtn">Update houers</Link></button>
 
+            
             <div>
-                {company && company.map(company => 
+                {company && company.filter(company => company.companyName.includes("e")).map(company => 
 
                 <div className="card" key={company.id}>
                     <p className="companyName">{company.companyName}</p>
