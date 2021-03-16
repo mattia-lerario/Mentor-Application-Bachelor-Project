@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-import {ListWrapper} from '../style/styledcomponents';
+import {ListWrapper, BtnWrapper} from '../style/styledcomponents';
 import { companyService } from '@/_services';
 import {HiOutlineMail} from 'react-icons/hi';
 
@@ -13,11 +13,10 @@ function CompanyList({ match }) {
         companyService.getAll().then(x => setUsers(x));
     }, []);
 
+
     return (
         <ListWrapper>
             <div>
-                <h1>All Companies</h1>
-
                 {company && company.map(company =>
 
                 <div className="card" key={company.id}>
@@ -25,6 +24,7 @@ function CompanyList({ match }) {
                     <p>Sales Revenue: {company.salesRevenue}</p>
                     <p>Company number: {company.companyNumber}</p>
                     <p><HiOutlineMail/>: {company.email}</p>
+                   
                 </div>
                 )}
 

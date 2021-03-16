@@ -18,7 +18,8 @@ function AssignedCompaniesList({ match }) {
     const [mentor, setUsers] = useState(null);
 
     useEffect(() => {
-        companyService.getAll().then(x => setUsers(x));
+        companyService.getAll().then(x => 
+            setUsers(x));
     }, []);
 
     useEffect(() => {

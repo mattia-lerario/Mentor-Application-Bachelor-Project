@@ -6,6 +6,7 @@ import { Details } from './Details';
 import { Update } from './Update';
 import { UpdateCompanies } from './UpdateCompanies';
 import { UpdateMentor } from './UpdateMentor';
+import { UpdateWorkingHouersMentor } from './UpdateWorkingHoursMentor';
 
 function Profile({ match }) {
     const { path } = match;
@@ -18,6 +19,7 @@ function Profile({ match }) {
                     <Route path={`${path}/update`} component={Update} />
                     <Route path={`${path}/updateCompanies`} component={UpdateCompanies} />
                     <Route path={`${path}/updateMentor`} component={UpdateMentor} />
+                    <Route path={`${path}/updateWorkingHoursMentor`} component={UpdateWorkingHouersMentor} />
                 </Switch>
             </article>
 

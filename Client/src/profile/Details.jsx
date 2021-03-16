@@ -46,6 +46,10 @@ function Details({ match }) {
                 <button className="Btn MainBtn"><Link to={`${path}/update`} className="LinkBtn">Update Account</Link></button>
                 
                 <button className="Btn MainBtn"><Link to={`${path}/updateMentor`} className="LinkBtn">Update {user.role} Information</Link></button>
+
+                <button className="Btn MainBtn"><Link to={`${path}/updateWorkingHoursMentor`} className="LinkBtn">Update houers</Link></button>
+
+
             </section>
         
         </BtnWrapper>
