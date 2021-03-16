@@ -128,6 +128,8 @@ function update(req,res,next) {
 }
 
 
+
+
 function _delete(req, res, next) {
     // users can delete their own account and admins can delete any account
     if (req.params.id !== req.user.id && req.user.role !== Role.Admin) {

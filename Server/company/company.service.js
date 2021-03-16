@@ -98,6 +98,8 @@ async function addMentorToCompany(mentorId,companyId) {
 };
 
 
+
+
 async function update(id, params) {
     console.log(params)
     const company = await getCompany(id);
@@ -156,6 +158,20 @@ function generateRefreshToken(company, ipAddress) {
 
 function randomTokenString() {
     return crypto.randomBytes(40).toString('hex');
+}
+
+function generateCompanyRanking(company, fields) {
+    // create a powerRanking for a Company.
+    return new db.PowerRanking({
+        company: company.id,
+       //add data here.
+    });
+}
+
+async function getPowerRanking(company) {
+    const powerRanking = await db.PowerRanking.findOne({ company }).populate('company');
+    
+    return powerRanking;
 }
 
 function basicDetails(company) {

@@ -105,11 +105,12 @@ async function create(params) {
 
      //Connect Account to Mentor
     mentorsModel.accounts = [params.user.id];
-
+    
     // save mentorsModel
     await mentorsModel.save();
+    
     accountService.addMentorToAccount(mentorsModel.id, mentorsModel.accountId);
-    addCompanyToMentor("6036559fc770b589ce34db78",mentorsModel.id);
+    
     return basicDetails(mentorsModel);
    
 }   
