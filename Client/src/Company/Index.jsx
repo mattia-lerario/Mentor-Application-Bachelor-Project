@@ -12,17 +12,18 @@ function Company({ match }) {
     const { path } = match;
     
     return (
-        <div className="p-4">
-            <div className="container">
+        <article className="p-4">
+            <section className="container">
                 <h1>Hi {user.lastName}</h1>
                 <p>Information about your company.</p>
 
                 <Switch>
                     <Route exact path={path} component={CompanyList} />
                     <Route path={`${path}/companies`} component={Company} />
+                    <Route path={`${path}/mentors`} component={Company} />
                 </Switch>
-            </div>
-        </div>
+            </section>
+        </article>
     );
 }
 

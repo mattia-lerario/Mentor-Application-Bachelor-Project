@@ -10,6 +10,7 @@ import { mentorService } from '@/_services';
 import {HiOutlineMail} from 'react-icons/hi';
 import {AiFillPhone, AiOutlineNumber} from 'react-icons/ai';
 import {GrScheduleNew} from 'react-icons/gr';
+
 function DashboardList({ match }) {
     const { path } = match;
     const [company, setUsers] = useState(null);
@@ -17,8 +18,6 @@ function DashboardList({ match }) {
     useEffect(() => {
         companyService.getAll().then(x => setUsers(x));
     }, []);
-
-  
   
     function phone(){
         //ringe nr
@@ -27,9 +26,7 @@ function DashboardList({ match }) {
         //til en annen side
     }
 
-
     return (
-        
         <ListWrapper>
                 <h2>All Companies</h2>
                 <p>All companies showcased in dashboard.</p>
