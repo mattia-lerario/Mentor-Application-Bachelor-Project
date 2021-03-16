@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 
 import {ListWrapper, BtnWrapper} from '../style/styledcomponents';
 import { companyService } from '@/_services';
@@ -13,11 +13,14 @@ function CompanyList({ match }) {
         companyService.getAll().then(x => setUsers(x));
     }, []);
 
+    return (        
 
-    return (
         <ListWrapper>
+
+<button className="Btn MainBtn"><Link to={`${path}/updateWorkingHoursMentor`} className="LinkBtn">Update houers</Link></button>
+
             <div>
-                {company && company.map(company =>
+                {company && company.map(company => 
 
                 <div className="card" key={company.id}>
                     <p className="companyName">{company.companyName}</p>
@@ -26,13 +29,7 @@ function CompanyList({ match }) {
                     <p><HiOutlineMail/>: {company.email}</p>
                    
                 </div>
-                )}
-
-            {!company}(
-                <div className="card">
-                    <p className="companyName">emty...</p>
-                </div>
-                )              
+                )}           
                 
             </div>
         </ListWrapper>
