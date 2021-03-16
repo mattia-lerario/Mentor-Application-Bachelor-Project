@@ -1,3 +1,5 @@
+const { Int32 } = require('bson');
+const { date } = require('joi');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -10,7 +12,14 @@ const schema = new Schema({
     //valuation: { type: String,required: true},
     companyDescription: { type: String, required: true },
     role: { type: String},
-    phase : { type: String},
+    phase: { type: String},
+    
+    hoursSpendtOnCompany:[
+        {     
+        hours: {type: Number},
+        byMentor:{type: mongoose.Schema.Types.ObjectId, ref: "Mentor"},
+        dateOfWork:{type: Date}
+        }],
     
     accounts: [
       {
@@ -23,7 +32,7 @@ const schema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Mentor" 
         }
-        ]
+    ]
 });
 
 schema.virtual('isVerified').get(function () {

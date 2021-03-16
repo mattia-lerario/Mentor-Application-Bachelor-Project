@@ -61,20 +61,7 @@ function AddEditMentor({ history, match }) {
                 alertService.error(error);
                 console.log(error);
             });
-    }  
-        
-        /*useEffect(() => {
-           
-            async function fetchMentors(){
-                const mentorArray = await mentorService.getAll();
-                //const mentorArray1 = ["hei", "JAn", "Jørn"];
-                setMentors(mentorArray);
-            }
-
-             fetchMentors();
-
-        }, []);*/
-        
+    }         
 
         return (
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
@@ -86,14 +73,6 @@ function AddEditMentor({ history, match }) {
                                 fields.forEach(field => setFieldValue(field, company[field], false));
                             });                      
                     }, []);
-                    
-                    /*useEffect(() => {                        
-                        // get mentor and set form fields
-                        mentorService.getAll().then(mentor => {
-                            const field = ['mentor'];
-                            field.forEach(field => setFieldValue(field, mentor[field], false));
-                        });                      
-                }, []);*/
     
                     return (
                         <Form>

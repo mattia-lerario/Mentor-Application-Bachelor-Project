@@ -5,12 +5,9 @@ import * as Yup from 'yup';
 
 import { companyService, mentorService, alertService } from '@/_services';
 
-function UpdateWorkingHouersMentor({ history, match }) {
+function UpdateWorkingHoursMentor({ history, match }) {
     const { id } = match.params;
     const isAddMode = !id;
-   // const user = accountService.userValue;
-    //const company = companyService.companyValue;
-    //const mentor = mentorService.mentorValue;
 
     const [companies, setCompanies] = useState(null);
 
@@ -19,8 +16,9 @@ function UpdateWorkingHouersMentor({ history, match }) {
     }, []);
 
     const initialValues = {
-        companyName: '',
-        houersUsed: '',
+        companyId: '',
+        hoursUsed: 0,
+        date: '',
     };
 
    /* const validationSchema = Yup.object().shape({
@@ -28,34 +26,28 @@ function UpdateWorkingHouersMentor({ history, match }) {
     });         */
 
     function onSubmit(fields, {setSubmitting }) {
+        //console.log(fields);
+        companyService.addMentorHours(fields.companyId,fields)    
+        .then(() => {
+            alertService.success('Update successful', { keepAfterRouteChange: true });
+            history.push('.');
+        })
+        .catch(error => {
+            setSubmitting(false);
+            alertService.error(error);
+            console.log(error);
+        }); 
+    }    
         
-            updateCompany(id, fields, setSubmitting);    
-        
-        }
-        
-        function updateCompany(id,fields,setSubmitting){
-            companyService.update(id,fields)    
-            .then(() => {
-                alertService.success('Update successful', { keepAfterRouteChange: true });
-                history.push('.');
-            })
-            .catch(error => {
-                setSubmitting(false);
-                alertService.error(error);
-                console.log(error);
-            });
-
-        }
-
     return (
         <Formik initialValues={initialValues} /*validationSchema={validationSchema}*/ onSubmit={onSubmit}>
             {({ errors, touched, isSubmitting, setFieldValue }) => {
                 useEffect(() => {
                     if (!isAddMode) {
                         // get user and set form fields
-                        mentorService.getById(id).then(mentor => {
-                            const fields = ['companyName', 'houersUsed'];
-                            fields.forEach(field => setFieldValue(field, mentor[field], false));
+                        mentorService.getById(id).then(company => {
+                            const fields = ['companyId', 'hoursUsed', 'date'];
+                            fields.forEach(field => setFieldValue(field, company[field], false));
                         });
                     }
                 }, []);
@@ -65,22 +57,25 @@ function UpdateWorkingHouersMentor({ history, match }) {
                        
                         <div className="form-group col-7">
                                     <label>Choose Company</label>
-
-                                    <Field name="companyName" as="select" className={'FormGroups' + (errors.companyName && touched.companyName ? ' is-invalid' : '')}>
-
+                                    <Field name="companyId" as="select" className={'FormGroups' + (errors.companyId && touched.companyId ? ' is-invalid' : '')}>
 
                                 {companies && companies.map(company =>
                                     <option key={company.id} value ={company.id}>{company.companyName}</option>)}
-     
                                     </Field>
-                                    <ErrorMessage name="mentor" component="div" className="InvalidFeedback" />
 
+                                    <ErrorMessage name="companyId" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
-                                    <label>Houers used</label>
-                                    <Field name="houersUsed" type="integer" className={'form-control' + (errors.houersUsed && touched.houersUsed ? ' is-invalid' : '')} />
-                                    <ErrorMessage name="houersUsed" component="div" className="invalid-feedback" />
+                                    <label>Hours used</label>
+                                    <Field name="hoursUsed" type="number" className={'form-control' + (errors.hoursUsed && touched.hoursUsed ? ' is-invalid' : '')} />
+                                    <ErrorMessage name="hoursUsed" component="div" className="invalid-feedback" />
+                        </div>
+
+                        <div className="form-group col-7">
+                                    <label>Date of work</label>
+                                    <Field name="date" type="date" className={'form-control' + (errors.date && touched.date ? ' is-invalid' : '')} />
+                                    <ErrorMessage name="date" component="div" className="invalid-feedback" />
                         </div>
                                
 
@@ -98,4 +93,4 @@ function UpdateWorkingHouersMentor({ history, match }) {
     );
 }
 
-export { UpdateWorkingHouersMentor };
+export { UpdateWorkingHoursMentor };

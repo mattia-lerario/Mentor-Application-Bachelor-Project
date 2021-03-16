@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import { CompanyList } from './Company';
-import { UpdateWorkingHouersMentor } from './UpdateWorkingHoursMentor';
+import { UpdateWorkingHoursMentor } from './UpdateWorkingHoursMentor';
 import { accountService, companyService, mentorService } from '@/_services';
 
 function Company({ match }) {
@@ -22,7 +22,7 @@ function Company({ match }) {
                 <Switch>
                     <Route exact path={path} component={CompanyList} />
                     <Route path={`${path}/companies`} component={Company} />
-                    <Route path={`${path}/updateWorkingHoursMentor`} component={UpdateWorkingHouersMentor} />
+                    <Route path={`${path}/updateWorkingHoursMentor`} component={UpdateWorkingHoursMentor} />
                     <Route path={`${path}/mentors`} component={Company} />
                 </Switch>
             </section>
