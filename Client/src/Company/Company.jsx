@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 //style
 import {ListWrapper} from '../style/styledcomponents';
+import { BtnWrapper } from '../style/styledcomponents';
 
 import { companyService } from '@/_services';
 import { mentorService } from '@/_services';
@@ -26,6 +27,11 @@ function CompanyList({ match }) {
     function schedule(){
         //til en annen side
     }
+   /* function enterCompany(id){
+        //til en annen side
+        return(
+        <Link to={`${path}/companyDetails/${id}`} className="Btn MainBtn LinkBtn">Knapp</Link>)
+    }*/
 
     return (
 
@@ -34,9 +40,10 @@ function CompanyList({ match }) {
              <button className="Btn MainBtn"><Link to={`${path}/updateWorkingHoursMentor`} className="LinkBtn">Update hours</Link></button>
              <br></br>
 
-                {company && company.filter(company => company.companyName.includes("e")).map(company => 
+                {company && company.filter(company => company.companyName.includes(" ")).map(company => 
 
-                <article key={company.id} className="card" /*onClick={() => alert(company.companyName)}*/>
+                <article key={company.id} className="card" onClick={() => enterCompany(company.id)}>
+                    
                     <section className="cardImg">
                         <img className="companyImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 
                         Tanken var å kunne legge ved et bilde som respresenterer bedriften når man legger de til i databasen. -Tora.*/}                        
@@ -62,6 +69,10 @@ function CompanyList({ match }) {
                         <button onClick={schedule}><GrScheduleNew/></button>
                         <p><AiOutlineNumber/>{company.phase}</p>
                     </section>
+                    <BtnWrapper>
+                        <Link to={`${path}/companyDetails/${company.id}`} className="Btn MainBtn LinkBtn">Details</Link>
+                    </BtnWrapper>
+
                 </article>
                 )}            
                 
