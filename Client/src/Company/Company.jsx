@@ -42,10 +42,9 @@ function CompanyList({ match }) {
              <br></br>
 
                 {company && company.filter(company => company.companyName.includes(" ")).map(company => 
-
-                <Link to={`${path}/companyDetails/${company.id}`}>
-
+                
                 <article key={company.id} className="card">
+                <Link to={`${path}/companyDetails/${company.id}`}>
                     
                     <section className="cardImg">
                         <img className="companyImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 
@@ -61,19 +60,15 @@ function CompanyList({ match }) {
                         <p>Company number: {company.companyNumber}</p>
                     </section>
 
+                    </Link>
+
                     <section className="cardBottom">
-                        {/*
-                        <p id="cardMail"><HiOutlineMail/>: {company.email}</p> 
-                        Evt bare ha mail-symbolet med en click funksjon for å sende mail til selskapet.
-                        Uten at hele mail-adressen står skrevet her. -Tora
-                        */}
                         <button><HiOutlineMail/></button>
                         <button onClick={phone}><AiFillPhone/></button>
                         <button onClick={schedule}><GrScheduleNew/></button>
                         <p><AiOutlineNumber/>{company.phase}</p>
                     </section>                    
                 </article>
-                </Link>
                 )}            
                 
         </ListWrapper>
