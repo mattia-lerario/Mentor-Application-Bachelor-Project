@@ -248,3 +248,9 @@ export const ListWrapper = styled.div`
 }
 
   `;
+
+/* ---COMPANY DETAILS--- */
+  export const DetailWrapper = styled.div`
+
+  
+  `;
