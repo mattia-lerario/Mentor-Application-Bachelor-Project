@@ -4,7 +4,6 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import {accountService, companyService, alertService } from '@/_services';
-import { BtnWrapper } from '../style/styledcomponents';
 
 function UpdateCompanies({ history, match }) {
     const { id } = match.params;
@@ -144,11 +143,11 @@ function UpdateCompanies({ history, match }) {
                         </div>
                         
                         <div className="form-group">
-                            <button type="submit" disabled={isSubmitting} className="btn btn-primary">
+                            <button type="submit" disabled={isSubmitting} className={'Btn BtnMain'}>
                                 {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
                                 Save
                             </button>
-                            <Link to={isAddMode ? '.' : '..'} className="btn btn-link">Cancel</Link>
+                            <Link to={isAddMode ? '.' : '..'} className={'Btn BtnSimple'}>Cancel</Link>
                         </div>
                         
                        

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import { accountService } from '@/_services';
 import { companyService } from '@/_services';
-import { BtnWrapper } from '../../style/styledcomponents';
 
 function CompanyList({ match }) {
     const { path } = match;
@@ -26,6 +25,7 @@ function CompanyList({ match }) {
 
     return (
         <section>
+            <Link to="/admin" className={'BtnSimple BtnBack'}>Back</Link>
             <h1>All Companies</h1>
             <p>ss</p>
            
@@ -45,16 +45,13 @@ function CompanyList({ match }) {
                             <td>{companies.email}</td>
                             <td>Mentor</td>
                             <td style={{ whiteSpace: 'nowrap' }}>
-                            <BtnWrapper>                                       
-                                    
-                                    <Link to={`${path}/addMentor/${companies.id}`} className="BtnSimple">Edit</Link>
-                                    <Link onClick={() => deleteCompany(companies.id)} className="BtnSimple" style={{ width: '60px' }} disabled={companies.isDeleting}>
+                                    <Link to={`${path}/addMentor/${companies.id}`} className={'BtnSimple'}>Edit</Link>
+                                    <Link onClick={() => deleteCompany(companies.id)} className={'BtnSimple'} style={{ width: '60px' }} disabled={companies.isDeleting}>
                                         {companies.isDeleting 
                                             ? <span></span>
                                             : <span>Delete</span>
                                         }
                                     </Link>
-                                </BtnWrapper>
                             </td>
                         </tr>
                     )}

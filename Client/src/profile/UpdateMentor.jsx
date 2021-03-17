@@ -127,11 +127,11 @@ function UpdateMentor({ history, match }) {
                         </div>
 
                       <div className="form-group">
-                            <button type="submit" disabled={isSubmitting} className="btn btn-primary">
+                            <button type="submit" disabled={isSubmitting} className={'Btn BtnMain'}>
                                 {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
                                 Save
                             </button>
-                            <Link to={isAddMode ? '.' : '..'} className="btn btn-link">Cancel</Link>
+                            <Link to={isAddMode ? '.' : '..'} className={'BtnSimple'}>Cancel</Link>
                             </div>
                     </Form> 
                 );

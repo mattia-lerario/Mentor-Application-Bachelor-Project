@@ -4,7 +4,6 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import { companyService, alertService, mentorService } from '@/_services';
-import { BtnWrapper } from '../../style/styledcomponents';
 import { FormWrapper } from '../../style/styledcomponents';
 
 function AddEditMentor({ history, match }) {
@@ -160,11 +159,11 @@ function AddEditMentor({ history, match }) {
                             </div>
                             
                             <div className="form-group">
-                                <button type="submit" disabled={isSubmitting} className="btn btn-primary">
+                                <button type="submit" disabled={isSubmitting} className={'Btn BtnMain'}>
                                     {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
                                     Save
                                 </button>
-                                <Link to={isAddMode ? '.' : '..'} className="btn btn-link">Cancel</Link>
+                                <Link to={isAddMode ? '.' : '..'} className={'BtnSimple'}>Cancel</Link>
                             </div>
                             
                            

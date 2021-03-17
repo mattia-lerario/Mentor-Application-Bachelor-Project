@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import {BtnWrapper} from '../style/styledcomponents';
 import {FormWrapper} from '../style/styledcomponents';
 import { accountService, alertService } from '@/_services';
 
@@ -115,21 +114,19 @@ function Update({ history }) {
                                     <ErrorMessage name="confirmPassword" component="div" className="InvalidFeedback" />
                                 </div>
                             </div>
-                            <BtnWrapper>
-                                <button type="submit" disabled={isSubmitting} className="Btn MainBtn">
+                                <button type="submit" disabled={isSubmitting} className={'Btn BtnMain'}>
 
                                     {
                                     isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>} 
                                     Update
                                 </button>
-                                <button type="button" onClick={() => onDelete()} className="Btn DeleteBtn" style={{ width: '75px' }} disabled={isDeleting}>
+                                <button type="button" onClick={() => onDelete()} className={'Btn BtnDelete'} style={{ width: '75px' }} disabled={isDeleting}>
                                     {isDeleting
                                         ? <span className="spinner-border spinner-border-sm"></span>
                                         : <span>Delete</span>
                                     }
                                 </button>
-                                <Link to="." className="CancelBtn">Cancel</Link>
-                            </BtnWrapper>
+                                <Link to="." className={'BtnSimple'}>Cancel</Link>
                         </section>
                     </Form>
                 </FormWrapper>

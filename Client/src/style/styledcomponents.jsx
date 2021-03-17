@@ -49,52 +49,6 @@ export const MenuWrapper = styled.div`
 `;
 
 
-/* ---BUTTONS--- */
-/* Files: Details.jsx, Update.jsx, List.jsx, Overview.jsx */
-export const BtnWrapper = styled.div`
-//---Button with same background-color as the menu, and white text.
-.Btn {
-    background-color: #38507a;
-    border-radius: 0.1vw;
-    height: 2.2vw;
-    color: white;
-    margin: 0.3vw;
-    padding: 0.2vw;
-}
-.CancelBtn{
-    margin: 15px;
-    color: black;
-}
-.MainBtn{
-    border: 1px solid #182234;
-}
-//---Red Delete Button
-.DeleteBtn{
-    background-color: #800000;
-    border: 1px solid #4d0000;
-}
-//---lighter color when hovered
-.MainBtn:hover{
-    background-color: #283957;
-}
-.DeleteBtn:hover{
-    background-color: #b30000;
-}
-//---makes the link-text white(because of link-tag)
-.LinkBtn{
-    color:white;
-}
-//---removes underscore on link when hovered(because of link-tag)
-.LinkBtn:hover{
-    text-decoration: none;
-}
-.BtnSimple{
-    color: black;
-    padding: 0.5vw;
-}
-`;
-
-
 /* ---UPDATE PROFILE-FORM--- */
 /* File: Update.jsx */
 export const FormWrapper = styled.div`
