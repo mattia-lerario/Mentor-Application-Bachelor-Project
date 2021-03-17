@@ -49,18 +49,6 @@ function DashboardList({ match }) {
                     </section>
 
                     <section className="cardBottom">
-                        {/*
-                        Fjernet muligheten til å sende mail, ringe og booke møte i 'Dashboard', i med at dashboardet er ¨
-                        tenkt for admins til å ha en oversikt over alle selskaper, right?
-                        Mens under 'Companies' i menyen vil hver mentor få opp sine egen selskaper, right?
-                        Beholdt alle funksjonene der, for at en mentor skal kunne sende mail, ringe og 
-                        booke møte med selskapene sine.
-                        Er vel ikke nødvendig for en admin å kunne gjøre dette?
-                        Burde evt. tilpasse menyen etter brukeren som er logget inn. En mentor trenger ikke 
-                        'Companies' i menyen sin, når han/hun har Dashboard. Hver mentro skal vel heller ikke 
-                        ha tilgang til 'Dashboard' med alle selskapene, men kun 'Companies' med sine egen selskaper, 
-                        ikke sant?
-                        */}
                         <p><AiOutlineNumber/>{company.phase}</p>
                     </section>
                 </article>

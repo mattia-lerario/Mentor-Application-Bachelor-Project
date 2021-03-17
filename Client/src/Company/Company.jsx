@@ -30,8 +30,9 @@ function CompanyList({ match }) {
     return (
 
         <ListWrapper>
+             <button className={'Btn BtnMain Right'}><Link to={`${path}/updateWorkingHoursMentor`} className={'BtnLink'}>Update hours</Link></button>
+
              <h2>Your Companies</h2>
-             <button className="Btn MainBtn"><Link to={`${path}/updateWorkingHoursMentor`} className="LinkBtn">Update hours</Link></button>
              <br></br>
 
                 {company && company.filter(company => company.companyName.includes("e")).map(company => 
