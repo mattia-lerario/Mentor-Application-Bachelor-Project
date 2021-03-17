@@ -43,7 +43,7 @@ function CompanyList({ match }) {
 
                 {company && company.filter(company => company.companyName.includes(" ")).map(company => 
 
-                <article key={company.id} className="card" onClick={() => enterCompany(company.id)}>
+                <article key={company.id} className="card">
                     
                     <section className="cardImg">
                         <img className="companyImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 
@@ -70,9 +70,8 @@ function CompanyList({ match }) {
                         <button onClick={schedule}><GrScheduleNew/></button>
                         <p><AiOutlineNumber/>{company.phase}</p>
                     </section>
-                    <BtnWrapper>
-                        <Link to={`${path}/companyDetails/${company.id}`} className="Btn MainBtn LinkBtn">Details</Link>
-                    </BtnWrapper>
+                    <Link to={`${path}/companyDetails/${company.id}`} className="Btn MainBtn LinkBtn">Details</Link>
+                    
 
                 </article>
                 )}            
