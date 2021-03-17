@@ -13,6 +13,7 @@ export const companyService = {
     getById,
     create,
     update,
+    addMentorHours,
     delete: _delete,
     company: companySubject.asObservable(),
     get companyValue () { return companySubject.value }
@@ -52,6 +53,21 @@ function getById(id) {
 
 function create(params) {
     return fetchWrapper.post(baseUrl, params);
+}
+
+function addMentorHours(id, params){
+    console.log(params);
+
+    return fetchWrapper.post(`${baseUrl}/hours/${id}`, params)
+    .then(company => {
+        // update stored user if the logged in user updated their own record
+        
+            // publish updated user to subscribers
+            company = { ...companySubject.value, ...company };
+            companySubject.next(company);        
+        return company;
+    });
+
 }
 
 function update(id, params) {

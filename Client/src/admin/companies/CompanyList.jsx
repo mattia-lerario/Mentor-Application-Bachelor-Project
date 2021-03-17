@@ -9,7 +9,8 @@ function CompanyList({ match }) {
     const [companies, setCompanies] = useState(null);
 
     useEffect(() => {
-        companyService.getAll().then(x => setCompanies(x));
+        companyService.getAll().then(x =>
+             setCompanies(x));
     }, []);
 
     function deleteCompany(id) {
@@ -43,7 +44,7 @@ function CompanyList({ match }) {
                         <tr key={companies.id}>
                             <td>{companies.companyName}</td>
                             <td>{companies.email}</td>
-                            <td>Mentor</td>
+                            <td>{companies.leadMentor}</td>
                             <td style={{ whiteSpace: 'nowrap' }}>
                                     <Link to={`${path}/addMentor/${companies.id}`} className={'BtnSimple'}>Edit</Link>
                                     <Link onClick={() => deleteCompany(companies.id)} className={'BtnSimple'} style={{ width: '60px' }} disabled={companies.isDeleting}>

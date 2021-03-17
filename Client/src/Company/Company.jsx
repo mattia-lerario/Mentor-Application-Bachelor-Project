@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 //style
 import {ListWrapper} from '../style/styledcomponents';
@@ -27,19 +28,22 @@ function CompanyList({ match }) {
     }
 
     return (
+
         <ListWrapper>
              <h2>Your Companies</h2>
+             <button className="Btn MainBtn"><Link to={`${path}/updateWorkingHoursMentor`} className="LinkBtn">Update hours</Link></button>
+             <br></br>
 
-                {company && company.map(company =>
+                {company && company.filter(company => company.companyName.includes("e")).map(company => 
 
-                <article className="card" /*onClick={() => alert(company.companyName)}*/>
+                <article key={company.id} className="card" /*onClick={() => alert(company.companyName)}*/>
                     <section className="cardImg">
                         <img className="companyImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 
-                        Tanken var å kunne legge ved et bilde som respresenterer bedriften når man legger de til i databasen. -Tora.*/}
-                        
-                        {/*
-                        <p className="companyName">{company.companyName}</p>
-                        */}
+                        Tanken var å kunne legge ved et bilde som respresenterer bedriften når man legger de til i databasen. -Tora.*/}                        
+                    </section>
+
+                    <section>
+                    <h4 className="companyName">{company.companyName}</h4>
                     </section>
 
                     <section className="cardMetric">
@@ -59,13 +63,7 @@ function CompanyList({ match }) {
                         <p><AiOutlineNumber/>{company.phase}</p>
                     </section>
                 </article>
-                )}
-
-            {!company}(
-                <div className="card">
-                    <p className="companyName">emty...</p>
-                </div>
-                )              
+                )}            
                 
         </ListWrapper>
         

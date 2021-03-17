@@ -18,7 +18,7 @@ function UpdateCompanies({ history, match }) {
         email: '',
         salesRevenue: '',
         companyDescription: '',
-        
+        phase:'',        
     }
 
     const validationSchema = Yup.object().shape({
@@ -34,7 +34,9 @@ function UpdateCompanies({ history, match }) {
         salesRevenue: Yup.string()
             .required('Sales Revenue is required'),
         companyDescription: Yup.string()
-            .required("Description of company is Required")
+            .required("Description of company is Required"),
+        phase: Yup.string()
+            .required("Phase of company is Required")
     });
 
     function onSubmit(fields, { setStatus, setSubmitting }) {
@@ -92,7 +94,7 @@ function UpdateCompanies({ history, match }) {
                     if (!isAddMode) {
                         // get user and set form fields
                         companyService.getById(id).then(company => {
-                            const fields = ['companyName', 'companyNumber', 'tlfNumber', 'email', 'salesRevenue', 'companyDescription'];
+                            const fields = ['companyName', 'companyNumber', 'tlfNumber', 'email', 'salesRevenue', 'companyDescription', 'phase'];
                             fields.forEach(field => setFieldValue(field, company[field], false));
                         });
                     }
@@ -137,6 +139,11 @@ function UpdateCompanies({ history, match }) {
                                 <label>Company Description</label>
                                 <Field component="textarea" name="companyDescription" type="text" className={'form-control' + (errors.companyDescription && touched.companyDescription ? ' is-invalid' : '')} />
                                 <ErrorMessage name="companyDescription" component="div" className="invalid-feedback" />
+                            </div>
+                            <div className="form-group col-7">
+                                <label>Phase</label>
+                                <Field name="phase" type="text" className={'form-control' + (errors.phase && touched.phase ? ' is-invalid' : '')} />
+                                <ErrorMessage name="phase" component="div" className="invalid-feedback" />
                             </div>
 
 

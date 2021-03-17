@@ -60,20 +60,7 @@ function AddEditMentor({ history, match }) {
                 alertService.error(error);
                 console.log(error);
             });
-    }  
-        
-        /*useEffect(() => {
-           
-            async function fetchMentors(){
-                const mentorArray = await mentorService.getAll();
-                //const mentorArray1 = ["hei", "JAn", "Jørn"];
-                setMentors(mentorArray);
-            }
-
-             fetchMentors();
-
-        }, []);*/
-        
+    }         
 
         return (
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
@@ -85,14 +72,6 @@ function AddEditMentor({ history, match }) {
                                 fields.forEach(field => setFieldValue(field, company[field], false));
                             });                      
                     }, []);
-                    
-                    /*useEffect(() => {                        
-                        // get mentor and set form fields
-                        mentorService.getAll().then(mentor => {
-                            const field = ['mentor'];
-                            field.forEach(field => setFieldValue(field, mentor[field], false));
-                        });                      
-                }, []);*/
     
                     return (
                         <Form>
@@ -134,7 +113,16 @@ function AddEditMentor({ history, match }) {
                                 </div>
                                 <div className="form-group col-7">
                                     <label>Quarter</label>
-                                    <Field name="phase" type="text" className={'form-control' + (errors.phase && touched.phase ? ' is-invalid' : '')} />
+
+                                    <Field name="phase" as="select" className={'form-control' + (errors.phase && touched.phase ? ' is-invalid' : '')}>
+                                    <option value="">Unknown</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                       
+                                    </Field>
+
                                     <ErrorMessage name="phase" component="div" className="invalid-feedback" />
                                 </div>
                                 

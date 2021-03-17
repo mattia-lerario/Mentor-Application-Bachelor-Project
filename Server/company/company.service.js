@@ -22,6 +22,7 @@ module.exports = {
     create,
     addMentorToCompany,
     update,
+    createHours,
     delete: _delete
 };
 
@@ -85,6 +86,27 @@ async function create(params) {
     // save account
     await company.save();
     accountService.addCompanyToAccount(company.id, company.accountId);
+    return basicDetails(company);
+}
+
+async function createHours(params) {
+
+    const company = await db.Company.findOne({ _id: params.id });
+    
+    // validate
+    if (!company) {
+        throw 'Company ID = "' + params.id + '" is not found';
+    }
+    
+    company.hoursSpendtOnCompany.push({
+        hours: params.hoursUsed,
+        byMentor:params.user.id,
+        dateOfWork: params.date
+    
+    });
+    
+    // save account
+    await company.save();
     return basicDetails(company);
 }
 

@@ -15,6 +15,7 @@ router.get('/:id', authorize(), getById);
 router.post('/', authorize(), createSchema, create);
 router.put('/:id', authorize(), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
+router.post('/hours/:id', authorize(), checkHoursSchema, createHours);
 
 module.exports = router;    
 
@@ -76,6 +77,22 @@ function getById(req, res, next) {
 
     companyService.getById(req.params.id)
         .then(company => company ? res.json(company) : res.sendStatus(404))
+        .catch(next);
+}
+
+function checkHoursSchema(req, res, next){
+    const schema = Joi.object({
+        hoursUsed: Joi.number().required(),
+        date: Joi.date().required(),
+    });
+
+    validateRequest(req, next, schema); 
+}
+
+function createHours(req, res, next) {
+    
+    companyService.createHours({...req.body, user:req.user, id:req.params.id})
+        .then(company => res.json(company))
         .catch(next);
 }
 

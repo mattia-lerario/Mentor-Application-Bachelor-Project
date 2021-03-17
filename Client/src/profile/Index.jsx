@@ -6,6 +6,7 @@ import { Details } from './Details';
 import { Update } from './Update';
 import { UpdateCompanies } from './UpdateCompanies';
 import { UpdateMentor } from './UpdateMentor';
+import { UpdateWorkingHouersMentor } from '../Company/UpdateWorkingHoursMentor';
 
 function Profile({ match }) {
     const { path } = match;

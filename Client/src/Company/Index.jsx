@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import { CompanyList } from './Company';
+import { UpdateWorkingHoursMentor } from './UpdateWorkingHoursMentor';
 import { accountService, companyService, mentorService } from '@/_services';
 
 function Company({ match }) {
@@ -14,12 +15,14 @@ function Company({ match }) {
     return (
         <article className="p-4">
             <section className="container">
-                <h1>Hi {user.lastName}</h1>
-                <p>Information about your company.</p>
+                
+                <h1>Hi {user.firstName}</h1>
+                <p>Information about your companies</p>
 
                 <Switch>
                     <Route exact path={path} component={CompanyList} />
                     <Route path={`${path}/companies`} component={Company} />
+                    <Route path={`${path}/updateWorkingHoursMentor`} component={UpdateWorkingHoursMentor} />
                     <Route path={`${path}/mentors`} component={Company} />
                 </Switch>
             </section>
