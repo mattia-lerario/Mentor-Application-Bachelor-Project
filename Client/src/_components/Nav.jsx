@@ -31,6 +31,12 @@ function Nav() {
                     {/*
                     Hamburger-menu-icon
                     <NavLink to="/sidebar" className="NavLink"> <FaIcons.FaBars/> </NavLink>
+
+                     {user.role === Role.Admin &&
+                        <NavLink to="/companies" className="NavLink">Companies</NavLink>
+                    }
+
+
                     */}
                     
 
@@ -42,10 +48,6 @@ function Nav() {
                         <NavLink to="/admin" className="NavLink">Admin</NavLink>
                     }
                     <Route path="/admin" component={AdminNav} />
-                    
-                    {user.role === Role.Admin &&
-                        <NavLink to="/companies" className="NavLink">Companies</NavLink>
-                    }
 
                     {user.role === Role.Admin &&
                         <NavLink to="/mentors" className="NavLink">Mentors</NavLink>
