@@ -43,6 +43,8 @@ function CompanyList({ match }) {
 
                 {company && company.filter(company => company.companyName.includes(" ")).map(company => 
 
+                <Link to={`${path}/companyDetails/${company.id}`}>
+
                 <article key={company.id} className="card">
                     
                     <section className="cardImg">
@@ -69,11 +71,9 @@ function CompanyList({ match }) {
                         <button onClick={phone}><AiFillPhone/></button>
                         <button onClick={schedule}><GrScheduleNew/></button>
                         <p><AiOutlineNumber/>{company.phase}</p>
-                    </section>
-                    <Link to={`${path}/companyDetails/${company.id}`} className="Btn MainBtn LinkBtn">Details</Link>
-                    
-
+                    </section>                    
                 </article>
+                </Link>
                 )}            
                 
         </ListWrapper>
