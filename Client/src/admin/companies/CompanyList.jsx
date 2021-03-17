@@ -47,8 +47,8 @@ function CompanyList({ match }) {
                             <td style={{ whiteSpace: 'nowrap' }}>
                             <BtnWrapper>                                       
                                     
-                                    <Link to={`${path}/addMentor/${companies.id}`} className="Btn MainBtn LinkBtn">Edit</Link>
-                                    <Link onClick={() => deleteCompany(companies.id)} className="Btn DeleteBtn LinkBtn" style={{ width: '60px' }} disabled={companies.isDeleting}>
+                                    <Link to={`${path}/addMentor/${companies.id}`} className="BtnSimple">Edit</Link>
+                                    <Link onClick={() => deleteCompany(companies.id)} className="BtnSimple" style={{ width: '60px' }} disabled={companies.isDeleting}>
                                         {companies.isDeleting 
                                             ? <span></span>
                                             : <span>Delete</span>

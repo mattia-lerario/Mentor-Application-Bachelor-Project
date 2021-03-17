@@ -26,10 +26,11 @@ body {
   min-height: 100vh;
   background: linear-gradient(
     to right top,
-    #5072ae,
-    #38717a
+    #304569,
+    #b3d9ff,
+    #304569
   ); // #65dfc9 #6d7b93
-  background-image: url(https://images.hdqwalls.com/download/forest-mountains-3v-2880x1800.jpg);
+  //background-image: url(https://images.hdqwalls.com/download/forest-mountains-3v-2880x1800.jpg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,5 +88,19 @@ body {
 }
 
 .Table thead {
-  background-color: #8c8c8c;
+  background-color: #38507a;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #cccccc;
+}
+
+.Table thead tr:hover {
+  background-color: #38507a;
+  color: white;
 }

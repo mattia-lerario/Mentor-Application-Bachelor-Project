@@ -31,14 +31,13 @@ export const MenuWrapper = styled.div`
 }
 //---making the text in the menu white
 .NavLink{
-    color: white;
+    color: black;
     padding: 0.5rem;
     border-radius: 0.3rem;
 }
 //---gives the links a underscore and grey-color when hovered.
 .NavLink:hover{
-    text-decoration: none;
-    background-color: #38507a;
+    text-decoration: #202e46 underline 0.5vh;
 }
 // ---ADMIN-MENU---
 //adding the background-color for the Admin-menu
@@ -55,12 +54,12 @@ export const MenuWrapper = styled.div`
 export const BtnWrapper = styled.div`
 //---Button with same background-color as the menu, and white text.
 .Btn {
-    background-color: #273855;
-    border-radius: 3px;
-    height: 35px;
+    background-color: #38507a;
+    border-radius: 0.1vw;
+    height: 2.2vw;
     color: white;
-    margin: 2px;
-    padding: 5px;
+    margin: 0.3vw;
+    padding: 0.2vw;
 }
 .CancelBtn{
     margin: 15px;
@@ -76,7 +75,7 @@ export const BtnWrapper = styled.div`
 }
 //---lighter color when hovered
 .MainBtn:hover{
-    background-color: #38507a;
+    background-color: #283957;
 }
 .DeleteBtn:hover{
     background-color: #b30000;
@@ -88,6 +87,10 @@ export const BtnWrapper = styled.div`
 //---removes underscore on link when hovered(because of link-tag)
 .LinkBtn:hover{
     text-decoration: none;
+}
+.BtnSimple{
+    color: black;
+    padding: 0.5vw;
 }
 `;
 
