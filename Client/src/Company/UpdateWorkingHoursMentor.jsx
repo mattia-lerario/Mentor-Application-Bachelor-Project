@@ -21,9 +21,19 @@ function UpdateWorkingHoursMentor({ history, match }) {
         date: '',
     };
 
-   /* const validationSchema = Yup.object().shape({
+   const validationSchema = Yup.object().shape({
+
+    hoursUsed: Yup.number()
+            .required('Hours is required')
+            .positive('It must be a positive number')
+            .min(1, "You must have minimum 1 hour")
+            ,
+
+    date: Yup.date()
+            .required('Date is required')
+            .max(new Date())
     
-    });         */
+    });
 
     function onSubmit(fields, {setSubmitting }) {
         //console.log(fields);
@@ -40,7 +50,7 @@ function UpdateWorkingHoursMentor({ history, match }) {
     }    
         
     return (
-        <Formik initialValues={initialValues} /*validationSchema={validationSchema}*/ onSubmit={onSubmit}>
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
             {({ errors, touched, isSubmitting, setFieldValue }) => {
                 useEffect(() => {
                     if (!isAddMode) {
