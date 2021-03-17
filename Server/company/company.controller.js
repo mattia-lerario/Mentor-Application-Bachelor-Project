@@ -71,7 +71,8 @@ function getAll(req, res, next) {
 
 function getById(req, res, next) {
     // users can get their own account and admins can get any account
-    if (req.params.id !== req.user.id && req.user.role !== Role.Admin) {
+    //Mentors must be able to get one accountById
+    if (req.params.id !== req.user.id && req.user.role !== Role.Admin && req.user.role !== Role.Mentor) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
 

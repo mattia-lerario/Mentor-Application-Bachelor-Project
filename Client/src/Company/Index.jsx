@@ -3,12 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 
 import { CompanyList } from './Company';
 import { UpdateWorkingHoursMentor } from './UpdateWorkingHoursMentor';
+
 import { accountService, companyService, mentorService } from '@/_services';
+import { CompanyDetails } from './CompanyDetails';
 
 function Company({ match }) {
     const user = accountService.userValue;
-    const company = companyService.userValue;
-    const mentor = mentorService.userValue;
 
     const { path } = match;
     
@@ -24,6 +24,8 @@ function Company({ match }) {
                     <Route path={`${path}/companies`} component={Company} />
                     <Route path={`${path}/updateWorkingHoursMentor`} component={UpdateWorkingHoursMentor} />
                     <Route path={`${path}/mentors`} component={Company} />
+
+                    <Route path={`${path}/companyDetails/:id`} component={CompanyDetails} />
                 </Switch>
             </section>
         </article>
