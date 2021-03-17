@@ -31,7 +31,7 @@ function CompanyList({ match }) {
 
         <ListWrapper>
              <h2>Your Companies</h2>
-             <button className="Btn MainBtn"><Link to={`${path}/updateWorkingHoursMentor`} className="LinkBtn">Update houers</Link></button>
+             <button className="Btn MainBtn"><Link to={`${path}/updateWorkingHoursMentor`} className="LinkBtn">Update hours</Link></button>
              <br></br>
 
                 {company && company.filter(company => company.companyName.includes("e")).map(company => 
