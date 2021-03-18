@@ -56,7 +56,7 @@ function PowerRanking({ history, match }) {
 
     function onSubmit(fields, {setSubmitting }) {
         console.log(fields);
-        companyService.createPowerRanking(fields)    
+        companyService.createPowerRankingCompany(fields)    
         .then(() => {
             alertService.success('Update successful', { keepAfterRouteChange: true });
             history.push('.');
@@ -74,6 +74,7 @@ function PowerRanking({ history, match }) {
                 useEffect(() => {
                     if (!isAddMode) {
                         // get user and set form fields
+                        console.log(id);
                         companyService.getById(id).then(company => {
                             const fields = ['question1', 'comment1','question2', 'comment2','question3', 'comment3','question4', 'comment4','question5', 'comment5','question6', 'comment6','question7', 'comment7','question8', 'comment8','quarter', 'date'];
                             fields.forEach(field => setFieldValue(field, company[field], false));
@@ -91,11 +92,25 @@ function PowerRanking({ history, match }) {
                                     <ErrorMessage name="question1" component="div" className="InvalidFeedback" />
                         </div>
 
+                         <div className="form-group col-7">
+                                    <label>Comment 1</label>
+                                    <Field name="comment1" type="textarea" className={'FormGroups' + (errors.comment1 && touched.comment1 ? ' is-invalid' : '')} />
+
+                                    <ErrorMessage name="comment1" component="div" className="InvalidFeedback" />
+                        </div>
+
                         <div className="form-group col-7">
                                     <label>Question2</label>
                                     <Field name="question2" type="number" className={'FormGroups' + (errors.question2 && touched.question2 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="companyId" component="div" className="InvalidFeedback" />
+                        </div>
+
+                        <div className="form-group col-7">
+                                    <label>Comment 2</label>
+                                    <Field name="comment2" type="textarea" className={'FormGroups' + (errors.comment2 && touched.comment2 ? ' is-invalid' : '')} />
+
+                                    <ErrorMessage name="comment2" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
@@ -106,10 +121,24 @@ function PowerRanking({ history, match }) {
                         </div>
 
                         <div className="form-group col-7">
+                                    <label>Comment 3</label>
+                                    <Field name="comment3" type="textarea" className={'FormGroups' + (errors.comment3 && touched.comment3 ? ' is-invalid' : '')} />
+
+                                    <ErrorMessage name="comment3" component="div" className="InvalidFeedback" />
+                        </div>
+
+                        <div className="form-group col-7">
                                     <label>Question4</label>
                                     <Field name="question4" type="number" className={'FormGroups' + (errors.question4 && touched.question4 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="question4" component="div" className="InvalidFeedback" />
+                        </div>
+
+                        <div className="form-group col-7">
+                                    <label>Comment 4</label>
+                                    <Field name="comment4" type="textarea" className={'FormGroups' + (errors.comment4 && touched.comment4 ? ' is-invalid' : '')} />
+
+                                    <ErrorMessage name="comment4" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
@@ -120,10 +149,24 @@ function PowerRanking({ history, match }) {
                         </div>
 
                         <div className="form-group col-7">
+                                    <label>Comment5</label>
+                                    <Field name="comment5" type="textarea" className={'FormGroups' + (errors.comment5 && touched.comment5 ? ' is-invalid' : '')} />
+
+                                    <ErrorMessage name="comment5" component="div" className="InvalidFeedback" />
+                        </div>
+
+                        <div className="form-group col-7">
                                     <label>Question6</label>
                                     <Field name="question6" type="number" className={'FormGroups' + (errors.question6 && touched.question6 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="question6" component="div" className="InvalidFeedback" />
+                        </div>
+
+                        <div className="form-group col-7">
+                                    <label>Comment6</label>
+                                    <Field name="comment" type="textarea" className={'FormGroups' + (errors.comment6 && touched.comment6 ? ' is-invalid' : '')} />
+
+                                    <ErrorMessage name="comment6" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
@@ -134,6 +177,13 @@ function PowerRanking({ history, match }) {
                         </div>
 
                         <div className="form-group col-7">
+                                    <label>Comment 7</label>
+                                    <Field name="comment7" type="textarea" className={'FormGroups' + (errors.comment7 && touched.comment7 ? ' is-invalid' : '')} />
+
+                                    <ErrorMessage name="comment7" component="div" className="InvalidFeedback" />
+                        </div>
+
+                        <div className="form-group col-7">
                                     <label>Question8</label>
                                     <Field name="question8" type="number" className={'FormGroups' + (errors.question8 && touched.question8 ? ' is-invalid' : '')} />
 
@@ -141,11 +191,18 @@ function PowerRanking({ history, match }) {
                         </div>
 
                         <div className="form-group col-7">
+                                    <label>Comment 8</label>
+                                    <Field name="comment8" type="textarea" className={'FormGroups' + (errors.comment8 && touched.comment8 ? ' is-invalid' : '')} />
+
+                                    <ErrorMessage name="comment8" component="div" className="InvalidFeedback" />
+                        </div>
+
+                        <div className="form-group col-7">
                                     <label>Date of work</label>
                                     <Field name="date" type="date" className={'form-control' + (errors.date && touched.date ? ' is-invalid' : '')} />
                                     <ErrorMessage name="date" component="div" className="invalid-feedback" />
                         </div>
-                               
+                            
 
                       <div className="form-group">
                             <button type="submit" disabled={isSubmitting} className={'Btn BtnMain'}>
@@ -154,7 +211,8 @@ function PowerRanking({ history, match }) {
                             </button>
                             <Link to={isAddMode ? '.' : '..'} className={'BtnSimple'}>Cancel</Link>
                             </div>
-                    </Form> 
+                              </Form>  
+                    
                 );
             }}
         </Formik>
