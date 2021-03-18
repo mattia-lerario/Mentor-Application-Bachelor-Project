@@ -20,9 +20,6 @@ function Company({ match }) {
                  
 =======
                 
-<<<<<<< HEAD
->>>>>>> parent of fc7fa90... Changes the text in header, and tried to add an alert to onclick function
-=======
 >>>>>>> parent of fc7fa90... Changes the text in header, and tried to add an alert to onclick function
                 <h1>Hi {user.firstName}</h1>
                 <p>Information about your companies</p>
