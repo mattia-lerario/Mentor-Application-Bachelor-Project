@@ -39,13 +39,12 @@ function CompanyList({ match }) {
         <ListWrapper>
              <button className={'Btn BtnMain Right'}><Link to={`${path}/updateWorkingHoursMentor`} className={'BtnLink'}>Update hours</Link></button>
 
-             <h2>Your Companies</h2>
-             <br></br>
-
+             <h1>Your Companies</h1>
+             
                 {company && company.filter(company => company.companyName.includes(" ")).map(company => 
                 
                 <article key={company.id} className="card">
-                <Link to={`${path}/companyDetails/${company.id}`}>
+                <Link className={'noLink'}to={`${path}/companyDetails/${company.id}`}>
                     
                     <section className="cardTop">
                         <img className="cardImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 

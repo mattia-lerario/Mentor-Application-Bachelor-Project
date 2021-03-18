@@ -14,7 +14,6 @@ function Dashboard({ match }) {
     return (
         <article className="p-4">
             <section className="container">
-                <h1>Hi {user.lastName}</h1>
 
                 <Switch>
                     <Route exact path={path} component={DashboardList} />

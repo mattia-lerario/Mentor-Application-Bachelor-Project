@@ -121,7 +121,7 @@ export const SidebarWrapper = styled.div`
 //Light blue backgroundcolor and width on the sidebar-menu
 .Sidebar{
     margin-right:1rem;
-    max-width:240px;
+    width: 13vw;
     height: 100%;
     display:flex;
     flex:1;
@@ -166,6 +166,7 @@ export const ListWrapper = styled.div`
     width: 30%;
     height: 15%;
     margin: 0.5rem;
+    margin-top: 3vh;
     display: inline-block;
     //box-shadow: right bottom fade allsides color;
     box-shadow: 0.09rem 0.19rem 0.5rem 0.1rem #38507a;
@@ -179,10 +180,9 @@ export const ListWrapper = styled.div`
     filter: grayscale(0%);
 }
 .cardTop{
-    border-bottom: solid #808080;
-    padding-bottom: 0.8vh;
+    border-bottom: 0.2vh solid #bfbfbf;
+    padding-bottom: 1vh;
     display: flex;
-    height: 
 }
 .cardImg{
     flex: 1;
@@ -191,7 +191,6 @@ export const ListWrapper = styled.div`
     height: 4rem;
     width: 4.5rem;
     border-radius: 50%;
-    border: 0.1vw solid #808080;
 }
 .companyName{
     flex: 3;
@@ -204,10 +203,10 @@ export const ListWrapper = styled.div`
     margin: 1rem;
 }
 .cardMetric{
-    height: 7rem;
+    height: 25vh;
 }
 .cardBottom{
-    border-top: solid #808080;
+    border-top: 0.2vh solid #bfbfbf;
     text-align: center;
 }
 .cardBottom p, .cardBottom button{
@@ -221,7 +220,13 @@ export const ListWrapper = styled.div`
   `;
 
 /* ---COMPANY DETAILS--- */
-  export const DetailWrapper = styled.div`
-
+  export const CompanyWrapper = styled.div`
   
+.headerImg{
+    width: 100%;
+    height: 40vh;
+    background-image: url("https://images.frandroid.com/wp-content/uploads/2013/01/Samsung-Logo.jpg");
+    background-size: 100%;
+}
   `;
+

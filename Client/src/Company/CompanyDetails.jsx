@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 import { companyService } from '@/_services';
 import { Field, Form } from 'formik';
-import { FormWrapper } from '../style/styledcomponents';
+
+//style
+import {CompanyWrapper} from '../style/styledcomponents';
+
 
 
 function CompanyDetails({ match }) {
@@ -17,15 +20,15 @@ function CompanyDetails({ match }) {
     }, []);
 
     return (
-        <FormWrapper>
+        <CompanyWrapper>
             {/* <Link to="/companies" className={'BtnSimple Right'}>Back</Link> */}
 
             {company && company.filter(company => company.id === companyId).map(company => 
 
-                <article key={company.id} className="card">
+                <article key={company.id}>
 
-                    <section className="cardImg">
-                        <p>Bilde</p>                      
+                    <section className="headerImg">
+                        {company.companyImg} {/*Not working, but is supposed to show the image saved in the database on the specific company */}                    
                     </section>
 
                     <section>
@@ -39,7 +42,7 @@ function CompanyDetails({ match }) {
                 </article>
             )}
 
-        </FormWrapper>
+        </CompanyWrapper>
     );
 }    
 

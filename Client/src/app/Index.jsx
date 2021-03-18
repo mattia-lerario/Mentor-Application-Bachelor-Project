@@ -15,7 +15,7 @@ import { Admin } from '@/admin';
 import { Account } from '@/account';
 import { Dashboard } from '@/dashboard';
 
-function App() {
+function App(){
     const { pathname } = useLocation();  
     const [user, setUser] = useState({});
 
@@ -31,9 +31,8 @@ function App() {
 return (
          
         <div className={'app-container'}>
-           
+            <Alert />
             <Switch>
-                 <Alert />
                 <Redirect from="/:url*(/+)" to={pathname.slice(0, -1)} />
                 <PrivateRoute exact path="/" component={Home} />
 
@@ -56,21 +55,22 @@ return (
 
     }else{
         return (
-            
+         
         <div className={'app-container'}>
             
-                <Alert/>
-               
-          <SidebarWrapper>
-               
-              <Sidebar/>
-             
+            <SidebarWrapper>
+                <Sidebar/>
+                {/*
+                <Switch>
+                    <PrivateRoute path="/_components" component={Sidebar} />
+                </Switch>
+                */}
             </SidebarWrapper>
-            
+            <Alert />
             <Switch>
                 <Redirect from="/:url*(/+)" to={pathname.slice(0, -1)} />
                 <PrivateRoute exact path="/" component={Home} />
-                
+
                 <PrivateRoute path="/dashboard" component={Dashboard} />
                 <PrivateRoute path="/companies" component={Company} />
                 <PrivateRoute path="/mentors" component={Mentor} />
@@ -81,9 +81,9 @@ return (
                 <Redirect from="*" to="/" />
                   
             </Switch>
-          
+           
+            
         </div>
-        
     );
     }
     
