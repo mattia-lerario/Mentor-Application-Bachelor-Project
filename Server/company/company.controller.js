@@ -97,6 +97,13 @@ function createHours(req, res, next) {
         .catch(next);
 }
 
+function createPowerRanking(req, res, next) {
+    
+    companyService.createPowerRankingCompany({...req.body, user:req.user, id:req.params.id})
+        .then(company => res.json(company))
+        .catch(next);
+}
+
 function createSchema(req, res, next) {
     const schema = Joi.object({
         companyName: Joi.string().required(),

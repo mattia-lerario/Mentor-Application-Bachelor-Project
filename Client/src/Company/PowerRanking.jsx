@@ -56,7 +56,7 @@ function PowerRanking({ history, match }) {
 
     function onSubmit(fields, {setSubmitting }) {
         console.log(fields);
-        companyService.createPowerRankingCompany(fields)    
+        companyService.createPowerRanking(fields)    
         .then(() => {
             alertService.success('Update successful', { keepAfterRouteChange: true });
             history.push('.');
@@ -164,7 +164,7 @@ function PowerRanking({ history, match }) {
 
                         <div className="form-group col-7">
                                     <label>Comment6</label>
-                                    <Field name="comment" type="textarea" className={'FormGroups' + (errors.comment6 && touched.comment6 ? ' is-invalid' : '')} />
+                                    <Field name="comment6" type="textarea" className={'FormGroups' + (errors.comment6 && touched.comment6 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="comment6" component="div" className="InvalidFeedback" />
                         </div>
