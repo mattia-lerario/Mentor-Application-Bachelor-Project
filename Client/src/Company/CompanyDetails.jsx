@@ -18,25 +18,28 @@ function CompanyDetails({ match }) {
 
     return (
         <FormWrapper>
-        {company && company.filter(company => company.id === companyId).map(company => 
+            {/* <Link to="/companies" className={'BtnSimple Right'}>Back</Link> */}
 
-            <article key={company.id} className="card">
-                <section className="cardImg">
-                    <p>Bilde</p>                      
-                </section>
+            {company && company.filter(company => company.id === companyId).map(company => 
 
-                <section>
-                <h4 className="companyName">{company.companyName}</h4>
-                </section>
+                <article key={company.id} className="card">
 
-                <section className="cardMetric">
-                    <p>Sales Revenue: {company.salesRevenue}</p>
-                    <p>Company number: {company.companyNumber}</p>
-                </section>
-            </article>
+                    <section className="cardImg">
+                        <p>Bilde</p>                      
+                    </section>
+
+                    <section>
+                        <h4 className="companyName">{company.companyName}</h4>
+                    </section>
+
+                    <section className="cardMetric">
+                        <p>Sales Revenue: {company.salesRevenue}</p>
+                        <p>Company number: {company.companyNumber}</p>
+                    </section>
+                </article>
             )}
 
-</FormWrapper>
+        </FormWrapper>
     );
 }    
 

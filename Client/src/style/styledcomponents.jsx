@@ -170,6 +170,7 @@ export const ListWrapper = styled.div`
     //box-shadow: right bottom fade allsides color;
     box-shadow: 0.09rem 0.19rem 0.5rem 0.1rem #38507a;
     filter: grayscale(50%);
+    padding: 0.5vw;
   }
   .card:hover{
     border: solid #38507a;
@@ -177,11 +178,27 @@ export const ListWrapper = styled.div`
     box-shadow: 0.2rem 0.3rem 0.5rem 0.1rem #38507a;
     filter: grayscale(0%);
 }
+.cardTop{
+    border-bottom: solid #808080;
+    padding-bottom: 0.8vh;
+    display: flex;
+    height: 
+}
 .cardImg{
+    flex: 1;
     background-image: url("https://images.frandroid.com/wp-content/uploads/2013/01/Samsung-Logo.jpg");
-    background-position: center;
     background-size: 100%;
-    height: 5rem;
+    height: 4rem;
+    width: 4.5rem;
+    border-radius: 50%;
+    border: 0.1vw solid #808080;
+}
+.companyName{
+    flex: 3;
+    text-aling: right;
+    margin-left: 0.5vw;
+    margin-top: 3vh;
+    font-size: 1.3vw;
 }
 .cardMetric, .cardBottom{
     margin: 1rem;
@@ -190,7 +207,7 @@ export const ListWrapper = styled.div`
     height: 7rem;
 }
 .cardBottom{
-    border-top: solid #38507a;
+    border-top: solid #808080;
     text-align: center;
 }
 .cardBottom p, .cardBottom button{

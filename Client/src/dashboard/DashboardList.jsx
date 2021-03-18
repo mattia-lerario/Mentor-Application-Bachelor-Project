@@ -34,13 +34,11 @@ function DashboardList({ match }) {
                 {company && company.map(company =>
 
                 <article className="card" key= {company.id}/*onClick={() => alert(company.companyName)}*/>
-                    <section className="cardImg">
-                        <img className="companyImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 
-                        Tanken var å kunne legge ved et bilde som respresenterer bedriften når man legger de til i databasen. -Tora.*/}
-                        
-                        {/*
-                        <p className="companyName">{company.companyName}</p>
-                        */}
+                    
+                    <section className="cardTop">
+                        <img className="cardImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 
+                        Tanken var å kunne legge ved et bilde som respresenterer bedriften når man legger de til i databasen. -Tora.*/}                        
+                        <h4 className="companyName">{company.companyName}</h4>
                     </section>
 
                     <section className="cardMetric">
