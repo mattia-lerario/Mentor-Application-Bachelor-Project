@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import {ListWrapper} from '../style/styledcomponents';
 import { BtnWrapper } from '../style/styledcomponents';
 
-import { companyService, alertService } from '@/_services';
+import { companyService, mentorService, accountService } from '@/_services';
 
 //icons
 import {HiOutlineMail} from 'react-icons/hi';
@@ -15,6 +15,10 @@ import {GrScheduleNew} from 'react-icons/gr';
 function CompanyList({ match }) {
     const { path } = match;
     const [company, setUsers] = useState(null);
+    const mentor = accountService.userValue;
+    const mentorId = mentor.id;
+
+    console.log("this " + mentorId);
     
     useEffect(() => {
         companyService.getAll().then(x => setUsers(x));
@@ -42,7 +46,10 @@ function CompanyList({ match }) {
              <h2>Your Companies</h2>
              <br></br>
 
-                {company && company.filter(company => company.companyName.includes(" ")).map(company => 
+                {
+                //remove comment when addMentorToCompany is fixed
+                /*company && company.filter(company => company.leadMentor.includes(mentorId)).map(company =>*/
+                company && company.filter(company => company.companyName.includes("")).map(company => 
                 
                 <article key={company.id} className="card">
                 <Link to={`${path}/companyDetails/${company.id}`}>
@@ -54,6 +61,9 @@ function CompanyList({ match }) {
 
                     <section>
                     <h4 className="companyName">{company.companyName}</h4>
+                    <p>{console.log("this mentor id = " + mentorId)}</p>
+                    <p>{console.log("company mentor id = " + company.leadMentor)}</p>
+                    
                     </section>
 
                     <section className="cardMetric">

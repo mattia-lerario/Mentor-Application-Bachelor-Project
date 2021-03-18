@@ -197,8 +197,8 @@ async function getPowerRanking(company) {
 }
 
 function basicDetails(company) {
-    const { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription, phase,mentor} = company;
-    return { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription, phase,mentor };
+    const { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription, phase, leadMentor} = company;
+    return { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription, phase, leadMentor };
 }
 
 
