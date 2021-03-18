@@ -16,7 +16,8 @@ function Company({ match }) {
         <article className="p-4">
             <section className="container">
                 
-                <h1 className ="loggedInnAs" >Logged in as {user.firstName}</h1>
+                <h1>Hi {user.firstName}</h1>
+                <p>Information about your companies</p>
 
                 <Switch>
                     <Route exact path={path} component={CompanyList} />
