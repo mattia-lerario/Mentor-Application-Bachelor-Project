@@ -47,10 +47,13 @@ function CompanyList({ match }) {
                 <article key={company.id} className="card">
                 <Link to={`${path}/companyDetails/${company.id}`}>
                     
-                    <section className="cardTop">
-                        <img className="cardImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 
+                    <section className="cardImg">
+                        <img className="companyImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 
                         Tanken var å kunne legge ved et bilde som respresenterer bedriften når man legger de til i databasen. -Tora.*/}                        
-                        <h4 className="companyName">{company.companyName}</h4>
+                    </section>
+
+                    <section>
+                    <h4 className="companyName">{company.companyName}</h4>
                     </section>
 
                     <section className="cardMetric">
