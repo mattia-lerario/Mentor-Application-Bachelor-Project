@@ -14,9 +14,8 @@ function Company({ match }) {
     
     return (
         <article className="p-4">
-           
             <section className="container">
-                 
+                
                 <h1>Hi {user.firstName}</h1>
                 <p>Information about your companies</p>
 
