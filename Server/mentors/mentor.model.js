@@ -7,7 +7,23 @@ const schema = new Schema({
     mentorNumber: {type : String}, //muligens endre til require
     tlfNumber: {type : String},
     email: { type: String, unique: true, required: true },
-    mentorDescription: { type: String, required: true },
+    mentorDescription: { type: String, required: true }, //bio
+
+    /*
+    industriExpertise:[
+        {type : String}
+    ],
+    mentorExpertise:[
+        {type : String}
+    ],
+    workExperience:[
+        title: {type:String},
+        description: {type : String},
+        
+    ],  
+    
+    */
+
     accounts: 
         {
           type: mongoose.Schema.Types.ObjectId,

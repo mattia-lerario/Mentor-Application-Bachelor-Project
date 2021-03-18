@@ -15,7 +15,7 @@ import {GrScheduleNew} from 'react-icons/gr';
 function CompanyList({ match }) {
     const { path } = match;
     const [company, setUsers] = useState(null);
-
+    
     useEffect(() => {
         companyService.getAll().then(x => setUsers(x));
     }, []);
