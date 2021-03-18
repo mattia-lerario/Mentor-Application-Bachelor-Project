@@ -35,7 +35,7 @@ function refreshToken() {
             userSubject.next(user);
             startRefreshTokenTimer();
             return user;
-        });
+         });
 }
 
 function validateResetToken(token) {
@@ -48,6 +48,7 @@ function getAll() {
 }
 
 function getById(id) {
+    console.log(id);
     return fetchWrapper.get(`${baseUrl}/${id}`);
 }
 
@@ -60,9 +61,6 @@ function addMentorHours(id, params){
 
     return fetchWrapper.post(`${baseUrl}/hours/${id}`, params)
     .then(company => {
-        // update stored user if the logged in user updated their own record
-        
-            // publish updated user to subscribers
             company = { ...companySubject.value, ...company };
             companySubject.next(company);        
         return company;
