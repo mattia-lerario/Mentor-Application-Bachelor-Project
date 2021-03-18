@@ -31,9 +31,9 @@ function App() {
 return (
          
         <div className={'app-container'}>
-           
+           <Alert />
             <Switch>
-                 <Alert />
+                 
                 <Redirect from="/:url*(/+)" to={pathname.slice(0, -1)} />
                 <PrivateRoute exact path="/" component={Home} />
 
