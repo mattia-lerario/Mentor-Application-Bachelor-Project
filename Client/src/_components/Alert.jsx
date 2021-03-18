@@ -98,14 +98,16 @@ function Alert({ id, fade }) {
     if (!alerts.length) return null;
 
     return (
-        <section className={'Alert'}>
+        <div className="container">
+            <div className="m-3">
                 {alerts.map((alert, index) =>
                     <div key={index} className={cssClasses(alert)}>
                         <a className="close" onClick={() => removeAlert(alert)}>&times;</a>
                         <span dangerouslySetInnerHTML={{__html: alert.message}}></span>
                     </div>
                 )}
-        </section>
+            </div>
+        </div>
     );
 }
 

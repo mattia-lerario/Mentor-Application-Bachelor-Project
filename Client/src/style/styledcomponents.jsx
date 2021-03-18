@@ -171,7 +171,6 @@ export const ListWrapper = styled.div`
     //box-shadow: right bottom fade allsides color;
     box-shadow: 0.09rem 0.19rem 0.5rem 0.1rem #38507a;
     filter: grayscale(50%);
-    padding: 0.5vw;
   }
   .card:hover{
     border: solid #38507a;
@@ -185,8 +184,8 @@ export const ListWrapper = styled.div`
     display: flex;
 }
 .cardImg{
-    flex: 1;
     background-image: url("https://images.frandroid.com/wp-content/uploads/2013/01/Samsung-Logo.jpg");
+    background-position: center;
     background-size: 100%;
     height: 4rem;
     width: 4.5rem;

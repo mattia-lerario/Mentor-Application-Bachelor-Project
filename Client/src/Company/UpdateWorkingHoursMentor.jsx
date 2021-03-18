@@ -43,7 +43,7 @@ function UpdateWorkingHoursMentor({ history, match }) {
             history.push('.');
         })
         .catch(error => {
-            setSubmitting(false);
+            setSubmitting(true);
             alertService.error(error);
             console.log(error);
         }); 
