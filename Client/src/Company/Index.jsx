@@ -16,7 +16,11 @@ function Company({ match }) {
         <article className="p-4">
            
             <section className="container">
+<<<<<<< HEAD
                  
+=======
+                
+>>>>>>> parent of fc7fa90... Changes the text in header, and tried to add an alert to onclick function
                 <h1>Hi {user.firstName}</h1>
                 <p>Information about your companies</p>
 
