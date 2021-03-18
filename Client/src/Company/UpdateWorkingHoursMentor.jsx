@@ -77,7 +77,7 @@ function UpdateWorkingHoursMentor({ history, match }) {
                         </div>
 
                         <div className="form-group col-7">
-                                    <label>Hourshttps://www.youtube.com/watch?v=l3NEC4McW3g used</label>
+                                    <label>Hours used</label>
                                     <Field name="hoursUsed" type="number" className={'form-control' + (errors.hoursUsed && touched.hoursUsed ? ' is-invalid' : '')} />
                                     <ErrorMessage name="hoursUsed" component="div" className="invalid-feedback" />
                         </div>
