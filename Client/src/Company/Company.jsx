@@ -5,12 +5,14 @@ import { Link } from 'react-router-dom';
 import {ListWrapper} from '../style/styledcomponents';
 import { BtnWrapper } from '../style/styledcomponents';
 
-import { companyService, alertService } from '@/_services';
+import { companyService } from '@/_services';
+import { mentorService } from '@/_services';
 
 //icons
 import {HiOutlineMail} from 'react-icons/hi';
-import {AiFillPhone, AiOutlineCustomerService, AiOutlineNumber} from 'react-icons/ai';
+import {AiFillPhone, AiOutlineNumber} from 'react-icons/ai';
 import {GrScheduleNew} from 'react-icons/gr';
+
 
 function CompanyList({ match }) {
     const { path } = match;
@@ -20,23 +22,21 @@ function CompanyList({ match }) {
         companyService.getAll().then(x => setUsers(x));
     }, []);
   
-    function phone(name, number){
-
-        return(
-        alert("Contact " + name + " on " + number)
-        );        
+    function phone(){
+        //ringe nr
     }
-    function schedule(name){
-
-        return(
-        alert("Schedule with " + name)
-        )
+    function schedule(){
+        //til en annen side
     }
+   /* function enterCompany(id){
+        //til en annen side
+        return(
+        <Link to={`${path}/companyDetails/${id}`} className="Btn MainBtn LinkBtn">Knapp</Link>)
+    }*/
 
     return (
 
         <ListWrapper>
-            
              <button className={'Btn BtnMain Right'}><Link to={`${path}/updateWorkingHoursMentor`} className={'BtnLink'}>Update hours</Link></button>
 
              <h2>Your Companies</h2>
