@@ -12,7 +12,7 @@ import { mentorService } from '@/_services';
 import {HiOutlineMail} from 'react-icons/hi';
 import {AiFillPhone, AiOutlineNumber} from 'react-icons/ai';
 import {GrScheduleNew} from 'react-icons/gr';
-import mentorService from '../../../Server/mentors/mentor.service';
+
 
 function CompanyList({ match }) {
     const { path } = match;
