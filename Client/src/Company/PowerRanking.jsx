@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import { companyService, mentorService, alertService } from '@/_services';
+import { companyService, alertService } from '@/_services';
 
 function PowerRanking({ history, match }) {
     const { id } = match.params;
@@ -17,26 +17,31 @@ function PowerRanking({ history, match }) {
 
     const initialValues = {
         question1: 0,
-        comment1: '',
+        comment1: 'q',
         question2: 0,
-        comment2: '',
+        comment2: 'q',
         question3: 0,
-        comment3: '',
+        comment3: 'q',
         question4: 0,
-        comment4: '',
+        comment4: 'q',
         question5: 0,
-        comment5: '',
+        comment5: 'q',
         question6: 0,
-        comment6: '',
+        comment6: 'q',
         question7: 0,
-        comment7: '',
+        comment7: 'q',
         question8: 0,
-        comment8: '',
-        quarter:'',
+        comment8: 'q',
+        question9: 0,
+        comment9: 'q',
+        question10: 0,
+        comment10: 'q',
+        question11: 0,
+        comment11: 'q',
         date: '',
     };
 
-   const validationSchema = Yup.object().shape({
+   /*const validationSchema = Yup.object().shape({
 
     question1: Yup.number()
             .required('Questions must be answered with a value from 1 to 6')
@@ -52,31 +57,31 @@ function PowerRanking({ history, match }) {
             .required('Date is required')
             .max(new Date())
     
-    });
+    });*/
 
     function onSubmit(fields, {setSubmitting }) {
-        console.log(fields);
-        companyService.createPowerRanking(fields)    
+        console.log(fields.companyId);
+        companyService.createPowerRanking(fields.companyId, fields)    
         .then(() => {
             alertService.success('Update successful', { keepAfterRouteChange: true });
             history.push('.');
         })
         .catch(error => {
             setSubmitting(false);
-            alertService.error(error);
-            console.log(error);
+          alertService.error(error);
+           // console.log(error);
         }); 
     }    
         
     return (
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+        <Formik initialValues={initialValues} /*validationSchema={validationSchema}*/ onSubmit={onSubmit}>
             {({ errors, touched, isSubmitting, setFieldValue }) => {
                 useEffect(() => {
                     if (!isAddMode) {
                         // get user and set form fields
                         console.log(id);
                         companyService.getById(id).then(company => {
-                            const fields = ['question1', 'comment1','question2', 'comment2','question3', 'comment3','question4', 'comment4','question5', 'comment5','question6', 'comment6','question7', 'comment7','question8', 'comment8','quarter', 'date'];
+                            const fields = ['companyId','question1', 'comment1','question2', 'comment2','question3', 'comment3','question4', 'comment4','question5', 'comment5','question6', 'comment6','question7', 'comment7','question8', 'comment8','question9', 'comment9', 'question10', 'comment10','question11', 'comment11','date'];
                             fields.forEach(field => setFieldValue(field, company[field], false));
                         });
                     }
@@ -84,7 +89,19 @@ function PowerRanking({ history, match }) {
 
                 return (
                     <Form>
+                        <div className="form-group col-7">
+                                    <label>Choose Company to examine</label>
+                                    <Field name="companyId" as="select" className={'FormGroups' + (errors.companyId && touched.companyId ? ' is-invalid' : '')}>
+
+                                {companies && companies.map(company =>
+                                
+                                    <option key={company.id} value ={company.id}>{company.companyName}</option>)}
+                                    </Field>
+
+                                    <ErrorMessage name="companyId" component="div" className="InvalidFeedback" />
+                        </div>
                        
+                       <div>
                         <div className="form-group col-7">
                                     <label>Question1</label>
                                     <Field name="question1" type="number" className={'FormGroups' + (errors.question1 && touched.question1 ? ' is-invalid' : '')} />
@@ -98,7 +115,8 @@ function PowerRanking({ history, match }) {
 
                                     <ErrorMessage name="comment1" component="div" className="InvalidFeedback" />
                         </div>
-
+                        </div>
+                         
                         <div className="form-group col-7">
                                     <label>Question2</label>
                                     <Field name="question2" type="number" className={'FormGroups' + (errors.question2 && touched.question2 ? ' is-invalid' : '')} />
@@ -195,6 +213,45 @@ function PowerRanking({ history, match }) {
                                     <Field name="comment8" type="textarea" className={'FormGroups' + (errors.comment8 && touched.comment8 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="comment8" component="div" className="InvalidFeedback" />
+                        </div>
+                        <div className="form-group col-7">
+                                    <label>Question8</label>
+                                    <Field name="question8" type="number" className={'FormGroups' + (errors.question8 && touched.question8 ? ' is-invalid' : '')} />
+
+                                    <ErrorMessage name="question8" component="div" className="InvalidFeedback" />
+                        </div>
+
+                        <div className="form-group col-7">
+                                    <label>Comment 8</label>
+                                    <Field name="comment8" type="textarea" className={'FormGroups' + (errors.comment8 && touched.comment8 ? ' is-invalid' : '')} />
+
+                                    <ErrorMessage name="comment8" component="div" className="InvalidFeedback" />
+                        </div>
+                        <div className="form-group col-7">
+                                    <label>Question8</label>
+                                    <Field name="question8" type="number" className={'FormGroups' + (errors.question8 && touched.question8 ? ' is-invalid' : '')} />
+
+                                    <ErrorMessage name="question8" component="div" className="InvalidFeedback" />
+                        </div>
+
+                        <div className="form-group col-7">
+                                    <label>Comment 9</label>
+                                    <Field name="comment9" type="textarea" className={'FormGroups' + (errors.comment9 && touched.comment9 ? ' is-invalid' : '')} />
+
+                                    <ErrorMessage name="comment9" component="div" className="InvalidFeedback" />
+                        </div>
+                        <div className="form-group col-7">
+                                    <label>Question 10</label>
+                                    <Field name="question10" type="number" className={'FormGroups' + (errors.question10 && touched.question10 ? ' is-invalid' : '')} />
+
+                                    <ErrorMessage name="question10" component="div" className="InvalidFeedback" />
+                        </div>
+
+                        <div className="form-group col-7">
+                                    <label>Comment 11</label>
+                                    <Field name="comment8" type="textarea" className={'FormGroups' + (errors.comment11 && touched.comment11 ? ' is-invalid' : '')} />
+
+                                    <ErrorMessage name="comment11" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">

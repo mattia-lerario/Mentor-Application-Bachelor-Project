@@ -31,8 +31,7 @@ function UpdateWorkingHoursMentor({ history, match }) {
 
     date: Yup.date()
             .required('Date is required')
-            .max(new Date())
-    
+            .max(new Date())                
     });
 
     function onSubmit(fields, {setSubmitting }) {
@@ -70,6 +69,7 @@ function UpdateWorkingHoursMentor({ history, match }) {
                                     <Field name="companyId" as="select" className={'FormGroups' + (errors.companyId && touched.companyId ? ' is-invalid' : '')}>
 
                                 {companies && companies.map(company =>
+                                
                                     <option key={company.id} value ={company.id}>{company.companyName}</option>)}
                                     </Field>
 
