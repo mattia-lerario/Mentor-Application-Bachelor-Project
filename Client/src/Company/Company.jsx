@@ -50,10 +50,7 @@ function CompanyList({ match }) {
                     <section className="cardTop">
                         <img className="cardImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 
                         Tanken var å kunne legge ved et bilde som respresenterer bedriften når man legger de til i databasen. -Tora.*/}                        
-                    </section>
-
-                    <section>
-                    <h4 className="companyName">{company.companyName}</h4>
+                        <h4 className="companyName">{company.companyName}</h4>
                     </section>
 
                     <section className="cardMetric">
