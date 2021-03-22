@@ -171,6 +171,9 @@ export const ListWrapper = styled.div`
     //box-shadow: right bottom fade allsides color;
     box-shadow: 0.09rem 0.19rem 0.5rem 0.1rem #38507a;
     filter: grayscale(50%);
+    padding-left: 4px;
+    padding-top: 4px;
+    padding-right: 5px;
   }
   .card:hover{
     border: solid #38507a;
