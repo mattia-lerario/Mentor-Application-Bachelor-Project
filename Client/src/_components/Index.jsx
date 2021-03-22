@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import {MenuWrapper} from '../style/styledcomponents';
 import { Sidebar } from './Sidebar';
-
+import { DragDropContext } from 'react-beautiful-dnd';
 function Menu({ match }) {
     const { path } = match;
     
