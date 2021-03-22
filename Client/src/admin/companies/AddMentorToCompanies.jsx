@@ -25,7 +25,7 @@ function AddEditMentor({ history, match }) {
         email: '',
         salesRevenue: '',
         companyDescription: '',
-        mentor: '',
+        leadMentor: '',
     }
 
     const validationSchema = Yup.object().shape({
@@ -44,7 +44,7 @@ function AddEditMentor({ history, match }) {
             .required("Description of company is Required"),
         phase: Yup.string()
             .required("Description of company is Required"),
-        mentor: Yup.string(),
+        leadMentor: Yup.string(),
         
     });
 
@@ -68,7 +68,7 @@ function AddEditMentor({ history, match }) {
                     useEffect(() => {                        
                             // get user and set form fields
                             companyService.getById(id).then(company => {
-                                const fields = ['companyName', 'companyNumber', 'tlfNumber', 'email', 'salesRevenue', 'companyDescription','phase','mentor'];
+                                const fields = ['companyName', 'companyNumber', 'tlfNumber', 'email', 'salesRevenue', 'companyDescription','phase','leadMentor'];
                                 fields.forEach(field => setFieldValue(field, company[field], false));
                             });                      
                     }, []);
@@ -130,16 +130,16 @@ function AddEditMentor({ history, match }) {
                                 <div className="form-group col-7">
                                     <label>Assign Mentor</label>
 
-                                    <Field name="mentor" as="select" className={'FormGroups' + (errors.mentor && touched.mentor ? ' is-invalid' : '')}>
+                                    <Field name="leadMentor" as="select" className={'FormGroups' + (errors.leadMentor && touched.leadMentor ? ' is-invalid' : '')}>
 
-                                        {/*mentors.map((mentor, index) => 
-                                        <option key={index} value= {mentor._id}>{mentor.mentorName}</option>)*/}
+                                        {/*leadMentors.map((leadMentor, index) => 
+                                        <option key={index} value= {leadMentor._id}>{leadMentor.leadMentorName}</option>)*/}
 
                                 {mentors && mentors.map(mentor =>
                                     <option key={mentor.id} value ={mentor.id}>{mentor.mentorName}</option>)}
      
                                     </Field>
-                                    <ErrorMessage name="mentor" component="div" className="InvalidFeedback" />
+                                    <ErrorMessage name="leadMentor" component="div" className="InvalidFeedback" />
 
                                 </div>
     
