@@ -8,7 +8,6 @@ function Details({ match }) {
     const user = accountService.userValue;
     const isUserType = user.role;
 
-
     if(isUserType == "Admin"){
 
         return (
@@ -48,7 +47,7 @@ function Details({ match }) {
         
         
     );
-}
+    }
     if(isUserType == "Company"){
         return (
             <section>

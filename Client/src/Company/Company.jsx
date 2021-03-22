@@ -42,20 +42,17 @@ function CompanyList({ match }) {
         <ListWrapper>
             
              <button className={'Btn BtnMain Right'}><Link to={`${path}/updateWorkingHoursMentor`} className={'BtnLink'}>Update hours</Link></button>
+             <button className={'Btn BtnMain Right'}><Link to={`${path}/powerranking`} className={'BtnLink'}>PowerRanking</Link></button>
 
-             <h2>Your Companies</h2>
-             <br></br>
-
-                {
-                //remove comment when addMentorToCompany is fixed
-                /*company && company.filter(company => company.leadMentor.includes(mentorId)).map(company =>*/
-                company && company.filter(company => company.companyName.includes("")).map(company => 
+             <h1>Your Companies</h1>
+             
+                {company && company.filter(company => company.companyName.includes(" ")).map(company => 
                 
                 <article key={company.id} className="card">
-                <Link to={`${path}/companyDetails/${company.id}`}>
+                <Link className={'noLink'}to={`${path}/companyDetails/${company.id}`}>
                     
-                    <section className="cardImg">
-                        <img className="companyImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 
+                    <section className="cardTop">
+                        <img className="cardImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 
                         Tanken var å kunne legge ved et bilde som respresenterer bedriften når man legger de til i databasen. -Tora.*/}                        
                     </section>
 

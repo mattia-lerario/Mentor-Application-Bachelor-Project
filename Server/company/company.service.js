@@ -23,6 +23,7 @@ module.exports = {
     addMentorToCompany,
     update,
     createHours,
+    createPowerRankingCompany,
     delete: _delete
 };
 
@@ -86,6 +87,42 @@ async function create(params) {
     // save account
     await company.save();
     accountService.addCompanyToAccount(company.id, company.accountId);
+    return basicDetails(company);
+}
+
+async function createPowerRankingCompany(params) {
+    console.log(params);
+    const company = await db.Company.findOne({ _id: params.id });
+    
+    // validate
+    if (!company) {
+        throw 'Company ID = "' + params.id + '" is not found';
+    }
+    
+    company.powerRanking.push({
+        question1: params.question1,
+        comment1:params.comment1,
+        question2: params.question2,
+        comment2:params.comment2,
+        question3: params.question3,
+        comment3:params.comment3,
+        question4: params.question4,
+        comment4:params.comment4,
+        question5: params.question5,
+        comment5:params.comment5,
+        question6: params.question6,
+        comment6:params.comment6,
+        question7: params.question7,
+        comment7:params.comment7,
+        question8: params.question8,
+        comment8:params.comment8,
+        quarter:params.quarter,
+        year: params.date
+    
+    });
+    
+    // save account
+    await company.save();
     return basicDetails(company);
 }
 
@@ -182,19 +219,6 @@ function randomTokenString() {
     return crypto.randomBytes(40).toString('hex');
 }
 
-function generateCompanyRanking(company, fields) {
-    // create a powerRanking for a Company.
-    return new db.PowerRanking({
-        company: company.id,
-       //add data here.
-    });
-}
-
-async function getPowerRanking(company) {
-    const powerRanking = await db.PowerRanking.findOne({ company }).populate('company');
-    
-    return powerRanking;
-}
 
 function basicDetails(company) {
     const { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription, phase, leadMentor} = company;

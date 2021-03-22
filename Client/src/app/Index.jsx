@@ -15,7 +15,7 @@ import { Admin } from '@/admin';
 import { Account } from '@/account';
 import { Dashboard } from '@/dashboard';
 
-function App() {
+function App(){
     const { pathname } = useLocation();  
     const [user, setUser] = useState({});
 
@@ -57,8 +57,14 @@ return (
         return (
          
         <div className={'app-container'}>
-          <SidebarWrapper>
-              <Sidebar/>
+            
+            <SidebarWrapper>
+                <Sidebar/>
+                {/*
+                <Switch>
+                    <PrivateRoute path="/_components" component={Sidebar} />
+                </Switch>
+                */}
             </SidebarWrapper>
             <Alert />
             <Switch>

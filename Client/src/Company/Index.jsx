@@ -6,6 +6,7 @@ import { UpdateWorkingHoursMentor } from './UpdateWorkingHoursMentor';
 
 import { accountService, companyService, mentorService } from '@/_services';
 import { CompanyDetails } from './CompanyDetails';
+import { PowerRanking } from './PowerRanking';
 
 function Company({ match }) {
     const user = accountService.userValue;
@@ -15,15 +16,13 @@ function Company({ match }) {
     return (
         <article className="p-4">
             <section className="container">
-                
-                <h1 className ="loggedInnAs" >Logged in as {user.firstName}</h1>
 
                 <Switch>
                     <Route exact path={path} component={CompanyList} />
                     <Route path={`${path}/companies`} component={Company} />
                     <Route path={`${path}/updateWorkingHoursMentor`} component={UpdateWorkingHoursMentor} />
                     <Route path={`${path}/mentors`} component={Company} />
-
+                    <Route path={`${path}/powerranking`} component={PowerRanking} />
                     <Route path={`${path}/companyDetails/:id`} component={CompanyDetails} />
                 </Switch>
             </section>

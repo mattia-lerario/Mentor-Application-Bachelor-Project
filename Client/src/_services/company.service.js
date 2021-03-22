@@ -14,6 +14,7 @@ export const companyService = {
     create,
     update,
     addMentorHours,
+    createPowerRanking,
     delete: _delete,
     company: companySubject.asObservable(),
     get companyValue () { return companySubject.value }
@@ -57,9 +58,20 @@ function create(params) {
 }
 
 function addMentorHours(id, params){
-    console.log(params);
 
     return fetchWrapper.post(`${baseUrl}/hours/${id}`, params)
+    .then(company => {
+            company = { ...companySubject.value, ...company };
+            companySubject.next(company);        
+        return company;
+    });
+
+}
+
+function createPowerRanking(id, params){
+    console.log(params);
+
+    return fetchWrapper.post(`${baseUrl}/powerranking/${id}`, params)
     .then(company => {
             company = { ...companySubject.value, ...company };
             companySubject.next(company);        

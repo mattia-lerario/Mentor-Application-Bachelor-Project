@@ -16,6 +16,7 @@ router.post('/', authorize(), createSchema, create);
 router.put('/:id', authorize(), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
 router.post('/hours/:id', authorize(), checkHoursSchema, createHours);
+router.post('/powerranking/:id', authorize(), powerRankingSchema, createPowerRanking);
 
 module.exports = router;    
 
@@ -96,6 +97,46 @@ function createHours(req, res, next) {
         .then(company => res.json(company))
         .catch(next);
 }
+
+//Powerranking functions
+function createPowerRanking(req, res, next) {
+    
+    companyService.createPowerRankingCompany({...req.body, user:req.user, id:req.params.id})
+        .then(company => res.json(company))
+        .catch(next);
+}
+
+function powerRankingSchema(req, res, next){
+    const schema = Joi.object({
+        date: Joi.date().required(),
+        question1: Joi.number().required(),
+        question2: Joi.number().required(),
+        question3: Joi.number().required(),
+        question4: Joi.number().required(),
+        question5: Joi.number().required(),
+        question6: Joi.number().required(),
+        question7: Joi.number().required(),
+        question8: Joi.number().required(),
+        question9: Joi.number().required(),
+        question10: Joi.number().required(),
+        question11: Joi.number().required(),
+        comment1: Joi.string().required(),
+        comment2: Joi.string().required(),
+        comment3: Joi.string().required(),
+        comment4: Joi.string().required(),
+        comment5: Joi.string().required(),
+        comment6: Joi.string().required(),
+        comment7: Joi.string().required(),
+        comment8: Joi.string().required(),
+        comment9: Joi.string().required(),
+        comment10: Joi.string().required(),
+        comment11: Joi.string().required(),
+    });
+
+    validateRequest(req, next, schema); 
+}
+
+
 
 function createSchema(req, res, next) {
     const schema = Joi.object({

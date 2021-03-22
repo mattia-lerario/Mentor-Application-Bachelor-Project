@@ -13,7 +13,6 @@ function Profile({ match }) {
     
     return (
             <article className="p-4 container">
-                <h1>Your profile</h1>
                 <Switch>
                     <Route exact path={path} component={Details} />
                     <Route path={`${path}/update`} component={Update} />
