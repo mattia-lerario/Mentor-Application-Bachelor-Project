@@ -92,7 +92,7 @@ function PowerRanking({ history, match }) {
                         <div className="form-group col-7">
                                     <label>Choose Company to examine</label>
                                     <Field name="companyId" as="select" className={'FormGroups' + (errors.companyId && touched.companyId ? ' is-invalid' : '')}>
-
+                                    <option key="blank" value=" "></option>
                                 {companies && companies.map(company =>
                                 
                                     <option key={company.id} value ={company.id}>{company.companyName}</option>)}
