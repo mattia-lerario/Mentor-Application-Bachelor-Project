@@ -226,9 +226,18 @@ export const ListWrapper = styled.div`
   
 .headerImg{
     width: 100%;
-    height: 40vh;
+    height: 35vh;
     background-image: url("https://images.frandroid.com/wp-content/uploads/2013/01/Samsung-Logo.jpg");
     background-size: 100%;
+    margin-bottom: 2vh;
+}
+
+.MetricsBox{
+    border: 0.1vw solid black;
+    width: 30%;
+    float: right;
+    padding: 2px;
+    background-color: #e6f2ff;
 }
   `;
 
