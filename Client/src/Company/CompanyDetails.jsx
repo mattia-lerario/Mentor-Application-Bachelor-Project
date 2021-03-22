@@ -32,10 +32,16 @@ function CompanyDetails({ match }) {
                     </section>
 
                     <section>
-                        <h4 className="companyName">{company.companyName}</h4>
+                        <h1>{company.companyName}</h1>
                     </section>
 
-                    <section className="cardMetric">
+                    <section>
+                        <h4>Company details</h4>
+                        <p>{company.CompanyDetails}</p>
+                    </section>
+
+                    <section className="MetricsBox">
+                        <h4>Metrics</h4>
                         <p>Sales Revenue: {company.salesRevenue}</p>
                         <p>Company number: {company.companyNumber}</p>
                     </section>
