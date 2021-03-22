@@ -19,7 +19,7 @@ import { Chart } from 'react-charts'
            { primary: 2, secondary: 10 },
            { primary: 3, secondary: 10 },
          ],
-       },
+       }, 
        {
          label: 'Series 3',
          data: [
