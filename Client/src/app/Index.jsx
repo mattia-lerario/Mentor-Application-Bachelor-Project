@@ -5,12 +5,11 @@ import { Role } from '@/_helpers';
 import { accountService } from '@/_services';
 import {MenuWrapper, SidebarWrapper} from '../style/styledcomponents';
 
-import { Nav, PrivateRoute, Alert, Sidebar } from '@/_components';
+import { Nav, PrivateRoute, Alert, Sidebar,MyChart } from '@/_components';
 import { Home } from '@/home';
 import { Profile } from '@/profile';
 import { Company } from '@/Company';
 import { Mentor } from '@/Mentor';
-
 import { Admin } from '@/admin';
 import { Account } from '@/account';
 import { Dashboard } from '@/dashboard';
@@ -37,6 +36,7 @@ return (
                 <PrivateRoute exact path="/" component={Home} />
 
                 <PrivateRoute path="/dashboard" component={Dashboard} />
+                <PrivateRoute path="/charts" component={MyChart} />
                 <PrivateRoute path="/companies" component={Company} />
                 <PrivateRoute path="/mentors" component={Mentor} />
                 <PrivateRoute path="/profile" component={Profile} />
