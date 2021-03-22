@@ -8,7 +8,7 @@ function Home() {
     return (
         <article className="p-4 container">
                 <h1>Hi {user.firstName}</h1>
-                <p>You're logged in with React & JWT!!</p>
+                
         </article>
     );
 }
