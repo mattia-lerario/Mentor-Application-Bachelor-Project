@@ -17,28 +17,28 @@ function PowerRanking({ history, match }) {
 
     const initialValues = {
         question1: 0,
-        comment1: 'q',
+        comment1: '',
         question2: 0,
-        comment2: 'q',
+        comment2: 'Write Comment here',
         question3: 0,
-        comment3: 'q',
+        comment3: 'Write Comment here',
         question4: 0,
-        comment4: 'q',
+        comment4: 'Write Comment here',
         question5: 0,
-        comment5: 'q',
+        comment5: 'Write Comment hereq',
         question6: 0,
-        comment6: 'q',
+        comment6: 'Write Comment here',
         question7: 0,
-        comment7: 'q',
+        comment7: 'Write Comment here',
         question8: 0,
-        comment8: 'q',
+        comment8: 'Write Comment here',
         question9: 0,
-        comment9: 'q',
+        comment9: 'Write Comment here',
         question10: 0,
-        comment10: 'q',
+        comment10: 'Write Comment here',
         question11: 0,
-        comment11: 'q',
-        date: '',
+        comment11: 'Write Comment here',
+        date: Date.now,
     };
 
    /*const validationSchema = Yup.object().shape({
@@ -103,14 +103,18 @@ function PowerRanking({ history, match }) {
                        
                        <div>
                         <div className="form-group col-7">
-                                    <label>Question1</label>
+                                    <label>
+                                        Do the team have the necessary drive and execution power to reach the company goals.
+                                        Formal background to execute key tasks, complementary CV (tech and business), ability to take feedback from mentors and  
+                                        an overall underatsing of the challenges should be taken into account in building a great company
+                                    </label>
                                     <Field name="question1" type="number" className={'FormGroups' + (errors.question1 && touched.question1 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="question1" component="div" className="InvalidFeedback" />
                         </div>
 
                          <div className="form-group col-7">
-                                    <label>Comment 1</label>
+                                    <label>Comment</label>
                                     <Field name="comment1" type="textarea" className={'FormGroups' + (errors.comment1 && touched.comment1 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="comment1" component="div" className="InvalidFeedback" />
@@ -118,49 +122,64 @@ function PowerRanking({ history, match }) {
                         </div>
                          
                         <div className="form-group col-7">
-                                    <label>Question2</label>
+                                    <label> Is the positioning of the proiduct offering good enough to make a difference in the market?
+                                        Do the offering have the needed competitive edge?
+                                        Is the offering scalable?
+                                        How unique is the offering compared to others in the market?
+                                    </label>
                                     <Field name="question2" type="number" className={'FormGroups' + (errors.question2 && touched.question2 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="companyId" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
-                                    <label>Comment 2</label>
+                                    <label>Comment</label>
                                     <Field name="comment2" type="textarea" className={'FormGroups' + (errors.comment2 && touched.comment2 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="comment2" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
-                                    <label>Question3</label>
+                                    <label>
+                                        Is the target market large enough?
+                                        Is there attractive follow on market? 
+                                        Is it possible for the company to grow outside the Nordics? 
+                                    </label>
                                     <Field name="question3" type="number" className={'FormGroups' + (errors.question3 && touched.question3 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="question3" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
-                                    <label>Comment 3</label>
+                                    <label>Comment</label>
                                     <Field name="comment3" type="textarea" className={'FormGroups' + (errors.comment3 && touched.comment3 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="comment3" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
-                                    <label>Question4</label>
+                                    <label>
+                                        Is the company on track to deliver on its milestones?
+                                        Do the company as a whole have the necessary drive and traction traction in the market? 
+                                        Customer traction in form of early orders, paid pilots, etc.?
+                                    </label>
                                     <Field name="question4" type="number" className={'FormGroups' + (errors.question4 && touched.question4 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="question4" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
-                                    <label>Comment 4</label>
+                                    <label>Comment</label>
                                     <Field name="comment4" type="textarea" className={'FormGroups' + (errors.comment4 && touched.comment4 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="comment4" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
-                                    <label>Question5</label>
+                                    <label>
+                                        Do the company have the vision and drive to capture the full potential of it offering and its opportunity?
+                                        Do the company have the ability to be on time with its work and do the company manage its daily work the correct way?
+                                    </label>
                                     <Field name="question5" type="number" className={'FormGroups' + (errors.question5 && touched.question5 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="question5" component="div" className="InvalidFeedback" />
@@ -174,81 +193,96 @@ function PowerRanking({ history, match }) {
                         </div>
 
                         <div className="form-group col-7">
-                                    <label>Question6</label>
+                                    <label>
+                                        Is it sufficient tech know-how in the company to be able to execute the product vision?
+                                        Is the company able to put "drawing on a paper" into coding?
+                                    </label>
                                     <Field name="question6" type="number" className={'FormGroups' + (errors.question6 && touched.question6 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="question6" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
-                                    <label>Comment6</label>
+                                    <label>Comment</label>
                                     <Field name="comment6" type="textarea" className={'FormGroups' + (errors.comment6 && touched.comment6 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="comment6" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
-                                    <label>Question7</label>
+                                    <label>
+                                        Do the company have an overview and understanding of its market?
+                                        Is the company capuring feedback from the market? (references not only positive)
+                                    </label>
                                     <Field name="question7" type="number" className={'FormGroups' + (errors.question7 && touched.question7 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="question7" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
-                                    <label>Comment 7</label>
+                                    <label>Comment</label>
                                     <Field name="comment7" type="textarea" className={'FormGroups' + (errors.comment7 && touched.comment7 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="comment7" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
-                                    <label>Question8</label>
+                                    <label>
+                                        Is the company performing on sales growth metrics?
+                                        Below 20% growth Y/Y is  a score =1 
+                                    </label>
                                     <Field name="question8" type="number" className={'FormGroups' + (errors.question8 && touched.question8 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="question8" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
-                                    <label>Comment 8</label>
+                                    <label>Comment</label>
                                     <Field name="comment8" type="textarea" className={'FormGroups' + (errors.comment8 && touched.comment8 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="comment8" component="div" className="InvalidFeedback" />
                         </div>
                         <div className="form-group col-7">
-                                    <label>Question8</label>
+                                    <label>
+                                        Is the timing right for introducing the offering or is the company "too late to the party"?
+                                        How is the competitive picture and has this been done before? 
+                                    </label>
                                     <Field name="question8" type="number" className={'FormGroups' + (errors.question8 && touched.question8 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="question8" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
-                                    <label>Comment 8</label>
+                                    <label>Comment</label>
                                     <Field name="comment8" type="textarea" className={'FormGroups' + (errors.comment8 && touched.comment8 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="comment8" component="div" className="InvalidFeedback" />
                         </div>
                         <div className="form-group col-7">
-                                    <label>Question8</label>
+                                    <label>
+                                        Is the timing right for introducing the offering or is the company "too late to the party"?
+                                        How is the competitive picture and has this been done before?
+                                    </label>
                                     <Field name="question8" type="number" className={'FormGroups' + (errors.question8 && touched.question8 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="question8" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
-                                    <label>Comment 9</label>
+                                    <label>Comment</label>
                                     <Field name="comment9" type="textarea" className={'FormGroups' + (errors.comment9 && touched.comment9 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="comment9" component="div" className="InvalidFeedback" />
                         </div>
                         <div className="form-group col-7">
-                                    <label>Question 10</label>
+                                    <label>Is the company contributing to solving global sustainability challenges? How well is that captured in their strategy?</label>
                                     <Field name="question10" type="number" className={'FormGroups' + (errors.question10 && touched.question10 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="question10" component="div" className="InvalidFeedback" />
                         </div>
 
                         <div className="form-group col-7">
-                                    <label>Comment 11</label>
+                                    <label>Comment</label>
                                     <Field name="comment8" type="textarea" className={'FormGroups' + (errors.comment11 && touched.comment11 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="comment11" component="div" className="InvalidFeedback" />
