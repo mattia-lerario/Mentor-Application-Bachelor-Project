@@ -33,9 +33,9 @@ function refreshToken() {
     return fetchWrapper.post(`${baseUrl}/refresh-token`, {})
         .then(user => {
             // publish user to subscribers and start timer to refresh token
-            userSubject.next(user);
+            companySubject.next(company);
             startRefreshTokenTimer();
-            return user;
+            return company;
          });
 }
 
@@ -114,7 +114,7 @@ let refreshTokenTimeout;
 
 function startRefreshTokenTimer() {
     // parse json object from base64 encoded jwt token
-    const jwtToken = JSON.parse(atob(userSubject.value.jwtToken.split('.')[1]));
+    const jwtToken = JSON.parse(atob(companySubject.value.jwtToken.split('.')[1]));
 
     // set a timeout to refresh the token a minute before it expires
     const expires = new Date(jwtToken.exp * 1000);
