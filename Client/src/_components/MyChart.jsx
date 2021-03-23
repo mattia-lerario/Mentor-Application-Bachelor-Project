@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd'
 import { Chart } from 'react-charts'
- import { companyService, mentorService, alertService } from '@/_services';
+ import { companyService, accountService,mentorService, alertService } from '@/_services';
+ 
  function MyChart() {
+ /* const user = accountService.userValue;
+  console.log(companyService.getById(user.companies))
+  
+if(user.role= "Company"){
+    return(
+    console.log(companyService.getById(user.companies))
+    )
+  }*/
   
    const data = React.useMemo(
      () => [
@@ -14,7 +23,7 @@ import { Chart } from 'react-charts'
            { primary: 3, secondary: 8 },
          ],
        },
-      /* {
+       {
          label: 'Series 2',
          data: [
            { primary: 1, secondary: 5 },
@@ -29,7 +38,7 @@ import { Chart } from 'react-charts'
            { primary: 2, secondary: 10 },
            { primary: 3, secondary: 10 },
          ],
-       },*/
+       },
      ],
      []
    )
@@ -55,8 +64,5 @@ import { Chart } from 'react-charts'
     
    )
  }
-
-
-
 
 export { MyChart }; 
