@@ -48,6 +48,8 @@ function getAll() {
     return fetchWrapper.get(baseUrl);
 }
 
+
+
 function getById(id) {
     console.log(id);
     return fetchWrapper.get(`${baseUrl}/${id}`);

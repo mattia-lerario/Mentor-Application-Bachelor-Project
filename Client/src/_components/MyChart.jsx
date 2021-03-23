@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { Draggable } from 'react-beautiful-dnd'
 import { Chart } from 'react-charts'
- 
+ import { companyService, mentorService, alertService } from '@/_services';
  function MyChart() {
+  
    const data = React.useMemo(
      () => [
        {
@@ -35,20 +37,22 @@ import { Chart } from 'react-charts'
    const axes = React.useMemo(
      () => [
        { primary: true, type: 'linear', position: 'bottom' },
-       { type: 'linear', position: 'left' },
+       { type: 'linear', position: 'bottom' },
      ],
      []
    )
  
    return (
+     
      <div
        style={{
-         width: '400px',
-         height: '300px',
+         width: '150px',
+         height: '100px',
        }}
      >
        <Chart data={data} axes={axes} />
      </div>
+    
    )
  }
 
