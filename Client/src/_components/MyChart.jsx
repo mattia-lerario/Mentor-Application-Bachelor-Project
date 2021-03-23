@@ -11,13 +11,13 @@ import { Chart } from 'react-charts'
          data: [
            { primary: 1, secondary: 2 },
            { primary: 2, secondary: 5 },
-           { primary: 3, secondary: 6 },
+           { primary: 3, secondary: 8 },
          ],
        },
-       {
+      /* {
          label: 'Series 2',
          data: [
-           { primary: 1, secondary: 10 },
+           { primary: 1, secondary: 5 },
            { primary: 2, secondary: 10 },
            { primary: 3, secondary: 10 },
          ],
@@ -29,7 +29,7 @@ import { Chart } from 'react-charts'
            { primary: 2, secondary: 10 },
            { primary: 3, secondary: 10 },
          ],
-       },
+       },*/
      ],
      []
    )

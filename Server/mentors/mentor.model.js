@@ -18,10 +18,8 @@ const schema = new Schema({
     ],
     workExperience:[
         title: {type:String},
-        description: {type : String},
-        
-    ],  
-    
+        description: {type : String},        
+    ],      
     */
 
     accounts: 
