@@ -233,11 +233,17 @@ export const ListWrapper = styled.div`
 }
 
 .MetricsBox{
-    border: 0.1vw solid black;
+    border: 0.1vw solid #bfbfbf;
     width: 30%;
     float: right;
-    padding: 2px;
+    padding: 4px;
     background-color: #e6f2ff;
+    //box-shadow: right bottom fade allsides color;
+    box-shadow: 0.1rem 0.1rem 0.4rem 0.05rem #38507a;
+}
+.MetricsBox h4{
+    text-align: center;
+    border-bottom: 1px solid #bfbfbf;
 }
   `;
 
