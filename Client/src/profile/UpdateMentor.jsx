@@ -17,7 +17,7 @@ function UpdateMentor({ history, match }) {
         mentorNumber: '',
         tlfNumber: '',
         email: '',
-        mentorDescription: ''
+        mentorDescription: '',
     };
 
     const validationSchema = Yup.object().shape({
@@ -37,14 +37,35 @@ function UpdateMentor({ history, match }) {
     function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
 
-        console.log(isAddMode);
+    
+        console.log(user.mentors);
 
-        if (isAddMode) {
-            createMentor(fields, setSubmitting);
+        if (!isAddMode) {
+           // createMentor(fields, setSubmitting);
+           mentorService.create(fields)
+           .then(() => {
+               alertService.success('Create successful', { keepAfterRouteChange: true });
+               history.push('.');
+           })
+           .catch(error => {
+               setSubmitting(false);
+               alertService.error(error);
+               console.log(error);
+           });
         } 
         
         else {
-            updateMentor(id, fields, setSubmitting);
+           // updateMentor(id, fields, setSubmitting);
+           mentorService.update(user.mentors,fields)    
+            .then(() => {
+                alertService.success('Update successful', { keepAfterRouteChange: true });
+                history.push('.');
+            })
+            .catch(error => {
+                setSubmitting(false);
+                alertService.error(error);
+                console.log(error);
+            });
             
         }
         
