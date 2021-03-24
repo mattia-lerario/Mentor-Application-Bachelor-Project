@@ -239,8 +239,6 @@ async function _delete(id) {
 
 async function getAccount(id) {
 
-  
-
     //if (!db.isValidId(id)) throw 'Account not found';
 
     const account = await db.Account.findById(id);
@@ -248,8 +246,6 @@ async function getAccount(id) {
     if (!account) throw 'Account not found';
 
     return account;
-
-
 }
 
 async function getRefreshToken(token) {
