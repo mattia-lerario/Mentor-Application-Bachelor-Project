@@ -40,33 +40,11 @@ function UpdateMentor({ history, match }) {
     
         console.log(user.mentors);
 
-        if (!isAddMode) {
-           // createMentor(fields, setSubmitting);
-           mentorService.create(fields)
-           .then(() => {
-               alertService.success('Create successful', { keepAfterRouteChange: true });
-               history.push('.');
-           })
-           .catch(error => {
-               setSubmitting(false);
-               alertService.error(error);
-               console.log(error);
-           });
-        } 
-        
+        if (!user.mentors) {
+           createMentor(fields, setSubmitting);
+        }         
         else {
-           // updateMentor(id, fields, setSubmitting);
-           mentorService.update(user.mentors,fields)    
-            .then(() => {
-                alertService.success('Update successful', { keepAfterRouteChange: true });
-                history.push('.');
-            })
-            .catch(error => {
-                setSubmitting(false);
-                alertService.error(error);
-                console.log(error);
-            });
-            
+           updateMentor(user.mentors, fields, setSubmitting);            
         }
         
         }
