@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-import { companyService } from '@/_services';
+import { companyService, accountService } from '@/_services';
 import { Field, Form } from 'formik';
+import { Chart } from 'react-charts'
 
+//import {MyChart, BarChart} from '@/_components';
 //style
 import {CompanyWrapper} from '../style/styledcomponents';
-
 
 
 function CompanyDetails({ match }) {
@@ -14,17 +15,41 @@ function CompanyDetails({ match }) {
     const companyId = id;
 
     const [company, setUsers] = useState(null);
+    /*charts*/
+    /*const [chartData, setCharsdata] = useState({});
+
+    const chart = () => {
+        setCharsdata({
+        labels: ['question 1', 'question 2','question 3','question 4'],
+        dataSets: [{
+            label: 'Raking from 1-6',
+            data: [1,2,3,4],
+            borderWidth: 4
+        }
+    ]
+    })
+    }*/
+
+    function findMentor(id) {
+
+    const mentor =  accountService.getById("605351ee1763896a3c76cb15").firstName;
+    return(
+       <p>{mentor}</p>
+    )
+
+    }
 
     useEffect(() => {
         companyService.getAll().then(x => setUsers(x));
     }, []);
+    
 
     return (
+
         <CompanyWrapper>
             {/* <Link to="/companies" className={'BtnSimple Right'}>Back</Link> */}
 
             {company && company.filter(company => company.id === companyId).map(company => 
-
                 <article key={company.id}>
 
                     <section className="headerImg">
@@ -44,7 +69,35 @@ function CompanyDetails({ match }) {
                         <h4>Metrics</h4>
                         <p>Sales Revenue: {company.salesRevenue}</p>
                         <p>Company number: {company.companyNumber}</p>
+                                         
                     </section>
+                    <section>
+                        <h4>Time Log</h4>
+
+                        <ul>
+                        {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map(hr =>
+                        
+                        <li key = {hr.id}>{hr.hours} was used {hr.dateOfWork[7]}{hr.dateOfWork[8]}.{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li>            
+                    
+                        )}
+                        </ul>
+                        <p><b>Total time used on {company.companyName}</b></p>
+                    
+                    </section>
+
+                    <section>
+
+                        <h4>Section for power ranking</h4>
+                        {company.powerRanking && company.powerRanking.map(pr =>
+
+                        <article
+                        key = {pr.date}>
+                            <p>{pr.question1}</p>
+                            <p>{pr.question2}</p>
+                        </article>
+                        )}
+                    </section>
+
                 </article>
             )}
 

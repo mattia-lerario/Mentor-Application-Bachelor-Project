@@ -1,12 +1,6 @@
 import React from 'react'
 import { Chart } from 'react-charts'
 
-
-
-
-
-
-
  function BarChart() {
     const data = React.useMemo(
      () => [
@@ -18,7 +12,7 @@ import { Chart } from 'react-charts'
            { primary: 3, secondary: 6 },
          ],
        },
-       {
+       /*{
          label: 'Series 2',
          data: [
            { primary: 1, secondary: 10 },
@@ -33,7 +27,7 @@ import { Chart } from 'react-charts'
            { primary: 2, secondary: 10 },
            { primary: 3, secondary: 10 },
          ],
-       },
+       },*/
      ],
      []
    )
@@ -45,8 +39,8 @@ import { Chart } from 'react-charts'
   );
   const axes = React.useMemo(
     () => [
-      { primary: true, type: "ordinal", position: "left" },
-      { position: "bottom", type: "linear", stacked: true }
+      { primary: true, type: "ordinal", position: "bottom" },
+      { position: "bottom", type: "linear", stacked: false }
     ],
     []
   );

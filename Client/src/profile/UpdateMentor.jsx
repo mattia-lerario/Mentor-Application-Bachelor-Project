@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Field, Form, ErrorMessage, isEmptyArray } from 'formik';
 import * as Yup from 'yup';
 
 import { accountService,companyService, mentorService, alertService } from '@/_services';
+import { empty } from 'rxjs';
 
 function UpdateMentor({ history, match }) {
     const { id } = match.params;
@@ -13,11 +14,11 @@ function UpdateMentor({ history, match }) {
     const mentor = mentorService.mentorValue;
 
     const initialValues = {
-        mentorName: '',
-        mentorNumber: '',
-        tlfNumber: '',
-        email: '',
-        mentorDescription: ''
+        mentorName: user.firstName + " " + user.lastName,
+        mentorNumber: '999887766',
+        tlfNumber: '99887744',
+        email: user.email,
+        mentorDescription: 'This is a description',
     };
 
     const validationSchema = Yup.object().shape({
@@ -37,15 +38,15 @@ function UpdateMentor({ history, match }) {
     function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
 
-        console.log(isAddMode);
+        console.log(user.mentors.length);
 
-        if (isAddMode) {
-            createMentor(fields, setSubmitting);
-        } 
-        
+        if (user.mentors.length > 0) {
+            updateMentor(user.mentors, fields, setSubmitting); 
+           //createMentor(fields, setSubmitting);
+        }         
         else {
-            updateMentor(id, fields, setSubmitting);
-            
+           //updateMentor(user.mentors, fields, setSubmitting);
+           createMentor(fields, setSubmitting);            
         }
         
         }

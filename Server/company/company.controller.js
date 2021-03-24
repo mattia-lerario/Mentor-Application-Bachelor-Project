@@ -70,6 +70,12 @@ function getAll(req, res, next) {
         .catch(next);
 }
 
+function getAllPowerRankings(req, res, next) {
+    companyService.getAllPowerRankings()
+        .then(company => res.json(company))
+        .catch(next);
+}
+
 function getById(req, res, next) {
     // users can get their own account and admins can get any account
     //Mentors must be able to get one accountById

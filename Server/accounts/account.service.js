@@ -239,8 +239,6 @@ async function _delete(id) {
 
 async function getAccount(id) {
 
-  
-
     //if (!db.isValidId(id)) throw 'Account not found';
 
     const account = await db.Account.findById(id);
@@ -248,8 +246,6 @@ async function getAccount(id) {
     if (!account) throw 'Account not found';
 
     return account;
-
-
 }
 
 async function getRefreshToken(token) {
@@ -282,8 +278,8 @@ function randomTokenString() {
 }
 /////////////////////////////////////
 function basicDetails(account) {
-    const { id,title, firstName, lastName, email, role, created, updated, isVerified } = account;
-    return { id,title, firstName, lastName, email, role, created, updated, isVerified };
+    const { id,title, firstName, lastName, email, role, created, updated, isVerified, mentors,companies } = account;
+    return { id,title, firstName, lastName, email, role, created, updated, isVerified, mentors,companies };
 }
 
 async function sendVerificationEmail(account, origin) {

@@ -18,6 +18,7 @@ module.exports = {
     //validateResetToken,
     //resetPassword,
     getAll,
+    getAllPowerRankings,
     getById,
     create,
     addMentorToCompany,
@@ -63,6 +64,12 @@ async function revokeToken({ token, ipAddress }) {
 async function getAll() {
     const company = await db.Company.find();
     return company.map(x => basicDetails(x));
+}
+
+
+async function getAllPowerRankings() {
+    const company = await db.Company.find();
+    return company.PowerRanking.map(x => basicDetails(x));
 }
 
 
@@ -221,8 +228,8 @@ function randomTokenString() {
 
 
 function basicDetails(company) {
-    const { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription, phase,mentor} = company;
-    return { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription, phase,mentor };
+    const { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription, phase, leadMentor, powerRanking, hoursSpendtOnCompany} = company;
+    return { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription, phase, leadMentor, powerRanking, hoursSpendtOnCompany};
 }
 
 
