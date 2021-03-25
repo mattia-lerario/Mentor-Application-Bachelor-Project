@@ -4,15 +4,11 @@
   padding: 0;
   box-sizing: border-box;
 }
-.container {
-  overflow-y: auto;
-  height: 100%;
-}
 
 .app-container {
   display: flex;
   height: 85vh;
-  width: 90vw;
+  width: 98vw;
   border-radius: 2rem;
   backdrop-filter: blur(10px);
 }
@@ -31,18 +27,28 @@ body {
   ); // #65dfc9 #6d7b93
   //background-image: url(https://images.hdqwalls.com/download/forest-mountains-3v-2880x1800.jpg);
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
-.p-4 {
+.main {
   flex: 2;
   background: linear-gradient(
     to right bottom,
     rgba(255, 255, 255, 0.7),
     rgba(255, 255, 255, 0.3)
   );
-  border-radius: 2rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-y: auto;
+}
+//---SCROLLBAR
+//hiding the native scroll-bar of the browser
+.scrollhost {
+  scrollbar-width: none;
+ -ms-overflow-style: none;
+}
+.scrollhost::-webkit-scrollbar {
+ display: none;
 }
 
 .Alert{

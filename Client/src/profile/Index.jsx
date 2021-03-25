@@ -12,7 +12,7 @@ function Profile({ match }) {
     const { path } = match;
     
     return (
-            <article className="p-4 container">
+            <article className={'main'}>
                 <Switch>
                     <Route exact path={path} component={Details} />
                     <Route path={`${path}/update`} component={Update} />

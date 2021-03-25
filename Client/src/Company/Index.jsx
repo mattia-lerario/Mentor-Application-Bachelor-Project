@@ -14,8 +14,8 @@ function Company({ match }) {
     const { path } = match;
     
     return (
-        <article className="p-4">
-            <section className="container">
+        <article className={'main scrollhost'}>
+            <section>
 
                 <Switch>
                     <Route exact path={path} component={CompanyList} />
