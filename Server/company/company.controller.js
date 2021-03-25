@@ -5,10 +5,10 @@ const validateRequest = require('_middleware/validate-request');
 const authorize = require('_middleware/authorize')
 const Role = require('_helpers/role');
 const companyService = require('./company.service');
-const { addMentorToCompany } = require('./company.service');
+//const { addMentorToCompany } = require('./company.service');
 
 // routes
-router.post('/authenticate', authenticateSchema, authenticate);
+//router.post('/authenticate', authenticateSchema, authenticate);
 router.post('/revoke-token', authorize(), revokeTokenSchema, revokeToken);
 router.get('/',authorize(), getAll);
 router.get('/:id', authorize(), getById);
@@ -20,24 +20,24 @@ router.post('/powerranking/:id', authorize(), powerRankingSchema, createPowerRan
 
 module.exports = router;    
 
-function authenticateSchema(req, res, next) {
+/*function authenticateSchema(req, res, next) {
     const schema = Joi.object({
         email: Joi.string().required(),
         password: Joi.string().required()
     });
     validateRequest(req, next, schema);
-}
+}*/
 
-function authenticate(req, res, next) {
+/*function authenticate(req, res, next) {
     const { email, password } = req.body;
     const ipAddress = req.ip;
     companyService.authenticate({ email, password, ipAddress })
         .then(({ refreshToken, ...account }) => {
-            setTokenCookie(res, refreshToken);
+            // setTokenCookie(res, refreshToken);
             res.json(account);
         })
         .catch(next);
-}
+}*/
 
 function revokeTokenSchema(req, res, next) {
     const schema = Joi.object({
@@ -70,11 +70,11 @@ function getAll(req, res, next) {
         .catch(next);
 }
 
-function getAllPowerRankings(req, res, next) {
+/*function getAllPowerRankings(req, res, next) {
     companyService.getAllPowerRankings()
         .then(company => res.json(company))
         .catch(next);
-}
+}*/
 
 function getById(req, res, next) {
     // users can get their own account and admins can get any account

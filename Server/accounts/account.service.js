@@ -106,10 +106,10 @@ async function register(params, origin) {
 async function verifyEmail({ token }) {
     const account = await db.Account.findOne({ verificationToken: token });
     if(account.role == 'Company'){
-        const company = await db.Company.findOne({verificationToken: token});
+        // const company = await db.Company.findOne({verificationToken: token});
     }
     if(account.role == 'Mentor'){
-        const mentor = await db.Mentor.findOne({verificationToken: token});
+        // const mentor = await db.Mentor.findOne({verificationToken: token});
     }
     if (!account) throw 'Verification failed';
 

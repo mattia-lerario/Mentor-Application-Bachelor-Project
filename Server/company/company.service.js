@@ -2,11 +2,11 @@ const config = require('config.json');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const crypto = require("crypto");
-const sendEmail = require('_helpers/send-email');
+//const sendEmail = require('_helpers/send-email');
 const db = require('_helpers/db');
-const Role = require('_helpers/role');
+//const Role = require('_helpers/role');
 const accountService = require('accounts/account.service');
-const { addCompanyToMentor } = require('../mentors/mentor.service');
+//const { addCompanyToMentor } = require('../mentors/mentor.service');
 
 module.exports = {
     authenticate,
@@ -204,9 +204,9 @@ async function getRefreshToken(token) {
     return refreshToken;
 }
 
-function hash(password) {
+/*function hash(password) {
     return bcrypt.hashSync(password, 10);
-}
+}*/
 
 function generateJwtToken(company) {
     // create a jwt token containing the account id that expires in 15 minutes
