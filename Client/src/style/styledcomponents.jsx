@@ -292,8 +292,8 @@ export const PRform = styled.div`
 .RankingField{
     width: 3vw;
 }
-.Comment{
-
+.CommentField{
+    width: 90%;
 }
 .DateSave{
     margin-left: 2rem;

@@ -18,27 +18,27 @@ function PowerRanking({ history, match }) {
 
     const initialValues = {
         question1: 0,
-        comment1: 'Write comment here',
+        comment1: ' Write comment here',
         question2: 0,
-        comment2: 'Write Comment here',
+        comment2: ' Write Comment here',
         question3: 0,
-        comment3: 'Write Comment here',
+        comment3: ' Write Comment here',
         question4: 0,
-        comment4: 'Write Comment here',
+        comment4: ' Write Comment here',
         question5: 0,
-        comment5: 'Write Comment here',
+        comment5: ' Write Comment here',
         question6: 0,
-        comment6: 'Write Comment here',
+        comment6: ' Write Comment here',
         question7: 0,
-        comment7: 'Write Comment here',
+        comment7: ' Write Comment here',
         question8: 0,
-        comment8: 'Write Comment here',
+        comment8: ' Write Comment here',
         question9: 0,
-        comment9: 'Write Comment here',
+        comment9: ' Write Comment here',
         question10: 0,
-        comment10: 'Write Comment here',
+        comment10: ' Write Comment here',
         question11: 0,
-        comment11: 'Write Comment here',
+        comment11: ' Write Comment here',
         date: Date.now,
     };
 
@@ -115,8 +115,8 @@ function PowerRanking({ history, match }) {
                                     <ErrorMessage name="question1" component="div" className="InvalidFeedback" />
                                 </div>
                                 <div className="Comment">
-                                    <label>Comment</label>
-                                    <Field name="comment1" type="textarea" className={'FormGroups' + (errors.comment1 && touched.comment1 ? ' is-invalid' : '')} />
+                                    <label>Comment:</label>
+                                    <Field name="comment1" type="textarea" className={'CommentField' + (errors.comment1 && touched.comment1 ? ' is-invalid' : '')} />
                                     <ErrorMessage name="comment1" component="div" className="InvalidFeedback" />
                                 </div>
                             </section>
@@ -135,8 +135,8 @@ function PowerRanking({ history, match }) {
                                     <ErrorMessage name="companyId" component="div" className="InvalidFeedback" />
                                 </div>
                                 <div className="Comment">
-                                    <label>Comment</label>
-                                    <Field name="comment2" type="textarea" className={'FormGroups' + (errors.comment2 && touched.comment2 ? ' is-invalid' : '')} />
+                                    <label>Comment:</label>
+                                    <Field name="comment2" type="textarea" className={'CommentField' + (errors.comment2 && touched.comment2 ? ' is-invalid' : '')} />
                                     <ErrorMessage name="comment2" component="div" className="InvalidFeedback" />
                                  </div>
                             </section>
@@ -155,8 +155,8 @@ function PowerRanking({ history, match }) {
                                     <ErrorMessage name="question3" component="div" className="InvalidFeedback" />
                                 </div>
                                 <div className="Comment">
-                                    <label>Comment</label>
-                                    <Field name="comment3" type="textarea" className={'FormGroups' + (errors.comment3 && touched.comment3 ? ' is-invalid' : '')} />
+                                    <label>Comment:</label>
+                                    <Field name="comment3" type="textarea" className={'CommentField' + (errors.comment3 && touched.comment3 ? ' is-invalid' : '')} />
                                     <ErrorMessage name="comment3" component="div" className="InvalidFeedback" />
                                 </div>
                             </section>
@@ -175,8 +175,8 @@ function PowerRanking({ history, match }) {
                                 <ErrorMessage name="question4" component="div" className="InvalidFeedback" />
                             </div>
                             <div className="Comment">
-                                <label>Comment</label>
-                                <Field name="comment4" type="textarea" className={'FormGroups' + (errors.comment4 && touched.comment4 ? ' is-invalid' : '')} />
+                                <label>Comment:</label>
+                                <Field name="comment4" type="textarea" className={'CommentField' + (errors.comment4 && touched.comment4 ? ' is-invalid' : '')} />
 
                                 <ErrorMessage name="comment4" component="div" className="InvalidFeedback" />
                             </div>
@@ -195,8 +195,8 @@ function PowerRanking({ history, match }) {
                                 <ErrorMessage name="question5" component="div" className="InvalidFeedback" />
                             </div>
                             <div className="Comment">
-                                <label>Comment</label>
-                                <Field name="comment5" type="textarea" className={'FormGroups' + (errors.comment5 && touched.comment5 ? ' is-invalid' : '')} />
+                                <label>Comment:</label>
+                                <Field name="comment5" type="textarea" className={'CommentField' + (errors.comment5 && touched.comment5 ? ' is-invalid' : '')} />
                                 <ErrorMessage name="comment5" component="div" className="InvalidFeedback" />
                             </div>
                         </section>
@@ -214,8 +214,8 @@ function PowerRanking({ history, match }) {
                                 <ErrorMessage name="question6" component="div" className="InvalidFeedback" />
                             </div>
                             <div className="Comment">
-                                <label>Comment</label>
-                                <Field name="comment6" type="textarea" className={'FormGroups' + (errors.comment6 && touched.comment6 ? ' is-invalid' : '')} />
+                                <label>Comment:</label>
+                                <Field name="comment6" type="textarea" className={'CommentField' + (errors.comment6 && touched.comment6 ? ' is-invalid' : '')} />
                                 <ErrorMessage name="comment6" component="div" className="InvalidFeedback" />
                             </div>
                         </section>
@@ -233,8 +233,8 @@ function PowerRanking({ history, match }) {
                                 <ErrorMessage name="question7" component="div" className="InvalidFeedback" />
                             </div>
                             <div className="Comment">
-                                <label>Comment</label>
-                                <Field name="comment7" type="textarea" className={'FormGroups' + (errors.comment7 && touched.comment7 ? ' is-invalid' : '')} />
+                                <label>Comment:</label>
+                                <Field name="comment7" type="textarea" className={'CommentField' + (errors.comment7 && touched.comment7 ? ' is-invalid' : '')} />
                                 <ErrorMessage name="comment7" component="div" className="InvalidFeedback" />
                             </div>
                         </section>
@@ -252,8 +252,8 @@ function PowerRanking({ history, match }) {
                                 <ErrorMessage name="question8" component="div" className="InvalidFeedback" />
                             </div>
                             <div className="Comment">
-                                <label>Comment</label>
-                                <Field name="comment8" type="textarea" className={'FormGroups' + (errors.comment8 && touched.comment8 ? ' is-invalid' : '')} />
+                                <label>Comment:</label>
+                                <Field name="comment8" type="textarea" className={'CommentField' + (errors.comment8 && touched.comment8 ? ' is-invalid' : '')} />
                                 <ErrorMessage name="comment8" component="div" className="InvalidFeedback" />
                             </div>
                         </section>
@@ -271,8 +271,8 @@ function PowerRanking({ history, match }) {
                                 <ErrorMessage name="question8" component="div" className="InvalidFeedback" />
                             </div>
                             <div className="Comment">
-                                <label>Comment</label>
-                                <Field name="comment8" type="textarea" className={'FormGroups' + (errors.comment8 && touched.comment8 ? ' is-invalid' : '')} />
+                                <label>Comment:</label>
+                                <Field name="comment8" type="textarea" className={'CommentField' + (errors.comment8 && touched.comment8 ? ' is-invalid' : '')} />
                                 <ErrorMessage name="comment8" component="div" className="InvalidFeedback" />
                             </div>
                         </section>
@@ -290,8 +290,8 @@ function PowerRanking({ history, match }) {
                                 <ErrorMessage name="question8" component="div" className="InvalidFeedback" />
                             </div>
                             <div className="Comment">
-                                <label>Comment</label>
-                                <Field name="comment9" type="textarea" className={'FormGroups' + (errors.comment9 && touched.comment9 ? ' is-invalid' : '')} />
+                                <label>Comment:</label>
+                                <Field name="comment9" type="textarea" className={'CommentField' + (errors.comment9 && touched.comment9 ? ' is-invalid' : '')} />
                                 <ErrorMessage name="comment9" component="div" className="InvalidFeedback" />
                             </div>
                         </section>
@@ -306,8 +306,8 @@ function PowerRanking({ history, match }) {
                                 <ErrorMessage name="question10" component="div" className="InvalidFeedback" />
                             </div>
                             <div className="Comment">
-                                <label>Comment</label>
-                                <Field name="comment8" type="textarea" className={'FormGroups' + (errors.comment11 && touched.comment11 ? ' is-invalid' : '')} />
+                                <label>Comment:</label>
+                                <Field name="comment8" type="textarea" className={'CommentField' + (errors.comment11 && touched.comment11 ? ' is-invalid' : '')} />
                                 <ErrorMessage name="comment11" component="div" className="InvalidFeedback" />
                             </div>
                         </section>
