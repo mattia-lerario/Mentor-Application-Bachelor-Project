@@ -1,7 +1,10 @@
 import React from 'react'
-import { Chart } from 'react-charts'
+import { Chart } from 'react-charts';
 
- function BarChart() {
+import { accountService,companyService, mentorService, alertService } from '@/_services'
+
+ function BarChart({ids}) {
+     const company = companyService.getAll();
     const data = React.useMemo(
      () => [
        {
@@ -12,10 +15,10 @@ import { Chart } from 'react-charts'
            { primary: 3, secondary: 6 },
          ],
        },
-       /*{
+      {
          label: 'Series 2',
          data: [
-           { primary: 1, secondary: 10 },
+           { primary: 5, secondary: 10 },
            { primary: 2, secondary: 10 },
            { primary: 3, secondary: 10 },
          ],
@@ -27,7 +30,7 @@ import { Chart } from 'react-charts'
            { primary: 2, secondary: 10 },
            { primary: 3, secondary: 10 },
          ],
-       },*/
+       }
      ],
      []
    )
@@ -47,9 +50,14 @@ import { Chart } from 'react-charts'
   return (
     <>
       
-     
+        <div
+       style={{
+         width: '600px',
+         height: '300px',
+       }}
+     >
         <Chart data={data} series={series} axes={axes} tooltip />
-      
+      </div>
     </>
   );
 }
