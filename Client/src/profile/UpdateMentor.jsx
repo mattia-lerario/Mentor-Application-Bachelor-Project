@@ -38,7 +38,7 @@ function UpdateMentor({ history, match }) {
     function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
 
-        console.log(fields.id);
+        console.log(user.mentors.length);
 
        if (user.mentors.length > 0) {
             updateMentor(user.mentors, fields, setSubmitting); 
@@ -46,9 +46,7 @@ function UpdateMentor({ history, match }) {
         }         
         else {
            //updateMentor(user.mentors, fields, setSubmitting);
-           createMentor(fields, setSubmitting);
-
-           accountService.addMentorToAccount()          
+           createMentor(fields, setSubmitting);         
         }
         
         }

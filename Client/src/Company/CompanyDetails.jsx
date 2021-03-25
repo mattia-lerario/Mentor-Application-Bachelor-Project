@@ -73,14 +73,12 @@ function CompanyDetails({ match }) {
                                          
                     </section>
                     <section>
+                        
                         <h4>Time Log</h4>
-
                         <ul  key = {company.id}>
                         {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map(hr =>
-
                                                 
-                        <li key = {hr.id}>{hr.hours} was used {hr.dateOfWork[7]}{hr.dateOfWork[8]}.{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li>            
-                    
+                        <li key = {hr.id}>{hr.hours} was used {hr.dateOfWork[7]}{hr.dateOfWork[8]}.{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li> 
                         )}
                         </ul>
                         <p><b>Total time used on {company.companyName}</b></p>

@@ -105,14 +105,15 @@ async function create(params) {
 
      //Connect Account to Mentor
     mentorsModel.accounts = [params.user.id];
-    
     // save mentorsModel
+
     await mentorsModel.save();
     
-    accountService.addMentorToAccount(mentorsModel.id, mentorsModel.accountId);
+    //console.log(mentorsModel.id, mentorsModel.accounts);
+
+    accountService.addMentorToAccount(mentorsModel.id, mentorsModel.accounts);
     
     return basicDetails(mentorsModel);
-   
 }   
 
 async function addCompanyToMentor(companyId,mentorId) {
@@ -191,6 +192,14 @@ function generateRefreshToken(mentorsModel, ipAddress) {
 function randomTokenString() {
     return crypto.randomBytes(40).toString('hex');
 }
+
+/*async function addMentorToAccount(mentorId, accountId) {
+    return db.Account.findByIdAndUpdate(
+      accountId,
+      { $push: { mentors: mentorId} },
+      { new: true, useFindAndModify: false }
+    );
+  };*/
 
 function basicDetails(mentorsModel) {
     const {id, mentorName, mentorNumber, tlfNumber,email,mentorDescription, account } = mentorsModel;

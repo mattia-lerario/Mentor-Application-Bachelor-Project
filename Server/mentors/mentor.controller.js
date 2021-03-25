@@ -5,6 +5,7 @@ const validateRequest = require('_middleware/validate-request');
 const authorize = require('_middleware/authorize')
 const Role = require('_helpers/role');
 const mentorService = require('./mentor.service');
+const accountService = require('../accounts/account.service');
 
 // routes
 router.post('/authenticate', authenticateSchema, authenticate);
@@ -175,6 +176,7 @@ function create(req, res, next) {
     mentorService.create({...req.body, user:req.user})
         .then(mentor => res.json(mentor))
         .catch(next);
+   // accountService.addMentorToAccount({})
 }
 
 function updateSchema(req, res, next) {
