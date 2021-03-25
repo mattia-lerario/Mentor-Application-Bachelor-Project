@@ -264,32 +264,45 @@ export const ListWrapper = styled.div`
   `;
 
 export const PRform = styled.div`
-.Questionbox{
-    display: flex:
+.QuestionBox{
+    margin-top: 2rem;
+    width: 90%;
+    border-bottom: 1px solid black;
+    padding-bottom: 1.5rem;
 }
-.QuestionBox label{
-
-  }
+.QuestionBox, .Choose{
+    margin-left: 2rem;
+}
 .Choose label{
     font-size: 2vw;
 }
-.Choose label, .Ranking p, .Comment label{
+.Choose label, .Ranking p, .Comment label, .DateSave label{
     font-weight: bold;
     margin-right: 1vw;
 }
 .Question{
-
+    margin-bottom: 0.5rem;
 }
 .Ranking{
     display: flex;
     flex-direction: row;
     height: 2vw;
+    margin-bottom: 0.5rem;
 }
-.Ranking Field[type="number"]{
-    width: 2vw;
+.RankingField{
+    width: 3vw;
 }
 .Comment{
 
+}
+.DateSave{
+    margin-left: 2rem;
+    margin-top: 2rem;
+    width: 90%;
+}
+.DateField{
+    width: 15%;
+    margin-left: 0.5rem;
 }
 
   `;
