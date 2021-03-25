@@ -10,7 +10,7 @@ function Home() {
     
     
     return (
-        <article className="main">
+        <article className={'main'}>
             <h1>Hi {user.name} </h1>
            
             <br/>    

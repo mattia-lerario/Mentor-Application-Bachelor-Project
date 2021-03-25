@@ -14,7 +14,7 @@ function Company({ match }) {
     const { path } = match;
     
     return (
-        <article className="main">
+        <article className={'main scrollhost'}>
             <section>
 
                 <Switch>

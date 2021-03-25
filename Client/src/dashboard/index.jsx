@@ -12,7 +12,7 @@ function Dashboard({ match }) {
     const { path } = match;
     
     return (
-        <article className="main">
+        <article className={'main scrollhost'}>
                 
 
                 <Switch>

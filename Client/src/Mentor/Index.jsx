@@ -8,7 +8,7 @@ function Mentor({ match }) {
     const { path } = match;
     
     return (
-        <article className="main">
+        <article className={'main scrollhost'}>
                 
                 <h1>Mentor Dashboard</h1>
 
