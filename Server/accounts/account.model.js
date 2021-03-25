@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
+
 const schema = new Schema({
+
     email: { type: String, unique: true, required: true },
     passwordHash: { type: String, required: true },
     title: { type: String, required: true },
@@ -16,13 +19,27 @@ const schema = new Schema({
         expires: Date
     },
     passwordReset: Date,
+
     created: { type: Date, default: Date.now },
-    updated: Date
+    updated: Date,
+    companies: 
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Company"
+      }
+    ,
+    mentors: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Mentor"
+        }   
+    ]       
 });
 
 schema.virtual('isVerified').get(function () {
     return !!(this.verified || this.passwordReset);
 });
+
 
 schema.set('toJSON', {
     virtuals: true,

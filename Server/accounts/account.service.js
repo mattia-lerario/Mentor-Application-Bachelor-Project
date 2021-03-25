@@ -19,6 +19,8 @@ module.exports = {
     getById,
     create,
     update,
+    addCompanyToAccount,
+    addMentorToAccount,
     delete: _delete
 };
 
@@ -103,7 +105,12 @@ async function register(params, origin) {
 
 async function verifyEmail({ token }) {
     const account = await db.Account.findOne({ verificationToken: token });
-
+    if(account.role == 'Company'){
+        const company = await db.Company.findOne({verificationToken: token});
+    }
+    if(account.role == 'Mentor'){
+        const mentor = await db.Mentor.findOne({verificationToken: token});
+    }
     if (!account) throw 'Verification failed';
 
     account.verified = Date.now();
@@ -177,11 +184,33 @@ async function create(params) {
     // save account
     await account.save();
 
+    // await account.sendRegistrationEmail();
+
     return basicDetails(account);
 }
 
+async function addCompanyToAccount(companyId,accountId) {
+  return db.Account.findByIdAndUpdate(
+    accountId,
+    { companies: companyId},
+    { new: true, useFindAndModify: false }
+  );
+};
+
+async function addMentorToAccount(mentorId, accountId) {
+    return db.Account.findByIdAndUpdate(
+      accountId,
+      { $push: { mentors: mentorId} },
+      { new: true, useFindAndModify: false }
+    );
+  };
+
+
 async function update(id, params) {
+
     const account = await getAccount(id);
+    
+   
 
     // validate (if email was changed)
     if (params.email && account.email !== params.email && await db.Account.findOne({ email: params.email })) {
@@ -209,9 +238,13 @@ async function _delete(id) {
 // helper functions
 
 async function getAccount(id) {
-    if (!db.isValidId(id)) throw 'Account not found';
+
+    //if (!db.isValidId(id)) throw 'Account not found';
+
     const account = await db.Account.findById(id);
+
     if (!account) throw 'Account not found';
+
     return account;
 }
 
@@ -243,10 +276,10 @@ function generateRefreshToken(account, ipAddress) {
 function randomTokenString() {
     return crypto.randomBytes(40).toString('hex');
 }
-
+/////////////////////////////////////
 function basicDetails(account) {
-    const { id, title, firstName, lastName, email, role, created, updated, isVerified } = account;
-    return { id, title, firstName, lastName, email, role, created, updated, isVerified };
+    const { id,title, firstName, lastName, email, role, created, updated, isVerified, mentors,companies } = account;
+    return { id,title, firstName, lastName, email, role, created, updated, isVerified, mentors,companies };
 }
 
 async function sendVerificationEmail(account, origin) {

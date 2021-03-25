@@ -1,21 +1,148 @@
 // global styles
-a { cursor: pointer; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  overflow-y: auto;
+  height: 100%;
+}
 
 .app-container {
-    min-height: 320px;
+  display: flex;
+  height: 85vh;
+  width: 90vw;
+  border-radius: 2rem;
+  backdrop-filter: blur(10px);
 }
 
-// ---ADMIN-MENU---
-.AdminNav {
-    background-color: #e8e9ea;
-    border-bottom: 1px solid #ccc;
-    padding: 5px;
-    padding-left: 30px;
+a {
+  cursor: pointer;
 }
-.AdminLink  {
-    color: black;
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(
+    to right top,
+    #304569,
+    #b3d9ff,
+    #304569
+  ); // #65dfc9 #6d7b93
+  //background-image: url(https://images.hdqwalls.com/download/forest-mountains-3v-2880x1800.jpg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.AdminLink:hover {
-    text-decoration: underline;
-    color: #6D7B93;
+
+.p-4 {
+  flex: 2;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  border-radius: 2rem;
+}
+
+.Alert{
+  position: absolute;
+  margin-top: 2vh;
+  margin-left: 2vw;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+  padding-top: 1vh;
+  height: 7vh;
+  width: 70vw;
+  z-index: 10;
+  border-radius: 2px;
+}
+//text on the cards in the Dashboard and Companies sites.
+.noLink{
+  color: black;
+}
+.noLink:hover{
+  text-decoration: none;
+  color: black;
+}
+
+.Right{
+  float: right;
+}
+
+//---BUTTONS---
+.Btn {
+  background-color: #38507a;
+  border-radius: 0.1vw;
+  height: 2.2vw;
+  color: white;
+  margin: 0.3vw;
+  padding: 0.2vw;
+}
+.BtnMain{
+  border: 1px solid #182234;
+}
+//---lighter color when hovered
+.BtnMain:hover{
+  background-color: #283957;
+}
+//---Red Delete Button
+.BtnDelete{
+  background-color: #800000;
+  border: 1px solid #4d0000;
+}
+.BtnDelete:hover{
+  background-color: #b30000;
+}
+//---makes the link-text white(because of link-tag)
+.BtnLink{
+  color:white;
+}
+//---removes underscore on link when hovered(because of link-tag)
+.BtnLink:hover {
+  text-decoration: none;
+  color:white;
+}
+.BtnSimple{
+  color: black;
+  padding: 0.5vw;
+}
+.BtnSimple:hover {
+  color: black;
+}
+
+.BtnBack{
+  float: right;
+  border: 0.1vw solid #808080;
+  border-radius: 00.2vw;
+  height: 2.2vw;
+  width: 4vw;
+  margin: 0.3vw;
+  padding: 0.2vw;
+  text-align: center;
+  background-color: #cccccc;
+}
+.BtnBack:hover{
+  background-color: #a6a6a6;
+  text-decoration: none;
+}
+
+
+//---TABLES---
+.Table {
+  margin-top: 1rem;
+}
+.Table thead {
+  background-color: #38507a;
+  color: white;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+tr:hover {
+  background-color: #cccccc;
+}
+.Table thead tr:hover {
+  background-color: #38507a;
+  color: white;
 }

@@ -1,9 +1,17 @@
 import styled from 'styled-components';  
 
 /*
+slate grey - #38507a
+*/
+
+/*
 List of what elements are getting styled here, in listed order:
 - Menu
 - Buttons
+- Update Profile Form
+- Profile Index
+- Sidebar (menu)
+- Company list table
 */
 
 
@@ -11,66 +19,32 @@ List of what elements are getting styled here, in listed order:
 /* File: Nav.jsx */
 export const MenuWrapper = styled.div`
 //---makes the background of the menu slategrey
-.MenuBar {
-    background-color: #273855;
-    padding: 10px;
+.MenuBar{
+    display:flex;
+    flex-direction:row;
+    padding: 1rem;
 }
 //---displays the links horizontal(inline). 
 .MenuLinks{
     display: inline;
-    padding: 10px;
+    padding: 0.5rem;
 }
 //---making the text in the menu white
 .NavLink{
-    color: white;
-    padding: 10px;
+    color: black;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
 }
 //---gives the links a underscore and grey-color when hovered.
 .NavLink:hover{
-    text-decoration: none;
-    background-color: #38507a;
+    text-decoration: #202e46 underline 0.5vh;
+}
+// ---ADMIN-MENU---
+//adding the background-color for the Admin-menu
+#AdminLink{
     color: black;
 }
-`;
-
-
-/* ---BUTTONS--- */
-/* Files: Details.jsx, Update.jsx, List.jsx, Overview.jsx */
-export const BtnWrapper = styled.div`
-//---Button with same background-color as the menu, and white text.
-.Btn {
-    background-color: #273855;
-    border-radius: 3px;
-    height: 35px;
-    color: white;
-    margin: 2px;
-}
-.CancelBtn{
-    margin: 15px;
-    color: black;
-}
-.MainBtn{
-    border: 1px solid #182234;
-}
-//---Red Delete Button
-.DeleteBtn{
-    background-color: #800000;
-    border: 1px solid #4d0000;
-}
-//---lighter color when hovered
-.MainBtn:hover{
-    background-color: #38507a;
-}
-.DeleteBtn:hover{
-    background-color: #b30000;
-}
-//---makes the link-text white(because of link-tag)
-.LinkBtn{
-    color:white;
-}
-//---removes underscore on link when hovered(because of link-tag)
-.LinkBtn:hover{
-    text-decoration: none;
+#AdminLink:hover{
 }
 `;
 
@@ -88,7 +62,7 @@ W3Schools.com
 //---Making the parameters displayed inline.
 .FormRow{
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
 }
 //---Giving space between the different paramenters(eg. Title, Name etc.)
 .FormRow div{
@@ -118,10 +92,158 @@ W3Schools.com
 `;
 
 /* ---PROFILE INDEX--- */
-/* Files: Index.jsx */
+/* File: Index.jsx */
 export const ProfileWrapper = styled.div`
 .Padding{
     padding: 20px;
     margin-left: 10px;
 }
 `;
+
+/* ----FORM STYLE ----- */
+export const GlassForm = styled.div`
+
+.CardHeaderLogin{
+    backdrop-filter: blur(10px);
+    text-decoration: underline;
+    text-align: center;
+}
+.CardBodyLogin{
+    width 20rem;
+    margin: auto auto;
+}
+`;
+
+/* ---SIDEBAR--- */
+/* Files: Nav.jsx, Sidebar.jsx */
+export const SidebarWrapper = styled.div`
+
+//Light blue backgroundcolor and width on the sidebar-menu
+.Sidebar{
+    margin-right:1rem;
+    width: 13vw;
+    height: 100%;
+    display:flex;
+    flex:1;
+    flex-direction:column;
+    align-items:center;
+    border-radius:2rem;
+    padding: 1rem;
+    background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+}
+.SideLink {
+    display: block;
+    color: black;
+}
+.SideLink:hover {
+    text-decoration: none;
+    font-weight: bolder;
+}
+.Avatar{
+    width:120px;
+    border-radius:20px;
+}
+`;
+
+
+
+/* ---COMPANY LISTTABLE/CARDS--- */
+/* Files: Company.jsx, DashboardList.jsx*/
+export const ListWrapper = styled.div`
+// Resource: https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy
+
+.card{
+    flex: 3;
+    background: linear-gradient(
+      to right bottom,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.3)
+        );
+    width: 30%;
+    height: 15%;
+    margin: 0.5rem;
+    margin-top: 3vh;
+    display: inline-block;
+    //box-shadow: right bottom fade allsides color;
+    box-shadow: 0.09rem 0.19rem 0.5rem 0.1rem #38507a;
+    filter: grayscale(50%);
+    padding-left: 4px;
+    padding-top: 4px;
+    padding-right: 5px;
+  }
+  .card:hover{
+    border: solid #38507a;
+    //box-shadow: right bottom fade allsides color;
+    box-shadow: 0.2rem 0.3rem 0.5rem 0.1rem #38507a;
+    filter: grayscale(0%);
+}
+.cardTop{
+    border-bottom: 0.2vh solid #bfbfbf;
+    padding-bottom: 1vh;
+    display: flex;
+}
+.cardImg{
+    background-image: url("https://images.frandroid.com/wp-content/uploads/2013/01/Samsung-Logo.jpg");
+    background-position: center;
+    background-size: 100%;
+    height: 4rem;
+    width: 4.5rem;
+    border-radius: 50%;
+}
+.companyName{
+    flex: 3;
+    text-aling: right;
+    margin-left: 0.5vw;
+    margin-top: 3vh;
+    font-size: 1.3vw;
+}
+.cardMetric, .cardBottom{
+    margin: 1rem;
+}
+.cardMetric{
+    height: 25vh;
+}
+.cardBottom{
+    border-top: 0.2vh solid #bfbfbf;
+    text-align: center;
+}
+.cardBottom p, .cardBottom button{
+    display: inline;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    border: 0;
+    background: none;
+}
+
+  `;
+
+/* ---COMPANY DETAILS--- */
+  export const CompanyWrapper = styled.div`
+  
+.headerImg{
+    width: 100%;
+    height: 35vh;
+    background-image: url("https://images.frandroid.com/wp-content/uploads/2013/01/Samsung-Logo.jpg");
+    background-size: 100%;
+    margin-bottom: 2vh;
+}
+
+.MetricsBox{
+    border: 0.1vw solid #bfbfbf;
+    width: 30%;
+    float: right;
+    padding: 4px;
+    background-color: #e6f2ff;
+    //box-shadow: right bottom fade allsides color;
+    box-shadow: 0.1rem 0.1rem 0.4rem 0.05rem #38507a;
+}
+.MetricsBox h4{
+    text-align: center;
+    border-bottom: 1px solid #bfbfbf;
+}
+  `;
+

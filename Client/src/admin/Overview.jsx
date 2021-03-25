@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BtnWrapper } from '../style/styledcomponents';
 
 function Overview({ match }) {
     const { path } = match;
 
     return (
-        <BtnWrapper>
+        <section>
             <h1>Admin</h1>
             <p>This section can only be accessed by administrators.</p>
-            <button className="Btn MainBtn"><Link to={`${path}/users`} className="LinkBtn">Manage Users</Link></button>
-        </BtnWrapper>
+            <button className={'Btn BtnMain'}><Link to={`${path}/users`} className={'BtnLink'}>Manage Users</Link></button>
+            <button className={'Btn BtnMain'}><Link to={`${path}/companies`} className={'BtnLink'}>Manage companies</Link></button>
+        </section>
     );
 }
 

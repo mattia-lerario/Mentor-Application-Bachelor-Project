@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { accountService } from '@/_services';
-import { BtnWrapper } from '../../style/styledcomponents';
 
 function List({ match }) {
     const { path } = match;
@@ -17,22 +16,20 @@ function List({ match }) {
             if (x.id === id) { x.isDeleting = true; }
             return x;
         }));
+        
         accountService.delete(id).then(() => {
             setUsers(users => users.filter(x => x.id !== id));
         });
     }
 
     return (
-        <div>
-            <h1>Users</h1>
-            <p>All users from secure (admin only) api end point:</p>
-            <BtnWrapper>
-                <button className="Btn MainBtn">
-                    <Link to={`${path}/add`} className="LinkBtn">Add User</Link>
-                </button>
-            </BtnWrapper>
+        <section>
+            <Link to="/admin" className={'BtnSimple BtnBack'}>Back</Link>
+            <h1>All Accounts</h1>
+            <p>View of all Users in the System</p>
 
-            <table className="table table-striped">
+                <Link to={`${path}/add`} className={'Btn BtnMain BtnLink'}>Add User</Link>
+            <table className={'Table'}>
                 <thead>
                     <tr>
                         <th style={{ width: '30%' }}>Name</th>
@@ -48,30 +45,26 @@ function List({ match }) {
                             <td>{user.email}</td>
                             <td>{user.role}</td>
                             <td style={{ whiteSpace: 'nowrap' }}>
-                                <BtnWrapper>
-                                <button className="Btn MainBtn">
-                                    <Link to={`${path}/edit/${user.id}`} className="LinkBtn">Edit</Link>
-                                </button>
-                                <button onClick={() => deleteUser(user.id)} className="Btn DeleteBtn" style={{ width: '60px' }} disabled={user.isDeleting}>
-                                    {user.isDeleting 
-                                        ? <span className="spinner-border spinner-border-sm"></span>
-                                        : <span>Delete</span>
-                                    }
-                                </button>
-                                </BtnWrapper>
+                                    <Link to={`${path}/edit/${user.id}`} className={'BtnSimple'}>Edit</Link>
+                                    <Link onClick={() => deleteUser(user.id)} className={'BtnSimple'} style={{ width: '60px' }} disabled={user.isDeleting}>
+                                        {user.isDeleting 
+                                            ? <span></span>
+                                            : <span>Delete</span>
+                                        }
+                                    </Link>
                             </td>
                         </tr>
                     )}
                     {!users &&
                         <tr>
                             <td colSpan="4" className="text-center">
-                                <span className="spinner-border spinner-border-lg align-center"></span>
+                                <span></span>
                             </td>
                         </tr>
                     }
                 </tbody>
             </table>
-        </div>
+        </section>
     );
 }
 

@@ -57,6 +57,7 @@ function ResetPassword({ history }) {
                 .catch(error => {
                     setSubmitting(false);
                     alertService.error(error);
+                    console.log(error)
                 });
         }
 
@@ -76,11 +77,11 @@ function ResetPassword({ history }) {
                         </div>
                         <div className="form-row">
                             <div className="form-group col">
-                                <button type="submit" disabled={isSubmitting} className="btn btn-primary">
+                                <button type="submit" disabled={isSubmitting} className={'Btn BtnMain'}>
                                     {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
                                     Reset Password
                                 </button>
-                                <Link to="login" className="btn btn-link">Cancel</Link>
+                                <Link to="login" className={'BtnSimple'}>Cancel</Link>
                             </div>
                         </div>
                     </Form>

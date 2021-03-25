@@ -18,10 +18,11 @@ router.post('/reset-password', resetPasswordSchema, resetPassword);
 router.get('/', authorize(Role.Admin), getAll);
 router.get('/:id', authorize(), getById);
 router.post('/', authorize(Role.Admin), createSchema, create);
-router.put('/:id', authorize(), updateSchema, update);
+router.put('/:id',authorize(), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
 
 module.exports = router;
+
 
 function authenticateSchema(req, res, next) {
     const schema = Joi.object({
@@ -175,13 +176,13 @@ function createSchema(req, res, next) {
         email: Joi.string().email().required(),
         password: Joi.string().min(6).required(),
         confirmPassword: Joi.string().valid(Joi.ref('password')).required(),
-        role: Joi.string().valid(Role.Admin, Role.User).required()
+        role: Joi.string().valid(Role.Admin, Role.User,Role.Mentor,Role.Company).required()
     });
     validateRequest(req, next, schema);
 }
 
 function create(req, res, next) {
-    accountService.create(req.body)
+    accountService.create({...req.body, user:req.user})
         .then(account => res.json(account))
         .catch(next);
 }
@@ -210,8 +211,8 @@ function update(req, res, next) {
     if (req.params.id !== req.user.id && req.user.role !== Role.Admin) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
-
-    accountService.update(req.params.id, req.body)
+    
+    accountService.update(req.params.id,req.body)
         .then(account => res.json(account))
         .catch(next);
 }
