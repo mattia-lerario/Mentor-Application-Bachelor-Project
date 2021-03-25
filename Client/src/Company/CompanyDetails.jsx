@@ -32,7 +32,7 @@ function CompanyDetails({ match }) {
 
     function findMentor(id) {
 
-    const mentor =  accountService.getById("605351ee1763896a3c76cb15").firstName;
+    const mentor =  accountService.getById(id).firstName;
     return(
        <p>{mentor}</p>
     )
@@ -61,32 +61,32 @@ function CompanyDetails({ match }) {
                     </section>
 
                     <section>
-                        <h4>Company details</h4>
                         <p>{company.CompanyDetails}</p>
                     </section>
+                    
+                    <section className="Box2">
+                        <section className="Box MetricsBox">
+                            <h4>Metrics</h4>
+                            <p>Sales Revenue: {company.salesRevenue}</p>
+                            <p>Company number: {company.companyNumber}</p>
+                                            
+                        </section>
 
-                    <section className="MetricsBox">
-                        <h4>Metrics</h4>
-                        <p>Sales Revenue: {company.salesRevenue}</p>
-                        <p>Company number: {company.companyNumber}</p>
-                                         
-                    </section>
-                    <section>
-                        <h4>Time Log</h4>
+                        <section className="Box TimeLog">
+                            <h4>Time Log</h4>
 
-                        <ul>
-                        {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map(hr =>
+                            <ul>
+                            {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map(hr =>
+                            
+                            <li key = {hr.id}>{hr.hours} was used {hr.dateOfWork[7]}{hr.dateOfWork[8]}.{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li>            
                         
-                        <li key = {hr.id}>{hr.hours} was used {hr.dateOfWork[7]}{hr.dateOfWork[8]}.{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li>            
-                    
-                        )}
-                        </ul>
-                        <p><b>Total time used on {company.companyName}</b></p>
-                    
+                            )}
+                            </ul>
+                            <p><b>Total time used on {company.companyName}</b></p>
+                        </section>
                     </section>
 
-                    <section>
-
+                    <section className="Box PRbox">
                         <h4>Section for power ranking</h4>
                         {company.powerRanking && company.powerRanking.map(pr =>
 

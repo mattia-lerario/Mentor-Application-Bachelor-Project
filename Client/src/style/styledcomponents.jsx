@@ -232,18 +232,30 @@ export const ListWrapper = styled.div`
     margin-bottom: 2vh;
 }
 
-.MetricsBox{
-    border: 0.1vw solid #bfbfbf;
-    width: 30%;
-    float: right;
+.Box{
     padding: 4px;
+    margin: 1.5%;
+    border: 0.1vw solid #bfbfbf;
     background-color: #e6f2ff;
     //box-shadow: right bottom fade allsides color;
-    box-shadow: 0.1rem 0.1rem 0.4rem 0.05rem #38507a;
+    box-shadow: 0.05rem 0.05rem 0.3rem 0.03rem #38507a;
 }
-.MetricsBox h4{
+.Box2{
+    display:flex;
+}
+
+.MetricsBox{
+    width: 50%;
+}
+.MetricsBox h4, .TimeLog h4, .PRbox h4{
     text-align: center;
     border-bottom: 1px solid #bfbfbf;
+}
+.TimeLog{
+    width: 50%;
+}
+.PRbox{
+    width: 97%;
 }
   `;
 
