@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Draggable } from 'react-beautiful-dnd'
-import { Chart } from 'react-charts'
+import { Draggable } from 'react-beautiful-dnd';
+import { Chart } from 'react-charts';
 import { accountService,companyService, mentorService, alertService } from '@/_services';
  
  function MyChart({ids,datas}) {
