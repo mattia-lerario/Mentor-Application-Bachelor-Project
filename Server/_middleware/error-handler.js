@@ -1,6 +1,6 @@
 module.exports = errorHandler;
 
-function errorHandler(err, req, res, /*next*/) {
+function errorHandler(err, req, res,next) {
     switch (true) {
         case typeof err === 'string': {
             // custom application error
@@ -15,6 +15,7 @@ function errorHandler(err, req, res, /*next*/) {
             // jwt authentication error
             return res.status(401).json({ message: 'Unauthorized' });
         default:
+            console.log(err.message);
             return res.status(500).json({ message: err.message });
     }
 }
