@@ -4,6 +4,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import { companyService, alertService } from '@/_services';
+import { PRform } from '../style/styledcomponents';
 
 function PowerRanking({ history, match }) {
     const { id } = match.params;
@@ -17,7 +18,7 @@ function PowerRanking({ history, match }) {
 
     const initialValues = {
         question1: 0,
-        comment1: '',
+        comment1: 'Write comment here',
         question2: 0,
         comment2: 'Write Comment here',
         question3: 0,
@@ -25,7 +26,7 @@ function PowerRanking({ history, match }) {
         question4: 0,
         comment4: 'Write Comment here',
         question5: 0,
-        comment5: 'Write Comment hereq',
+        comment5: 'Write Comment here',
         question6: 0,
         comment6: 'Write Comment here',
         question7: 0,
@@ -89,39 +90,43 @@ function PowerRanking({ history, match }) {
 
                 return (
                     <Form>
-                        <div className="form-group col-7">
-                                    <label>Choose Company to examine</label>
-                                    <Field name="companyId" as="select" className={'FormGroups' + (errors.companyId && touched.companyId ? ' is-invalid' : '')}>
-                                    <option key="blank" value=" "></option>
+                        <PRform>
+                            <section className="Choose">
+                                <label>Choose Company to examine</label>
+                                <Field name="companyId" as="select" className={'FormGroups' + (errors.companyId && touched.companyId ? ' is-invalid' : '')}>
+                                <option key="blank" value=" "></option>
                                 {companies && companies.map(company =>
                                 
-                                    <option key={company.id} value ={company.id}>{company.companyName}</option>)}
-                                    </Field>
+                                <option key={company.id} value ={company.id}>{company.companyName}</option>)}
+                                </Field>
 
-                                    <ErrorMessage name="companyId" component="div" className="InvalidFeedback" />
-                        </div>
+                                <ErrorMessage name="companyId" component="div" className="InvalidFeedback" />
+                            </section>
                        
-                       <div>
-                        <div className="form-group col-7">
+                            <section className="QuestionBox">
+                                <div className="Question">
                                     <label>
                                         Do the team have the necessary drive and execution power to reach the company goals.
                                         Formal background to execute key tasks, complementary CV (tech and business), ability to take feedback from mentors and  
                                         an overall underatsing of the challenges should be taken into account in building a great company
                                     </label>
+                                </div>
+                                <div className="Ranking">
+                                    <p>Ranking: </p>
                                     <Field name="question1" type="number" className={'FormGroups' + (errors.question1 && touched.question1 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="question1" component="div" className="InvalidFeedback" />
-                        </div>
-
-                         <div className="form-group col-7">
+                                </div>
+                                <div className="Comment">
                                     <label>Comment</label>
                                     <Field name="comment1" type="textarea" className={'FormGroups' + (errors.comment1 && touched.comment1 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="comment1" component="div" className="InvalidFeedback" />
-                        </div>
-                        </div>
+                                </div>
+                            </section>
                          
-                        <div className="form-group col-7">
+                            <section className="QuestionBox">
+                                <div className="Question">
                                     <label> Is the positioning of the proiduct offering good enough to make a difference in the market?
                                         Do the offering have the needed competitive edge?
                                         Is the offering scalable?
@@ -130,14 +135,15 @@ function PowerRanking({ history, match }) {
                                     <Field name="question2" type="number" className={'FormGroups' + (errors.question2 && touched.question2 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="companyId" component="div" className="InvalidFeedback" />
-                        </div>
+                                </div>
 
-                        <div className="form-group col-7">
+                                <div className="Comment">
                                     <label>Comment</label>
                                     <Field name="comment2" type="textarea" className={'FormGroups' + (errors.comment2 && touched.comment2 ? ' is-invalid' : '')} />
 
                                     <ErrorMessage name="comment2" component="div" className="InvalidFeedback" />
-                        </div>
+                                 </div>
+                            </section>
 
                         <div className="form-group col-7">
                                     <label>
@@ -302,7 +308,8 @@ function PowerRanking({ history, match }) {
                             </button>
                             <Link to={isAddMode ? '.' : '..'} className={'BtnSimple'}>Cancel</Link>
                             </div>
-                              </Form>  
+                            </PRform>
+                    </Form>  
                     
                 );
             }}

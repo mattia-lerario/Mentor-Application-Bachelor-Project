@@ -130,7 +130,7 @@ export const SidebarWrapper = styled.div`
     flex: 1;
     flex-direction: column;
     align-items: center;
-    border-right: 0.15vw solid #38507a;
+    border-right: 0.2vw solid #38507a;
 }
 .SideLink {
     display: block;
@@ -227,7 +227,6 @@ export const ListWrapper = styled.div`
     background-image: url("https://images.frandroid.com/wp-content/uploads/2013/01/Samsung-Logo.jpg");
     background-size: 100%;
     margin-bottom: 1vw;
-    border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     margin-left: -1rem;
     margin-right: -1rem;
@@ -264,3 +263,33 @@ export const ListWrapper = styled.div`
 }
   `;
 
+export const PRform = styled.div`
+.Questionbox{
+    display: flex:
+}
+.QuestionBox label{
+
+  }
+.Choose label{
+    font-size: 2vw;
+}
+.Choose label, .Ranking p, .Comment label{
+    font-weight: bold;
+    margin-right: 1vw;
+}
+.Question{
+
+}
+.Ranking{
+    display: flex;
+    flex-direction: row;
+    height: 2vw;
+}
+.Ranking Field[type="number"]{
+    width: 2vw;
+}
+.Comment{
+
+}
+
+  `;
