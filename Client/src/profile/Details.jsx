@@ -33,7 +33,10 @@ function Details({ match }) {
 
         
         return (
-            <section>
+            <section>   
+                <button className={'Btn BtnMain Right'}><Link to={`${path}/updateWorkingHoursMentor`} className={'BtnLink'}>Update hours</Link></button>
+                <button className={'Btn BtnMain Right'}><Link to={`${path}/powerranking`} className={'BtnLink'}>PowerRanking</Link></button>
+    
                 <h1>{user.firstName}'s Profile</h1>
                 <p>
                     <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
@@ -43,10 +46,7 @@ function Details({ match }) {
                 
                 <button className={'Btn BtnMain'}><Link to={`${path}/update`} className={'BtnLink'}>Update Account</Link></button>
                 <button className={'Btn BtnMain'}><Link to={`${path}/updateMentor`} className={'BtnLink'}>Update {user.role} Information</Link></button>
-                
-                <button className={'Btn BtnMain Right'}><Link to={`${path}/updateWorkingHoursMentor`} className={'BtnLink'}>Update hours</Link></button>
-                <button className={'Btn BtnMain Right'}><Link to={`${path}/powerranking`} className={'BtnLink'}>PowerRanking</Link></button>
-            </section>
+             </section>
         
         
     );
