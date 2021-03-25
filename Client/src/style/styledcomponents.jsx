@@ -26,15 +26,16 @@ export const MenuWrapper = styled.div`
 }
 //---displays the links horizontal(inline). 
 .MenuLinks{
-    height: 10vh;
     display: inline;
     padding: 0.5rem;
 }
 //---making the text in the menu white
 .NavLink{
     color: black;
-    padding: 0.5rem;
+    padding: 1rem;
+    margin-left: 1rem;
     border-radius: 0.3rem;
+    font-size: 1.2rem;
 }
 //---gives the links a underscore and grey-color when hovered.
 .NavLink:hover{
