@@ -122,7 +122,7 @@ async function addCompanyToMentor(companyId,mentorId) {
       { $push: { companies: companyId } },
       { new: true, useFindAndModify: false }
     );
-  };
+  }
 
 async function update(id, params) {
 

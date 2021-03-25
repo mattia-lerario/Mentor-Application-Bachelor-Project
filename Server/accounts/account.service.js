@@ -195,7 +195,7 @@ async function addCompanyToAccount(companyId,accountId) {
     { companies: companyId},
     { new: true, useFindAndModify: false }
   );
-};
+}
 
 async function addMentorToAccount(mentorId, accountId) {
     return db.Account.findByIdAndUpdate(
@@ -203,7 +203,7 @@ async function addMentorToAccount(mentorId, accountId) {
       { $push: { mentors: mentorId} },
       { new: true, useFindAndModify: false }
     );
-  };
+  }
 
 
 async function update(id, params) {

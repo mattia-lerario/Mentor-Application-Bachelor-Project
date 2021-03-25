@@ -162,7 +162,7 @@ async function addMentorToCompany(mentorId,companyId) {
     { $push: { leadMentor: mentorId } },
     { new: true, useFindAndModify: false }
   );
-};
+}
 
 
 
