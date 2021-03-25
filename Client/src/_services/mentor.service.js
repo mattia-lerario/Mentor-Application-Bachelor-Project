@@ -50,8 +50,10 @@ function getById(id) {
     return fetchWrapper.get(`${baseUrl}/${id}`);
 }
 
-function create(params) {
-    return fetchWrapper.post(baseUrl, params);
+function create(id, params) {
+
+    console.log(id);
+    return fetchWrapper.post(baseUrl, params, id);
 }
 
 function update(id, params) {
