@@ -26,6 +26,7 @@ export const MenuWrapper = styled.div`
 }
 //---displays the links horizontal(inline). 
 .MenuLinks{
+    height: 10vh;
     display: inline;
     padding: 0.5rem;
 }

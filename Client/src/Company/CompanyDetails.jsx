@@ -83,6 +83,7 @@ function CompanyDetails({ match }) {
                         )}
                         </ul>
                         <p><b>Total time used on {company.companyName}</b></p>
+                    </section>
                     
                     <section className="Box2">
                         <section className="Box MetricsBox">
