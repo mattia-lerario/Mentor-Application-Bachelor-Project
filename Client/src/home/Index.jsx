@@ -10,7 +10,7 @@ function Home() {
     
     
     return (
-        <article className="p-4 container">
+        <article className="main">
             <h1>Hi {user.name} </h1>
            
             <br/>    

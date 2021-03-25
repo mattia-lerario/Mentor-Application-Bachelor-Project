@@ -12,8 +12,7 @@ function Dashboard({ match }) {
     const { path } = match;
     
     return (
-        <article className="p-4">
-            <section className="container">
+        <article className="main">
                 
 
                 <Switch>
@@ -23,7 +22,6 @@ function Dashboard({ match }) {
                     <Route path={`${path}/mentors`} component={Dashboard} />
                 </Switch>
          
-            </section>
         </article>
     );
 }

@@ -8,8 +8,7 @@ function Mentor({ match }) {
     const { path } = match;
     
     return (
-        <div className="p-4">
-            <div className="container">
+        <article className="main">
                 
                 <h1>Mentor Dashboard</h1>
 
@@ -17,8 +16,7 @@ function Mentor({ match }) {
                     <Route exact path={path} component={MentorList} />
                     <Route path={`${path}/mentors`} component={Mentor} />
                 </Switch>
-            </div>
-        </div>
+        </article>
     );
 }
 
