@@ -32,7 +32,8 @@ function CompanyDetails({ match }) {
 
     function findMentor(id) {
 
-    const mentor =  accountService.getById("605351ee1763896a3c76cb15").firstName;
+    const mentor =  accountService.getById(id).firstName;
+    
     return(
        <p>{mentor}</p>
     )
@@ -74,9 +75,10 @@ function CompanyDetails({ match }) {
                     <section>
                         <h4>Time Log</h4>
 
-                        <ul>
+                        <ul  key = {company.id}>
                         {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map(hr =>
-                        
+
+                                                
                         <li key = {hr.id}>{hr.hours} was used {hr.dateOfWork[7]}{hr.dateOfWork[8]}.{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li>            
                     
                         )}
@@ -85,7 +87,7 @@ function CompanyDetails({ match }) {
                     
                     </section>
 
-                    <section>
+                    <section className="MetricsBox">
 
                         <h4>Section for power ranking</h4>
                         {company.powerRanking && company.powerRanking.map(pr =>
@@ -93,7 +95,10 @@ function CompanyDetails({ match }) {
                         <article
                         key = {pr.date}>
                             <p>{pr.question1}</p>
+                            <p>{pr.comment1}</p>
+                            <br></br>
                             <p>{pr.question2}</p>
+                            <p>{pr.comment2}</p>
                         </article>
                         )}
                     </section>

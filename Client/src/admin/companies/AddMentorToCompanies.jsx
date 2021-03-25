@@ -134,7 +134,7 @@ function AddEditMentor({ history, match }) {
 
                                         {/*leadMentors.map((leadMentor, index) => 
                                         <option key={index} value= {leadMentor._id}>{leadMentor.leadMentorName}</option>)*/}
-
+                                    <option></option>
                                 {mentors && mentors.map(mentor =>
                                     <option key={mentor.id} value ={mentor.id}>{mentor.mentorName}</option>)}
      
