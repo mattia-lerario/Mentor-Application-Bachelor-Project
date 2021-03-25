@@ -7,13 +7,13 @@ slate grey - #38507a
 /*
 List of what elements are getting styled here, in listed order:
 - Menu
-- Buttons
 - Update Profile Form
 - Profile Index
+- Form Style
 - Sidebar (menu)
-- Company list table
+- Company List Table/Cards
+- Company Details
 */
-
 
 /* ---MENU--- */
 /* File: Nav.jsx */
