@@ -39,14 +39,14 @@ function UpdateCompanies({ history, match }) {
             .required("Phase of company is Required")
     });
 
-    function onSubmit(fields, { setStatus, setSubmitting }) {
+ function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
 
         console.log(isAddMode);
         console.log(!user.companies);
     
         if (!user.companies) {
-            createCompany(fields, setSubmitting);
+         createCompany(fields, setSubmitting);
             //updateCompany(user.companies, fields, setSubmitting);
                        
         }   
@@ -58,7 +58,7 @@ function UpdateCompanies({ history, match }) {
         }
 
 
-        function createCompany(fields, setSubmitting){
+       function createCompany(fields, setSubmitting){
             console.log(user.id);
             companyService.create(user.id, fields)
             .then(() => {
