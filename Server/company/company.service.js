@@ -93,6 +93,7 @@ async function create(params) {
     
     // save account
     await company.save();
+    console.log(company.id,company.accountId)
     accountService.addCompanyToAccount(company.id, company.accountId);
     return basicDetails(company);
 }
