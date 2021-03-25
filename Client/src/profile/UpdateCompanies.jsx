@@ -44,12 +44,12 @@ function UpdateCompanies({ history, match }) {
 
         console.log(isAddMode);
 
-        if (!isAddMode) {
-            createCompany(fields, setSubmitting);
+        if (user.mentors.length > 0) {
+            updateCompany(id,fields, setSubmitting);
         } 
         
         else {
-            updateCompany(id, fields, setSubmitting);
+            createCompany(fields, setSubmitting);
                        
         }
         
