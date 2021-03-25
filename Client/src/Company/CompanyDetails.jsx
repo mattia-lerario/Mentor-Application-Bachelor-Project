@@ -64,52 +64,28 @@ function CompanyDetails({ match }) {
                     <section>
                         <p>{company.CompanyDetails}</p>
                     </section>
-
-                    <section className="MetricsBox">
-                        <h4>Metrics</h4>
-                        <p>Sales Revenue: {company.salesRevenue}</p>
-                        <p>Company number: {company.companyNumber}</p>
-                                         
-                    </section>
-                    <section>
-                        
-                        <h4>Time Log</h4>
-                        <ul  key = {company.id}>
-                        {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map(hr =>
-                                                
-                        <li key = {hr.id}>{hr.hours} was used {hr.dateOfWork[7]}{hr.dateOfWork[8]}.{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li> 
-                        )}
-                        </ul>
-                        <p><b>Total time used on {company.companyName}</b></p>
-                    </section>
                     
                     <section className="Box2">
                         <section className="Box MetricsBox">
                             <h4>Metrics</h4>
                             <p>Sales Revenue: {company.salesRevenue}</p>
                             <p>Company number: {company.companyNumber}</p>
-                                            
                         </section>
 
                         <section className="Box TimeLog">
                             <h4>Time Log</h4>
-
                             <ul>
-                            {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map(hr =>
-                            
-                            <li key = {hr.id}>{hr.hours} was used {hr.dateOfWork[7]}{hr.dateOfWork[8]}.{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li>            
-                        
-                            )}
+                                {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map(hr =>
+                                <li key = {hr.id}>{hr.hours} was used {hr.dateOfWork[7]}{hr.dateOfWork[8]}.{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li>            
+                                )}
                             </ul>
                             <p><b>Total time used on {company.companyName}</b></p>
                         </section>
                     </section>
 
-                    <section className="MetricsBox">
-
+                    <section className="Box PRbox">
                         <h4>Section for power ranking</h4>
                         {company.powerRanking && company.powerRanking.map(pr =>
-
                         <article
                         key = {pr.date}>
                             <p>{pr.question1}</p>
