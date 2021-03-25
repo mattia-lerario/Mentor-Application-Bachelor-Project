@@ -130,7 +130,7 @@ export const SidebarWrapper = styled.div`
     flex: 1;
     flex-direction: column;
     align-items: center;
-    border-right: 0.2vw solid #38507a;
+    border-right: 0.3vw solid #38507a;
 }
 .SideLink {
     display: block;
