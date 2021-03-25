@@ -2,9 +2,9 @@ const config = require('config.json');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const crypto = require("crypto");
-const sendEmail = require('_helpers/send-email');
+// const sendEmail = require('_helpers/send-email');
 const db = require('_helpers/db');
-const Role = require('_helpers/role');
+// const Role = require('_helpers/role');
 const accountService = require('accounts/account.service');
 
 module.exports = {
@@ -49,7 +49,7 @@ async function revokeToken({ token, ipAddress }) {
     await refreshToken.save();
 }
 
-async function register(params, origin) {
+/*async function register(params, origin) {
     // validate
     if (await db.mentors.findOne({ email: params.email })) {
         // send already registered error in email to prevent mentorsModel enumeration
@@ -72,9 +72,9 @@ async function register(params, origin) {
 
     // send email
     await sendVerificationEmail(mentorsModel, origin);
-}
+}*/
 
-async function verifyEmail({ token }) {
+/*async function verifyEmail({ token }) {
     const mentorsModel = await db.Mentors.findOne({ verificationToken: token });
 
     if (!mentorsModel) throw 'Verification failed';
@@ -82,11 +82,11 @@ async function verifyEmail({ token }) {
     mentorsModel.verified = Date.now();
     mentorsModel.verificationToken = undefined;
     await mentorsModel.save();
-}
+}*/
 
-async function forgotPassword({ email }, origin) {
+/*async function forgotPassword({ email }, origin) {
     const mentorsModel = await db.Mentors.findOne({ email });
-}
+}*/
 
 async function getAll() {
     const mentorsModels = await db.Mentor.find();
@@ -122,7 +122,7 @@ async function addCompanyToMentor(companyId,mentorId) {
       { $push: { companies: companyId } },
       { new: true, useFindAndModify: false }
     );
-  };
+  }
 
 async function update(id, params) {
 
@@ -170,9 +170,9 @@ async function getRefreshToken(token) {
     return refreshToken;
 }
 
-function hash(password) {
+/*function hash(password) {
     return bcrypt.hashSync(password, 10);
-}
+}*/
 
 function generateJwtToken(mentorsModel) {
     // create a jwt token containing the mentorsModel id that expires in 15 minutes
