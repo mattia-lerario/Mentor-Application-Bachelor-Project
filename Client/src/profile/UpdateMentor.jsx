@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Formik, Field, Form, ErrorMessage, isEmptyArray } from 'formik';
+import { Formik, Field, Form, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 
-import { accountService,companyService, mentorService, alertService } from '@/_services';
-import { empty } from 'rxjs';
+import { accountService, mentorService, alertService } from '@/_services';
+
 
 function UpdateMentor({ history, match }) {
     const { id } = match.params;
     const isAddMode = !id;
     const user = accountService.userValue;
-    const company = companyService.companyValue;
-    const mentor = mentorService.mentorValue;
 
     const initialValues = {
         mentorName: user.firstName + " " + user.lastName,
@@ -52,7 +50,7 @@ function UpdateMentor({ history, match }) {
         }
 
     function createMentor(fields, setSubmitting){
-        console.log(user.id);
+        
             mentorService.create(user.id, fields)
             .then(() => {
                 alertService.success('Create successful', { keepAfterRouteChange: true });

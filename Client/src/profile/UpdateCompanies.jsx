@@ -9,16 +9,16 @@ function UpdateCompanies({ history, match }) {
     const { id } = match.params;
     const isAddMode = !id;
     const user = accountService.userValue;
-    const company = companyService.companyValue;
+    
 
     const initialValues = {
-        companyName: '',
-        companyNumber: '',
-        tlfNumber: '',
-        email: '',
-        salesRevenue: '',
-        companyDescription: '',
-        phase:'',        
+        companyName: 'n',
+        companyNumber: '999887766',
+        tlfNumber: '999887766',
+        email: user.email,
+        salesRevenue: '100000',
+        companyDescription: 'Big company',
+        phase:'1',        
     }
 
     const validationSchema = Yup.object().shape({
@@ -43,21 +43,24 @@ function UpdateCompanies({ history, match }) {
         setStatus();
 
         console.log(isAddMode);
-
-        if (user.mentors.length > 0) {
-            updateCompany(id,fields, setSubmitting);
-        } 
-        
-        else {
+        console.log(!user.companies);
+    
+        if (!user.companies) {
             createCompany(fields, setSubmitting);
+            //updateCompany(user.companies, fields, setSubmitting);
                        
+        }   
+        else {
+            //createCompany(fields, setSubmitting);
+            updateCompany(user.companies, fields, setSubmitting);             
         }
         
         }
 
 
         function createCompany(fields, setSubmitting){
-            companyService.create(fields)
+            console.log(user.id);
+            companyService.create(user.id, fields)
             .then(() => {
                 alertService.success('Create successful', { keepAfterRouteChange: true });
                 history.push('.');

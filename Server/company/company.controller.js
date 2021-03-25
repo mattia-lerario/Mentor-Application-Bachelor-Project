@@ -185,14 +185,15 @@ function updateSchema(req, res, next) {
 }
 
 function update(req,res,next) {
+   
     companyService.addMentorToCompany(req.body.mentor,req.params.id);
+    
+   // console.log("params ", req.params);
     companyService.update(req.params.id,req.body)
         .then(company => res.json(company))
         .catch(next);
         
 }
-
-
 
 
 function _delete(req, res, next) {

@@ -5,7 +5,7 @@ const validateRequest = require('_middleware/validate-request');
 const authorize = require('_middleware/authorize')
 const Role = require('_helpers/role');
 const mentorService = require('./mentor.service');
-const accountService = require('../accounts/account.service');
+//const accountService = require('../accounts/account.service');
 
 // routes
 router.post('/authenticate', authenticateSchema, authenticate);
@@ -193,11 +193,8 @@ function updateSchema(req, res, next) {
 }
 
 function update(req, res, next) {
-    // users can update their own mentor and admins can update any mentor
-   /* if (req.params.id !== req.user.id && req.user.role !== Role.Admin) {
-        return res.status(401).json({ message: 'Unauthorized' });
-    }*/
-    console.log("params ", req.params);
+    
+   // console.log("params ", req.params);
     mentorService.update(req.params.id,req.body)
         .then(mentor => res.json(mentor))
         .catch(next);
