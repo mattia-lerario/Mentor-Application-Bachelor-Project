@@ -60,6 +60,7 @@ function AddEdit({ history, match }) {
             .catch(error => {
                 setSubmitting(false);
                 alertService.error(error);
+                console.log(error)
             });
     }
 
@@ -72,6 +73,7 @@ function AddEdit({ history, match }) {
             .catch(error => {
                 setSubmitting(false);
                 alertService.error(error);
+                console.log(error)
             });
     }
 

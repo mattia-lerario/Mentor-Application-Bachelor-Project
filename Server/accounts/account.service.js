@@ -192,7 +192,7 @@ async function create(params) {
 async function addCompanyToAccount(companyId,accountId) {
   return db.Account.findByIdAndUpdate(
     accountId,
-    { $push: { companies: companyId } },
+    { companies: companyId},
     { new: true, useFindAndModify: false }
   );
 };

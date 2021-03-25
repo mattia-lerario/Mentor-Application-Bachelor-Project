@@ -25,6 +25,7 @@ function VerifyEmail({ history }) {
             })
             .catch(() => {
                 setEmailStatus(EmailStatus.Failed);
+                console.log("error")
             });
     }, []);
 

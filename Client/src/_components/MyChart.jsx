@@ -3,25 +3,29 @@ import { Draggable } from 'react-beautiful-dnd'
 import { Chart } from 'react-charts'
 import { accountService,companyService, mentorService, alertService } from '@/_services';
  
- function MyChart({ids,datas}) {
+async function MyChart() {
     
-    const userId = ids;
-    console.log(ids);
+    //const companyId = ids.companies;
+    const company = await companyService.getAll();
+    
+   
+   
 
-      const data = React.useMemo(
+    const data = React.useMemo(
 
      () =>[
        {
-
+        
          label: 'Ranking',
          data: [
-           { primary:1, secondary:2 },
-           { primary:3, secondary: 4},
-           { primary: 5, secondary: 7 },
+           { primary: 1, secondary: 2 },
+           { primary: 2, secondary: 5 },
+           { primary: 3, secondary: 8 },
          ],
        },
-      ],
-     []);
+     ],
+     []
+   )
    
           
                     

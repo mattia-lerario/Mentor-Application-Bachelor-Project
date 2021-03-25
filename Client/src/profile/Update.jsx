@@ -51,6 +51,7 @@ function Update({ history }) {
           .catch(error => {
                 setSubmitting(false);
                 alertService.error(error);
+                console.log(error)
             });
     }
 

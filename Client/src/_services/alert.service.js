@@ -45,6 +45,7 @@ function warn(message, options) {
 
 // core alert method
 function alert(alert) {
+    console.log(alert);
     alert.id = alert.id || defaultId;
     alert.autoClose = (alert.autoClose === undefined ? true : alert.autoClose);
     alertSubject.next(alert);
@@ -52,5 +53,6 @@ function alert(alert) {
 
 // clear alerts
 function clear(id = defaultId) {
+     console.log(alert);
     alertSubject.next({ id });
 }

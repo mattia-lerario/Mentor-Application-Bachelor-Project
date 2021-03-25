@@ -67,9 +67,9 @@ function PowerRanking({ history, match }) {
             history.push('.');
         })
         .catch(error => {
+            console.log(error);
             setSubmitting(false);
-          alertService.error(error);
-           // console.log(error);
+            alertService.error(error);
         }); 
     }    
         
