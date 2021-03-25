@@ -26,6 +26,7 @@ function Sidebar(){
   //if(isUserType == "Admin"){
 
     return (
+      <SidebarWrapper>
         <aside className="Sidebar">
           <ul className="SideList">
             
@@ -37,6 +38,7 @@ function Sidebar(){
             <NavLink to="/home" className="SideLink"><MdSchedule/> My schedule</NavLink>
           </ul>
         </aside>
+      </SidebarWrapper>
     )
 
   /*}

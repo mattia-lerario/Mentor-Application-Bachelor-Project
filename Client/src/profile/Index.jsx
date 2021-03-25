@@ -12,15 +12,14 @@ function Profile({ match }) {
     const { path } = match;
     
     return (
-            <article className={'main'}>
+        <section className="main scrollhost">
                 <Switch>
                     <Route exact path={path} component={Details} />
                     <Route path={`${path}/update`} component={Update} />
                     <Route path={`${path}/updateCompanies`} component={UpdateCompanies} />
                     <Route path={`${path}/updateMentor`} component={UpdateMentor} />
                 </Switch>
-            </article>
-
+        </section>
     );
 }
 

@@ -12,17 +12,14 @@ function Dashboard({ match }) {
     const { path } = match;
     
     return (
-        <article className={'main scrollhost'}>
-                
-
-                <Switch>
-                    <Route exact path={path} component={DashboardList} />
-                    <Route path={`${path}/chart`} component={MyChart} />
-                    <Route path={`${path}/companies`} component={Dashboard} />
-                    <Route path={`${path}/mentors`} component={Dashboard} />
-                </Switch>
-         
-        </article>
+        <section className="main scrollhost">
+            <Switch>
+                <Route exact path={path} component={DashboardList} />
+                <Route path={`${path}/chart`} component={MyChart} />
+                <Route path={`${path}/companies`} component={Dashboard} />
+                <Route path={`${path}/mentors`} component={Dashboard} />
+            </Switch>
+        </section>
     );
 }
 

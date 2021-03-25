@@ -14,9 +14,7 @@ function Company({ match }) {
     const { path } = match;
     
     return (
-        <article className={'main scrollhost'}>
-            <section>
-
+        <section className="main scrollhost">
                 <Switch>
                     <Route exact path={path} component={CompanyList} />
                     <Route path={`${path}/companies`} component={Company} />
@@ -26,7 +24,6 @@ function Company({ match }) {
                     <Route path={`${path}/companyDetails/:id`} component={CompanyDetails} />
                 </Switch>
             </section>
-        </article>
     );
 }
 

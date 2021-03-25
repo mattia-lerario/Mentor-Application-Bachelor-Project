@@ -56,16 +56,9 @@ return (
     }else{
         return (
          
-        <div className={'app-container'}>
+        <article className={'app-container'}>
             
-            <SidebarWrapper>
-                <Sidebar/>
-                {/*
-                <Switch>
-                    <PrivateRoute path="/_components" component={Sidebar} />
-                </Switch>
-                */}
-            </SidebarWrapper>
+            <Sidebar/>
             <Alert />
             <Switch>
                 <Redirect from="/:url*(/+)" to={pathname.slice(0, -1)} />
@@ -82,8 +75,7 @@ return (
                   
             </Switch>
            
-            
-        </div>
+        </article>
     );
     }
     

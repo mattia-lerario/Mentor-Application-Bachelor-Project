@@ -122,20 +122,15 @@ export const SidebarWrapper = styled.div`
 
 //Light blue backgroundcolor and width on the sidebar-menu
 .Sidebar{
-    margin-right: 0.2rem;
-    width: 13vw;
+    padding: 1rem;
     height: 100%;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
     display: flex;
     flex: 1;
     flex-direction: column;
     align-items: center;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    background: linear-gradient(
-    to right bottom,
-    rgba(255, 255, 255, 0.7),
-    rgba(255, 255, 255, 0.3)
-  );
+    border-right: 0.15vw solid #38507a;
 }
 .SideLink {
     display: block;

@@ -10,11 +10,11 @@ function Home() {
     
     
     return (
-        <article className={'main'}>
+        <section className="main scrollhost">
             <h1>Hi {user.name} </h1>
            
             <br/>    
-        </article>
+        </section>
     );
 }
 
