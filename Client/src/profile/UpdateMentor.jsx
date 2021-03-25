@@ -38,21 +38,24 @@ function UpdateMentor({ history, match }) {
     function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
 
-        console.log(user.mentors.length);
+        console.log(fields.id);
 
-        if (user.mentors.length > 0) {
+       if (user.mentors.length > 0) {
             updateMentor(user.mentors, fields, setSubmitting); 
            //createMentor(fields, setSubmitting);
         }         
         else {
            //updateMentor(user.mentors, fields, setSubmitting);
-           createMentor(fields, setSubmitting);            
+           createMentor(fields, setSubmitting);
+
+           accountService.addMentorToAccount()          
         }
         
         }
 
     function createMentor(fields, setSubmitting){
-            mentorService.create(fields)
+        console.log(user.id);
+            mentorService.create(user.id, fields)
             .then(() => {
                 alertService.success('Create successful', { keepAfterRouteChange: true });
                 history.push('.');
