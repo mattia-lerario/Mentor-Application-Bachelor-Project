@@ -228,8 +228,8 @@ function randomTokenString() {
 
 
 function basicDetails(company) {
-    const { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription, phase, leadMentor, powerRanking} = company;
-    return { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription, phase, leadMentor, powerRanking};
+    const { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription, phase, leadMentor, powerRanking, hoursSpendtOnCompany} = company;
+    return { id, companyName, companyNumber, tlfNumber, email, salesRevenue, companyDescription, phase, leadMentor, powerRanking, hoursSpendtOnCompany};
 }
 
 

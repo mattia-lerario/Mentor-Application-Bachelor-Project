@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Draggable } from 'react-beautiful-dnd'
-import { Chart } from 'react-charts'
+import { Draggable } from 'react-beautiful-dnd';
+import { Chart } from 'react-charts';
 import { accountService,companyService, mentorService, alertService } from '@/_services';
  
 async function MyChart() {
@@ -23,16 +23,25 @@ async function MyChart() {
            { primary: 3, secondary: 8 },
          ],
        },
+       {
+         label: 'Series 2',
+         data: [
+           { primary: 1, secondary: 5 },
+           { primary: 2, secondary: 10 },
+           { primary: 3, secondary: 10 },
+         ],
+       }, 
+       {
+         label: 'Series 3',
+         data: [
+           { primary: 1, secondary: 10 },
+           { primary: 2, secondary: 10 },
+           { primary: 3, secondary: 10 },
+         ],
+       },
      ],
      []
    )
-   
-          
-                    
-           
-    
-
-   
  
    const axes = React.useMemo(
      () =>  [
@@ -55,8 +64,5 @@ async function MyChart() {
     
    )
  }
-
-
-
 
 export { MyChart }; 

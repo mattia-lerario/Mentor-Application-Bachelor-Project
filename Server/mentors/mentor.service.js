@@ -124,22 +124,13 @@ async function addCompanyToMentor(companyId,mentorId) {
   };
 
 async function update(id, params) {
+
+    console.log("update id  "+id);
     const mentorsModel = await getmentorsModel(id);
-
-    // validate (if email was changed)
-    if (params.email && mentorsModel.email !== params.email && await db.Mentors.findOne({ email: params.email })) {
-        throw 'Email "' + params.email + '" is already taken';
-    }
-
-    // hash password if it was entered
-    if (params.password) {
-        params.passwordHash = hash(params.password);
-    }
 
     // copy params to mentorsModel and save
     Object.assign(mentorsModel, params);
-    mentorsModel.updated = Date.now();
-    await mentorsModel.save();
+       await mentorsModel.save();
 
     return basicDetails(mentorsModel);
 }
@@ -154,13 +145,22 @@ async function _delete(id) {
 // helper functions
 
 async function getmentorsModel(id) {
+
+    /*console.log("getmoentormodel "+id);
     if (!db.isValidId(id)) throw 'mentorsModel not found';
 
-    const mentorsModel = await db.Mentors.findById(id);
+    const mentorsModel = await db.Mentors.findOneById(id);
 
     if (!mentorsModel) throw 'mentorsModel not found';
 
-    return mentorsModel;
+    return mentorsModel;*/
+    //console.log(db.Mentor);
+
+    const account = await db.Mentor.findById(id);
+
+    if (!account) throw 'Account not found';
+
+    return account;
 }
 
 async function getRefreshToken(token) {
@@ -193,7 +193,7 @@ function randomTokenString() {
 }
 
 function basicDetails(mentorsModel) {
-    const {id, mentorName, mentorNumber, tlfNumber,email,mentorDescription } = mentorsModel;
-    return {id, mentorName, mentorNumber, tlfNumber,email,mentorDescription };
+    const {id, mentorName, mentorNumber, tlfNumber,email,mentorDescription, account } = mentorsModel;
+    return {id, mentorName, mentorNumber, tlfNumber,email,mentorDescription, account };
 }
 

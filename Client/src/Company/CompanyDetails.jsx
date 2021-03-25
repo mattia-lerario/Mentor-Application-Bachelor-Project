@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-import { companyService } from '@/_services';
+import { companyService, accountService } from '@/_services';
 import { Field, Form } from 'formik';
 import { Chart } from 'react-charts'
 
 //import {MyChart, BarChart} from '@/_components';
 //style
 import {CompanyWrapper} from '../style/styledcomponents';
-
 
 
 function CompanyDetails({ match }) {
@@ -30,6 +29,15 @@ function CompanyDetails({ match }) {
     ]
     })
     }*/
+
+    function findMentor(id) {
+
+    const mentor =  accountService.getById("605351ee1763896a3c76cb15").firstName;
+    return(
+       <p>{mentor}</p>
+    )
+
+    }
 
     useEffect(() => {
         companyService.getAll().then(x => setUsers(x));
@@ -60,17 +68,33 @@ function CompanyDetails({ match }) {
                     <section className="MetricsBox">
                         <h4>Metrics</h4>
                         <p>Sales Revenue: {company.salesRevenue}</p>
-                        <p>Company number: {company.companyNumber}</p>                      
+                        <p>Company number: {company.companyNumber}</p>
+                                         
+                    </section>
+                    <section>
+                        <h4>Time Log</h4>
+
+                        <ul>
+                        {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map(hr =>
+                        
+                        <li key = {hr.id}>{hr.hours} was used {hr.dateOfWork[7]}{hr.dateOfWork[8]}.{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li>            
+                    
+                        )}
+                        </ul>
+                        <p><b>Total time used on {company.companyName}</b></p>
+                    
                     </section>
 
                     <section>
+
+                        <h4>Section for power ranking</h4>
                         {company.powerRanking && company.powerRanking.map(pr =>
 
-                        <article>
+                        <article
+                        key = {pr.date}>
                             <p>{pr.question1}</p>
                             <p>{pr.question2}</p>
                         </article>
-                        
                         )}
                     </section>
 

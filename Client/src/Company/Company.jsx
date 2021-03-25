@@ -46,7 +46,7 @@ function CompanyList({ match }) {
 
              <h1>Your Companies</h1>
              
-                {company && company.filter(company => company.companyName.includes(" ")).map(company => 
+                {company && company.filter(company => company.leadMentor.includes(mentorId)).map(company => 
                 
                 <article key={company.id} className="card">
                 <Link className={'noLink'}to={`${path}/companyDetails/${company.id}`}>

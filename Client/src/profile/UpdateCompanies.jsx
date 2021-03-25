@@ -44,13 +44,13 @@ function UpdateCompanies({ history, match }) {
 
         console.log(isAddMode);
 
-        if (isAddMode) {
+        if (!isAddMode) {
             createCompany(fields, setSubmitting);
         } 
         
         else {
             updateCompany(id, fields, setSubmitting);
-            
+                       
         }
         
         }

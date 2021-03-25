@@ -56,16 +56,17 @@ function create(params) {
 
 function update(id, params) {
     return fetchWrapper.put(`${baseUrl}/${id}`, params)
-        .then(user => {
+        .then(mentor => {
 
+            console.log(mentor, mentorSubject);
             // update stored user if the logged in user updated their own record
             
-            if (user.id === userSubject.value.id) {
+            if (mentor.id === mentorSubject.value) {
                 // publish updated user to subscribers
-                user = { ...userSubject.value, ...user };
-                userSubject.next(user);
+                mentor = { ...mentorSubject.value, ...mentor };
+                mentorSubject.next(mentor);
             }
-            return user;
+            return mentor;
         });
 }
 
