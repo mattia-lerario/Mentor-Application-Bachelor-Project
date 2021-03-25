@@ -39,7 +39,7 @@ export const MenuWrapper = styled.div`
 }
 //---gives the links a underscore and grey-color when hovered.
 .NavLink:hover{
-    text-decoration: #202e46 underline 0.5vh;
+    text-decoration: #202e46 underline 0.3vw;
 }
 // ---ADMIN-MENU---
 //adding the background-color for the Admin-menu
@@ -122,14 +122,14 @@ export const SidebarWrapper = styled.div`
 
 //Light blue backgroundcolor and width on the sidebar-menu
 .Sidebar{
-    margin-right:1rem;
+    margin-right: 0.2rem;
     width: 13vw;
     height: 100%;
-    display:flex;
-    flex:1;
-    flex-direction:column;
-    align-items:center;
-    border-radius:2rem;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0.5rem;
     padding: 1rem;
     background: linear-gradient(
     to right bottom,
@@ -147,7 +147,7 @@ export const SidebarWrapper = styled.div`
 }
 .Avatar{
     width:120px;
-    border-radius:20px;
+    border-radius: 0.5rem;
 }
 `;
 
@@ -168,7 +168,7 @@ export const ListWrapper = styled.div`
     width: 30%;
     height: 15%;
     margin: 0.5rem;
-    margin-top: 3vh;
+    margin-top: 1vw;
     display: inline-block;
     //box-shadow: right bottom fade allsides color;
     box-shadow: 0.09rem 0.19rem 0.5rem 0.1rem #38507a;
@@ -184,8 +184,8 @@ export const ListWrapper = styled.div`
     filter: grayscale(0%);
 }
 .cardTop{
-    border-bottom: 0.2vh solid #bfbfbf;
-    padding-bottom: 1vh;
+    border-bottom: 0.15vw solid #bfbfbf;
+    padding-bottom: 0.5vw;
     display: flex;
 }
 .cardImg{
@@ -200,17 +200,17 @@ export const ListWrapper = styled.div`
     flex: 3;
     text-aling: right;
     margin-left: 0.5vw;
-    margin-top: 3vh;
+    margin-top: 1vw;
     font-size: 1.3vw;
 }
 .cardMetric, .cardBottom{
     margin: 1rem;
 }
 .cardMetric{
-    height: 25vh;
+    height: 15vw;
 }
 .cardBottom{
-    border-top: 0.2vh solid #bfbfbf;
+    border-top: 0.15vw solid #bfbfbf;
     text-align: center;
 }
 .cardBottom p, .cardBottom button{
@@ -227,11 +227,16 @@ export const ListWrapper = styled.div`
   export const CompanyWrapper = styled.div`
   
 .headerImg{
-    width: 100%;
-    height: 35vh;
+    width: 103%;
+    height: 18vw;
     background-image: url("https://images.frandroid.com/wp-content/uploads/2013/01/Samsung-Logo.jpg");
     background-size: 100%;
-    margin-bottom: 2vh;
+    margin-bottom: 1vw;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    margin-top: -1rem;
 }
 
 .Box{
@@ -255,6 +260,9 @@ export const ListWrapper = styled.div`
 }
 .TimeLog{
     width: 50%;
+}
+.TimeLog ul{
+    margin-left: 1rem;
 }
 .PRbox{
     width: 97%;
