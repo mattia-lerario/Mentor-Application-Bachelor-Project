@@ -39,7 +39,7 @@ export const MenuWrapper = styled.div`
 }
 //---gives the links a underscore and grey-color when hovered.
 .NavLink:hover{
-    text-decoration: #202e46 underline 0.3vw;
+    text-decoration: #38507a underline 0.3vw;
 }
 // ---ADMIN-MENU---
 //adding the background-color for the Admin-menu
@@ -163,7 +163,6 @@ export const ListWrapper = styled.div`
     width: 30%;
     height: 15%;
     margin: 0.5rem;
-    margin-top: 1vw;
     display: inline-block;
     //box-shadow: right bottom fade allsides color;
     box-shadow: 0.09rem 0.19rem 0.5rem 0.1rem #38507a;
