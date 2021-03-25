@@ -13,29 +13,24 @@ function CompanyDetails({ match }) {
 
     const { id } = match.params;
     const companyId = id;
+   
 
     const [company, setUsers] = useState(null);
-    /*charts*/
-    /*const [chartData, setCharsdata] = useState({});
-
-    const chart = () => {
-        setCharsdata({
-        labels: ['question 1', 'question 2','question 3','question 4'],
-        dataSets: [{
-            label: 'Raking from 1-6',
-            data: [1,2,3,4],
-            borderWidth: 4
-        }
-    ]
-    })
-    }*/
+ 
 
     function findMentor(id) {
 
-    const mentor =  accountService.getById(id).firstName;
-    
+   //console.log(accountService.getById(id).firstName);
+
+    //console.log(accountService.getById(id).then(mentor => mentor.firstName));
+
+    //const mentorName = "";
+    accountService.getById(id).then(mentor => mentor.firstName);
+
+    const mentor = "some mentor";
+
     return(
-       <p>{mentor}</p>
+        mentor
     )
 
     }
@@ -76,7 +71,7 @@ function CompanyDetails({ match }) {
                             <h4>Time Log</h4>
                             <ul>
                                 {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map(hr =>
-                                <li key = {hr.id}>{hr.hours} was used {hr.dateOfWork[7]}{hr.dateOfWork[8]}.{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li>            
+                                <li key = {hr.id}>{hr.hours} hours was used {hr.dateOfWork[8]}{hr.dateOfWork[9]}/{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li>             
                                 )}
                             </ul>
                             <p><b>Total time used on {company.companyName}</b></p>

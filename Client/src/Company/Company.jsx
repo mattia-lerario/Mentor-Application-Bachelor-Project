@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 
 //style
 import {ListWrapper} from '../style/styledcomponents';
-import { BtnWrapper } from '../style/styledcomponents';
 
-import { companyService, mentorService, accountService } from '@/_services';
+import { companyService, accountService } from '@/_services';
 
 //icons
 import {HiOutlineMail} from 'react-icons/hi';
