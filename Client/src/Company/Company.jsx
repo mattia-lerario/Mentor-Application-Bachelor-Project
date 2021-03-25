@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 //style
-import {ListWrapper} from '../style/styledcomponents';
+import {ListWrapper} from '../style/styledcomponents'; 
 
 import { companyService, accountService } from '@/_services';
 
