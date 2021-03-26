@@ -11,7 +11,7 @@ const companyService = require('./company.service');
 //router.post('/authenticate', authenticateSchema, authenticate);
 router.post('/revoke-token', authorize(), revokeTokenSchema, revokeToken);
 router.get('/',authorize(), getAll);
-router.get('/:id', getById);
+router.get('/:id', authorize(), getById);
 router.post('/', authorize(), createSchema, create);
 router.put('/:id', authorize(), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
