@@ -10,13 +10,24 @@ import {CompanyWrapper} from '../style/styledcomponents';
 
 
 function CompanyDetails({ match }) {
-
+    const [totalHours, setTotalHours] = useState(0);
     const { id } = match.params;
     const companyId = id;
-   
 
     const [company, setUsers] = useState(null);
- 
+
+    function sumHours(timeLogList) {
+
+        
+        let hours = 0;
+        timeLogList.forEach(item => {
+            console.log(item);
+        hours += item.hours;
+           
+        });
+
+        setTotalHours(hours);
+    }
 
     function findMentor(id) {
 
@@ -35,10 +46,25 @@ function CompanyDetails({ match }) {
 
     }
 
+
     useEffect(() => {
         companyService.getAll().then(x => setUsers(x));
+        //sumHours(company.hoursSpendtOnCompany)
     }, []);
+
+    useEffect(() => {
+        //companyService.getAll().then(x => setUsers(x));
+        //sumHours(company)
+
+        
+        if(!company)return;
+        console.log(company);
+        sumHours(company[0].hoursSpendtOnCompany)
+        
     
+    }, [company]);
+    
+
 
     return (
 
@@ -70,11 +96,15 @@ function CompanyDetails({ match }) {
                         <section className="Box TimeLog">
                             <h4>Time Log</h4>
                             <ul>
-                                {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map(hr =>
-                                <li key = {hr.id}>{hr.hours} hours was used {hr.dateOfWork[8]}{hr.dateOfWork[9]}/{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li>             
+                                {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map((hr, index) =>
+                                <li key = {index}>{hr.hours} hours was used {hr.dateOfWork[8]}{hr.dateOfWork[9]}/{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li>             
                                 )}
+
                             </ul>
                             <p><b>Total time used on {company.companyName}</b></p>
+                           
+                            <p>{totalHours}</p>
+
                         </section>
                     </section>
 
