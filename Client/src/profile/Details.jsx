@@ -34,8 +34,8 @@ function Details({ match }) {
         
         return (
             <section>   
-                <button className={'Btn BtnMain Right'}><Link to={`${path}/updateWorkingHoursMentor`} className={'BtnLink'}>Update hours</Link></button>
-                <button className={'Btn BtnMain Right'}><Link to={`${path}/powerranking`} className={'BtnLink'}>PowerRanking</Link></button>
+                <button type="button" className={'Btn BtnMain Right'}><Link to={`${path}/updateWorkingHoursMentor`} className={'BtnLink'}>Update hours</Link></button>
+                <button type="button" className={'Btn BtnMain Right'}><Link to={`${path}/powerranking`} className={'BtnLink'}>PowerRanking</Link></button>
     
                 <h1>{user.firstName}'s Profile</h1>
                 <p>
@@ -44,9 +44,9 @@ function Details({ match }) {
                     <strong>Role: </strong>{user.role}
                 </p>
                 
-                <button className={'Btn BtnMain'}><Link to={`${path}/update`} className={'BtnLink'}>Update Account</Link></button>
-                <button className={'Btn BtnMain'}><Link to={`${path}/updateMentor`} className={'BtnLink'}>Update {user.role} Information</Link></button>
-             </section>
+                <button type="button" onclick={`${path}/update`} className={'Btn BtnMain'}><Link to={`${path}/update`} className={'BtnLink'}>Update Account</Link></button>
+                <button type="button" className={'Btn BtnMain'}><Link to={`${path}/updateMentor`} className={'BtnLink'}>Update {user.role} Information</Link></button>
+            </section>
         
         
     );

@@ -1,10 +1,10 @@
 import React from 'react'
 import avatar from '../media/avatar.jpg'
 import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Role } from '@/_helpers';
 import { Link } from 'react-router-dom';
 import {SidebarWrapper} from '../style/styledcomponents';
-
-
 import { accountService } from '@/_services';
 
 //React Icons
@@ -14,16 +14,16 @@ import {RiDashboardFill} from 'react-icons/ri';
 import {GrScheduleNew} from 'react-icons/gr';
 import {MdSchedule} from 'react-icons/md';
 
-
 function Sidebar(){
-  /*
-  { match }) {
-  const { path } = match;
-  const user = accountService.userValue;
-  const isUserType = user.role;
-  */
+  const [user, setUser] = useState({});
+  
+  useEffect(() => {
+    const subscription = accountService.user.subscribe(x => setUser(x));
+    return subscription.unsubscribe;
+}, []);
 
-  //if(isUserType == "Admin"){
+    // only show nav when logged in
+    if (!user) return null;
 
     return (
       <SidebarWrapper>
@@ -32,56 +32,24 @@ function Sidebar(){
             
             <img className="Avatar" src={avatar}></img>
             <NavLink to="/profile" className="SideLink"><CgProfile /> Profile</NavLink>
-            <NavLink to="/dashboard" className="SideLink"><RiDashboardFill /> Dashboard</NavLink>
+
+            {user.role === Role.Admin &&
+              <NavLink to="/dashboard" className="SideLink"><RiDashboardFill /> Dashboard</NavLink>
+            }
+            {user.role === Role.Admin &&
             <NavLink to="/home" className="SideLink"><GoGraph/> Power ranking</NavLink>
-            <NavLink to="/home" className="SideLink"><GrScheduleNew/> Book meeting</NavLink>
+            }
+            
+            {(user.role === Role.Mentor || user.role === Role.Company) &&
+              <NavLink to="/home" className="SideLink"><GrScheduleNew/> Book meeting</NavLink>
+            }
+            {(user.role === Role.Mentor || user.role === Role.Company) &&
             <NavLink to="/home" className="SideLink"><MdSchedule/> My schedule</NavLink>
+            }
           </ul>
         </aside>
       </SidebarWrapper>
     )
-
-  /*}
-  if(isUserType == "Mentor"){
-
-    return (
-        <aside className="Sidebar">
-          <ul className="SideList">
-            
-            <img className="Avatar">{user.image}</img>
-
-            <NavLink to="/profile" className="SideLink"><CgProfile /> Profile</NavLink>
-
-            <NavLink to="/dashboard" className="SideLink"><RiDashboardFill /> Dashboard</NavLink>
-
-            <NavLink to="/home" className="SideLink"><GrScheduleNew/> Book meeting</NavLink>
-
-            <NavLink to="/home" className="SideLink"><MdSchedule/> My schedule</NavLink>
-          </ul>
-        </aside>
-    )
-  }
-  /*
-
-  if(isUserType == "Company"){
-
-    return (
-        <aside className="Sidebar">
-          <ul className="SideList">
-            
-            <img className="Avatar">{company.image</img>
-
-            <NavLink to="/profile" className="SideLink"><CgProfile /> Profile</NavLink>
-
-            <NavLink to="/home" className="SideLink"><GrScheduleNew/> Book meeting</NavLink>
-
-            <NavLink to="/home" className="SideLink"><MdSchedule/> My schedule</NavLink>
-          </ul>
-        </aside>
-    )
-
-  }
-  */
 }
 
 
