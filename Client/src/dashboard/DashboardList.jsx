@@ -44,7 +44,7 @@ function DashboardList({ match }) {
 
                     <section className="cardMetric">
                         <p>Sales Revenue: {company.salesRevenue}</p>
-                        <p>Company number: {company.companyNumber}</p>
+                        <p>Company number: {company.companyDescription}</p>
                     </section>
 
                 </article>

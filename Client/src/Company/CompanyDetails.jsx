@@ -10,42 +10,19 @@ import {CompanyWrapper} from '../style/styledcomponents';
 
 
 function CompanyDetails({ match }) {
+
     const [totalHours, setTotalHours] = useState(0);
+
     const { id } = match.params;
     const companyId = id;
-
     const [company, setUsers] = useState(null);
 
     function sumHours(timeLogList) {
 
-        
-        let hours = 0;
-        timeLogList.forEach(item => {
-            console.log(item);
-        hours += item.hours;
-           
-        });
-
+        const reducer = (hr, currentValue) => hr + currentValue.hours;   
+        const hours = (timeLogList.reduce(reducer, 0));
         setTotalHours(hours);
     }
-
-    function findMentor(id) {
-
-   //console.log(accountService.getById(id).firstName);
-
-    //console.log(accountService.getById(id).then(mentor => mentor.firstName));
-
-    //const mentorName = "";
-    accountService.getById(id).then(mentor => mentor.firstName);
-
-    const mentor = "some mentor";
-
-    return(
-        mentor
-    )
-
-    }
-
 
     useEffect(() => {
         companyService.getAll().then(x => setUsers(x));
@@ -53,15 +30,15 @@ function CompanyDetails({ match }) {
     }, []);
 
     useEffect(() => {
-        //companyService.getAll().then(x => setUsers(x));
-        //sumHours(company)
-
+         
+        async function fetchData() {
+            
+            if(!company)return;
+            const comp = (await company.find(c => c.id === companyId));
+            sumHours(comp.hoursSpendtOnCompany);
+        }
+        fetchData();
         
-        if(!company)return;
-        console.log(company);
-        sumHours(company[0].hoursSpendtOnCompany)
-        
-    
     }, [company]);
     
 
@@ -97,7 +74,7 @@ function CompanyDetails({ match }) {
                             <h4>Time Log</h4>
                             <ul>
                                 {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map((hr, index) =>
-                                <li key = {index}>{hr.hours} hours was used {hr.dateOfWork[8]}{hr.dateOfWork[9]}/{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li>             
+                                <li key = {index}>{hr.hours} hours was used {hr.dateOfWork[8]}{hr.dateOfWork[9]}/{hr.dateOfWork[5]}{hr.dateOfWork[6]}</li>             
                                 )}
 
                             </ul>
