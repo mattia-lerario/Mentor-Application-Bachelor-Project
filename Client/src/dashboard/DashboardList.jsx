@@ -1,30 +1,19 @@
 import React, { useState, useEffect } from 'react';
-
 //Styling
 import {ListWrapper} from '../style/styledcomponents';
-
 import { companyService } from '@/_services';
-import { mentorService } from '@/_services';
-
 //icons
-import {HiOutlineMail} from 'react-icons/hi';
-import {AiFillPhone, AiOutlineNumber} from 'react-icons/ai';
-import {GrScheduleNew} from 'react-icons/gr';
+import {AiOutlineNumber} from 'react-icons/ai';
 
-function DashboardList({ match }) {
-    const { path } = match;
+function DashboardList() {
+    //const { path } = match;
     const [company, setUsers] = useState(null);
 
     useEffect(() => {
         companyService.getAll().then(x => setUsers(x));
     }, []);
   
-    function phone(){
-        //ringe nr
-    }
-    function schedule(){
-        //til en annen side
-    }
+    
 
     return (
         <ListWrapper>

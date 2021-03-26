@@ -6,7 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 import {MenuWrapper} from '../style/styledcomponents';
 import { Sidebar } from './Sidebar';
 
-function Menu({ match }) {
+function Menu({ ...match }) {
     const { path } = match;
     
     return (

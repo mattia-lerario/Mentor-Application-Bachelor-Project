@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-
+import { Formik, Field,ErrorMessage } from 'formik';
 import { companyService, alertService } from '@/_services';
 import { PRform } from '../style/styledcomponents';
 
-function PowerRanking({ history, match }) {
+function PowerRanking({...match}) {
     const { id } = match.params;
     const isAddMode = !id;
 
@@ -205,7 +203,7 @@ function PowerRanking({ history, match }) {
                             <div className="Question">
                                 <label>
                                     Is it sufficient tech know-how in the company to be able to execute the product vision?
-                                    Is the company able to put "drawing on a paper" into coding?
+                                    Is the company able to put drawing on a paper into coding?
                                 </label>
                             </div>
                             <div className="Ranking">
@@ -261,7 +259,7 @@ function PowerRanking({ history, match }) {
                          <section className="QuestionBox">
                             <div className="Question">
                                 <label>
-                                    Is the timing right for introducing the offering or is the company "too late to the party"?
+                                    Is the timing right for introducing the offering or is the company too late to the party?
                                     How is the competitive picture and has this been done before? 
                                 </label>
                             </div>
@@ -280,7 +278,7 @@ function PowerRanking({ history, match }) {
                          <section className="QuestionBox">
                             <div className="Question">
                                 <label>
-                                    Is the timing right for introducing the offering or is the company "too late to the party"?
+                                    Is the timing right for introducing the offering or is the company too late to the party?
                                     How is the competitive picture and has this been done before?
                                 </label>
                             </div>
