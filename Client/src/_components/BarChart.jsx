@@ -1,16 +1,18 @@
 import React from 'react'
 import { Chart } from 'react-charts';
 
-import { accountService,companyService, mentorService, alertService } from '@/_services'
+import {companyService } from '@/_services'
 
- function BarChart({ids}) {
-     const company = companyService.getAll();
+ function BarChart({...ids}) {
+     const company = companyService.getById(userId);
+     const companyRanking = company.powerRanking;
+     const userId = ids;
     const data = React.useMemo(
      () => [
        {
          label: 'Series 1',
          data: [
-           { primary: "Baby Sensors AS", secondary: 1 },
+           { primary: "Baby Sensors AS", secondary:companyRanking.question1 },
            { primary: "Tollit AS", secondary: 5 },
            { primary: "Smart Cognition AS", secondary: 6 },
          ],
