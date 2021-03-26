@@ -55,8 +55,8 @@ function getById(id) {
     return fetchWrapper.get(`${baseUrl}/${id}`);
 }
 
-function create(params) {
-    return fetchWrapper.post(baseUrl, params);
+function create(id,params) {
+    return fetchWrapper.post(baseUrl, params, id);
 }
 
 function addMentorHours(id, params){
@@ -83,15 +83,16 @@ function createPowerRanking(id, params){
 }
 
 function update(id, params) {
-    console.log(params)
+    //console.log(params)
     return fetchWrapper.put(`${baseUrl}/${id}`, params)
         .then(company => {
             // update stored user if the logged in user updated their own record
             
                 // publish updated user to subscribers
+                if (company.id === companySubject.value) {
                 company = { ...companySubject.value, ...company };
                 companySubject.next(company);
-            
+                }
             return company;
         });
 }

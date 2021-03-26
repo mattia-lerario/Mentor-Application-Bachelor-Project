@@ -5,7 +5,7 @@ const validateRequest = require('_middleware/validate-request');
 const authorize = require('_middleware/authorize')
 const Role = require('_helpers/role');
 const mentorService = require('./mentor.service');
-const accountService = require('../accounts/account.service');
+//const accountService = require('../accounts/account.service');
 
 // routes
 router.post('/authenticate', authenticateSchema, authenticate);
@@ -61,7 +61,7 @@ function revokeToken(req, res, next) {
         .catch(next);
 }
 
-function registerSchema(req, res, next) {
+/*function registerSchema(req, res, next) {
     const schema = Joi.object({
         title: Joi.string().required(),
         firstName: Joi.string().required(),
@@ -73,7 +73,9 @@ function registerSchema(req, res, next) {
     });
     validateRequest(req, next, schema);
 
-}function refreshToken(req, res, next) {
+}*/
+
+/*function refreshToken(req, res, next) {
     const token = req.cookies.refreshToken;
     const ipAddress = req.ip;
     mentorService.refreshToken({ token, ipAddress })
@@ -82,67 +84,67 @@ function registerSchema(req, res, next) {
             res.json(mentor);
         })
         .catch(next);
-}
+}*/
 
-function register(req, res, next) {
+/*function register(req, res, next) {
     mentorService.register(req.body, req.get('origin'))
         .then(() => res.json({ message: 'Registration successful, please check your email for verification instructions' }))
         .catch(next);
-}
+}*/
 
-function verifyEmailSchema(req, res, next) {
+/*function verifyEmailSchema(req, res, next) {
     const schema = Joi.object({
         token: Joi.string().required()
     });
     validateRequest(req, next, schema);
-}
+}*/
 
-function verifyEmail(req, res, next) {
+/*function verifyEmail(req, res, next) {
     mentorService.verifyEmail(req.body)
         .then(() => res.json({ message: 'Verification successful, you can now login' }))
         .catch(next);
-}
+}*/
 
-function forgotPasswordSchema(req, res, next) {
+/*function forgotPasswordSchema(req, res, next) {
     const schema = Joi.object({
         email: Joi.string().email().required()
     });
     validateRequest(req, next, schema);
-}
+}*/
 
-function forgotPassword(req, res, next) {
+/*function forgotPassword(req, res, next) {
     mentorService.forgotPassword(req.body, req.get('origin'))
         .then(() => res.json({ message: 'Please check your email for password reset instructions' }))
         .catch(next);
-}
+}*/
 
-function validateResetTokenSchema(req, res, next) {
+/*function validateResetTokenSchema(req, res, next) {
     const schema = Joi.object({
         token: Joi.string().required()
     });
     validateRequest(req, next, schema);
-}
+}*/
 
-function validateResetToken(req, res, next) {
+/*function validateResetToken(req, res, next) {
     mentorService.validateResetToken(req.body)
         .then(() => res.json({ message: 'Token is valid' }))
         .catch(next);
-}
+}*/
 
-function resetPasswordSchema(req, res, next) {
+/*function resetPasswordSchema(req, res, next) {
     const schema = Joi.object({
         token: Joi.string().required(),
         password: Joi.string().min(6).required(),
         confirmPassword: Joi.string().valid(Joi.ref('password')).required()
     });
     validateRequest(req, next, schema);
-}
+}*/
 
-function resetPassword(req, res, next) {
+/*function resetPassword(req, res, next) {
     mentorService.resetPassword(req.body)
         .then(() => res.json({ message: 'Password reset successful, you can now login' }))
         .catch(next);
-}
+}*/
 
 function getAll(req, res, next) {
     mentorService.getAll()
@@ -193,11 +195,8 @@ function updateSchema(req, res, next) {
 }
 
 function update(req, res, next) {
-    // users can update their own mentor and admins can update any mentor
-   /* if (req.params.id !== req.user.id && req.user.role !== Role.Admin) {
-        return res.status(401).json({ message: 'Unauthorized' });
-    }*/
-    console.log("params ", req.params);
+    
+   // console.log("params ", req.params);
     mentorService.update(req.params.id,req.body)
         .then(mentor => res.json(mentor))
         .catch(next);

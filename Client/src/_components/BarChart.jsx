@@ -1,33 +1,36 @@
 import React from 'react'
-import { Chart } from 'react-charts'
+import { Chart } from 'react-charts';
 
- function BarChart() {
+import { accountService,companyService, mentorService, alertService } from '@/_services'
+
+ function BarChart({ids}) {
+     const company = companyService.getAll();
     const data = React.useMemo(
      () => [
        {
          label: 'Series 1',
          data: [
-           { primary: 1, secondary: 2 },
-           { primary: 2, secondary: 5 },
-           { primary: 3, secondary: 6 },
+           { primary: "Baby Sensors AS", secondary: 1 },
+           { primary: "Tollit AS", secondary: 5 },
+           { primary: "Smart Cognition AS", secondary: 6 },
          ],
        },
-       /*{
+      {
          label: 'Series 2',
          data: [
-           { primary: 1, secondary: 10 },
-           { primary: 2, secondary: 10 },
-           { primary: 3, secondary: 10 },
+           { primary: "Elevate AS", secondary: 3 },
+           { primary: "LeadX AS", secondary: 2 },
+           { primary: "Boxeez AS", secondary: 1 },
          ],
        }, 
        {
          label: 'Series 3',
          data: [
-           { primary: 1, secondary: 10 },
-           { primary: 2, secondary: 10 },
-           { primary: 3, secondary: 10 },
+           { primary: "RoadGuard AS", secondary: 1 },
+           { primary: "Volur AS", secondary: 1 },
+           { primary: "Leratech Solutions", secondary: 1},
          ],
-       },*/
+       }
      ],
      []
    )
@@ -39,17 +42,22 @@ import { Chart } from 'react-charts'
   );
   const axes = React.useMemo(
     () => [
-      { primary: true, type: "ordinal", position: "bottom" },
-      { position: "bottom", type: "linear", stacked: false }
+      { primary: true, type: "ordinal", position: "left" },
+      { position: "bottom", type: "linear", stacked: true }
     ],
     []
   );
   return (
     <>
       
-     
+        <div
+       style={{
+         width: '600px',
+         height: '1000px',
+       }}
+     >
         <Chart data={data} series={series} axes={axes} tooltip />
-      
+      </div>
     </>
   );
 }
