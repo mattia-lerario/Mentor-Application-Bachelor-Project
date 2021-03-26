@@ -12,7 +12,7 @@ function Dashboard({ match }) {
     const { path } = match;
     
     return (
-        <section className="main scrollhost">
+        <section className="main mainMargin scrollhost">
             <Switch>
                 <Route exact path={path} component={DashboardList} />
                 <Route path={`${path}/chart`} component={MyChart} />
