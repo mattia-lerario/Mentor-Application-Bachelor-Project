@@ -22,11 +22,11 @@ const schema = new Schema({
 
     created: { type: Date, default: Date.now },
     updated: Date,
-    companies:
+    companies:[
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Company"
-      }
+      }]
     ,
     
     mentors: [
