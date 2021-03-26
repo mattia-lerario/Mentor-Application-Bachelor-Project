@@ -31,11 +31,6 @@ function CompanyDetails({ match }) {
 
     function findMentor(id) {
 
-   //console.log(accountService.getById(id).firstName);
-
-    //console.log(accountService.getById(id).then(mentor => mentor.firstName));
-
-    //const mentorName = "";
     accountService.getById(id).then(mentor => mentor.firstName);
 
     const mentor = "some mentor";
@@ -49,14 +44,11 @@ function CompanyDetails({ match }) {
 
     useEffect(() => {
         companyService.getAll().then(x => setUsers(x));
-        //sumHours(company.hoursSpendtOnCompany)
+      
     }, []);
 
     useEffect(() => {
-        //companyService.getAll().then(x => setUsers(x));
-        //sumHours(company)
-
-        
+              
         if(!company)return;
         console.log(company);
         sumHours(company[0].hoursSpendtOnCompany)
@@ -69,21 +61,21 @@ function CompanyDetails({ match }) {
     return (
 
         <CompanyWrapper>
-            {/* <Link to="/companies" className={'BtnSimple Right'}>Back</Link> */}
 
             {company && company.filter(company => company.id === companyId).map(company => 
                 <article key={company.id}>
 
                     <section className="headerImg">
-                        {company.companyImg} {/*Not working, but is supposed to show the image saved in the database on the specific company */}                    
+                        {company.companyImg}                     
                     </section>
 
                     <section>
                         <h1>{company.companyName}</h1>
                     </section>
 
-                    <section>
-                        <p>{company.CompanyDetails}</p>
+                    <section className ="Box MetricsBox">
+                        <h4>Bio</h4>
+                        <p>{company.companyDescription}</p>
                     </section>
                     
                     <section className="Box2">
@@ -99,10 +91,9 @@ function CompanyDetails({ match }) {
                                 {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map((hr, index) =>
                                 <li key = {index}>{hr.hours} hours was used {hr.dateOfWork[8]}{hr.dateOfWork[9]}/{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li>             
                                 )}
-
                             </ul>
+                            
                             <p><b>Total time used on {company.companyName}</b></p>
-                           
                             <p>{totalHours}</p>
 
                         </section>
