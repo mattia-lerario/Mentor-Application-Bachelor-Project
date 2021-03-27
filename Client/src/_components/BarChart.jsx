@@ -1,20 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Chart } from 'react-charts';
 
-//import {companyService } from '@/_services'
+import {companyService } from '@/_services'
 
- function BarChart() {
-     //const company = companyService.getById(userId);
-     //const companyRanking = company.powerRanking;
-     //const userId = ids;
+function BarChart({ ids }) {
+   
+   const [company] = useState(null);
+  
+
+    
+    
+   
+ 
     const data = React.useMemo(
      () => [
        {
          label: 'Series 1',
          data: [
-           { primary: "Baby Sensors AS", secondary:1 },
-           { primary: "Tollit AS", secondary: 5 },
-           { primary: "Smart Cognition AS", secondary: 6 },
+           { primary: "Baby Sensors AS", secondary: 1 },
+           { primary: "Tollit AS", secondary: 2},
+           { primary: "Smart Cognition AS", secondary: 3 },
          ],
        },
       {
@@ -50,15 +55,18 @@ import { Chart } from 'react-charts';
     []
   );
   return (
+    
     <>
-      
+       
         <div
        style={{
          width: '600px',
          height: '1000px',
        }}
-     >
-        <Chart data={data} series={series} axes={axes} tooltip />
+      >
+       
+          <Chart data={data} series={series} axes={axes} tooltip />
+       
       </div>
     </>
   );

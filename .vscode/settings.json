@@ -1,0 +1,12 @@
+{
+    "formattingToggle.affects": [
+
+        "formatOnPaste",
+        "formatOnSave",
+        "formatOnType"
+    ],
+    "eslint.codeAction.showDocumentation": {
+    
+        "enable": true
+    }
+}

@@ -115,7 +115,8 @@ function CompanyDetails({ match }) {
                         key = {pr.date}>
                             <p>{pr.question1}</p>
                             <p>{pr.comment1}</p>
-                            <br></br>
+                                <br></br>
+                                <BarChart data={data}></BarChart>
                             <p>{pr.question2}</p>
                             <p>{pr.comment2}</p>
                         </article>
