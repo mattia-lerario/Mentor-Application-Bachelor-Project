@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Formik, Field,ErrorMessage } from 'formik';
+import { Formik,Form, Field,ErrorMessage } from 'formik';
 import { companyService, alertService } from '@/_services';
 import { PRform } from '../style/styledcomponents';
 
-function PowerRanking({...match}) {
+// eslint-disable-next-line react/prop-types
+function PowerRanking({history,match}) {
+    // eslint-disable-next-line react/prop-types
     const { id } = match.params;
     const isAddMode = !id;
 
@@ -88,7 +90,7 @@ function PowerRanking({...match}) {
 
                 return (
                         <PRform>
-
+                        <Form>
                             <section className="Choose">
                                 <label>Choose Company to examine</label>
                                 <Field name="companyId" as="select" className={'FormGroups' + (errors.companyId && touched.companyId ? ' is-invalid' : '')}>
@@ -324,6 +326,8 @@ function PowerRanking({...match}) {
                             </button>
                             <Link to={isAddMode ? '.' : '..'} className={'BtnSimple'}>Cancel</Link>
                             </div>
+                            </Form>
+
                             </PRform>
                     
                 );
