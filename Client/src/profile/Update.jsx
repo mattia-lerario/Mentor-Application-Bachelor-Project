@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 
 import {FormWrapper} from '../style/styledcomponents';
 import { accountService, alertService } from '@/_services';
-
+// eslint-disable-next-line react/prop-types
 function Update({ history }) {
     
     const user = accountService.userValue;
@@ -45,6 +45,7 @@ function Update({ history }) {
 
             .then(() => {
                 alertService.success('Update successful', { keepAfterRouteChange: true });
+                // eslint-disable-next-line react/prop-types
                 history.push('.');
             })
             

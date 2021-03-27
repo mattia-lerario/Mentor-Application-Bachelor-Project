@@ -6,8 +6,8 @@ import {GiPhone} from 'react-icons/gi';
 import {HiOutlineMail} from 'react-icons/hi';
 import {ListWrapper} from '../style/styledcomponents';
 
-function MentorList({ match }) {
-    const { path } = match;
+function MentorList() {
+    
     const [mentor, setUsers] = useState(null);
 
     useEffect(() => {
@@ -21,7 +21,7 @@ function MentorList({ match }) {
            
             {mentor && mentor.map(mentor =>
 
-            <div className="card">
+            <div className="card" key={mentor.id}>
             <p className="companyName">{mentor.mentorName}</p>
             <p>Mentor Number: {mentor.mentorNumber}</p>
             <p>Description: {mentor.mentorDescription}</p>

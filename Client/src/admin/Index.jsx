@@ -5,7 +5,7 @@ import { Users } from './users';
 import {Companies} from './companies';
 //import {CompanyList} from './Dashboard';
 
-function Admin({ match }) {
+function Admin({ ...match }) {
     const { path } = match;
 
     return (

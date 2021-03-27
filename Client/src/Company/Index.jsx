@@ -1,16 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-
 import { CompanyList } from './Company';
 import { UpdateWorkingHoursMentor } from './UpdateWorkingHoursMentor';
-
-import { accountService, companyService, mentorService } from '@/_services';
 import { CompanyDetails } from './CompanyDetails';
 import { PowerRanking } from './PowerRanking';
-
+// eslint-disable-next-line react/prop-types
 function Company({ match }) {
-    const user = accountService.userValue;
-
+ 
+// eslint-disable-next-line react/prop-types
     const { path } = match;
     
     return (

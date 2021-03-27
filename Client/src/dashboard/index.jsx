@@ -2,12 +2,10 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { MyChart } from '../_components/MyChart';
 import { DashboardList } from './DashboardList';
-import { accountService, companyService, mentorService } from '@/_services';
 
-function Dashboard({ match }) {
-    const user = accountService.userValue;
-    const company = companyService.userValue;
-    const mentor = mentorService.userValue;
+
+function Dashboard({ ...match }) {
+
 
     const { path } = match;
     

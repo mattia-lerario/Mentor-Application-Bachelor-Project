@@ -5,8 +5,9 @@ import * as Yup from 'yup';
 
 import { accountService, mentorService, alertService } from '@/_services';
 
-
+// eslint-disable-next-line react/prop-types
 function UpdateMentor({ history, match }) {
+    // eslint-disable-next-line react/prop-types
     const { id } = match.params;
     const isAddMode = !id;
     const user = accountService.userValue;
@@ -54,6 +55,7 @@ function UpdateMentor({ history, match }) {
             mentorService.create(user.id, fields)
             .then(() => {
                 alertService.success('Create successful', { keepAfterRouteChange: true });
+                // eslint-disable-next-line react/prop-types
                 history.push('.');
             })
             .catch(error => {
@@ -68,6 +70,7 @@ function UpdateMentor({ history, match }) {
             mentorService.update(id,fields)    
             .then(() => {
                 alertService.success('Update successful', { keepAfterRouteChange: true });
+                // eslint-disable-next-line react/prop-types
                 history.push('.');
             })
             .catch(error => {

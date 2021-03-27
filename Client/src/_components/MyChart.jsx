@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Draggable } from 'react-beautiful-dnd';
+import React from 'react';
 import { Chart } from 'react-charts';
-import { accountService,companyService, mentorService, alertService } from '@/_services';
+
  
 async function MyChart() {
     
     //const companyId = ids.companies;
-    const company = await companyService.getAll();
+  //  const company = await companyService.getAll();
     
    
    

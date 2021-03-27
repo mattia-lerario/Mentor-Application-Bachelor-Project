@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { alertService, AlertType } from '@/_services';
+import { alertService } from '@/_services';
 import { history } from '@/_helpers';
 
 const propTypes = {
@@ -74,7 +74,7 @@ function Alert({ id, fade }) {
         }
     }
 
-    function cssClasses(alert) {
+    /*function cssClasses(alert) {
         if (!alert) return;
 
         const classes = ['alert', 'alert-dismissable'];
@@ -93,7 +93,7 @@ function Alert({ id, fade }) {
         }
 
         return classes.join(' ');
-    }
+    }*/
 
     if (!alerts.length) return null;
 

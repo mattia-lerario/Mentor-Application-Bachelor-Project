@@ -8,10 +8,12 @@ import { companyService, accountService } from '@/_services';
 
 //icons
 import {HiOutlineMail} from 'react-icons/hi';
-import {AiFillPhone, AiOutlineCustomerService, AiOutlineNumber} from 'react-icons/ai';
+import {AiFillPhone, AiOutlineNumber} from 'react-icons/ai';
 import {GrScheduleNew} from 'react-icons/gr';
 
+// eslint-disable-next-line react/prop-types
 function CompanyList({ match }) {
+    // eslint-disable-next-line react/prop-types
     const { path } = match;
     const [company, setUsers] = useState(null);
     const mentor = accountService.userValue;

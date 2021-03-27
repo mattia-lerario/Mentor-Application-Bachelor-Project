@@ -149,7 +149,6 @@ function createSchema(req, res, next) {
         companyName: Joi.string().required(),
         companyNumber: Joi.string().required(),
         tlfNumber: Joi.string().required(),
-        email: Joi.string().email().required(),
         salesRevenue: Joi.string().required(),
         companyDescription: Joi.string().required(),
         phase: Joi.string().required()
@@ -169,7 +168,6 @@ function updateSchema(req, res, next) {
         companyName: Joi.string().required(),
         companyNumber: Joi.string().required(),
         tlfNumber: Joi.string().required(),
-        email: Joi.string().email().required(),
         salesRevenue: Joi.string().required(),
         companyDescription: Joi.string().required(),
         phase: Joi.string().required()

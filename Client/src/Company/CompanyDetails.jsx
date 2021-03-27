@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 import { companyService, accountService } from '@/_services';
-import { Field, Form } from 'formik';
-import { Chart } from 'react-charts'
+
 
 //import {MyChart, BarChart} from '@/_components';
 //style
 import {CompanyWrapper} from '../style/styledcomponents';
 
-
+// eslint-disable-next-line react/prop-types
 function CompanyDetails({ match }) {
     const [totalHours, setTotalHours] = useState(0);
+    // eslint-disable-next-line react/prop-types
     const { id } = match.params;
     const companyId = id;
 

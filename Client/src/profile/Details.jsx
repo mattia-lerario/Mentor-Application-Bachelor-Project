@@ -12,7 +12,7 @@ function Details({ match }) {
 
         return (
                 <section>
-                <h1>{user.firstName}'s Profile</h1>
+                <h1>{user.firstName} Profile</h1>
                     <p>
                       <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
                       <strong>Email: </strong> {user.email}<br />
@@ -34,7 +34,7 @@ function Details({ match }) {
         
         return (
             <section>
-                <h1>{user.firstName}'s Profile</h1>
+                <h1>{user.firstName} Profile</h1>
                 <p>
                     <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
                     <strong>Email: </strong> {user.email}<br />
@@ -52,7 +52,7 @@ function Details({ match }) {
     if(isUserType == "Company"){
         return (
             <section>
-                <h1>{user.firstName}'s Profile</h1>
+                <h1>{user.firstName} Profile</h1>
                 <p>
                     <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
                     <strong>Email: </strong> {user.email}<br />

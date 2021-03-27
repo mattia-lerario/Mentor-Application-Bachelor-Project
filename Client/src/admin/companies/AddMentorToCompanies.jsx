@@ -1,15 +1,16 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import { companyService, alertService, mentorService } from '@/_services';
-import { FormWrapper } from '../../style/styledcomponents';
+
 
 function AddEditMentor({ history, match }) {
 
     const [mentors, setMentors] = useState(null);
-    const company = companyService.userValue;
+  
 
     useEffect(() => {
         mentorService.getAll().then(x => setMentors(x));
