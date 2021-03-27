@@ -1,7 +1,9 @@
 import React from 'react';
-import {accountService} from '@/_services';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { accountService,companyService  } from '@/_services';
+import {MyChart} from '@/_components';
 import {BarChart} from '@/_components';
-
+import { checkPropTypes } from 'prop-types';
 function Home() {
     const user = accountService.userValue;
     console.log(user);
@@ -10,10 +12,10 @@ function Home() {
     return (
         <section className="main scrollhost">
             <h1>Hi {user.name} </h1>
-                <BarChart ids={user.id}></BarChart>
+                <BarChart ids={user}></BarChart>
             <br/>    
         </section>
     );
 }
- 
+
 export { Home };
