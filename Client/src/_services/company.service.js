@@ -52,8 +52,11 @@ function getAll() {
 
 function getById(id) {
     console.log(id);
-    return fetchWrapper.get(`${baseUrl}/${id}`);
+    return fetchWrapper.get(`${baseUrl}/${id}`).then(company => { return company })
+    
+    
 }
+
 
 function create(id,params) {
     return fetchWrapper.post(baseUrl, params, id);
