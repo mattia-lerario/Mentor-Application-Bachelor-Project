@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { MentorList } from './Mentor';
 
-function Mentor({ match }) {
+function Mentor({ ...match }) {
   
 
     const { path } = match;

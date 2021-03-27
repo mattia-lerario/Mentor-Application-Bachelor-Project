@@ -23,17 +23,17 @@ function logout() {
     // revoke token, stop refresh timer, publish null to user subscribers and redirect to login page
     fetchWrapper.post(`${baseUrl}/revoke-token`, {});
     stopRefreshTokenTimer();
-    userSubject.next(null);
+    mentorSubject.next(null);
     history.push('/account/login');
 }
 
 function refreshToken() {
     return fetchWrapper.post(`${baseUrl}/refresh-token`, {})
-        .then(user => {
+        .then(mentor=> {
             // publish user to subscribers and start timer to refresh token
-            userSubject.next(user);
+            mentorSubject.next(mentor);
             startRefreshTokenTimer();
-            return user;
+            return mentor;
         });
 }
 
@@ -77,7 +77,7 @@ function _delete(id) {
     return fetchWrapper.delete(`${baseUrl}/${id}`)
         .then(x => {
             // auto logout if the logged in user deleted their own record
-            if (id === userSubject.value.id) {
+            if (id === mentorSubject.value.id) {
                 logout();
             }
             return x;
@@ -90,7 +90,7 @@ let refreshTokenTimeout;
 
 function startRefreshTokenTimer() {
     // parse json object from base64 encoded jwt token
-    const jwtToken = JSON.parse(atob(userSubject.value.jwtToken.split('.')[1]));
+    const jwtToken = JSON.parse(atob(mentorSubject.value.jwtToken.split('.')[1]));
 
     // set a timeout to refresh the token a minute before it expires
     const expires = new Date(jwtToken.exp * 1000);
