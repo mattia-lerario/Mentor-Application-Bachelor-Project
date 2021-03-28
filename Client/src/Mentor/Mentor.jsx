@@ -22,18 +22,18 @@ function MentorList({match}) {
             <p>Click on the mentor to see details more details</p>  
 
             {mentor && mentor.map(mentor =>
-            <section className="card" key={mentor.id}>
+             <Link className={'noLink'}to={`${path}/mentorDetails/${mentor.id}`}>
 
-                <Link className={'noLink'}to={`${path}/mentorDetails/${mentor.id}`}>
+            <section className="card" key={mentor.id}>
 
                 {<img className="cardImg" src={avatar}></img>}
                 <p className="companyName">{mentor.mentorName}</p>
                 <p>Mentor Number: {mentor.mentorNumber}</p>
                 <p>Description: {mentor.mentorDescription}</p>
                 <p><HiOutlineMail/>: {mentor.email}</p>
-                </Link>
 
             </section>
+            </Link>
 )}     
     
         </div>
