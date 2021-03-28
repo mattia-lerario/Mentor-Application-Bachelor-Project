@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 
-
-import { mentorService } from '@/_services';
-import {GiPhone} from 'react-icons/gi';
+import avatar from '../media/avatar.jpg'
+import {mentorService, accountService} from '@/_services';
 import {HiOutlineMail} from 'react-icons/hi';
 import {ListWrapper} from '../style/styledcomponents';
-
-function MentorList() {
-    
+import { Link } from 'react-router-dom';
+// eslint-disable-next-line react/prop-types
+function MentorList({match}) {
+    // eslint-disable-next-line react/prop-types
+    const { path } = match;
     const [mentor, setUsers] = useState(null);
 
     useEffect(() => {
@@ -17,17 +18,22 @@ function MentorList() {
     return (
         <ListWrapper>
         <div>
-            <h2>All Mentors</h2>  
-           
-            {mentor && mentor.map(mentor =>
+            <h2>All Mentors in the system</h2>
+            <p>Click on the mentor to see details more details</p>  
 
-            <div className="card" key={mentor.id}>
-            <p className="companyName">{mentor.mentorName}</p>
-            <p>Mentor Number: {mentor.mentorNumber}</p>
-            <p>Description: {mentor.mentorDescription}</p>
-            
-            <p><HiOutlineMail/>: {mentor.email}</p>
-            </div>
+            {mentor && mentor.map(mentor =>
+            <section className="card" key={mentor.id}>
+
+                <Link className={'noLink'}to={`${path}/mentorDetails/${mentor.id}`}>
+
+                {<img className="cardImg" src={avatar}></img>}
+                <p className="companyName">{mentor.mentorName}</p>
+                <p>Mentor Number: {mentor.mentorNumber}</p>
+                <p>Description: {mentor.mentorDescription}</p>
+                <p><HiOutlineMail/>: {mentor.email}</p>
+                </Link>
+
+            </section>
 )}     
     
         </div>
