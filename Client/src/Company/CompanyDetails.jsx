@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import { companyService, accountService } from '@/_services';
-import { Field, Form } from 'formik';
-import { Chart } from 'react-charts'
 
 //import {MyChart, BarChart} from '@/_components';
 //style
@@ -35,6 +33,9 @@ function CompanyDetails({ match }) {
             
             if(!company)return;
             const comp = (await company.find(c => c.id === companyId));
+
+
+
             sumHours(comp.hoursSpendtOnCompany);
         }
         fetchData();
@@ -76,12 +77,9 @@ function CompanyDetails({ match }) {
                                 {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map((hr, index) =>
                                 <li key = {index}>{hr.hours} hours was used {hr.dateOfWork[8]}{hr.dateOfWork[9]}/{hr.dateOfWork[5]}{hr.dateOfWork[6]}</li>             
                                 )}
-
                             </ul>
-                            <p><b>Total time used on {company.companyName}</b></p>
-                           
-                            <p>{totalHours}</p>
-
+                                <p><b>Total time used on {company.companyName}</b></p>
+                                <p>{totalHours}</p>
                         </section>
                     </section>
 

@@ -18,9 +18,6 @@ function CompanyList({ match }) {
     const [company, setUsers] = useState(null);
 
     const mentorId = accountService.userValue.mentors[0];
-    //const mentorId = "605ddc40abbe3a5e54f27298a";
-
-    console.log("trigger ", mentorId);
     
     useEffect(() => {
         companyService.getAll().then(x => setUsers(x));
