@@ -9,19 +9,16 @@ const schema = new Schema({
     email: { type: String, unique: true, required: true },
     mentorDescription: { type: String, required: true }, //bio
 
-    /*
     industriExpertise:[
         {type : String}
     ],
     mentorExpertise:[
         {type : String}
     ],
-    workExperience:[
+    workExperience:[{
         title: {type:String},
         description: {type : String},        
-    ],      
-    */
-
+    }],      
     accounts: 
         {
           type: mongoose.Schema.Types.ObjectId,
