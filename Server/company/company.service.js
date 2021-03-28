@@ -66,7 +66,6 @@ async function getAll() {
     return company.map(x => basicDetails(x));
 }
 
-
 async function getAllPowerRankings() {
     const company = await db.Company.find();
     return company.PowerRanking.map(x => basicDetails(x));

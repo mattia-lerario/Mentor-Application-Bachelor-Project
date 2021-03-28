@@ -36,7 +36,7 @@ function CompanyList({ match }) {
         alert("Schedule with " + name)
         )
     }
-
+    
     return (
 
         <ListWrapper>
