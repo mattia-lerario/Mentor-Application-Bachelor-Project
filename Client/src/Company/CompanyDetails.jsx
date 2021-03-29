@@ -24,7 +24,6 @@ function CompanyDetails({ match }) {
 
     useEffect(() => {
         companyService.getAll().then(x => setUsers(x));
-        //sumHours(company.hoursSpendtOnCompany)
     }, []);
 
     useEffect(() => {
@@ -42,7 +41,6 @@ function CompanyDetails({ match }) {
         
     }, [company]);
     
-
 
     return (
 
@@ -90,8 +88,8 @@ function CompanyDetails({ match }) {
                         key = {pr.date}>
                             <p>{pr.question1}</p>
                             <p>{pr.comment1}</p>
-                                <br></br>
-                                <BarChart data={data}></BarChart>
+                              { /*<br></br>
+                                <BarChart data={data}></BarChart>*/}
                             <p>{pr.question2}</p>
                             <p>{pr.comment2}</p>
                         </article>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Chart } from 'react-charts';
 
-import {companyService } from '@/_services'
+import { accountService,companyService, mentorService, alertService } from '@/_services'
 
 function BarChart({ ids }) {
    
