@@ -21,7 +21,7 @@ function Account({ history, match }) {
     }, []);
 
     return (
-        <div className="container">
+        <section className="container">
             <div className="row">
                 <div className="col-sm-8 offset-sm-2 mt-5">
                         <Switch>
@@ -33,7 +33,7 @@ function Account({ history, match }) {
                         </Switch>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

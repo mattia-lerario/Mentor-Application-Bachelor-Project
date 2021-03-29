@@ -66,7 +66,6 @@ async function getAll() {
     return company.map(x => basicDetails(x));
 }
 
-
 async function getAllPowerRankings() {
     const company = await db.Company.find();
     return company.PowerRanking.map(x => basicDetails(x));
@@ -156,7 +155,7 @@ async function createHours(params) {
 }
 
 async function addMentorToCompany(mentorId,companyId) {
-    console.log(mentorId,companyId)
+    //console.log(mentorId,companyId)
   return db.Company.findByIdAndUpdate(
     companyId,
     { $push: { leadMentor: mentorId } },
@@ -168,16 +167,9 @@ async function addMentorToCompany(mentorId,companyId) {
 
 
 async function update(id, params) {
-    console.log(params)
+    //console.log(params)
     const company = await getCompany(id);
 
-    // validate (if email was changed)
-   
-
-    // hash password if it was entered
-    
-
-    // copy params to account and save
     Object.assign(company, params);
     company.updated = Date.now();
     await company.save();

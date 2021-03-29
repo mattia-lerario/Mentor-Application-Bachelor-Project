@@ -38,18 +38,15 @@ function UpdateCompanies({ history, match }) {
 
  function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
-
-        console.log(isAddMode);
-        console.log(!user.companies);
     
-        if (!user.companies) {
-         createCompany(fields, setSubmitting);
-            //updateCompany(user.companies, fields, setSubmitting);
+        if (user.companies.length>0) {
+         //createCompany(fields, setSubmitting);
+            updateCompany(user.companies, fields, setSubmitting);
                        
         }   
         else {
-            //createCompany(fields, setSubmitting);
-            updateCompany(user.companies, fields, setSubmitting);             
+            createCompany(fields, setSubmitting);
+            //updateCompany(user.companies, fields, setSubmitting);             
         }
         
         }

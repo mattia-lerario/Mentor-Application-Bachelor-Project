@@ -51,6 +51,10 @@ function AddEditMentor({ history, match }) {
 
     function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
+
+       // console.log("MEntorId "+fields.leadMentor);
+       // console.log(id);
+        
         companyService.update(id,fields)      
             .then(() => {
                 alertService.success('Update successful', { keepAfterRouteChange: true });
@@ -133,9 +137,8 @@ function AddEditMentor({ history, match }) {
 
                                     <Field name="leadMentor" as="select" className={'FormGroups' + (errors.leadMentor && touched.leadMentor ? ' is-invalid' : '')}>
 
-                                        {/*leadMentors.map((leadMentor, index) => 
-                                        <option key={index} value= {leadMentor._id}>{leadMentor.leadMentorName}</option>)*/}
                                     <option></option>
+
                                 {mentors && mentors.map(mentor =>
                                     <option key={mentor.id} value ={mentor.id}>{mentor.mentorName}</option>)}
      

@@ -1,70 +1,46 @@
 import React, { useState, useEffect } from 'react';
 
 import { companyService, accountService } from '@/_services';
-import { BarChart } from '@/_components';
 
 //import {MyChart, BarChart} from '@/_components';
 //style
 import {CompanyWrapper} from '../style/styledcomponents';
 
-// eslint-disable-next-line react/prop-types
+
 function CompanyDetails({ match }) {
+
     const [totalHours, setTotalHours] = useState(0);
-    // eslint-disable-next-line react/prop-types
+
     const { id } = match.params;
     const companyId = id;
-
     const [company, setUsers] = useState(null);
 
     function sumHours(timeLogList) {
 
-        
-        let hours = 0;
-        timeLogList.forEach(item => {
-            console.log(item);
-        hours += item.hours;
-           
-        });
-
+        const reducer = (hr, currentValue) => hr + currentValue.hours;   
+        const hours = (timeLogList.reduce(reducer, 0));
         setTotalHours(hours);
     }
 
-    function findMentor(id) {
-
-   //console.log(accountService.getById(id).firstName);
-
-    //console.log(accountService.getById(id).then(mentor => mentor.firstName));
-
-    //const mentorName = "";
-    accountService.getById(id).then(mentor => mentor.firstName);
-
-    const mentor = "some mentor";
-
-    return(
-        mentor
-    )
-
-    }
-
-
     useEffect(() => {
         companyService.getAll().then(x => setUsers(x));
-        //sumHours(company.hoursSpendtOnCompany)
     }, []);
 
     useEffect(() => {
-        //companyService.getAll().then(x => setUsers(x));
-        //sumHours(company)
+         
+        async function fetchData() {
+            
+            if(!company)return;
+            const comp = (await company.find(c => c.id === companyId));
 
+
+
+            sumHours(comp.hoursSpendtOnCompany);
+        }
+        fetchData();
         
-        if(!company)return;
-        console.log(company);
-        sumHours(company[0].hoursSpendtOnCompany)
-        
-    
     }, [company]);
     
-
 
     return (
 
@@ -97,14 +73,11 @@ function CompanyDetails({ match }) {
                             <h4>Time Log</h4>
                             <ul>
                                 {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map((hr, index) =>
-                                <li key = {index}>{hr.hours} hours was used {hr.dateOfWork[8]}{hr.dateOfWork[9]}/{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li>             
+                                <li key = {index}>{hr.hours} hours was used {hr.dateOfWork[8]}{hr.dateOfWork[9]}/{hr.dateOfWork[5]}{hr.dateOfWork[6]}</li>             
                                 )}
-
                             </ul>
-                            <p><b>Total time used on {company.companyName}</b></p>
-                           
-                            <p>{totalHours}</p>
-
+                                <p><b>Total time used on {company.companyName}</b></p>
+                                <p>{totalHours}</p>
                         </section>
                     </section>
 
@@ -115,8 +88,8 @@ function CompanyDetails({ match }) {
                         key = {pr.date}>
                             <p>{pr.question1}</p>
                             <p>{pr.comment1}</p>
-                                <br></br>
-                               
+                              { /*<br></br>
+                                <BarChart data={data}></BarChart>*/}
                             <p>{pr.question2}</p>
                             <p>{pr.comment2}</p>
                         </article>

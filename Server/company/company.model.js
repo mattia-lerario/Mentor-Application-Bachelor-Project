@@ -13,6 +13,11 @@ const schema = new Schema({
     companyDescription: { type: String, required: true },
     role: { type: String},
     phase: { type: String},
+    location:{type: String},
+    
+    market:[
+     { type:String}
+    ],
     
     hoursSpendtOnCompany:[
         {     

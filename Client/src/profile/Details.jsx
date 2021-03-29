@@ -1,13 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import {BsPencil} from 'react-icons/bs';
 
-import { accountService } from '@/_services';
+// different types of buttons
+import { makeStyles } from '@material-ui/core/styles';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
+
+import { accountService, mentorService, companyService} from '@/_services';
+
+const useStyles = makeStyles((theme) => ({
+    fab: {
+      color:'black',  
+      margin: theme.spacing(2),
+    },
+    absolute: {
+      position: 'absolute',
+      bottom: theme.spacing(2),
+      right: theme.spacing(3),
+    },
+  }));
 
 function Details({ match }) {
     const { path } = match;
     const user = accountService.userValue;
     const isUserType = user.role;
-
+    const [roleUser, setUsers] = useState(null);
+    const classes = useStyles();
+   
+    // button style
     if(isUserType == "Admin"){
 
         return (
@@ -19,37 +43,84 @@ function Details({ match }) {
                       <strong>Role: </strong>{user.role}
                     </p>
                 
-                   <button className={'Btn BtnMain'}><Link to={`${path}/update`} className={'BtnLink'}>Update Account</Link></button>
+                   
+                    <Link to={`${path}/update`} className={'BtnLink'}>
+                       <button className={'Btn BtnMain'}>Update Account</button>
+                    </Link>
                 
 
                 </section>
         )
-        // <button className="Btn MainBtn"><Link to={`${path}/updateWorkingHoursMentor`} className="LinkBtn">Update houers</Link></button>
-
-
     }
 
     if(isUserType == "Mentor"){
 
-        
+       useEffect(() => {
+            mentorService.getAll().then(x => setUsers(x));
+      
+        }, []);
+
         return (
             <section>
-                <h1>{user.firstName} Profile</h1>
-                <p>
-                    <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
-                    <strong>Email: </strong> {user.email}<br />
-                    <strong>Role: </strong>{user.role}
-                </p>
-                
-                <button className={'Btn BtnMain'}><Link to={`${path}/update`} className={'BtnLink'}>Update Account</Link></button>
-                
-                <button className={'Btn BtnMain'}><Link to={`${path}/updateMentor`} className={'BtnLink'}>Update {user.role} Information</Link></button>
-            </section>
+                <article>
+                    <h1>{user.firstName} Profile Imformation</h1>
+                    <p>
+                        <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
+                        <strong>Email: </strong> {user.email}<br />
+                        <strong>Role: </strong>{user.role}
+                    </p>              
+                    
+                    <Link to={`${path}/update`} className={'BtnLink'}>
+                        <button className={'Btn BtnMain'}>Update Account</button>
+                    </Link>
         
+                </article>
+
+                <article>
+                <h2>You'r Mentor Imformation</h2>
+                
+                <h4>Bio</h4>
+                {roleUser && roleUser.filter(mentor => mentor.id === user.mentors[0]).map(mentor => 
+                
+                <article key = {mentor.id}>
+                    <section>
+                        <p>{mentor.mentorDescription}</p>
+                        <p>{mentor.mentorName}</p>
+                    </section>
+                    <section>
+                        <h5>Work experience:</h5>
+                        <p>...</p>
+                    </section>
+                    <section>
+                        <h5>Expertise:</h5>
+                        <ul></ul>
+                    </section>
+                </article>
+                )}
+                </article>
+                
+                <Link to={`${path}/updateMentor`} className={'BtnLink'}>             
+                
+                    <Tooltip title="Update mentor Information" placement="top-start" >
+                        
+                            <Fab color="secondary" className={classes.fab}>
+                            <   BsPencil/>
+                            </Fab> 
+                     
+                    </Tooltip>                
+                </Link>
+              
+            </section>       
         
     );
     }
     if(isUserType == "Company"){
+
+        useEffect(() => {
+            companyService.getAll().then(x => setUsers(x));
+      
+        }, []);
+
         return (
             <section>
                 <h1>{user.firstName} Profile</h1>
@@ -59,9 +130,29 @@ function Details({ match }) {
                     <strong>Role: </strong>{user.role}
                 </p>
                 
-                <button className={'Btn BtnMain'}><Link to={`${path}/update`} className={'BtnLink'}>Update Account</Link></button>
                 
-                <button className={'Btn BtnMain'}><Link to={`${path}/updateCompanies`} className={'BtnLink'}>Update {user.role} Information</Link></button>            
+                <Link to={`${path}/update`} className={'BtnLink'}>
+                    <button className={'Btn BtnMain'}>Update Account</button>
+                </Link>
+                
+                <article>
+                <h2>You'r Company Imformation</h2>
+                
+                <h4>Bio</h4>
+                {roleUser && roleUser.filter(company => company.id === user.companies[0]).map(company => 
+                
+                <section key = {company.id}>
+                    <article>
+                        <p>{company.companyDescription}</p>
+                    </article>
+                </section>
+                )}
+                </article>
+
+                
+                <Link to={`${path}/updateCompanies`} className={'BtnLink'}>
+                    <button className={'Btn BtnMain'}>Update {user.role} Information</button>  
+                </Link>          
             </section>
         );
 }

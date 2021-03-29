@@ -11,7 +11,7 @@ const companyService = require('./company.service');
 //router.post('/authenticate', authenticateSchema, authenticate);
 router.post('/revoke-token', authorize(), revokeTokenSchema, revokeToken);
 router.get('/',authorize(), getAll);
-router.get('/:id', getById);
+router.get('/:id', authorize(), getById);
 router.post('/', authorize(), createSchema, create);
 router.put('/:id', authorize(), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
@@ -164,6 +164,8 @@ function create(req, res, next) {
 
 
 function updateSchema(req, res, next) {
+
+    console.log(req.user.role);
     const schemaRules = {
         companyName: Joi.string().required(),
         companyNumber: Joi.string().required(),
@@ -174,8 +176,9 @@ function updateSchema(req, res, next) {
     };
 
     // only admins can update mentor
+
     if (req.user.role === Role.Admin) {
-        schemaRules.mentor = Joi.string();
+        schemaRules.leadMentor = Joi.string();
     }
 
     const schema = Joi.object(schemaRules);
@@ -183,10 +186,9 @@ function updateSchema(req, res, next) {
 }
 
 function update(req,res,next) {
-   
-    companyService.addMentorToCompany(req.body.mentor,req.params.id);
     
-   // console.log("params ", req.params);
+    companyService.addMentorToCompany(req.body.leadMentor,req.params.id);
+    
     companyService.update(req.params.id,req.body)
         .then(company => res.json(company))
         .catch(next);

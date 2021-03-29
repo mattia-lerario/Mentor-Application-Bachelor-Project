@@ -74,8 +74,7 @@ function addMentorHours(id, params){
 }
 
 function createPowerRanking(id, params){
-    console.log(params);
-
+    
     return fetchWrapper.post(`${baseUrl}/powerranking/${id}`, params)
     .then(company => {
             company = { ...companySubject.value, ...company };

@@ -8,8 +8,12 @@ function Overview({ match }) {
         <section>
             <h1>Admin</h1>
             <p>This section can only be accessed by administrators.</p>
-            <button className={'Btn BtnMain'}><Link to={`${path}/users`} className={'BtnLink'}>Manage Users</Link></button>
-            <button className={'Btn BtnMain'}><Link to={`${path}/companies`} className={'BtnLink'}>Manage companies</Link></button>
+            <Link to={`${path}/users`} className={'BtnLink'}>
+                <button type="button" className={'Btn BtnMain'}>Manage Users</button>
+            </Link>
+            <Link to={`${path}/companies`} className={'BtnLink'}>
+                <button type="button" className={'Btn BtnMain'}>Manage companies</button>
+            </Link>
         </section>
     );
 }
