@@ -9,7 +9,7 @@ function Admin({ match }) {
     const { path } = match;
 
     return (
-        <section className="main scrollhost">
+        <section className={'main scrollhost'}>
             <Switch>
                 <Route exact path={path} component={Overview} />
                 <Route path={`${path}/users`} component={Users} />
