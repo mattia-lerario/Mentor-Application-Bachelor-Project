@@ -3,7 +3,7 @@ import { Chart } from 'react-charts';
 
 
 
-function BarChart({ ids }) {
+function BarChart() {
    
  
     const data = React.useMemo(
@@ -11,7 +11,7 @@ function BarChart({ ids }) {
        {
          label: 'Series 1',
          data: [
-           { primary: "Baby Sensors AS", secondary: 1 },
+           { primary: "Baby Sensors AS", secondary: 6 },
            { primary: "Tollit AS", secondary: 2 },
            { primary: "Smart Cognition AS", secondary: 3 },
          ],
@@ -27,7 +27,7 @@ function BarChart({ ids }) {
        {
          label: 'Series 3',
          data: [
-           { primary: "RoadGuard AS", secondary: 1 },
+           { primary: "RoadGuard AS", secondary: 2 },
            { primary: "Volur AS", secondary: 1 },
            { primary: "Leratech Solutions", secondary: 1},
          ],
@@ -43,8 +43,8 @@ function BarChart({ ids }) {
   );
   const axes = React.useMemo(
     () => [
-      { primary: true, type: "ordinal", position: "left" },
-      { position: "bottom", type: "linear", stacked: true }
+      { primary: true, type: "ordinal", position: "bottom" },
+      { position: "left", type: "linear", stacked: false }
     ],
     []
   );
@@ -54,8 +54,8 @@ function BarChart({ ids }) {
        
         <div
        style={{
-         width: '600px',
-         height: '1000px',
+         width: '500px',
+         height: '500px',
        }}
       >
        
