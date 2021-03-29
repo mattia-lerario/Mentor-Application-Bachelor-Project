@@ -44,7 +44,6 @@ function CompanyList({ match }) {
              <button type="button" className={'Btn BtnMain Right'}><Link to={`${path}/powerranking`} className={'BtnLink'}>PowerRanking</Link></button>
 
              <h1>Your Companies</h1>
-             
                 {company && company.filter(company => company.leadMentor.includes(mentorId)).map(company => 
                 
                 <article key={company.id} className="card">

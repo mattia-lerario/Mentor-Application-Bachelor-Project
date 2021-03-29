@@ -175,6 +175,8 @@ export const ListWrapper = styled.div`
     padding-left: 4px;
     padding-top: 4px;
     padding-right: 5px;
+    margin-left: 2rem;
+    margin-top: 1rem;
   }
   .card:hover{
     border: solid #38507a;
