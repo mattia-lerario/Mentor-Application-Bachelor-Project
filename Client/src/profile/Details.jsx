@@ -77,8 +77,9 @@ function Details({ match }) {
                 </article>
                 )}
                 </article>
-                <Link to={`${path}/updateMentor`} className={'BtnLink'}>
-                    <BsPencil/>
+                <Link to={`${path}/updateMentor`} className={'BtnLink iconButton'}>
+                    <span class={'iconButtonText'}><BsPencil/></span>
+                    
                 </Link>
             </section>       
         
