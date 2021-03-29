@@ -24,6 +24,7 @@ function CompanyDetails({ match }) {
 
     useEffect(() => {
         companyService.getAll().then(x => setUsers(x));
+        //sumHours(company.hoursSpendtOnCompany)
     }, []);
 
     useEffect(() => {
@@ -41,6 +42,7 @@ function CompanyDetails({ match }) {
         
     }, [company]);
     
+
 
     return (
 
