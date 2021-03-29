@@ -29,7 +29,6 @@ function Details({ match }) {
     const user = accountService.userValue;
     const isUserType = user.role;
     const [roleUser, setUsers] = useState(null);
-
     const classes = useStyles();
    
     // button style
