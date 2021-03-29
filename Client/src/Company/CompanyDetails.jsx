@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { companyService, accountService } from '@/_services';
-
+import { BarChart } from '@/_components';
 
 //import {MyChart, BarChart} from '@/_components';
 //style
@@ -70,7 +70,7 @@ function CompanyDetails({ match }) {
 
         <CompanyWrapper>
             {/* <Link to="/companies" className={'BtnSimple Right'}>Back</Link> */}
-
+            
             {company && company.filter(company => company.id === companyId).map(company => 
                 <article key={company.id}>
 
@@ -116,7 +116,7 @@ function CompanyDetails({ match }) {
                             <p>{pr.question1}</p>
                             <p>{pr.comment1}</p>
                                 <br></br>
-                                <BarChart data={data}></BarChart>
+                               
                             <p>{pr.question2}</p>
                             <p>{pr.comment2}</p>
                         </article>

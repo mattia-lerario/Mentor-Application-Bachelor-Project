@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React  from 'react'
 import { Chart } from 'react-charts';
 
-import {companyService } from '@/_services'
+
 
 function BarChart({ ids }) {
-   
-   const [company] = useState(null);
-  
-
-    
-    
    
  
     const data = React.useMemo(
@@ -18,7 +12,7 @@ function BarChart({ ids }) {
          label: 'Series 1',
          data: [
            { primary: "Baby Sensors AS", secondary: 1 },
-           { primary: "Tollit AS", secondary: 2},
+           { primary: "Tollit AS", secondary: 2 },
            { primary: "Smart Cognition AS", secondary: 3 },
          ],
        },
@@ -65,7 +59,7 @@ function BarChart({ ids }) {
        }}
       >
        
-          <Chart data={data} series={series} axes={axes} tooltip />
+        <Chart data={data} series={series} axes={axes} tooltip />
        
       </div>
     </>
