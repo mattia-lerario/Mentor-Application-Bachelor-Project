@@ -116,7 +116,7 @@ function PowerRanking({history,match}) {
                                 </div>
                                 <div className="Comment">
                                     <label>Comment:</label>
-                                    <Field name="comment1" type="textarea" className={'CommentField' + (errors.comment1 && touched.comment1 ? ' is-invalid' : '')} />
+                                    <Field name="comment1" type="text" component="textarea" className={'CommentField' + (errors.comment1 && touched.comment1 ? ' is-invalid' : '')} />
                                     <ErrorMessage name="comment1" component="div" className="InvalidFeedback" />
                                 </div>
                             </section>

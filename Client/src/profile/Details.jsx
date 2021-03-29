@@ -2,15 +2,36 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {BsPencil} from 'react-icons/bs';
 
+// different types of buttons
+import { makeStyles } from '@material-ui/core/styles';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
+
 import { accountService, mentorService, companyService} from '@/_services';
+
+const useStyles = makeStyles((theme) => ({
+    fab: {
+      color:'black',  
+      margin: theme.spacing(2),
+    },
+    absolute: {
+      position: 'absolute',
+      bottom: theme.spacing(2),
+      right: theme.spacing(3),
+    },
+  }));
 
 function Details({ match }) {
     const { path } = match;
     const user = accountService.userValue;
     const isUserType = user.role;
     const [roleUser, setUsers] = useState(null);
-   // const [company, setUsers] = useState(null);
-
+    const classes = useStyles();
+   
+    // button style
     if(isUserType == "Admin"){
 
         return (
@@ -77,10 +98,18 @@ function Details({ match }) {
                 </article>
                 )}
                 </article>
-                <Link to={`${path}/updateMentor`} className={'BtnLink iconButton'}>
-                    <span class={'iconButtonText'}><BsPencil/></span>
-                    
+                
+                <Link to={`${path}/updateMentor`} className={'BtnLink'}>             
+                
+                    <Tooltip title="Update mentor Information" placement="top-start" >
+                        
+                            <Fab color="secondary" className={classes.fab}>
+                            <   BsPencil/>
+                            </Fab> 
+                     
+                    </Tooltip>                
                 </Link>
+              
             </section>       
         
     );
