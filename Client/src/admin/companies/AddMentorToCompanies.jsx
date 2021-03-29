@@ -1,15 +1,16 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import { companyService, alertService, mentorService } from '@/_services';
-import { FormWrapper } from '../../style/styledcomponents';
+
 
 function AddEditMentor({ history, match }) {
 
     const [mentors, setMentors] = useState(null);
-    const company = companyService.userValue;
+  
 
     useEffect(() => {
         mentorService.getAll().then(x => setMentors(x));
@@ -50,6 +51,10 @@ function AddEditMentor({ history, match }) {
 
     function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
+
+       // console.log("MEntorId "+fields.leadMentor);
+       // console.log(id);
+        
         companyService.update(id,fields)      
             .then(() => {
                 alertService.success('Update successful', { keepAfterRouteChange: true });
@@ -132,9 +137,8 @@ function AddEditMentor({ history, match }) {
 
                                     <Field name="leadMentor" as="select" className={'FormGroups' + (errors.leadMentor && touched.leadMentor ? ' is-invalid' : '')}>
 
-                                        {/*leadMentors.map((leadMentor, index) => 
-                                        <option key={index} value= {leadMentor._id}>{leadMentor.leadMentorName}</option>)*/}
                                     <option></option>
+
                                 {mentors && mentors.map(mentor =>
                                     <option key={mentor.id} value ={mentor.id}>{mentor.mentorName}</option>)}
      

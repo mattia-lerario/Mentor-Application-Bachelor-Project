@@ -4,8 +4,9 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import {accountService, companyService, alertService } from '@/_services';
-
+// eslint-disable-next-line react/prop-types
 function UpdateCompanies({ history, match }) {
+    // eslint-disable-next-line react/prop-types
     const { id } = match.params;
     const isAddMode = !id;
     const user = accountService.userValue;
@@ -15,7 +16,6 @@ function UpdateCompanies({ history, match }) {
         companyName: 'n',
         companyNumber: '999887766',
         tlfNumber: '999887766',
-        email: user.email,
         salesRevenue: '100000',
         companyDescription: 'Big company',
         phase:'1',        
@@ -28,9 +28,6 @@ function UpdateCompanies({ history, match }) {
             .required('Company Number is required'),
         tlfNumber: Yup.string()
             .required('Tlf is required'),
-        email: Yup.string()
-            .email('Email is invalid')
-            .required('Email is required'),
         salesRevenue: Yup.string()
             .required('Sales Revenue is required'),
         companyDescription: Yup.string()
@@ -41,18 +38,15 @@ function UpdateCompanies({ history, match }) {
 
  function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
-
-        console.log(isAddMode);
-        console.log(!user.companies);
     
-        if (!user.companies) {
-         createCompany(fields, setSubmitting);
-            //updateCompany(user.companies, fields, setSubmitting);
+        if (user.companies.length>0) {
+         //createCompany(fields, setSubmitting);
+            updateCompany(user.companies, fields, setSubmitting);
                        
         }   
         else {
-            //createCompany(fields, setSubmitting);
-            updateCompany(user.companies, fields, setSubmitting);             
+            createCompany(fields, setSubmitting);
+            //updateCompany(user.companies, fields, setSubmitting);             
         }
         
         }
@@ -63,6 +57,7 @@ function UpdateCompanies({ history, match }) {
             companyService.create(user.id, fields)
             .then(() => {
                 alertService.success('Create successful', { keepAfterRouteChange: true });
+                // eslint-disable-next-line react/prop-types
                 history.push('.');
             })
             .catch(error => {
@@ -80,6 +75,7 @@ function UpdateCompanies({ history, match }) {
             companyService.update(id,fields)    
             .then(() => {
                 alertService.success('Update successful', { keepAfterRouteChange: true });
+                // eslint-disable-next-line react/prop-types
                 history.push('.');
             })
             .catch(error => {
@@ -97,7 +93,7 @@ function UpdateCompanies({ history, match }) {
                     if (!isAddMode) {
                         // get user and set form fields
                         companyService.getById(id).then(company => {
-                            const fields = ['companyName', 'companyNumber', 'tlfNumber', 'email', 'salesRevenue', 'companyDescription', 'phase'];
+                            const fields = ['companyName', 'companyNumber', 'tlfNumber', 'salesRevenue', 'companyDescription', 'phase'];
                             fields.forEach(field => setFieldValue(field, company[field], false));
                         });
                     }
@@ -126,11 +122,6 @@ function UpdateCompanies({ history, match }) {
                                 <label>Phone Number</label>
                                 <Field name="tlfNumber" type="text" className={'form-control' + (errors.tlfNumber && touched.tlfNumber ? ' is-invalid' : '')} />
                                 <ErrorMessage name="tlfNumber" component="div" className="invalid-feedback" />
-                            </div>
-                            <div className="form-group col-7">
-                                <label>Email</label>
-                                <Field name="email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
-                                <ErrorMessage name="email" component="div" className="invalid-feedback" />
                             </div>
 
                             <div className="form-group col-7">

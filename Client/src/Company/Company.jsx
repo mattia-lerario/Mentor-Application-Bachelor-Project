@@ -8,20 +8,21 @@ import { companyService, accountService } from '@/_services';
 
 //icons
 import {HiOutlineMail} from 'react-icons/hi';
-import {AiFillPhone, AiOutlineCustomerService, AiOutlineNumber} from 'react-icons/ai';
+import {AiFillPhone, AiOutlineNumber} from 'react-icons/ai';
 import {GrScheduleNew} from 'react-icons/gr';
 
+// eslint-disable-next-line react/prop-types
 function CompanyList({ match }) {
+    // eslint-disable-next-line react/prop-types
     const { path } = match;
     const [company, setUsers] = useState(null);
-    const mentor = accountService.userValue;
-    const mentorId = mentor.id;
 
-    console.log("this " + mentorId);
+    const mentorId = accountService.userValue.mentors[0];
     
     useEffect(() => {
         companyService.getAll().then(x => setUsers(x));
     }, []);
+
   
     function phone(name, number){
 
@@ -35,7 +36,7 @@ function CompanyList({ match }) {
         alert("Schedule with " + name)
         )
     }
-
+    
     return (
 
         <ListWrapper>
@@ -50,15 +51,11 @@ function CompanyList({ match }) {
                 <Link className={'noLink'}to={`${path}/companyDetails/${company.id}`}>
                     
                     <section className="cardTop">
-                        <img className="cardImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 
-                        Tanken var å kunne legge ved et bilde som respresenterer bedriften når man legger de til i databasen. -Tora.*/}                        
+                        <img className="cardImg">{company.companyImg}</img>                         
                     </section>
 
                     <section>
-                    <h4 className="companyName">{company.companyName}</h4>
-                    <p>{console.log("this mentor id = " + mentorId)}</p>
-                    <p>{console.log("company mentor id = " + company.leadMentor)}</p>
-                    
+                    <h4 className="companyName">{company.companyName}</h4>                    
                     </section>
 
                     <section className="cardMetric">

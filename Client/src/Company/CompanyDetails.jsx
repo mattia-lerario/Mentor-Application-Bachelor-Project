@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import { companyService, accountService } from '@/_services';
-import { Field, Form } from 'formik';
-import { Chart } from 'react-charts'
 
 //import {MyChart, BarChart} from '@/_components';
 //style
@@ -11,33 +9,37 @@ import {CompanyWrapper} from '../style/styledcomponents';
 
 function CompanyDetails({ match }) {
 
+    const [totalHours, setTotalHours] = useState(0);
+
     const { id } = match.params;
     const companyId = id;
-   
-
     const [company, setUsers] = useState(null);
- 
 
-    function findMentor(id) {
+    function sumHours(timeLogList) {
 
-   //console.log(accountService.getById(id).firstName);
-
-    //console.log(accountService.getById(id).then(mentor => mentor.firstName));
-
-    //const mentorName = "";
-    accountService.getById(id).then(mentor => mentor.firstName);
-
-    const mentor = "some mentor";
-
-    return(
-        mentor
-    )
-
+        const reducer = (hr, currentValue) => hr + currentValue.hours;   
+        const hours = (timeLogList.reduce(reducer, 0));
+        setTotalHours(hours);
     }
 
     useEffect(() => {
         companyService.getAll().then(x => setUsers(x));
     }, []);
+
+    useEffect(() => {
+         
+        async function fetchData() {
+            
+            if(!company)return;
+            const comp = (await company.find(c => c.id === companyId));
+
+
+
+            sumHours(comp.hoursSpendtOnCompany);
+        }
+        fetchData();
+        
+    }, [company]);
     
 
     return (
@@ -70,11 +72,12 @@ function CompanyDetails({ match }) {
                         <section className="Box TimeLog">
                             <h4>Time Log</h4>
                             <ul>
-                                {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map(hr =>
-                                <li key = {hr.id}>{hr.hours} hours was used {hr.dateOfWork[8]}{hr.dateOfWork[9]}/{hr.dateOfWork[5]}{hr.dateOfWork[6]} by {findMentor(hr.byMentor)}</li>             
+                                {company.hoursSpendtOnCompany && company.hoursSpendtOnCompany.map((hr, index) =>
+                                <li key = {index}>{hr.hours} hours was used {hr.dateOfWork[8]}{hr.dateOfWork[9]}/{hr.dateOfWork[5]}{hr.dateOfWork[6]}</li>             
                                 )}
                             </ul>
-                            <p><b>Total time used on {company.companyName}</b></p>
+                                <p><b>Total time used on {company.companyName}</b></p>
+                                <p>{totalHours}</p>
                         </section>
                     </section>
 
@@ -85,7 +88,8 @@ function CompanyDetails({ match }) {
                         key = {pr.date}>
                             <p>{pr.question1}</p>
                             <p>{pr.comment1}</p>
-                            <br></br>
+                                <br></br>
+                                <BarChart data={data}></BarChart>
                             <p>{pr.question2}</p>
                             <p>{pr.comment2}</p>
                         </article>

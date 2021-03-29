@@ -4,8 +4,9 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import { companyService, mentorService, alertService } from '@/_services';
-
-function UpdateWorkingHoursMentor({ history, match }) {
+// eslint-disable-next-line react/prop-types
+function UpdateWorkingHoursMentor({ history,match }) {
+    // eslint-disable-next-line react/prop-types
     const { id } = match.params;
     const isAddMode = !id;
 
@@ -39,6 +40,7 @@ function UpdateWorkingHoursMentor({ history, match }) {
         companyService.addMentorHours(fields.companyId,fields)    
         .then(() => {
             alertService.success('Update successful', { keepAfterRouteChange: true });
+             // eslint-disable-next-line react/prop-types
             history.push('.');
         })
         .catch(error => {

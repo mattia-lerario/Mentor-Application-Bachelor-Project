@@ -1,7 +1,5 @@
 import config from 'config';
 import { accountService } from '@/_services';
-import { companyService } from '@/_services';
-import { mentorService } from '@/_services';
 
 
 export const fetchWrapper = {

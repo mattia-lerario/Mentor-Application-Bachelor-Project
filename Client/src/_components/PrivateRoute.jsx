@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 import { accountService } from '@/_services';
 
 
+// eslint-disable-next-line react/prop-types
 function PrivateRoute({ component: Component, roles, ...rest }) {
     return (
         <Route {...rest} render={props => {

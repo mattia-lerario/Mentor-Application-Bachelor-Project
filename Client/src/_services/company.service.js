@@ -25,13 +25,13 @@ function logout() {
     // revoke token, stop refresh timer, publish null to user subscribers and redirect to login page
     fetchWrapper.post(`${baseUrl}/revoke-token`, {});
     stopRefreshTokenTimer();
-    userSubject.next(null);
+    companySubject.next(null);
     history.push('/account/login');
 }
 
 function refreshToken() {
     return fetchWrapper.post(`${baseUrl}/refresh-token`, {})
-        .then(user => {
+        .then(company => {
             // publish user to subscribers and start timer to refresh token
             companySubject.next(company);
             startRefreshTokenTimer();
@@ -52,8 +52,11 @@ function getAll() {
 
 function getById(id) {
     console.log(id);
-    return fetchWrapper.get(`${baseUrl}/${id}`);
+    return fetchWrapper.get(`${baseUrl}/${id}`).then(company => { return company })
+    
+    
 }
+
 
 function create(id,params) {
     return fetchWrapper.post(baseUrl, params, id);
@@ -71,8 +74,7 @@ function addMentorHours(id, params){
 }
 
 function createPowerRanking(id, params){
-    console.log(params);
-
+    
     return fetchWrapper.post(`${baseUrl}/powerranking/${id}`, params)
     .then(company => {
             company = { ...companySubject.value, ...company };
@@ -102,7 +104,7 @@ function _delete(id) {
     return fetchWrapper.delete(`${baseUrl}/${id}`)
         .then(x => {
             // auto logout if the logged in user deleted their own record
-            if (id === userSubject.value.id) {
+            if (id === companySubject.value.id) {
                 logout();
             }
             return x;

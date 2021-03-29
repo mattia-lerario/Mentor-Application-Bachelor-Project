@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
-
 import { Role } from '@/_helpers';
 import { accountService } from '@/_services';
-import {MenuWrapper, SidebarWrapper} from '../style/styledcomponents';
-
-import { Nav, PrivateRoute, Alert, Sidebar,MyChart } from '@/_components';
+import { PrivateRoute, Alert, Sidebar,MyChart } from '@/_components';
 import { Home } from '@/home';
 import { Profile } from '@/profile';
 import { Company } from '@/Company';

@@ -79,9 +79,9 @@ function getAll(req, res, next) {
 function getById(req, res, next) {
     // users can get their own account and admins can get any account
     //Mentors must be able to get one accountById
-    if (req.params.id !== req.user.id && req.user.role !== Role.Admin && req.user.role !== Role.Mentor) {
+    /*if (req.params.id !== req.user.id && req.user.role !== Role.Admin && req.user.role !== Role.Mentor) {
         return res.status(401).json({ message: 'Unauthorized' });
-    }
+    }*/
 
     companyService.getById(req.params.id)
         .then(company => company ? res.json(company) : res.sendStatus(404))
@@ -149,7 +149,6 @@ function createSchema(req, res, next) {
         companyName: Joi.string().required(),
         companyNumber: Joi.string().required(),
         tlfNumber: Joi.string().required(),
-        email: Joi.string().email().required(),
         salesRevenue: Joi.string().required(),
         companyDescription: Joi.string().required(),
         phase: Joi.string().required()
@@ -165,19 +164,21 @@ function create(req, res, next) {
 
 
 function updateSchema(req, res, next) {
+
+    console.log(req.user.role);
     const schemaRules = {
         companyName: Joi.string().required(),
         companyNumber: Joi.string().required(),
         tlfNumber: Joi.string().required(),
-        email: Joi.string().email().required(),
         salesRevenue: Joi.string().required(),
         companyDescription: Joi.string().required(),
         phase: Joi.string().required()
     };
 
     // only admins can update mentor
+
     if (req.user.role === Role.Admin) {
-        schemaRules.mentor = Joi.string();
+        schemaRules.leadMentor = Joi.string();
     }
 
     const schema = Joi.object(schemaRules);
@@ -185,10 +186,9 @@ function updateSchema(req, res, next) {
 }
 
 function update(req,res,next) {
-   
-    companyService.addMentorToCompany(req.body.mentor,req.params.id);
     
-   // console.log("params ", req.params);
+    companyService.addMentorToCompany(req.body.leadMentor,req.params.id);
+    
     companyService.update(req.params.id,req.body)
         .then(company => res.json(company))
         .catch(next);

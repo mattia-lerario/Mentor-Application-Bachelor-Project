@@ -1,14 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-
-import {ProfileWrapper} from '../style/styledcomponents';
 import { Details } from './Details';
 import { Update } from './Update';
 import { UpdateCompanies } from './UpdateCompanies';
 import { UpdateMentor } from './UpdateMentor';
-import { UpdateWorkingHouersMentor } from '../Company/UpdateWorkingHoursMentor';
 
+// eslint-disable-next-line react/prop-types
 function Profile({ match }) {
+    // eslint-disable-next-line react/prop-types
     const { path } = match;
     
     return (

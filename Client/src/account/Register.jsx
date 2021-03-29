@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 
 import { accountService, alertService } from '@/_services';
 
-function Register({ history }) {
+function Register({ ...history }) {
     const initialValues = {
         title: '',
         firstName: '',
