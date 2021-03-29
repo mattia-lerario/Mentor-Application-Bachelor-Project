@@ -21,13 +21,15 @@ export const MenuWrapper = styled.div`
 //---makes the background of the menu slategrey
 .MenuBar{
     display:flex;
-    flex-direction:row;
     padding: 1rem;
 }
 //---displays the links horizontal(inline). 
 .MenuLinks{
     display: inline;
+    height: 2vw;
     padding: 0.5rem;
+    margin-buttom: 0.5rem;
+    margin-top: -1rem;
 }
 //---making the text in the menu white
 .NavLink{
@@ -36,6 +38,7 @@ export const MenuWrapper = styled.div`
     margin-left: 1rem;
     border-radius: 0.3rem;
     font-size: 1.2rem;
+    flex-direnction: row;
 }
 //---gives the links a underscore and grey-color when hovered.
 .NavLink:hover{
@@ -47,6 +50,8 @@ export const MenuWrapper = styled.div`
     color: black;
 }
 #AdminLink:hover{
+}
+.Logout{
 }
 `;
 
@@ -170,6 +175,8 @@ export const ListWrapper = styled.div`
     padding-left: 4px;
     padding-top: 4px;
     padding-right: 5px;
+    margin-left: 2rem;
+    margin-top: 1rem;
   }
   .card:hover{
     border: solid #38507a;
@@ -227,9 +234,9 @@ export const ListWrapper = styled.div`
     background-size: 100%;
     margin-bottom: 1vw;
     border-top-right-radius: 0.5rem;
+    margin-top: -1rem;
     margin-left: -1rem;
     margin-right: -1rem;
-    margin-top: -1rem;
 }
 
 .Box{

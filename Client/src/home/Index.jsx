@@ -10,7 +10,7 @@ function Home() {
     
     
     return (
-        <section className="main scrollhost">
+        <section className="main mainMargin scrollhost">
             <h1>Hi {user.name} </h1>
                 <BarChart ids={user}></BarChart>
             <br/>    

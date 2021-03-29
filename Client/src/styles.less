@@ -7,8 +7,20 @@
 
 .app-container {
   display: flex;
-  height: 85vh;
+  height: 92vh;
   width: 98vw;
+  backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+}
+.Login-container{
+  display: flex;
+  height: 50vh;
+  width: 50vh;
   backdrop-filter: blur(10px);
   border-radius: 0.5rem;
   background: linear-gradient(
@@ -39,8 +51,11 @@ body {
   flex: 2;
   padding: 1rem;
   overflow-y: auto;
-  margin-left: 3rem;
 }
+.mainMargin{
+  margin-left: 1rem;
+}
+
 //---SCROLLBAR
 //hiding the native scroll-bar of the browser
 .scrollhost {
@@ -84,12 +99,12 @@ body {
   color: white;
   margin: 0.3vw;
   padding: 0.2vw;
+  cursor: pointer;
 }
 .BtnMain{
   border: 1px solid #182234;
   //box-shadow: right bottom fade allsides color;
   box-shadow: 0.05rem 0.05rem 0.1rem 0.03rem #38507a;
-
 }
 //---lighter color when hovered
 .BtnMain:hover{
@@ -100,9 +115,11 @@ body {
 .BtnDelete{
   background-color: #800000;
   border: 1px solid #4d0000;
+  box-shadow: 0.05rem 0.05rem 0.1rem 0.03rem #38507a;
 }
 .BtnDelete:hover{
-  background-color: #b30000;
+  background-color: #660000;
+  box-shadow: 0.09rem 0.09rem 0.2rem 0.05rem #38507a;
 }
 //---makes the link-text white(because of link-tag)
 .BtnLink{
