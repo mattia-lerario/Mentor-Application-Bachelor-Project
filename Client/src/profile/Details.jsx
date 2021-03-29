@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import {BsPencil} from 'react-icons/bs';
 
 import { accountService, mentorService, companyService} from '@/_services';
 
@@ -21,7 +22,10 @@ function Details({ match }) {
                       <strong>Role: </strong>{user.role}
                     </p>
                 
-                   <button className={'Btn BtnMain'}><Link to={`${path}/update`} className={'BtnLink'}>Update Account</Link></button>
+                   
+                    <Link to={`${path}/update`} className={'BtnLink'}>
+                       <button className={'Btn BtnMain'}>Update Account</button>
+                    </Link>
                 
 
                 </section>
@@ -43,10 +47,11 @@ function Details({ match }) {
                         <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
                         <strong>Email: </strong> {user.email}<br />
                         <strong>Role: </strong>{user.role}
-                    </p>
-                    <button type="button" className={'Btn BtnMain Right'}><Link to={`${path}/updateWorkingHoursMentor`} className={'BtnLink'}>Update hours</Link></button>
-                    <button type="button" className={'Btn BtnMain Right'}><Link to={`${path}/powerranking`} className={'BtnLink'}>PowerRanking</Link></button>              
-                    <button type="button" className={'Btn BtnMain'}><Link to={`${path}/update`} className={'BtnLink'}>Update Account</Link></button>
+                    </p>              
+                    
+                    <Link to={`${path}/update`} className={'BtnLink'}>
+                        <button className={'Btn BtnMain'}>Update Account</button>
+                    </Link>
         
                 </article>
 
@@ -56,14 +61,25 @@ function Details({ match }) {
                 <h4>Bio</h4>
                 {roleUser && roleUser.filter(mentor => mentor.id === user.mentors[0]).map(mentor => 
                 
-                <section key = {mentor.id}>
-                    <article>
+                <article key = {mentor.id}>
+                    <section>
                         <p>{mentor.mentorDescription}</p>
-                    </article>
-                </section>
+                        <p>{mentor.mentorName}</p>
+                    </section>
+                    <section>
+                        <h5>Work experience:</h5>
+                        <p>...</p>
+                    </section>
+                    <section>
+                        <h5>Expertise:</h5>
+                        <ul></ul>
+                    </section>
+                </article>
                 )}
                 </article>
-                <button type="button" className={'Btn BtnMain'}><Link to={`${path}/updateMentor`} className={'BtnLink'}>Update {user.role} Information</Link></button>
+                <Link to={`${path}/updateMentor`} className={'BtnLink'}>
+                    <BsPencil/>
+                </Link>
             </section>       
         
     );
@@ -84,7 +100,10 @@ function Details({ match }) {
                     <strong>Role: </strong>{user.role}
                 </p>
                 
-                <button className={'Btn BtnMain'}><Link to={`${path}/update`} className={'BtnLink'}>Update Account</Link></button>
+                
+                <Link to={`${path}/update`} className={'BtnLink'}>
+                    <button className={'Btn BtnMain'}>Update Account</button>
+                </Link>
                 
                 <article>
                 <h2>You'r Company Imformation</h2>
@@ -100,7 +119,10 @@ function Details({ match }) {
                 )}
                 </article>
 
-                <button className={'Btn BtnMain'}><Link to={`${path}/updateCompanies`} className={'BtnLink'}>Update {user.role} Information</Link></button>            
+                
+                <Link to={`${path}/updateCompanies`} className={'BtnLink'}>
+                    <button className={'Btn BtnMain'}>Update {user.role} Information</button>  
+                </Link>          
             </section>
         );
 }
