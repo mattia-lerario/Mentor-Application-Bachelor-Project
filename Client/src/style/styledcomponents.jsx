@@ -111,7 +111,6 @@ export const ProfileWrapper = styled.div`
 export const GlassForm = styled.div`
 
 .CardHeaderLogin{
-    backdrop-filter: blur(10px);
     text-decoration: underline;
     text-align: center;
 }

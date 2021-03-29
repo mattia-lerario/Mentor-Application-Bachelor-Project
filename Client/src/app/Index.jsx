@@ -42,10 +42,7 @@ return (
 
                 <Route path="/account" component={Account} />
                 <Redirect from="*" to="/" />
-                  
             </Switch>
-           
-            
         </div>
     );
 

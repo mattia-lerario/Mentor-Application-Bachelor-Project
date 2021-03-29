@@ -41,9 +41,12 @@ function CompanyList({ match }) {
 
         <ListWrapper>
             
-             <button type="button" className={'Btn BtnMain Right'}><Link to={`${path}/updateWorkingHoursMentor`} className={'BtnLink'}>Update hours</Link></button>
-             <button type="button" className={'Btn BtnMain Right'}><Link to={`${path}/powerranking`} className={'BtnLink'}>PowerRanking</Link></button>
-
+             <Link to={`${path}/updateWorkingHoursMentor`} className={'BtnLink'}>
+                <button type="button" className={'Btn BtnMain Right'}>Update hours</button>
+             </Link>
+             <Link to={`${path}/powerranking`} className={'BtnLink'}>
+                <button type="button" className={'Btn BtnMain Right'}>PowerRanking</button>
+             </Link>
              <h1>Your Companies</h1>
                 {company && company.filter(company => company.leadMentor.includes(mentorId)).map(company => 
                 
