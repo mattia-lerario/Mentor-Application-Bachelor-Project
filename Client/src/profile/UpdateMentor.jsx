@@ -9,7 +9,10 @@ import { accountService, mentorService, alertService } from '@/_services';
 function UpdateMentor({ history, match }) {
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 7627fcf (Update mentor works, not sure about create yet)
   const { id } = match.params;
     const isAddMode = !id;
     const user = accountService.userValue;
