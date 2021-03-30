@@ -241,7 +241,7 @@ export const ListWrapper = styled.div`
     width: 30%;
 }
 .Box{
-    padding: 4px;
+    padding: 0.5rem;
     background-color: #ecf2f9;
     border-radius: 3px;
 }
@@ -254,7 +254,7 @@ export const ListWrapper = styled.div`
     color: #38507a;
     font-size: 3vw;
 }
-.PRbox, .TimeLog, .MetricsBox{
+.PRbox, .TimeLog, .MetricsBox, .Feed{
     margin-top: 1rem;
 }
 .Box h4{
@@ -263,6 +263,28 @@ export const ListWrapper = styled.div`
 }
 .TimeLog ul{
     margin-left: 1rem;
+}
+.Feed button{
+    float: right;
+}
+.Post{
+    background-color: #ffffff;
+    padding: 1rem;
+    margin-top: 4rem;
+}
+#Date{
+    float: right;
+    font-size: 0.7vw;
+}
+#PosterInfo{
+    display: inline-block;
+}
+#PostedBy{
+    font-size: 0.9vw;
+}
+#ProfilePic{
+    border-radius: 50%;
+    width: 5vw;
 }
   `;
 

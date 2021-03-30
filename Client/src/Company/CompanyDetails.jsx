@@ -6,7 +6,9 @@ import { companyService, accountService } from '@/_services';
 //import {MyChart, BarChart} from '@/_components';
 //style
 import {CompanyWrapper} from '../style/styledcomponents';
-
+import styled from 'styled-components';
+//img
+import avatar from '../media/avatar.jpg'
 
 function CompanyDetails({ match }) {
     const [totalHours, setTotalHours] = useState(0);
@@ -88,6 +90,23 @@ function CompanyDetails({ match }) {
                                     <p>{pr.comment2}</p>
                                 </article>
                                 )}
+                            </section>
+
+                            <section className="Box Feed">
+                                <h4>Feed</h4>
+                        <Link to={`${path}/updateMentor`} className="Tooltip">
+                                <button className={'Btn BtnMain'}>+</button>    
+                                <span className="TooltipText">Add post</span>
+                        </Link>
+                                <section className="Post">
+                                    <section id="PosterInfo">
+                                        <img id="ProfilePic" src={avatar}></img>
+                                        <p id="PostedBy">First name After name</p>
+                                    </section>
+                                    <p id="Date">date posted</p>
+                                    <h5>Post title</h5>
+                                    <p>content</p>
+                                </section>
                             </section>
                         </section>
 
