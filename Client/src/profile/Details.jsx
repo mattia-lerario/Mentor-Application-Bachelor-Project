@@ -68,7 +68,11 @@ function Details({ match }) {
                             <section className="Section">
                                 <h5>Bio</h5>
                                 <p>{mentor.mentorDescription}</p>
-                                <p>Skills:</p>
+                                <p>Description of person(current job, education, experience)</p>
+                            </section>
+                            <section className="Section">
+                                <h5>Skills</h5>
+                                <p>Description of skills</p>
                             </section>
                             <section className="Section">
                                 <h5>Areas of expertise:</h5>
@@ -78,7 +82,14 @@ function Details({ match }) {
                             </section>
                             <section className="Section">
                                 <h5>Work experience:</h5>
-                                <p>...</p>
+                                <dl>
+                                    <dt>Job Title 1</dt>
+                                        <dd>- Employer/Company</dd>
+                                        <p>Description</p>
+                                    <dt>Job Title 2</dt>
+                                        <dd>- Employer Company</dd>
+                                        <p>Description</p>
+                                </dl>
                             </section>
                         </article>
                         )}

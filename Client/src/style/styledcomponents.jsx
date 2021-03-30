@@ -321,7 +321,10 @@ export const ProfileWrapper = styled.div`
     margin-top: 2rem;
 }
 .Section h5{
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #48679d;
+}
+.Section ul{
+    margin-left: 1rem;
 }
 img{
     border-radius: 50%;
@@ -382,7 +385,8 @@ img{
 }
 .AreaExpertise{
     display: inline-block;
-    background-color: #fff;
+    background-color: #38507a;
+    color: white;
     border-radius: 3px;
     width: auto;
     margin: 0.3rem;
