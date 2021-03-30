@@ -7,14 +7,10 @@ import { accountService, mentorService, alertService } from '@/_services';
 
 // eslint-disable-next-line react/prop-types
 function UpdateMentor({ history, match }) {
-<<<<<<< HEAD
-    // eslint-disable-next-line react/prop-types
-    const { id } = match.params;
-=======
+
 
 
   const { id } = match.params;
->>>>>>> parent of 7627fcf (Update mentor works, not sure about create yet)
     const isAddMode = !id;
     const user = accountService.userValue;
 
@@ -88,19 +84,6 @@ function UpdateMentor({ history, match }) {
         }
 
     return (
-<<<<<<< HEAD
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-            {({ errors, touched, isSubmitting, setFieldValue }) => {
-                useEffect(() => {
-                    if (!isAddMode) {
-                        // get user and set form fields
-                        mentorService.getById(id).then(mentor => {
-                            const fields = ['mentorName', 'mentorNumber', 'tlfNumber', 'email','mentorDescription'];
-                            fields.forEach(field => setFieldValue(field, mentor[field], false));
-                        });
-                    }
-                }, []);
-=======
     <Card>
       <CardContent>
         <FormikStepper initialValues={initialValues}  onSubmit={onSubmit}>{/*onSubmit={async (values) => {
@@ -154,6 +137,7 @@ export function FormikStepper({ children, ...props }) {
     function isLastStep() {
         return step === childrenArray.length - 1;
     }
+
     return (<Formik {...props} validationSchema={currentChild.props.validationSchema} onSubmit={async (values, helpers) => {
             if (isLastStep()) {
                 await props.onSubmit(values, helpers);
@@ -169,7 +153,7 @@ export function FormikStepper({ children, ...props }) {
                 <StepLabel>{child.props.label}</StepLabel>
               </Step>))}
           </Stepper>
->>>>>>> parent of 7627fcf (Update mentor works, not sure about create yet)
+
 
                 return (
                     <Form>
