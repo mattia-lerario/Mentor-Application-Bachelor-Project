@@ -94,10 +94,7 @@ function CompanyDetails({ match }) {
 
                             <section className="Box Feed">
                                 <h4>Feed</h4>
-                        <Link to={`${path}/updateMentor`} className="Tooltip">
-                                <button className={'Btn BtnMain'}>+</button>    
-                                <span className="TooltipText">Add post</span>
-                        </Link>
+                                <button className={'Btn BtnMain'}>Add post</button>
                                 <section className="Post">
                                     <section id="PosterInfo">
                                         <img id="ProfilePic" src={avatar}></img>
