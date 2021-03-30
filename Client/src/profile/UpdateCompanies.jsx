@@ -85,7 +85,7 @@ function UpdateCompanies({ history, match }) {
               companyNumber: Yup.string()
               .required('A company needs a number'),
           })}>
-              <Box paddingBottom={2}>
+              <Box paddingBottom={2} width={800}>
                 <Field fullWidth name="companyName" component={TextField} label="Company Name"/>
               </Box>
               <Box paddingBottom={2}>
