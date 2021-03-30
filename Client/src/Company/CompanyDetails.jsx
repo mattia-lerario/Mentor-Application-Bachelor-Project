@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { companyService, accountService } from '@/_services';
 
@@ -8,15 +9,15 @@ import {CompanyWrapper} from '../style/styledcomponents';
 
 
 function CompanyDetails({ match }) {
-
     const [totalHours, setTotalHours] = useState(0);
 
     const { id } = match.params;
     const companyId = id;
     const [company, setUsers] = useState(null);
+    const { path } = match;
+
 
     function sumHours(timeLogList) {
-
         const reducer = (hr, currentValue) => hr + currentValue.hours;   
         const hours = (timeLogList.reduce(reducer, 0));
         setTotalHours(hours);
@@ -32,8 +33,6 @@ function CompanyDetails({ match }) {
             
             if(!company)return;
             const comp = (await company.find(c => c.id === companyId));
-
-
 
             sumHours(comp.hoursSpendtOnCompany);
         }
@@ -53,6 +52,14 @@ function CompanyDetails({ match }) {
                     <section className="headerImg">
                         {company.companyImg} {/*Not working, but is supposed to show the image saved in the database on the specific company */}                    
                     </section>
+
+                    <Link to={`${path}/updateWorkingHoursMentor`} className={'BtnLink'}>
+                    <button type="button" className={'Btn BtnMain Right'}>Update Hours</button>
+                    </Link>
+                    
+                    <Link to={`${path}/powerranking`} className={'BtnLink'}>
+                    <button type="button" className={'Btn BtnMain Right'}>Power ranking</button>
+                    </Link>
 
                     <section>
                         <h1>{company.companyName}</h1>
