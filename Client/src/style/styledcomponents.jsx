@@ -98,15 +98,6 @@ W3Schools.com
 }
 `;
 
-/* ---PROFILE INDEX--- */
-/* File: Index.jsx */
-export const ProfileWrapper = styled.div`
-.Padding{
-    padding: 20px;
-    margin-left: 10px;
-}
-`;
-
 /* ----FORM STYLE ----- */
 export const GlassForm = styled.div`
 
@@ -268,6 +259,8 @@ export const ListWrapper = styled.div`
 }
   `;
 
+/* ---POWER RANKING FORM--- */
+/* File: Company/PowerRanking.jsx*/
 export const PRform = styled.div`
 .QuestionBox{
     margin-top: 2rem;
@@ -311,3 +304,93 @@ export const PRform = styled.div`
 }
 
   `;
+
+/* ---PROFILE INFO WRAPPER--- */
+/* File: Profile/Details.jsx */
+export const ProfileWrapper = styled.div`
+.ProfileWrapper{
+    display: flex;
+    margin-top: 1vw;
+}
+.MentorInfoBox{
+    background-color: #ecf2f9;
+    width: 70%;
+    padding: 1vw;
+}
+.Section{
+    margin-top: 2rem;
+}
+.Section h5{
+    border-bottom: 1px solid #48679d;
+}
+.Section ul{
+    margin-left: 1rem;
+}
+img{
+    border-radius: 50%;
+    width: 20vw;
+}
+.ProfileInfo{
+    float: right;
+    margin-left: 1vw;
+}
+
+/* ---TOOLTIP--- */
+.Tooltip {
+  color: #38507a;
+  float: right;
+  margin-right: 1vw;
+  margin-top: 0.5vw;
+}
+.TooltipText{
+    position: static;
+    margin-left: -5vw;
+    margin-top: 2vw;
+}
+.Tooltip .TooltipText {
+  visibility: hidden;
+  width: 7vw;
+  background-color: #283957;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.2vw;
+  position: absolute;
+  z-index: 1;
+  font-size: 0.9vw;
+}
+.Tooltip .TooltipText::after {
+  content: "";
+  border-style: solid;
+  border-color: transparent transparent #283957 transparent;
+}
+.Tooltip:hover .TooltipText {
+  visibility: visible;
+}
+.Tooltip:hover{
+  color: #182234;
+}
+.Center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.ContactDetails p{
+    margin: 0;
+}
+.ContactDetails button{
+    border: none;
+    background: none;
+}
+.AreaExpertise{
+    display: inline-block;
+    background-color: #38507a;
+    color: white;
+    border-radius: 3px;
+    width: auto;
+    margin: 0.3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+`;

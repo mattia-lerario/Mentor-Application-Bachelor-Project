@@ -1,35 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {BsPencil} from 'react-icons/bs';
-
-// different types of buttons
-import { makeStyles } from '@material-ui/core/styles';
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
-import DeleteIcon from '@material-ui/icons/Delete';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
-
 import { accountService, mentorService, companyService} from '@/_services';
-
-const useStyles = makeStyles((theme) => ({
-    fab: {
-      color:'black',  
-      margin: theme.spacing(2),
-    },
-    absolute: {
-      position: 'absolute',
-      bottom: theme.spacing(2),
-      right: theme.spacing(3),
-    },
-  }));
+//icons
+import {BsPencil} from 'react-icons/bs';
+import {AiFillPhone} from 'react-icons/ai';
+import {HiOutlineMail} from 'react-icons/hi';
+//styling
+import {ProfileWrapper} from '../style/styledcomponents';
+//img
+import avatar from '../media/avatar.jpg'
 
 function Details({ match }) {
     const { path } = match;
     const user = accountService.userValue;
     const isUserType = user.role;
     const [roleUser, setUsers] = useState(null);
-    const classes = useStyles();
    
     // button style
     if(isUserType == "Admin"){
@@ -61,56 +46,69 @@ function Details({ match }) {
         }, []);
 
         return (
-            <section>
-                <article>
-                    <h1>{user.firstName} Profile Imformation</h1>
-                    <p>
-                        <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
-                        <strong>Email: </strong> {user.email}<br />
-                        <strong>Role: </strong>{user.role}
-                    </p>              
-                    
-                    <Link to={`${path}/update`} className={'BtnLink'}>
-                        <button className={'Btn BtnMain'}>Update Account</button>
-                    </Link>
-        
-                </article>
-
-                <article>
-                <h2>You'r Mentor Imformation</h2>
-                
-                <h4>Bio</h4>
-                {roleUser && roleUser.filter(mentor => mentor.id === user.mentors[0]).map(mentor => 
-                
-                <article key = {mentor.id}>
-                    <section>
-                        <p>{mentor.mentorDescription}</p>
-                        <p>{mentor.mentorName}</p>
-                    </section>
-                    <section>
-                        <h5>Work experience:</h5>
-                        <p>...</p>
-                    </section>
-                    <section>
-                        <h5>Expertise:</h5>
-                        <ul></ul>
-                    </section>
-                </article>
-                )}
-                </article>
-                
-                <Link to={`${path}/updateMentor`} className={'BtnLink'}>             
-                
-                    <Tooltip title="Update mentor Information" placement="top-start" >
+            <ProfileWrapper>
+                <section className="ProfileWrapper">
+                    <article className="MentorInfoBox">
                         
-                            <Fab color="secondary" className={classes.fab}>
-                            <   BsPencil/>
-                            </Fab> 
-                     
-                    </Tooltip>                
-                </Link>
-              
-            </section>       
+                        <Link to={`${path}/updateMentor`} className="Tooltip">    
+                            <BsPencil/>
+                            <span className="TooltipText">Update mentor information</span>
+                        </Link>
+
+                        <img className="Center" src={avatar}></img>
+                        <section className="ContactDetails">
+                            <h3 className="Center">{user.firstName} {user.lastName}</h3>
+                            <button className="Center"><HiOutlineMail/>{user.email}</button>
+                            <button className="Center" /*onClick={phone}*/><AiFillPhone/>123 45 678</button>
+                        </section>
+
+                        {roleUser && roleUser.filter(mentor => mentor.id === user.mentors[0]).map(mentor => 
+                        
+                        <article key = {mentor.id}>
+                            <section className="Section">
+                                <h5>Bio</h5>
+                                <p>{mentor.mentorDescription}</p>
+                                <p>Description of person(current job, education, experience)</p>
+                            </section>
+                            <section className="Section">
+                                <h5>Skills</h5>
+                                <p>Description of skills</p>
+                            </section>
+                            <section className="Section">
+                                <h5>Areas of expertise:</h5>
+                                <p className="AreaExpertise">Area1</p>
+                                <p className="AreaExpertise">Area2</p>
+                                <p className="AreaExpertise">Area3</p>
+                            </section>
+                            <section className="Section">
+                                <h5>Work experience:</h5>
+                                <dl>
+                                    <dt>Job Title 1</dt>
+                                        <dd>- Employer/Company</dd>
+                                        <p>Description</p>
+                                    <dt>Job Title 2</dt>
+                                        <dd>- Employer Company</dd>
+                                        <p>Description</p>
+                                </dl>
+                            </section>
+                        </article>
+                        )}
+                    </article>
+                
+                    <article className="ProfileInfo">
+                        <h2>Profile Information</h2>
+                        <p>
+                            <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
+                            <strong>Email: </strong> {user.email}<br />
+                            <strong>Role: </strong>{user.role}
+                        </p>              
+                        
+                        <Link to={`${path}/update`} className={'BtnLink'}>
+                            <button className={'Btn BtnMain'}>Update Account</button>
+                        </Link>
+                    </article>
+                </section>   
+            </ProfileWrapper>    
         
     );
     }
@@ -136,7 +134,7 @@ function Details({ match }) {
                 </Link>
                 
                 <article>
-                <h2>You'r Company Imformation</h2>
+                <h2>Your Company Imformation</h2>
                 
                 <h4>Bio</h4>
                 {roleUser && roleUser.filter(company => company.id === user.companies[0]).map(company => 
