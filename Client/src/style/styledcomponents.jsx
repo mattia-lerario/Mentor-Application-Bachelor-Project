@@ -137,7 +137,7 @@ export const SidebarWrapper = styled.div`
 }
 .Avatar{
     width:120px;
-    border-radius: 0.5rem;
+    border-radius: 50%;
 }
 `;
 
@@ -228,34 +228,38 @@ export const ListWrapper = styled.div`
     margin-left: -1rem;
     margin-right: -1rem;
 }
+.BoxWrapper{
+    display:flex;
+    width: 100%;
+}
+.MainBox{
+    width: 70%;
+}
+.Details, .PRbox{
+}
+.PRbox{
+    margin-top: 1rem;
+}
 
+.Sidebox{
+    float: right;
+    margin-left: 1rem;
+    width: 30%;
+}
 .Box{
     padding: 4px;
-    margin: 1.5%;
-    border: 0.1vw solid #bfbfbf;
-    background-color: #e6f2ff;
-    //box-shadow: right bottom fade allsides color;
-    box-shadow: 0.05rem 0.05rem 0.3rem 0.03rem #38507a;
+    background-color: #ecf2f9;
+    border-radius: 3px;
 }
-.Box2{
-    display:flex;
+.TimeLog{
+    margin-top: 1rem;
 }
-
-.MetricsBox{
-    width: 50%;
-}
-.MetricsBox h4, .TimeLog h4, .PRbox h4{
+.MetricsBox h4, .TimeLog h4, .PRbox h4, .Details h4{
     text-align: center;
     border-bottom: 1px solid #bfbfbf;
 }
-.TimeLog{
-    width: 50%;
-}
 .TimeLog ul{
     margin-left: 1rem;
-}
-.PRbox{
-    width: 97%;
 }
   `;
 
@@ -313,6 +317,7 @@ export const ProfileWrapper = styled.div`
     margin-top: 1vw;
 }
 .MentorInfoBox{
+    border-radius: 3px;
     background-color: #ecf2f9;
     width: 70%;
     padding: 1vw;
