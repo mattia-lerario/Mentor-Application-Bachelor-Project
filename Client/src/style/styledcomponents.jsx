@@ -313,11 +313,15 @@ export const ProfileWrapper = styled.div`
     margin-top: 1vw;
 }
 .MentorInfoBox{
-    background-color: #e6f2ff;
+    background-color: #ecf2f9;
     width: 70%;
     padding: 1vw;
 }
 .Section{
+    margin-top: 2rem;
+}
+.Section h5{
+    border-bottom: 1px solid black;
 }
 img{
     border-radius: 50%;
@@ -375,5 +379,14 @@ img{
 .ContactDetails button{
     border: none;
     background: none;
+}
+.AreaExpertise{
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 3px;
+    width: auto;
+    margin: 0.3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 `;

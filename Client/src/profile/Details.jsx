@@ -57,8 +57,8 @@ function Details({ match }) {
 
                         <img className="Center" src={avatar}></img>
                         <section className="ContactDetails">
-                            <h3 className="Center">Mentor Name</h3>
-                            <button className="Center"><HiOutlineMail/>email@email.com</button>
+                            <h3 className="Center">{user.firstName} {user.lastName}</h3>
+                            <button className="Center"><HiOutlineMail/>{user.email}</button>
                             <button className="Center" /*onClick={phone}*/><AiFillPhone/>123 45 678</button>
                         </section>
 
@@ -66,17 +66,19 @@ function Details({ match }) {
                         
                         <article key = {mentor.id}>
                             <section className="Section">
-                                <h4>Bio</h4>
+                                <h5>Bio</h5>
                                 <p>{mentor.mentorDescription}</p>
-                                <p>{mentor.mentorName}</p>
+                                <p>Skills:</p>
                             </section>
-                            <section>
-                                <h4>Work experience:</h4>
+                            <section className="Section">
+                                <h5>Areas of expertise:</h5>
+                                <p className="AreaExpertise">Area1</p>
+                                <p className="AreaExpertise">Area2</p>
+                                <p className="AreaExpertise">Area3</p>
+                            </section>
+                            <section className="Section">
+                                <h5>Work experience:</h5>
                                 <p>...</p>
-                            </section>
-                            <section>
-                                <h4>Expertise:</h4>
-                                <ul></ul>
                             </section>
                         </article>
                         )}
