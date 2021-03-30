@@ -7,8 +7,14 @@ import { accountService, mentorService, alertService } from '@/_services';
 
 // eslint-disable-next-line react/prop-types
 function UpdateMentor({ history, match }) {
+<<<<<<< HEAD
     // eslint-disable-next-line react/prop-types
     const { id } = match.params;
+=======
+
+
+  const { id } = match.params;
+>>>>>>> parent of 7627fcf (Update mentor works, not sure about create yet)
     const isAddMode = !id;
     const user = accountService.userValue;
 
@@ -82,6 +88,7 @@ function UpdateMentor({ history, match }) {
         }
 
     return (
+<<<<<<< HEAD
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
             {({ errors, touched, isSubmitting, setFieldValue }) => {
                 useEffect(() => {
@@ -93,6 +100,76 @@ function UpdateMentor({ history, match }) {
                         });
                     }
                 }, []);
+=======
+    <Card>
+      <CardContent>
+        <FormikStepper initialValues={initialValues}  onSubmit={onSubmit}>{/*onSubmit={async (values) => {
+            await sleep(3000);
+            console.log('values', values);
+        }}>*/}       
+        <FormikStep label="Personal Data" validationSchema={object({
+            mentorName: Yup.string()
+            .required('A name is required'),
+            mentorNumber: Yup.string()
+            .required('A mentor needs a number'),
+        })}>
+            <Box paddingBottom={2}>
+              <Field fullWidth name="mentorName" component={TextField} label="First Name"/>
+            </Box>
+            <Box paddingBottom={2}>
+              <Field fullWidth name="mentorNumber" component={TextField} label="Mentor number"/>
+            </Box>
+          </FormikStep>
+          <FormikStep label="Contact Information" validationSchema={object({
+            tlfNumber: Yup.string()
+            .required('A number is required'),
+            email: Yup.string()
+            .email('Email is invalid')
+            .required('Email is required, f,eks a@b.c'),
+        })}>
+            <Box paddingBottom={2}>
+              <Field fullWidth name="email" component={TextField} label="Email"/>
+            </Box>
+            <Box paddingBottom={2}>
+              <Field fullWidth name="tlfNumber" component={TextField} label="Telefon Number"/>
+            </Box>
+          </FormikStep>
+          <FormikStep label="Experience and expertise">
+            <Box paddingBottom={2}>
+              <Field fullWidth name="mentorDescription" component={TextField} label="Write you'r Bio"/>
+            </Box>
+          </FormikStep>
+          </FormikStepper>
+      </CardContent>
+    </Card>);
+}
+export function FormikStep({ children }) {
+    return <>{children}</>;
+}
+export function FormikStepper({ children, ...props }) {
+    const childrenArray = React.Children.toArray(children);
+    const [step, setStep] = useState(0);
+    const currentChild = childrenArray[step];
+    const [completed, setCompleted] = useState(false);
+    function isLastStep() {
+        return step === childrenArray.length - 1;
+    }
+    return (<Formik {...props} validationSchema={currentChild.props.validationSchema} onSubmit={async (values, helpers) => {
+            if (isLastStep()) {
+                await props.onSubmit(values, helpers);
+                setCompleted(true);
+            }
+            else {
+                setStep((s) => s + 1);
+            }
+        }}>
+      {({ isSubmitting }) => (<Form autoComplete="off">
+          <Stepper alternativeLabel activeStep={step}>
+            {childrenArray.map((child, index) => (<Step key={child.props.label} completed={step > index || completed}>
+                <StepLabel>{child.props.label}</StepLabel>
+              </Step>))}
+          </Stepper>
+>>>>>>> parent of 7627fcf (Update mentor works, not sure about create yet)
 
                 return (
                     <Form>
