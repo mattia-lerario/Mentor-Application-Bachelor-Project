@@ -83,7 +83,7 @@ function Details({ match }) {
                     </article>
                 
                     <article className="ProfileInfo">
-                        <h1>Profile Information</h1>
+                        <h2>Profile Information</h2>
                         <p>
                             <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
                             <strong>Email: </strong> {user.email}<br />

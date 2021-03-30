@@ -310,6 +310,7 @@ export const PRform = styled.div`
 export const ProfileWrapper = styled.div`
 .ProfileWrapper{
     display: flex;
+    margin-top: 1vw;
 }
 .MentorInfoBox{
     background-color: #e6f2ff;
@@ -335,6 +336,9 @@ img{
   margin-top: 0.5vw;
 }
 .TooltipText{
+    position: static;
+    margin-left: -5vw;
+    margin-top: 2vw;
 }
 .Tooltip .TooltipText {
   visibility: hidden;
@@ -350,11 +354,6 @@ img{
 }
 .Tooltip .TooltipText::after {
   content: "";
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
   border-style: solid;
   border-color: transparent transparent #283957 transparent;
 }
