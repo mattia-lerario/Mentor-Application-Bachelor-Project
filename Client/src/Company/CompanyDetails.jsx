@@ -86,6 +86,21 @@ function CompanyDetails({ match }) {
 
                         
                         <section className="Sidebox">
+                            <section className="Box PeopleBox">
+                                <h4>People</h4>
+                                <table>
+                                    <tr>
+                                        <th>6</th>
+                                        <th>6</th>
+                                        <th>6</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Employees</td>
+                                        <td>Advisors</td>
+                                        <td>Mentors</td>
+                                    </tr>
+                                </table>
+                            </section>
                             <section className="Box MetricsBox">
                                 <h4>Metrics</h4>
                                 <p>Sales Revenue: {company.salesRevenue}</p>

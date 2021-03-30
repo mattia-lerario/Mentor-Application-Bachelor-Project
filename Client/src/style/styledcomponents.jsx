@@ -235,12 +235,6 @@ export const ListWrapper = styled.div`
 .MainBox{
     width: 70%;
 }
-.Details, .PRbox{
-}
-.PRbox{
-    margin-top: 1rem;
-}
-
 .Sidebox{
     float: right;
     margin-left: 1rem;
@@ -251,10 +245,19 @@ export const ListWrapper = styled.div`
     background-color: #ecf2f9;
     border-radius: 3px;
 }
-.TimeLog{
+.PeopleBox table tr td, .PeopleBox table tr th{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align:center;
+}
+.PeopleBox table tr th{
+    color: #38507a;
+    font-size: 3vw;
+}
+.PRbox, .TimeLog, .MetricsBox{
     margin-top: 1rem;
 }
-.MetricsBox h4, .TimeLog h4, .PRbox h4, .Details h4{
+.Box h4{
     text-align: center;
     border-bottom: 1px solid #bfbfbf;
 }
