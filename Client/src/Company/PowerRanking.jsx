@@ -74,7 +74,7 @@ function PowerRanking({history}) {
               <Box paddingBottom={2}>
 
               <Field name="companyId" as="select" label="Choose company">
-                    <label>Choose a company</label>
+                   
                     <option key="blank" value="blank"></option>
                         {companies && companies.map(company =>
                     <option key={company.id} value ={company.id}>{company.companyName}</option>)}
@@ -109,10 +109,6 @@ function PowerRanking({history}) {
               .required('Please give a comment to this rating'),
           })}>
           <Box paddingBottom={1}>
-            <label>Do the team have the necessary drive and execution power to reach the company goals.
-              Formal background to execute key tasks, complementary CV (tech and business), ability to take feedback from mentors and  
-              an overall underatsing of the challenges should be taken into account in building a great company
-            </label>
           </Box>
               <Box className="Box">
                 <Field fullWidth name="question1" type="number" component={TextField} label="Rate from 1-6"/>

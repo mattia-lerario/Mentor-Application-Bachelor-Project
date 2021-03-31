@@ -10,11 +10,29 @@ import {GoGraph} from 'react-icons/go';
 import {RiDashboardFill} from 'react-icons/ri';
 import {BiCalendarPlus} from 'react-icons/bi';
 import {MdSchedule} from 'react-icons/md';
-import { accountService } from '@/_services';
+//import { accountService } from '@/_services';
 function Sidebar(){
 
-  const user = accountService.userValue;
+  //const user = accountService.userValue;
 
+  return (
+    <SidebarWrapper>
+      <aside className="Sidebar">
+        <ul className="SideList">
+          
+          <img className="Avatar" src={avatar}></img>
+          <NavLink to="/profile" className="SideLink"><CgProfile /> Profile</NavLink>
+        
+            <NavLink to="/dashboard" className="SideLink"><RiDashboardFill /> Dashboard</NavLink>
+      
+            <NavLink to="/home" className="SideLink"><GoGraph/> Power ranking</NavLink>
+          
+          
+        </ul>
+      </aside>
+    </SidebarWrapper>
+  )
+{/*
   if(user.role === "Admin"){
 
     return (
@@ -78,7 +96,7 @@ function Sidebar(){
           </ul>
         </aside>
       </SidebarWrapper>
-    )
+    )*/
   }
 }
 
