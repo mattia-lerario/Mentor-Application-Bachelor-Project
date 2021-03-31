@@ -152,7 +152,7 @@ function CompanyDetails({ match }) {
                                 <h4>The team</h4>
                                 {/*
                                 Legge til onclick på hvert teammember
-                                Link til profile 
+                                Link til medlemmets profil
                                 */}
                                 <section className="TeamMember">
                                     <img className="ProfilePic" src={avatar}></img>
