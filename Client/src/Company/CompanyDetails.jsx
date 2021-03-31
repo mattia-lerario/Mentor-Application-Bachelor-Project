@@ -104,7 +104,7 @@ function CompanyDetails({ match }) {
 
                                 <section className="Post">
                                     <section id="PosterInfo">
-                                        <img id="ProfilePic" src={avatar}></img>
+                                        <img className="ProfilePic" src={avatar}></img>
                                         <p id="PostedBy">First name After name</p>
                                     </section>
                                     <p id="Date">date posted</p>
@@ -146,6 +146,44 @@ function CompanyDetails({ match }) {
                                 </ul>
                                     <p><b>Total time used on {company.companyName}</b></p>
                                     <p>{totalHours}</p>
+                            </section>
+
+                            <section className="Box Team">
+                                <h4>The team</h4>
+                                {/*
+                                Legge til onclick på hvert teammember
+                                Link til profile 
+                                */}
+                                <section className="TeamMember">
+                                    <img className="ProfilePic" src={avatar}></img>
+                                    <h5>Name</h5>
+                                    <p>Stilling</p>
+                                </section>
+                                <section className="TeamMember">
+                                    <img className="ProfilePic" src={avatar}></img>
+                                    <h5>Name</h5>
+                                    <p>Stilling</p>
+                                </section>
+                                <section className="TeamMember">
+                                    <img className="ProfilePic" src={avatar}></img>
+                                    <h5>Name</h5>
+                                    <p>Stilling</p>
+                                </section>
+                                <section className="TeamMember">
+                                    <img className="ProfilePic" src={avatar}></img>
+                                    <h5>Name</h5>
+                                    <p>Stilling</p>
+                                </section>
+                                <section className="TeamMember">
+                                    <img className="ProfilePic" src={avatar}></img>
+                                    <h5>Name</h5>
+                                    <p>Stilling</p>
+                                </section>
+                                <section className="TeamMember">
+                                    <img className="ProfilePic" src={avatar}></img>
+                                    <h5>Name</h5>
+                                    <p>Stilling</p>
+                                </section>
                             </section>
                         </section>
                     </article>

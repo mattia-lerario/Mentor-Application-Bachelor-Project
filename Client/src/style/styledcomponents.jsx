@@ -255,7 +255,7 @@ export const ListWrapper = styled.div`
     color: #38507a;
     font-size: 3vw;
 }
-.PRbox, .TimeLog, .MetricsBox, .Feed{
+.PRbox, .TimeLog, .MetricsBox, .Feed, .Team{
     margin-top: 1rem;
 }
 .Box h4{
@@ -294,9 +294,28 @@ export const ListWrapper = styled.div`
 #PostedBy{
     font-size: 0.9vw;
 }
-#ProfilePic{
+.ProfilePic{
     border-radius: 50%;
     width: 5vw;
+}
+.Team{
+}
+.TeamMember{
+    display: inline-block;
+    background-color: #fff;
+    padding: 0.5rem;
+    width: 27%;
+    margin: 0.5rem;
+    border-radius: 4px;
+    height: 80%;
+    text-align: center;
+}
+.TeamMember:hover{
+    //box-shadow: right bottom fade allsides color;
+    box-shadow: 0.1rem 0.1rem 0.3rem 0.04rem #38507a;
+}
+.TeamMember img{
+    width: 100%;
 }
   `;
 
