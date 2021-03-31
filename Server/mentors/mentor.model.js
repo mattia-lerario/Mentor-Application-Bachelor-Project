@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-    mentorName: { type : String, required: true },
-    mentorNumber: {type : String}, //muligens endre til require
+    mentorFirstName: { type : String, required: true },
+    mentorLastName: { type : String, required: true },
     tlfNumber: {type : String},
     email: { type: String, unique: true, required: true },
     mentorDescription: { type: String, required: true }, //bio
@@ -15,10 +15,9 @@ const schema = new Schema({
     mentorExpertise:[
         {type : String}
     ],
-    workExperience:[{
-        title: {type:String},
-        description: {type : String},        
-    }],      
+    workExperience:[   
+       {type : String},        
+    ],      
     accounts: 
         {
           type: mongoose.Schema.Types.ObjectId,
