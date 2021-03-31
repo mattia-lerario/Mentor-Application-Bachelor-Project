@@ -9,6 +9,8 @@ import { object } from 'yup';
 import { companyService, alertService } from '@/_services';
 import * as Yup from 'yup';
 
+import {PRform} from '../style/styledcomponents';
+
 function PowerRanking({history}) {
     
     const [companies, setCompanies] = useState(null);
@@ -58,6 +60,7 @@ function PowerRanking({history}) {
     }  
 
     return (
+      <PRform>
         <Card>
         <CardContent>
         <FormikStepper initialValues={initialValues}  onSubmit={onSubmit}>
@@ -89,7 +92,7 @@ function PowerRanking({history}) {
                     }
         </Select>*/}
               </Box>
-              <Box paddingBottom={2} width ={200}>
+              <Box className="Box Date">
               <InputLabel id="demo-simple-select-label">Date of examination</InputLabel>
                 <Field fullWidth name="date" type="date" component={TextField}/>
               </Box>
@@ -105,10 +108,16 @@ function PowerRanking({history}) {
               comment1: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-              <Box paddingBottom={2}>
+          <Box paddingBottom={1}>
+            <label>Do the team have the necessary drive and execution power to reach the company goals.
+              Formal background to execute key tasks, complementary CV (tech and business), ability to take feedback from mentors and  
+              an overall underatsing of the challenges should be taken into account in building a great company
+            </label>
+          </Box>
+              <Box className="Box">
                 <Field fullWidth name="question1" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="comment1" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -122,6 +131,13 @@ function PowerRanking({history}) {
               comment1: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
+            <Box>
+              <label> Is the positioning of the proiduct offering good enough to make a difference in the market?
+                Do the offering have the needed competitive edge?
+                Is the offering scalable?
+                How unique is the offering compared to others in the market?
+              </label>
+            </Box>
               <Box paddingBottom={2}>
                 <Field fullWidth name="question1" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
@@ -139,6 +155,13 @@ function PowerRanking({history}) {
               comment3: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
+            <Box>
+              <label>
+              Is the target market large enough?
+              Is there attractive follow on market? 
+              Is it possible for the company to grow outside the Nordics? 
+              </label>
+            </Box>
               <Box paddingBottom={2}>
                 <Field fullWidth name="question3" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
@@ -277,7 +300,8 @@ function PowerRanking({history}) {
             </FormikStep>
             </FormikStepper>
         </CardContent>
-      </Card>);
+      </Card>
+      </PRform>);
   }
   
   export function FormikStep({ children }) {

@@ -32,8 +32,8 @@ function Details({ match }) {
                         <img className="Center" src={avatar}></img>
                         <section className="ContactDetails">
                             <h3 className="Center">{user.firstName} {user.lastName}</h3>
-                            <button className="Center"><HiOutlineMail/>{user.email}</button>
-                            <button className="Center" /*onClick={phone}*/><AiFillPhone/>123 45 678</button>
+                            <button className="Center"><HiOutlineMail/> {user.email}</button>
+                            <button className="Center" /*onClick={phone}*/><AiFillPhone/> 123 45 678</button>
                         </section>
 
                         {/*
@@ -109,8 +109,8 @@ function Details({ match }) {
                         <img className="Center" src={avatar}></img>
                         <section className="ContactDetails">
                             <h3 className="Center">{user.firstName} {user.lastName}</h3>
-                            <button className="Center"><HiOutlineMail/>{user.email}</button>
-                            <button className="Center" /*onClick={phone}*/><AiFillPhone/>123 45 678</button>
+                            <button className="Center"><HiOutlineMail/> {user.email}</button>
+                            <button className="Center" /*onClick={phone}*/><AiFillPhone/> 123 45 678</button>
                         </section>
 
                         {roleUser && roleUser.filter(mentor => mentor.id === user.mentors[0]).map(mentor => 
