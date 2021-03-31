@@ -202,7 +202,6 @@ export const ListWrapper = styled.div`
 }
 .cardBottom{
     border-top: 0.15vw solid #bfbfbf;
-    text-align: center;
 }
 .cardBottom p, .cardBottom button{
     display: inline;
@@ -268,6 +267,10 @@ export const ListWrapper = styled.div`
 }
 .Feed .Tooltip .TooltipText {
     position:relative;
+    margin-right: 0.5rem;
+}
+.Feed h4{
+    padding-bottom: 0.5rem;
 }
 .Feed .TooltipText{
     right: -2vw;
@@ -279,7 +282,7 @@ export const ListWrapper = styled.div`
 .Post{
     background-color: #ffffff;
     padding: 1rem;
-    margin-top: 4rem;
+    margin-top: 1rem;
 }
 #Date{
     float: right;

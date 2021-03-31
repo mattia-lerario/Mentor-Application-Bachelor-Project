@@ -10,7 +10,7 @@ import styled from 'styled-components';
 //img
 import avatar from '../media/avatar.jpg'
 //icons
-import {BsPlusCircle} from 'react-icons/bs';
+import {BsPlusCircleFill} from 'react-icons/bs';
 
 function CompanyDetails({ match }) {
     const [totalHours, setTotalHours] = useState(0);
@@ -96,11 +96,11 @@ function CompanyDetails({ match }) {
                             </section>
 
                             <section className="Box Feed">
-                                <h4>Feed</h4>
                             <Link to={`${path}/updateMentor`} className={'Tooltip'}>  
-                                <BsPlusCircle/> 
+                                <BsPlusCircleFill/> 
                                 <span className={'TooltipText'}>Add post</span>
                             </Link>
+                                <h4>Feed</h4>
 
                                 <section className="Post">
                                     <section id="PosterInfo">

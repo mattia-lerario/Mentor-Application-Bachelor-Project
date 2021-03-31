@@ -8,7 +8,7 @@ import {SidebarWrapper} from '../style/styledcomponents';
 import {CgProfile} from 'react-icons/cg';
 import {GoGraph} from 'react-icons/go';
 import {RiDashboardFill} from 'react-icons/ri';
-import {GrScheduleNew} from 'react-icons/gr';
+import {BiCalendarPlus} from 'react-icons/bi';
 import {MdSchedule} from 'react-icons/md';
 import { accountService } from '@/_services';
 function Sidebar(){
@@ -50,7 +50,7 @@ function Sidebar(){
         
               <NavLink to="/home" className="SideLink"><GoGraph/> Power ranking</NavLink>
             
-              <NavLink to="/home" className="SideLink"><GrScheduleNew/> Book meeting</NavLink>
+              <NavLink to="/home" className="SideLink"><BiCalendarPlus/> Book meeting</NavLink>
           
               <NavLink to="/home" className="SideLink"><MdSchedule/> My schedule</NavLink>
             
@@ -71,7 +71,7 @@ function Sidebar(){
          
               <NavLink to="/dashboard" className="SideLink"><RiDashboardFill /> Dashboard</NavLink>
             
-              <NavLink to="/home" className="SideLink"><GrScheduleNew/> Book meeting</NavLink>
+              <NavLink to="/home" className="SideLink"><BiCalendarPlus/> Book meeting</NavLink>
           
               <NavLink to="/home" className="SideLink"><MdSchedule/> My schedule</NavLink>
             
