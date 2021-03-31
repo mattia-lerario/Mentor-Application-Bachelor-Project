@@ -233,7 +233,9 @@ export const ListWrapper = styled.div`
     width: 100%;
 }
 .MainBox{
+    display: flex;
     width: 70%;
+    display: initial;
 }
 .Sidebox{
     float: right;
@@ -264,7 +266,14 @@ export const ListWrapper = styled.div`
 .TimeLog ul{
     margin-left: 1rem;
 }
-.Feed button{
+.Feed .Tooltip .TooltipText {
+    position:relative;
+}
+.Feed .TooltipText{
+    right: -2vw;
+    top: 2vw;
+}
+.Feed Link{
     float: right;
 }
 .Post{
@@ -363,42 +372,6 @@ img{
 .ProfileInfo{
     float: right;
     margin-left: 1vw;
-}
-
-/* ---TOOLTIP--- */
-.Tooltip {
-  color: #38507a;
-  float: right;
-  margin-right: 1vw;
-  margin-top: 0.5vw;
-}
-.TooltipText{
-    position: static;
-    margin-left: -5vw;
-    margin-top: 2vw;
-}
-.Tooltip .TooltipText {
-  visibility: hidden;
-  width: 7vw;
-  background-color: #283957;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 0.2vw;
-  position: absolute;
-  z-index: 1;
-  font-size: 0.9vw;
-}
-.Tooltip .TooltipText::after {
-  content: "";
-  border-style: solid;
-  border-color: transparent transparent #283957 transparent;
-}
-.Tooltip:hover .TooltipText {
-  visibility: visible;
-}
-.Tooltip:hover{
-  color: #182234;
 }
 .Center{
     display: block;

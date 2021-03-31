@@ -50,9 +50,9 @@ function Details({ match }) {
                 <section className="ProfileWrapper">
                     <article className="MentorInfoBox">
                         
-                        <Link to={`${path}/updateMentor`} className="Tooltip">    
+                        <Link to={`${path}/updateMentor`} className={'Tooltip'}>    
                             <BsPencil/>
-                            <span className="TooltipText">Update mentor information</span>
+                            <span className={'TooltipText'}>Update mentor information</span>
                         </Link>
 
                         <img className="Center" src={avatar}></img>
