@@ -9,7 +9,6 @@ import * as Yup from 'yup';
 function UpdateMentor({ history, match }) {
 
     const { id } = match.params;
-    const isAddMode = !id;
     const user = accountService.userValue;
 
     const initialValues = {
@@ -33,12 +32,13 @@ function UpdateMentor({ history, match }) {
         }         
         else {
            //updateMentor(user.mentors, fields, setSubmitting);
-           createMentor(fields, setSubmitting);         
+           createMentor(fields, setSubmitting);
+                    
         }
         
         }
   
-    function createMentor(fields, setSubmitting){
+     function createMentor(fields, setSubmitting){
         
             mentorService.create(user.id, fields)
             .then(() => {

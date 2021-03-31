@@ -1,339 +1,328 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Formik,Form, Field,ErrorMessage } from 'formik';
+import { Box, Button, Card, CardContent, CircularProgress, Grid, Step, StepLabel, Stepper } from '@material-ui/core';
+import { Field, Form, Formik } from 'formik';
+import {TextField } from 'formik-material-ui';
+
+import InputLabel from '@material-ui/core/InputLabel';
+
+import { object } from 'yup';
 import { companyService, alertService } from '@/_services';
-import { PRform } from '../style/styledcomponents';
+import * as Yup from 'yup';
 
-// eslint-disable-next-line react/prop-types
-function PowerRanking({history,match}) {
-    // eslint-disable-next-line react/prop-types
-    const { id } = match.params;
-    const isAddMode = !id;
-
+function PowerRanking({history}) {
+    
     const [companies, setCompanies] = useState(null);
-
+    
     useEffect(() => {
         companyService.getAll().then(x => setCompanies(x));
     }, []);
 
     const initialValues = {
-        question1: 0,
+        question1: 1,
         comment1: ' Write comment here',
-        question2: 0,
+        question2: 1,
         comment2: ' Write Comment here',
-        question3: 0,
+        question3: 1,
         comment3: ' Write Comment here',
-        question4: 0,
+        question4: 1,
         comment4: ' Write Comment here',
-        question5: 0,
+        question5: 1,
         comment5: ' Write Comment here',
-        question6: 0,
+        question6: 1,
         comment6: ' Write Comment here',
-        question7: 0,
+        question7: 1,
         comment7: ' Write Comment here',
-        question8: 0,
+        question8: 1,
         comment8: ' Write Comment here',
-        question9: 0,
+        question9: 1,
         comment9: ' Write Comment here',
-        question10: 0,
+        question10: 1,
         comment10: ' Write Comment here',
-        question11: 0,
+        question11: 1,
         comment11: ' Write Comment here',
-        date: Date.now,
-    };
+        date: '',
+    }
 
-   /*const validationSchema = Yup.object().shape({
-
-    question1: Yup.number()
-            .required('Questions must be answered with a value from 1 to 6')
-            .positive('It must be a positive number')
-            .min(1, "You must have minimum 1")
-            ,
-    quarter: Yup.number()
-            .required('You Must select the Quarter of the Year this is for.')
-            .positive('It must be a positive number')
-            .min(1,"Minimum is 1")
-            .max(4,"Maximum is 4"),
-    date: Yup.date()
-            .required('Date is required')
-            .max(new Date())
-    
-    });*/
-
-    function onSubmit(fields, {setSubmitting }) {
+   function onSubmit(fields, {setSubmitting }) {
         console.log(fields.companyId);
         companyService.createPowerRanking(fields.companyId, fields)    
         .then(() => {
-            alertService.success('Update successful', { keepAfterRouteChange: true });
+            alertService.success('Create successful', { keepAfterRouteChange: true });
             history.push('.');
         })
         .catch(error => {
             console.log(error);
             setSubmitting(false);
             alertService.error(error);
-        }); 
-    }    
-        
+        });
+    }  
+
     return (
-        <Formik initialValues={initialValues} /*validationSchema={validationSchema}*/ onSubmit={onSubmit}>
-            {({ errors, touched, isSubmitting, setFieldValue }) => {
-                useEffect(() => {
-                    if (!isAddMode) {
-                        // get user and set form fields
-                        console.log(id);
-                        companyService.getById(id).then(company => {
-                            const fields = ['companyId','question1', 'comment1','question2', 'comment2','question3', 'comment3','question4', 'comment4','question5', 'comment5','question6', 'comment6','question7', 'comment7','question8', 'comment8','question9', 'comment9', 'question10', 'comment10','question11', 'comment11','date'];
-                            fields.forEach(field => setFieldValue(field, company[field], false));
-                        });
-                    }
-                }, []);
+        <Card>
+        <CardContent>
+        <FormikStepper initialValues={initialValues}  onSubmit={onSubmit}>
+              
+              {/*onSubmit={onSubmit}  onSubmit={async (values) => {
+              await sleep(3000);
+              console.log('values', values);
+          }}>*/} 
 
-                return (
-                        <PRform>
-                        <Form>
-                            <section className="Choose">
-                                <label>Choose Company to examine</label>
-                                <Field name="companyId" as="select" className={'FormGroups' + (errors.companyId && touched.companyId ? ' is-invalid' : '')}>
-                                <option key="blank" value=" "></option>
-                                {companies && companies.map(company =>
-                                <option key={company.id} value ={company.id}>{company.companyName}</option>)}
-                                </Field>
-                                <ErrorMessage name="companyId" component="div" className="InvalidFeedback" />
-                            </section>
-                       
-                            <section className="QuestionBox">
-                                <div className="Question">
-                                    <label>
-                                        Do the team have the necessary drive and execution power to reach the company goals.
-                                        Formal background to execute key tasks, complementary CV (tech and business), ability to take feedback from mentors and  
-                                        an overall underatsing of the challenges should be taken into account in building a great company
-                                    </label>
-                                </div>
-                                <div className="Ranking">
-                                    <p>Ranking: </p>
-                                    <Field name="question1" type="number" className={'RankingField' + (errors.question1 && touched.question1 ? ' is-invalid' : '')} />
-                                    <ErrorMessage name="question1" component="div" className="InvalidFeedback" />
-                                </div>
-                                <div className="Comment">
-                                    <label>Comment:</label>
-                                    <Field name="comment1" type="text" component="textarea" className={'CommentField' + (errors.comment1 && touched.comment1 ? ' is-invalid' : '')} />
-                                    <ErrorMessage name="comment1" component="div" className="InvalidFeedback" />
-                                </div>
-                            </section>
-                         
-                            <section className="QuestionBox">
-                                <div className="Question">
-                                    <label> Is the positioning of the proiduct offering good enough to make a difference in the market?
-                                        Do the offering have the needed competitive edge?
-                                        Is the offering scalable?
-                                        How unique is the offering compared to others in the market?
-                                    </label>
-                                </div>
-                                <div className="Ranking">
-                                    <p>Ranking: </p>
-                                    <Field name="question2" type="number" className={'RankingField' + (errors.question2 && touched.question2 ? ' is-invalid' : '')} />
-                                    <ErrorMessage name="companyId" component="div" className="InvalidFeedback" />
-                                </div>
-                                <div className="Comment">
-                                    <label>Comment:</label>
-                                    <Field name="comment2" type="textarea" className={'CommentField' + (errors.comment2 && touched.comment2 ? ' is-invalid' : '')} />
-                                    <ErrorMessage name="comment2" component="div" className="InvalidFeedback" />
-                                 </div>
-                            </section>
-                         
-                            <section className="QuestionBox">
-                                <div className="Question">
-                                    <label>
-                                        Is the target market large enough?
-                                        Is there attractive follow on market? 
-                                        Is it possible for the company to grow outside the Nordics? 
-                                    </label>
-                                </div>
-                                <div className="Ranking">
-                                    <p>Ranking: </p>
-                                    <Field name="question3" type="number" className={'RankingField' + (errors.question3 && touched.question3 ? ' is-invalid' : '')} />
-                                    <ErrorMessage name="question3" component="div" className="InvalidFeedback" />
-                                </div>
-                                <div className="Comment">
-                                    <label>Comment:</label>
-                                    <Field name="comment3" type="textarea" className={'CommentField' + (errors.comment3 && touched.comment3 ? ' is-invalid' : '')} />
-                                    <ErrorMessage name="comment3" component="div" className="InvalidFeedback" />
-                                </div>
-                            </section>
-                         
-                         <section className="QuestionBox">
-                            <div className="Question">
-                                <label>
-                                    Is the company on track to deliver on its milestones?
-                                    Do the company as a whole have the necessary drive and traction traction in the market? 
-                                    Customer traction in form of early orders, paid pilots, etc.?
-                                </label>
-                            </div>
-                            <div className="Ranking">
-                                    <p>Ranking: </p>
-                                <Field name="question4" type="number" className={'RankingField' + (errors.question4 && touched.question4 ? ' is-invalid' : '')} />
-                                <ErrorMessage name="question4" component="div" className="InvalidFeedback" />
-                            </div>
-                            <div className="Comment">
-                                <label>Comment:</label>
-                                <Field name="comment4" type="textarea" className={'CommentField' + (errors.comment4 && touched.comment4 ? ' is-invalid' : '')} />
+          <FormikStep label="Company and date">
+              <Box paddingBottom={2}>
 
-                                <ErrorMessage name="comment4" component="div" className="InvalidFeedback" />
-                            </div>
-                        </section>
-                         
-                         <section className="QuestionBox">
-                            <div className="Question">
-                                <label>
-                                    Do the company have the vision and drive to capture the full potential of it offering and its opportunity?
-                                    Do the company have the ability to be on time with its work and do the company manage its daily work the correct way?
-                                </label>
-                            </div>
-                            <div className="Ranking">
-                                <p>Ranking: </p>
-                                <Field name="question5" type="number" className={'RankingField' + (errors.question5 && touched.question5 ? ' is-invalid' : '')} />
-                                <ErrorMessage name="question5" component="div" className="InvalidFeedback" />
-                            </div>
-                            <div className="Comment">
-                                <label>Comment:</label>
-                                <Field name="comment5" type="textarea" className={'CommentField' + (errors.comment5 && touched.comment5 ? ' is-invalid' : '')} />
-                                <ErrorMessage name="comment5" component="div" className="InvalidFeedback" />
-                            </div>
-                        </section>
-                         
-                         <section className="QuestionBox">
-                            <div className="Question">
-                                <label>
-                                    Is it sufficient tech know-how in the company to be able to execute the product vision?
-                                    Is the company able to put drawing on a paper into coding?
-                                </label>
-                            </div>
-                            <div className="Ranking">
-                                <p>Ranking: </p>
-                                <Field name="question6" type="number" className={'RankingField' + (errors.question6 && touched.question6 ? ' is-invalid' : '')} />
-                                <ErrorMessage name="question6" component="div" className="InvalidFeedback" />
-                            </div>
-                            <div className="Comment">
-                                <label>Comment:</label>
-                                <Field name="comment6" type="textarea" className={'CommentField' + (errors.comment6 && touched.comment6 ? ' is-invalid' : '')} />
-                                <ErrorMessage name="comment6" component="div" className="InvalidFeedback" />
-                            </div>
-                        </section>
-                         
-                         <section className="QuestionBox">
-                            <div className="Question">
-                                <label>
-                                    Do the company have an overview and understanding of its market?
-                                    Is the company capuring feedback from the market? (references not only positive)
-                                </label>
-                            </div>
-                            <div className="Ranking">
-                                <p>Ranking: </p>
-                                <Field name="question7" type="number" className={'RankingField' + (errors.question7 && touched.question7 ? ' is-invalid' : '')} />
-                                <ErrorMessage name="question7" component="div" className="InvalidFeedback" />
-                            </div>
-                            <div className="Comment">
-                                <label>Comment:</label>
-                                <Field name="comment7" type="textarea" className={'CommentField' + (errors.comment7 && touched.comment7 ? ' is-invalid' : '')} />
-                                <ErrorMessage name="comment7" component="div" className="InvalidFeedback" />
-                            </div>
-                        </section>
-                         
-                         <section className="QuestionBox">
-                            <div className="Question">
-                                <label>
-                                    Is the company performing on sales growth metrics?
-                                    Below 20% growth Y/Y is  a score =1 
-                                </label>
-                            </div>
-                            <div className="Ranking">
-                                <p>Ranking: </p>
-                                <Field name="question8" type="number" className={'RankingField' + (errors.question8 && touched.question8 ? ' is-invalid' : '')} />
-                                <ErrorMessage name="question8" component="div" className="InvalidFeedback" />
-                            </div>
-                            <div className="Comment">
-                                <label>Comment:</label>
-                                <Field name="comment8" type="textarea" className={'CommentField' + (errors.comment8 && touched.comment8 ? ' is-invalid' : '')} />
-                                <ErrorMessage name="comment8" component="div" className="InvalidFeedback" />
-                            </div>
-                        </section>
-                         
-                         <section className="QuestionBox">
-                            <div className="Question">
-                                <label>
-                                    Is the timing right for introducing the offering or is the company too late to the party?
-                                    How is the competitive picture and has this been done before? 
-                                </label>
-                            </div>
-                            <div className="Ranking">
-                                <p>Ranking: </p>
-                                <Field name="question8" type="number" className={'RankingField' + (errors.question8 && touched.question8 ? ' is-invalid' : '')} />
-                                <ErrorMessage name="question8" component="div" className="InvalidFeedback" />
-                            </div>
-                            <div className="Comment">
-                                <label>Comment:</label>
-                                <Field name="comment8" type="textarea" className={'CommentField' + (errors.comment8 && touched.comment8 ? ' is-invalid' : '')} />
-                                <ErrorMessage name="comment8" component="div" className="InvalidFeedback" />
-                            </div>
-                        </section>
-                         
-                         <section className="QuestionBox">
-                            <div className="Question">
-                                <label>
-                                    Is the timing right for introducing the offering or is the company too late to the party?
-                                    How is the competitive picture and has this been done before?
-                                </label>
-                            </div>
-                            <div className="Ranking">
-                                <p>Ranking: </p>
-                                <Field name="question8" type="number" className={'RankingField' + (errors.question8 && touched.question8 ? ' is-invalid' : '')} />
-                                <ErrorMessage name="question8" component="div" className="InvalidFeedback" />
-                            </div>
-                            <div className="Comment">
-                                <label>Comment:</label>
-                                <Field name="comment9" type="textarea" className={'CommentField' + (errors.comment9 && touched.comment9 ? ' is-invalid' : '')} />
-                                <ErrorMessage name="comment9" component="div" className="InvalidFeedback" />
-                            </div>
-                        </section>
-                         
-                         <section className="QuestionBox">
-                            <div className="Question">
-                                <label>Is the company contributing to solving global sustainability challenges? How well is that captured in their strategy?</label>
-                            </div>
-                            <div className="Ranking">
-                                <p>Ranking: </p>
-                                <Field name="question10" type="number" className={'RankingField' + (errors.question10 && touched.question10 ? ' is-invalid' : '')} />
-                                <ErrorMessage name="question10" component="div" className="InvalidFeedback" />
-                            </div>
-                            <div className="Comment">
-                                <label>Comment:</label>
-                                <Field name="comment8" type="textarea" className={'CommentField' + (errors.comment11 && touched.comment11 ? ' is-invalid' : '')} />
-                                <ErrorMessage name="comment11" component="div" className="InvalidFeedback" />
-                            </div>
-                        </section>
-
-                        <div className="DateSave">
-                                    <label>Date of work: </label>
-                                    <Field name="date" type="date" className={'DateField' + (errors.date && touched.date ? ' is-invalid' : '')} />
-                                    <ErrorMessage name="date" component="div" className="invalid-feedback" />
-                        </div>
-                            
-
-                      <div className="DateSave">
-                            <button type="submit" disabled={isSubmitting} className={'Btn BtnMain'}>
-                                {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
-                                Save
-                            </button>
-                            <Link to={isAddMode ? '.' : '..'} className={'BtnSimple'}>Cancel</Link>
-                            </div>
-                            </Form>
-
-                            </PRform>
+              <Field name="companyId" as="select" label="Choose company">
+                    <label>Choose a company</label>
+                    <option key="blank" value="blank"></option>
+                        {companies && companies.map(company =>
+                    <option key={company.id} value ={company.id}>{company.companyName}</option>)}
+              </Field>
+              {/*<InputLabel id="demo-simple-select-label">Choose company</InputLabel>
+                <Select fullWidth
+                 labelId="demo-simple-select-label"
+                 id="demo-simple-select"
+                value=""
+                onChange={handleChange}
+                 >
                     
-                );
-            }}
-        </Formik>
-    );
+                    {companies && companies.map(company =>
+                                <MenuItem key={company.id} value ={company.id}>{company.companyName}</MenuItem>)
+                    }
+        </Select>*/}
+              </Box>
+              <Box paddingBottom={2}>
+              <InputLabel id="demo-simple-select-label">Date of examination</InputLabel>
+                <Field fullWidth name="date" type="date" component={TextField}/>
+              </Box>
+            </FormikStep>
+
+{/*--------------------------------------------------Step 1-----------------------------------------------------------*/}
+              
+          <FormikStep label="Question 1" validationSchema={object({
+              question1: Yup.number()
+              .required('Questions must be answered with a value from 1 to 6')
+              .positive('It must be a positive number')
+              .min(1, "You must have minimum 1"),
+              comment1: Yup.string()
+              .required('Please give a comment to this rating'),
+          })}>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="question1" type="number" component={TextField} label="Rate from 1-6"/>
+              </Box>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="comment1" component={TextField} label="Comment"/>
+              </Box>
+            </FormikStep>
+{/*--------------------------------------------------Step 2-----------------------------------------------------------*/}
+           
+            <FormikStep label="Question 2" validationSchema={object({
+              question1: Yup.number()
+              .required('Questions must be answered with a value from 1 to 6')
+              .positive('It must be a positive number')
+              .min(1, "You must have minimum 1"),
+              comment1: Yup.string()
+              .required('Please give a comment to this rating'),
+          })}>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="question1" type="number" component={TextField} label="Rate from 1-6"/>
+              </Box>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="comment1" component={TextField} label="Comment"/>
+              </Box>
+            </FormikStep>
+
+{/*--------------------------------------------------Step 3-----------------------------------------------------------*/}
+            <FormikStep label="Question 3" validationSchema={object({
+              question3: Yup.number()
+              .required('Questions must be answered with a value from 1 to 6')
+              .positive('It must be a positive number')
+              .min(1, "You must have minimum 1"),
+              comment3: Yup.string()
+              .required('Please give a comment to this rating'),
+          })}>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="question3" type="number" component={TextField} label="Rate from 1-6"/>
+              </Box>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="comment3" component={TextField} label="Comment"/>
+              </Box>
+            </FormikStep>
+{/*--------------------------------------------------Step 4-----------------------------------------------------------*/}
+<FormikStep label="Question  4" validationSchema={object({
+              question4: Yup.number()
+              .required('Questions must be answered with a value from 1 to 6')
+              .positive('It must be a positive number')
+              .min(1, "You must have minimum 1"),
+              comment4: Yup.string()
+              .required('Please give a comment to this rating'),
+          })}>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="question4" type="number" component={TextField} label="Rate from 1-6"/>
+              </Box>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="comment4" component={TextField} label="Comment"/>
+              </Box>
+            </FormikStep>
+{/*--------------------------------------------------Step 5-----------------------------------------------------------*/}
+<FormikStep label="Question 5" validationSchema={object({
+              question5: Yup.number()
+              .required('Questions must be answered with a value from 1 to 6')
+              .positive('It must be a positive number')
+              .min(1, "You must have minimum 1"),
+              comment5: Yup.string()
+              .required('Please give a comment to this rating'),
+          })}>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="question5" type="number" component={TextField} label="Rate from 1-6"/>
+              </Box>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="comment5" component={TextField} label="Comment"/>
+              </Box>
+            </FormikStep>
+
+{/*--------------------------------------------------Step 6-----------------------------------------------------------*/}
+<FormikStep label="Question 6" validationSchema={object({
+              question6: Yup.number()
+              .required('Questions must be answered with a value from 1 to 6')
+              .positive('It must be a positive number')
+              .min(1, "You must have minimum 1"),
+              comment6: Yup.string()
+              .required('Please give a comment to this rating'),
+          })}>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="question6" type="number" component={TextField} label="Rate from 1-6"/>
+              </Box>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="comment6" component={TextField} label="Comment"/>
+              </Box>
+            </FormikStep>
+{/*--------------------------------------------------Step 7-----------------------------------------------------------*/}
+<FormikStep label="Question 7" validationSchema={object({
+              question7: Yup.number()
+              .required('Questions must be answered with a value from 1 to 6')
+              .positive('It must be a positive number')
+              .min(1, "You must have minimum 1"),
+              comment7: Yup.string()
+              .required('Please give a comment to this rating'),
+          })}>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="question7" type="number" component={TextField} label="Rate from 1-6"/>
+              </Box>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="comment7" component={TextField} label="Comment"/>
+              </Box>
+            </FormikStep>
+{/*--------------------------------------------------Step 8-----------------------------------------------------------*/}
+<FormikStep label="Question 8" validationSchema={object({
+              question8: Yup.number()
+              .required('Questions must be answered with a value from 1 to 6')
+              .positive('It must be a positive number')
+              .min(1, "You must have minimum 1"),
+              comment8: Yup.string()
+              .required('Please give a comment to this rating'),
+          })}>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="question8" type="number" component={TextField} label="Rate from 1-6"/>
+              </Box>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="comment8" component={TextField} label="Comment"/>
+              </Box>
+            </FormikStep>
+{/*--------------------------------------------------Step 9-----------------------------------------------------------*/}
+<FormikStep label="Question 9" validationSchema={object({
+              question9: Yup.number()
+              .required('Questions must be answered with a value from 1 to 6')
+              .positive('It must be a positive number')
+              .min(1, "You must have minimum 1"),
+              comment9: Yup.string()
+              .required('Please give a comment to this rating'),
+          })}>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="question9" type="number" component={TextField} label="Rate from 1-6"/>
+              </Box>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="comment9" component={TextField} label="Comment"/>
+              </Box>
+            </FormikStep>
+{/*--------------------------------------------------Step 10-----------------------------------------------------------*/}
+<FormikStep label="Question 10" validationSchema={object({
+              question10: Yup.number()
+              .required('Questions must be answered with a value from 1 to 6')
+              .positive('It must be a positive number')
+              .min(1, "You must have minimum 1"),
+              comment10: Yup.string()
+              .required('Please give a comment to this rating'),
+          })}>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="question10" type="number" component={TextField} label="Rate from 1-6"/>
+              </Box>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="comment10" component={TextField} label="Comment"/>
+              </Box>
+            </FormikStep>
+{/*--------------------------------------------------Step 11-----------------------------------------------------------*/}
+<FormikStep label="Question 11" validationSchema={object({
+              question11: Yup.number()
+              .required('Questions must be answered with a value from 1 to 6')
+              .positive('It must be a positive number')
+              .min(1, "You must have minimum 1"),
+              comment11: Yup.string()
+              .required('Please give a comment to this rating'),
+          })}>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="question11" type="number" component={TextField} label="Rate from 1-6"/>
+              </Box>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="comment11" component={TextField} label="Comment"/>
+              </Box>
+            </FormikStep>
+            </FormikStepper>
+        </CardContent>
+      </Card>);
+  }
+  export function FormikStep({ children }) {
+      return <>{children}</>;
+  }
+  export function FormikStepper({ children, ...props }) {
+    const childrenArray = React.Children.toArray(children);
+    const [step, setStep] = useState(0);
+    const currentChild = childrenArray[step];
+    const [completed, setCompleted] = useState(false);
+    function isLastStep() {
+        return step === childrenArray.length - 1;
+    }
+    return (<Formik {...props} validationSchema={currentChild.props.validationSchema} onSubmit={async (values, helpers) => {
+            if (isLastStep()) {
+                await props.onSubmit(values, helpers);
+                setCompleted(true);
+            }
+            else {
+                setStep((s) => s + 1);
+            }
+        }}>
+      {({ isSubmitting }) => (<Form autoComplete="off">
+          <Stepper alternativeLabel activeStep={step}>
+            {childrenArray.map((child, index) => (<Step key={child.props.label} completed={step > index || completed}>
+                <StepLabel>{child.props.label}</StepLabel>
+              </Step>))}
+          </Stepper>
+
+          {currentChild}
+
+          <Grid container spacing={2}>
+            {step > 0 ? (<Grid item>
+                <Button disabled={isSubmitting} variant="contained" color="primary" onClick={() => setStep((s) => s - 1)}>
+                  Back
+                </Button>
+              </Grid>) : null}
+            <Grid item>
+              
+              <Button startIcon={isSubmitting ? <CircularProgress size="1rem"/> : null} disabled={isSubmitting} variant="contained" color="primary" type="submit">
+                {isSubmitting ? 'Submitting' : isLastStep() ? 'Submit' : 'Next'}
+              </Button>
+            </Grid>
+          </Grid>
+        </Form>)}
+    </Formik>);
 }
 
 export { PowerRanking };
