@@ -20,21 +20,72 @@ function Details({ match }) {
     if(isUserType == "Admin"){
 
         return (
-                <section>
-                <h1>{user.firstName} Profile</h1>
-                    <p>
-                      <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
-                      <strong>Email: </strong> {user.email}<br />
-                      <strong>Role: </strong>{user.role}
-                    </p>
-                
-                   
-                    <Link to={`${path}/update`} className={'BtnLink'}>
-                       <button className={'Btn BtnMain'}>Update Account</button>
-                    </Link>
-                
+            <ProfileWrapper>
+                <section className="ProfileWrapper">
+                    <article className="MentorInfoBox">
+                        
+                        <Link to={`${path}/updateMentor`} className={'Tooltip'}>    
+                            <BsPencil/>
+                            <span className={'TooltipText'}>Update mentor information</span>
+                        </Link>
 
-                </section>
+                        <img className="Center" src={avatar}></img>
+                        <section className="ContactDetails">
+                            <h3 className="Center">{user.firstName} {user.lastName}</h3>
+                            <button className="Center"><HiOutlineMail/>{user.email}</button>
+                            <button className="Center" /*onClick={phone}*/><AiFillPhone/>123 45 678</button>
+                        </section>
+
+                        {/*
+                        Fungerer ikke herfra og ned til )}
+                        Linjen under det er noe galt med, endret fra mentor til admin*/}
+                        {roleUser && roleUser.filter(admin => admin.id === user.admins[0]).map(admin => 
+                        
+                        <article key = {admin.id}>
+                            <section className="Section">
+                                <h5>Bio</h5>
+                                <p>{admin.adminDescription}</p>
+                                <p>Description of person(current job, education, experience)</p>
+                            </section>
+                            <section className="Section">
+                                <h5>Skills</h5>
+                                <p>Description of skills</p>
+                            </section>
+                            <section className="Section">
+                                <h5>Areas of expertise:</h5>
+                                <p className="AreaExpertise">Area1</p>
+                                <p className="AreaExpertise">Area2</p>
+                                <p className="AreaExpertise">Area3</p>
+                            </section>
+                            <section className="Section">
+                                <h5>Work experience:</h5>
+                                <dl>
+                                    <dt>Job Title 1</dt>
+                                        <dd>- Employer/Company</dd>
+                                        <p>Description</p>
+                                    <dt>Job Title 2</dt>
+                                        <dd>- Employer Company</dd>
+                                        <p>Description</p>
+                                </dl>
+                            </section>
+                        </article>
+                        )}
+                    </article>
+                
+                    <article className="ProfileInfo">
+                        <h2>Profile Information</h2>
+                        <p>
+                            <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
+                            <strong>Email: </strong> {user.email}<br />
+                            <strong>Role: </strong>{user.role}
+                        </p>              
+                        
+                        <Link to={`${path}/update`} className={'BtnLink'}>
+                            <button className={'Btn BtnMain'}>Update Account</button>
+                        </Link>
+                    </article>
+                </section>   
+            </ProfileWrapper> 
         )
     }
 
