@@ -89,7 +89,7 @@ function PowerRanking({history}) {
                     }
         </Select>*/}
               </Box>
-              <Box paddingBottom={2}>
+              <Box paddingBottom={2} width ={200}>
               <InputLabel id="demo-simple-select-label">Date of examination</InputLabel>
                 <Field fullWidth name="date" type="date" component={TextField}/>
               </Box>
