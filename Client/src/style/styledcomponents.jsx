@@ -202,7 +202,6 @@ export const ListWrapper = styled.div`
 }
 .cardBottom{
     border-top: 0.15vw solid #bfbfbf;
-    text-align: center;
 }
 .cardBottom p, .cardBottom button{
     display: inline;
@@ -233,7 +232,9 @@ export const ListWrapper = styled.div`
     width: 100%;
 }
 .MainBox{
+    display: flex;
     width: 70%;
+    display: initial;
 }
 .Sidebox{
     float: right;
@@ -241,7 +242,7 @@ export const ListWrapper = styled.div`
     width: 30%;
 }
 .Box{
-    padding: 4px;
+    padding: 0.5rem;
     background-color: #ecf2f9;
     border-radius: 3px;
 }
@@ -254,7 +255,7 @@ export const ListWrapper = styled.div`
     color: #38507a;
     font-size: 3vw;
 }
-.PRbox, .TimeLog, .MetricsBox{
+.PRbox, .TimeLog, .MetricsBox, .Feed, .Team{
     margin-top: 1rem;
 }
 .Box h4{
@@ -263,6 +264,58 @@ export const ListWrapper = styled.div`
 }
 .TimeLog ul{
     margin-left: 1rem;
+}
+.Feed .Tooltip .TooltipText {
+    position:relative;
+    margin-right: 0.5rem;
+}
+.Feed h4{
+    padding-bottom: 0.5rem;
+}
+.Feed .TooltipText{
+    right: -2vw;
+    top: 2vw;
+}
+.Feed Link{
+    float: right;
+}
+.Post{
+    background-color: #ffffff;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+#Date{
+    float: right;
+    font-size: 0.7vw;
+}
+#PosterInfo{
+    display: inline-block;
+}
+#PostedBy{
+    font-size: 0.9vw;
+}
+.ProfilePic{
+    border-radius: 50%;
+    width: 5vw;
+}
+.Team{
+}
+.TeamMember{
+    display: inline-block;
+    background-color: #fff;
+    padding: 0.5rem;
+    width: 27%;
+    margin: 0.5rem;
+    border-radius: 4px;
+    height: 80%;
+    text-align: center;
+}
+.TeamMember:hover{
+    //box-shadow: right bottom fade allsides color;
+    box-shadow: 0.1rem 0.1rem 0.3rem 0.04rem #38507a;
+}
+.TeamMember img{
+    width: 100%;
 }
   `;
 
@@ -341,42 +394,6 @@ img{
 .ProfileInfo{
     float: right;
     margin-left: 1vw;
-}
-
-/* ---TOOLTIP--- */
-.Tooltip {
-  color: #38507a;
-  float: right;
-  margin-right: 1vw;
-  margin-top: 0.5vw;
-}
-.TooltipText{
-    position: static;
-    margin-left: -5vw;
-    margin-top: 2vw;
-}
-.Tooltip .TooltipText {
-  visibility: hidden;
-  width: 7vw;
-  background-color: #283957;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 0.2vw;
-  position: absolute;
-  z-index: 1;
-  font-size: 0.9vw;
-}
-.Tooltip .TooltipText::after {
-  content: "";
-  border-style: solid;
-  border-color: transparent transparent #283957 transparent;
-}
-.Tooltip:hover .TooltipText {
-  visibility: visible;
-}
-.Tooltip:hover{
-  color: #182234;
 }
 .Center{
     display: block;

@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { companyService, accountService } from '@/_services';
+import { companyService, accountService, mentorService } from '@/_services';
 
 //import {MyChart, BarChart} from '@/_components';
 //style
 import {CompanyWrapper} from '../style/styledcomponents';
-
+import styled from 'styled-components';
+//img
+import avatar from '../media/avatar.jpg'
+//icons
+import {BsPlusCircleFill} from 'react-icons/bs';
 
 function CompanyDetails({ match }) {
     const [totalHours, setTotalHours] = useState(0);
@@ -14,6 +18,7 @@ function CompanyDetails({ match }) {
     const { id } = match.params;
     const companyId = id;
     const [company, setUsers] = useState(null);
+
     const { path } = match;
 
 
@@ -89,6 +94,24 @@ function CompanyDetails({ match }) {
                                 </article>
                                 )}
                             </section>
+
+                            <section className="Box Feed">
+                            <Link to={`${path}/updateMentor`} className={'Tooltip'}>  
+                                <BsPlusCircleFill/> 
+                                <span className={'TooltipText'}>Add post</span>
+                            </Link>
+                                <h4>Feed</h4>
+
+                                <section className="Post">
+                                    <section id="PosterInfo">
+                                        <img className="ProfilePic" src={avatar}></img>
+                                        <p id="PostedBy">First name After name</p>
+                                    </section>
+                                    <p id="Date">date posted</p>
+                                    <h5>Post title</h5>
+                                    <p>content</p>
+                                </section>
+                            </section>
                         </section>
 
                         
@@ -123,6 +146,44 @@ function CompanyDetails({ match }) {
                                 </ul>
                                     <p><b>Total time used on {company.companyName}</b></p>
                                     <p>{totalHours}</p>
+                            </section>
+
+                            <section className="Box Team">
+                                <h4>The team</h4>
+                                {/*
+                                Legge til onclick på hvert teammember
+                                Link til medlemmets profil
+                                */}
+                                <section className="TeamMember">
+                                    <img className="ProfilePic" src={avatar}></img>
+                                    <h5>Name</h5>
+                                    <p>Stilling</p>
+                                </section>
+                                <section className="TeamMember">
+                                    <img className="ProfilePic" src={avatar}></img>
+                                    <h5>Name</h5>
+                                    <p>Stilling</p>
+                                </section>
+                                <section className="TeamMember">
+                                    <img className="ProfilePic" src={avatar}></img>
+                                    <h5>Name</h5>
+                                    <p>Stilling</p>
+                                </section>
+                                <section className="TeamMember">
+                                    <img className="ProfilePic" src={avatar}></img>
+                                    <h5>Name</h5>
+                                    <p>Stilling</p>
+                                </section>
+                                <section className="TeamMember">
+                                    <img className="ProfilePic" src={avatar}></img>
+                                    <h5>Name</h5>
+                                    <p>Stilling</p>
+                                </section>
+                                <section className="TeamMember">
+                                    <img className="ProfilePic" src={avatar}></img>
+                                    <h5>Name</h5>
+                                    <p>Stilling</p>
+                                </section>
                             </section>
                         </section>
                     </article>

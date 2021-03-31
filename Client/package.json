@@ -28,6 +28,7 @@
         "@material-ui/icons": "^4.11.2",
         "file-loader": "^4.3.0",
         "formik": "^2.1.4",
+        "formik-material-ui": "^3.0.1",
         "history": "^4.10.1",
         "mapbox-gl": "^2.2.0",
         "prop-types": "^15.7.2",
@@ -46,11 +47,11 @@
         "yup": "^0.28.1"
     },
     "devDependencies": {
-        "@babel/core": "^7.13.13",
+        "@babel/core": "^7.13.14",
         "@babel/plugin-transform-runtime": "^7.13.10",
         "@babel/preset-env": "^7.13.12",
         "@babel/preset-react": "^7.13.13",
-        "@testing-library/react": "^11.2.5",
+        "@testing-library/react": "^11.2.6",
         "babel-loader": "^8.0.5",
         "css-loader": "^3.6.0",
         "eslint": "^7.23.0",
