@@ -322,12 +322,30 @@ export const ListWrapper = styled.div`
 /* ---POWER RANKING FORM--- */
 /* File: Company/PowerRanking.jsx*/
 export const PRform = styled.div`
-.Box{
-    width: 50%;
+.Margin{
     margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.Question{
+    width: 80%;
+    text-align: center;
+}
+.Comment{
+    width: 50%;
 }
 .Date{
     width: 15%;
+    margin-top: 2rem;
+}
+.Rating{
+    width:10%;
+}
+.Step{
+    text-align:center;
+    justify-content: center;
+    margin-right: auto;
+    margin-left:auto;
 }
   `;
 
