@@ -6,6 +6,9 @@ import { object } from 'yup';
 import { accountService, mentorService, alertService } from '@/_services';
 import * as Yup from 'yup';
 
+import {StepFormWrapper} from '../style/styledcomponents';
+
+
 function UpdateMentor({ history, match }) {
 
     const { id } = match.params;
@@ -76,6 +79,7 @@ function UpdateMentor({ history, match }) {
       return (
         <Card>
         <CardContent>
+        <StepFormWrapper>
           <FormikStepper initialValues={initialValues}  onSubmit={onSubmit}>
 
           <FormikStep label="Personal Data" validationSchema={object({
@@ -86,14 +90,14 @@ function UpdateMentor({ history, match }) {
               mentorDescription: Yup.string()
               .required('Please write somthing to describe yourself.'),
           })}>
-              <Box paddingBottom={2}>
+              <Box className="Comment Margin">
                 <Field fullWidth name="mentorFirstName" component={TextField} label="First Name"/>
               </Box>
-              <Box paddingBottom={2}>
+              <Box className="Comment Margin">
                 <Field fullWidth name="mentorLastName" component={TextField} label="Last Name"/>
               </Box>
-              <Box paddingBottom={2}>
-                <Field fullWidth name="mentorDescription" component={TextField} label="Write you'r Bio"/>
+              <Box className="Comment Margin">
+                <Field fullWidth name="mentorDescription" component={TextField} label="Write your Bio"/>
               </Box>
             </FormikStep>
 
@@ -104,11 +108,11 @@ function UpdateMentor({ history, match }) {
               .email('Email is invalid')
               .required('Email is required, f,eks a@b.c'),
           })}>
-              <Box paddingBottom={2}>
+              <Box className="Email Margin">
                 <Field fullWidth name="email" component={TextField} label="Email"/>
               </Box>
-              <Box paddingBottom={2}>
-                <Field fullWidth name="tlfNumber" component={TextField} label="Telefon Number"/>
+              <Box className="Number Margin">
+                <Field fullWidth name="tlfNumber" component={TextField} label="Phone Number"/>
               </Box>
             </FormikStep>
 
@@ -120,17 +124,18 @@ function UpdateMentor({ history, match }) {
               workExperience: Yup.string()
               .required('Write somthing about your former carrier.'),
           })}>
-              <Box paddingBottom={2}>
-                <Field fullWidth name="industriExpertise" component={TextField} label="Write about yor industri expertise"/>
+              <Box className="Comment Margin">
+                <Field fullWidth name="industriExpertise" component={TextField} label="Write about your industry expertise"/>
               </Box>
-              <Box paddingBottom={2}>
-                <Field fullWidth name="mentorExpertise" component={TextField} label="Write you'r mentor expertise"/>
+              <Box className="Comment Margin">
+                <Field fullWidth name="mentorExpertise" component={TextField} label="Write your mentor expertise"/>
               </Box>
-              <Box paddingBottom={2}>
-                <Field fullWidth name="workExperience" component={TextField} label="Write you'r work experience"/>
+              <Box className="Comment Margin">
+                <Field fullWidth name="workExperience" component={TextField} label="Write your work experience"/>
               </Box>
             </FormikStep>
             </FormikStepper>
+      </StepFormWrapper>
         </CardContent>
       </Card>);
   }

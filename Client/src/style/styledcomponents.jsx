@@ -320,7 +320,7 @@ export const ListWrapper = styled.div`
 
 /* ---POWER RANKING FORM--- */
 /* File: Company/PowerRanking.jsx*/
-export const PRform = styled.div`
+export const StepFormWrapper = styled.div`
 .Margin{
     margin-bottom: 1rem;
     margin-left: auto;
@@ -332,6 +332,9 @@ export const PRform = styled.div`
 }
 .Comment{
     width: 50%;
+}
+.Email, .Number{
+    width: 30%;
 }
 .Date{
     width: 15%;
