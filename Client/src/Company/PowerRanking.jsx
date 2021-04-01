@@ -75,6 +75,7 @@ function PowerRanking({history}) {
               <label>Choose a company </label>
               <br/>
               <Field name="companyId" as="select" label="Choose company">
+                   
                     <option key="blank" value="blank"></option>
                         {companies && companies.map(company =>
                     <option key={company.id} value ={company.id}>{company.companyName}</option>)}
@@ -353,6 +354,7 @@ function PowerRanking({history}) {
       </Card>
       </PRform>);
   }
+  
   export function FormikStep({ children }) {
       return <>{children}</>;
   }

@@ -38,7 +38,7 @@ function Details({ match }) {
 
                         {/*
                         Fungerer ikke herfra og ned til )}
-                        Linjen under det er noe galt med, endret fra mentor til admin*/}
+                        Linjen under det er noe galt med, endret fra mentor til admin
                         {roleUser && roleUser.filter(admin => admin.id === user.admins[0]).map(admin => 
                         
                         <article key = {admin.id}>
@@ -69,7 +69,7 @@ function Details({ match }) {
                                 </dl>
                             </section>
                         </article>
-                        )}
+                        )}*/}
                     </article>
                 
                     <article className="ProfileInfo">

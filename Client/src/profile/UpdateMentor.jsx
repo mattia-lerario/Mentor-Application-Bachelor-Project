@@ -13,18 +13,22 @@ function UpdateMentor({ history, match }) {
 
     const initialValues = {
         
-      mentorName: user.firstName + " " + user.lastName,
-      mentorNumber: '999887766',
+      mentorFirstName: user.firstName,
+      mentorLastName: user.lastName,
       tlfNumber: '99887744',
       email: user.email,
       mentorDescription: 'This is a description',
+      industriExpertise: 'Other..',
+      mentorExpertise: 'Tech, children...',
+      workExperience: 'Worked as mentor',
+
     };
 
     function onSubmit(fields, { setStatus, setSubmitting }) {
 
         setStatus();
 
-        console.log(user.mentors.length);
+        console.log(fields);
   
        if (user.mentors.length > 0) {
             updateMentor(user.mentors, fields, setSubmitting); 
@@ -72,23 +76,27 @@ function UpdateMentor({ history, match }) {
       return (
         <Card>
         <CardContent>
-          <FormikStepper initialValues={initialValues}  onSubmit={onSubmit}>{/*onSubmit={async (values) => {
-              await sleep(3000);
-              console.log('values', values);
-          }}>*/}       
+          <FormikStepper initialValues={initialValues}  onSubmit={onSubmit}>
+
           <FormikStep label="Personal Data" validationSchema={object({
-              mentorName: Yup.string()
+              mentorFirstName: Yup.string()
               .required('A name is required'),
-              mentorNumber: Yup.string()
-              .required('A mentor needs a number'),
+              mentorLastName: Yup.string()
+              .required('A mentor needs a last name'),
+              mentorDescription: Yup.string()
+              .required('Please write somthing to describe yourself.'),
           })}>
               <Box paddingBottom={2}>
-                <Field fullWidth name="mentorName" component={TextField} label="First Name"/>
+                <Field fullWidth name="mentorFirstName" component={TextField} label="First Name"/>
               </Box>
               <Box paddingBottom={2}>
-                <Field fullWidth name="mentorNumber" component={TextField} label="Mentor number"/>
+                <Field fullWidth name="mentorLastName" component={TextField} label="Last Name"/>
+              </Box>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="mentorDescription" component={TextField} label="Write you'r Bio"/>
               </Box>
             </FormikStep>
+
             <FormikStep label="Contact Information" validationSchema={object({
               tlfNumber: Yup.string()
               .required('A number is required'),
@@ -103,9 +111,23 @@ function UpdateMentor({ history, match }) {
                 <Field fullWidth name="tlfNumber" component={TextField} label="Telefon Number"/>
               </Box>
             </FormikStep>
-            <FormikStep label="Experience and expertise">
+
+            <FormikStep label="Experience and expertise"validationSchema={object({
+              industriExpertise: Yup.string()
+              .required('Write somthing about your industry expertise'),
+              mentorExpertise: Yup.string()
+              .required('Write somthing about your mentor expertise'),
+              workExperience: Yup.string()
+              .required('Write somthing about your former carrier.'),
+          })}>
               <Box paddingBottom={2}>
-                <Field fullWidth name="mentorDescription" component={TextField} label="Write you'r Bio"/>
+                <Field fullWidth name="industriExpertise" component={TextField} label="Write about yor industri expertise"/>
+              </Box>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="mentorExpertise" component={TextField} label="Write you'r mentor expertise"/>
+              </Box>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="workExperience" component={TextField} label="Write you'r work experience"/>
               </Box>
             </FormikStep>
             </FormikStepper>
