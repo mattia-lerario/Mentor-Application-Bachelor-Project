@@ -4,7 +4,7 @@ import queryString from 'query-string';
 
 import { accountService, alertService } from '@/_services';
 
-function VerifyEmail({ history }) {
+function VerifyEmail({ ...history }) {
     const EmailStatus = {
         Verifying: 'Verifying',
         Failed: 'Failed'
