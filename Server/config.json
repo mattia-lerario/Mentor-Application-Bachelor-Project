@@ -1,13 +1,13 @@
 ﻿{
     "connectionString": "mongodb://localhost/node-mongo-signup-verification-api",
     "secret": "issecret",
-    "emailFrom": "deborah.weber17@ethereal.email",
+    "emailFrom": "mattia@leratechsolutions.com",
     "smtpOptions": {
-        "host": "smtp.ethereal.email",
+        "host": "smtp.zoho.eu",
         "port": 587,
         "auth": {
-            "user": "deborah.weber17@ethereal.email",
-            "pass": "XxphmcpNWBJYPJSfGN"
+            "user": "mattia@leratechsolutions.com",
+            "pass": "No996830950996830950!"
         }
     }
 }
