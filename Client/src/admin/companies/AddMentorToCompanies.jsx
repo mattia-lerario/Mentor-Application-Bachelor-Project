@@ -135,13 +135,12 @@ function AddEditMentor({ history, match }) {
                                 <div className="form-group col-7">
                                     <label>Assign Mentor</label>
 
-                                    <Field name="leadMentor" as="select" className={'FormGroups' + (errors.leadMentor && touched.leadMentor ? ' is-invalid' : '')}>
+                                    <Field name="leadMentor" as="select" className={'form-control' + (errors.leadMentor && touched.leadMentor ? ' is-invalid' : '')}>
 
-                                    <option></option>
+                                    <option value="" disabled selected>Select a mentor</option>
 
-                                {mentors && mentors.map(mentor =>
-                                    <option key={mentor.id} value ={mentor.id}>{mentor.mentorName}</option>)}
-     
+                                    {mentors && mentors.map(mentor =>
+                                    <option key={mentor.id} value ={mentor.id}>{mentor.mentorFirstName} {mentor.mentorLastName}</option>)}
                                     </Field>
                                     <ErrorMessage name="leadMentor" component="div" className="InvalidFeedback" />
 

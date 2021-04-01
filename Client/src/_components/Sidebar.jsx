@@ -99,6 +99,6 @@ function Sidebar(){
     )*/
   }
 }
-}*/
+
 
 export {Sidebar};

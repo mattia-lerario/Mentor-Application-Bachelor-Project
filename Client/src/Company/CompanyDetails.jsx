@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { companyService, accountService, mentorService } from '@/_services';
+import { companyService} from '@/_services';
 
-//import {MyChart, BarChart} from '@/_components';
-//style
 import {CompanyWrapper} from '../style/styledcomponents';
-import styled from 'styled-components';
+
 //img
 import avatar from '../media/avatar.jpg'
 //icons
 import {BsPlusCircleFill} from 'react-icons/bs';
 
 function CompanyDetails({ match }) {
+    const { path } = match;
     const [totalHours, setTotalHours] = useState(0);
 
     const { id } = match.params;

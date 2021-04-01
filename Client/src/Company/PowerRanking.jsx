@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Button, Card, CardContent, CircularProgress, Grid, Step, StepLabel, Stepper } from '@material-ui/core';
+import { Box, Button, Card, CardContent, CircularProgress, Grid, Step, StepLabel, Stepper, TextareaAutosize } from '@material-ui/core';
 import { Field, Form, Formik } from 'formik';
-import {TextField } from 'formik-material-ui';
+import {TextField} from 'formik-material-ui';
 
 import InputLabel from '@material-ui/core/InputLabel';
 
@@ -21,7 +21,7 @@ function PowerRanking({history}) {
 
     const initialValues = {
         question1: 1,
-        comment1: ' Write comment here',
+        comment1: 'Comment',
         question2: 1,
         comment2: ' Write Comment here',
         question3: 1,
@@ -79,18 +79,7 @@ function PowerRanking({history}) {
                         {companies && companies.map(company =>
                     <option key={company.id} value ={company.id}>{company.companyName}</option>)}
               </Field>
-              {/*<InputLabel id="demo-simple-select-label">Choose company</InputLabel>
-                <Select fullWidth
-                 labelId="demo-simple-select-label"
-                 id="demo-simple-select"
-                value=""
-                onChange={handleChange}
-                 >
-                    
-                    {companies && companies.map(company =>
-                                <MenuItem key={company.id} value ={company.id}>{company.companyName}</MenuItem>)
-                    }
-        </Select>*/}
+
               </Box>
               <Box className="Box Date">
               <InputLabel id="demo-simple-select-label">Date of examination</InputLabel>
@@ -114,7 +103,8 @@ function PowerRanking({history}) {
                 <Field fullWidth name="question1" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
               <Box className="Box">
-                <Field fullWidth name="comment1" component={TextField} label="Comment"/>
+                <InputLabel> Comment for question 1</InputLabel>
+                <TextareaAutosize className="TextArea" name="comment1" rowsMin={3} placeholder="Write a comment"/>
               </Box>
             </FormikStep>
 {/*--------------------------------------------------Step 2-----------------------------------------------------------*/}

@@ -323,11 +323,18 @@ export const ListWrapper = styled.div`
 /* File: Company/PowerRanking.jsx*/
 export const PRform = styled.div`
 .Box{
-    width: 50%;
-    margin-bottom: 1rem;
+    margin: auto;
+    width: 70%;
+    margin-bottom: 2rem;
+}
+.TextArea{
+    margin: auto;
+    width: 100%;
+    margin-bottom: 2rem;
 }
 .Date{
     width: 15%;
+    margin: auto;
 }
   `;
 
