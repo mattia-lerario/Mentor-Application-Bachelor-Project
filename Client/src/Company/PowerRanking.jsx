@@ -74,7 +74,7 @@ function PowerRanking({history}) {
               <Box className="Date Margin">
               <label>Choose a company </label>
               <br/>
-              <Field name="companyId" as="select" label="Choose company">
+              <Field name="companyId" as="select" label="Choose company" className="DropDown">
                    
                     <option key="blank" value="blank"></option>
                         {companies && companies.map(company =>

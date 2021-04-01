@@ -100,12 +100,11 @@ W3Schools.com
 
 /* ----FORM STYLE ----- */
 export const GlassForm = styled.div`
-
 .CardHeaderLogin{
     text-decoration: underline;
     text-align: center;
 }
-.CardBodyLogin{
+.CardBodyLogin, .Email{
     width 20rem;
     margin: auto auto;
 }
@@ -329,6 +328,14 @@ export const StepFormWrapper = styled.div`
 .Question{
     width: 80%;
     text-align: center;
+}
+.DropDown{
+    border-radius: 4px;
+    display: block;
+    margin: 5px 10px 5px 0;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
 }
 .Comment{
     width: 50%;
