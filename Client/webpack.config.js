@@ -39,7 +39,7 @@ module.exports = {
     externals: {
         // global app config object
         config: JSON.stringify({
-            apiUrl: 'leratech.tech'
+            apiUrl: 'http://localhost:4000'
         })
     }
 }
