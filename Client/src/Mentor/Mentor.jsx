@@ -25,15 +25,28 @@ function MentorList({match}) {
             {mentor && mentor.map(mentor =>
              <Link className={'noLink'}to={`${path}/mentorDetails/${mentor.id}`}>
 
-            <section className="card" key={mentor.id}>
+            <article className="card" key={mentor.id}>
 
-                {<img className="cardImg" src={avatar}></img>}
-                <p className="companyName">{mentor.mentorName}</p>
-                <p>Mentor Number: {mentor.mentorNumber}</p>
-                <p>Description: {mentor.mentorDescription}</p>
-                <p><HiOutlineMail/>: {mentor.email}</p>
+                <section className="cardTop">
+                    {<img className="cardImg" src={avatar}></img>}
+                </section>
 
-            </section>
+                <section>
+                    <h4 className="companyName">{mentor.mentorName}</h4>                    
+                </section>
+
+                <section className="cardMetric">
+                    <p>Mentor Number: {mentor.mentorNumber}</p>
+                    <p>Description: {mentor.mentorDescription}</p>
+                </section>
+                
+                <section className="cardBottom">
+                    <Link to={`${path}/updateMentor`} className={'Tooltip'}> 
+                        <HiOutlineMail/>{/*{mentor.email} */}
+                        <span className={'TooltipText'}>Send email</span>
+                    </Link>
+                </section>
+            </article>
             </Link>
 )}     
     

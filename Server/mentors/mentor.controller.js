@@ -61,91 +61,6 @@ function revokeToken(req, res, next) {
         .catch(next);
 }
 
-/*function registerSchema(req, res, next) {
-    const schema = Joi.object({
-        title: Joi.string().required(),
-        firstName: Joi.string().required(),
-        lastName: Joi.string().required(),
-        email: Joi.string().email().required(),
-        password: Joi.string().min(6).required(),
-        confirmPassword: Joi.string().valid(Joi.ref('password')).required(),
-        acceptTerms: Joi.boolean().valid(true).required()
-    });
-    validateRequest(req, next, schema);
-
-}*/
-
-/*function refreshToken(req, res, next) {
-    const token = req.cookies.refreshToken;
-    const ipAddress = req.ip;
-    mentorService.refreshToken({ token, ipAddress })
-        .then(({ refreshToken, ...mentor }) => {
-            setTokenCookie(res, refreshToken);
-            res.json(mentor);
-        })
-        .catch(next);
-}*/
-
-/*function register(req, res, next) {
-    mentorService.register(req.body, req.get('origin'))
-        .then(() => res.json({ message: 'Registration successful, please check your email for verification instructions' }))
-        .catch(next);
-}*/
-
-/*function verifyEmailSchema(req, res, next) {
-    const schema = Joi.object({
-        token: Joi.string().required()
-    });
-    validateRequest(req, next, schema);
-}*/
-
-/*function verifyEmail(req, res, next) {
-    mentorService.verifyEmail(req.body)
-        .then(() => res.json({ message: 'Verification successful, you can now login' }))
-        .catch(next);
-}*/
-
-/*function forgotPasswordSchema(req, res, next) {
-    const schema = Joi.object({
-        email: Joi.string().email().required()
-    });
-    validateRequest(req, next, schema);
-}*/
-
-/*function forgotPassword(req, res, next) {
-    mentorService.forgotPassword(req.body, req.get('origin'))
-        .then(() => res.json({ message: 'Please check your email for password reset instructions' }))
-        .catch(next);
-}*/
-
-/*function validateResetTokenSchema(req, res, next) {
-    const schema = Joi.object({
-        token: Joi.string().required()
-    });
-    validateRequest(req, next, schema);
-}*/
-
-/*function validateResetToken(req, res, next) {
-    mentorService.validateResetToken(req.body)
-        .then(() => res.json({ message: 'Token is valid' }))
-        .catch(next);
-}*/
-
-/*function resetPasswordSchema(req, res, next) {
-    const schema = Joi.object({
-        token: Joi.string().required(),
-        password: Joi.string().min(6).required(),
-        confirmPassword: Joi.string().valid(Joi.ref('password')).required()
-    });
-    validateRequest(req, next, schema);
-}*/
-
-/*function resetPassword(req, res, next) {
-    mentorService.resetPassword(req.body)
-        .then(() => res.json({ message: 'Password reset successful, you can now login' }))
-        .catch(next);
-}*/
-
 function getAll(req, res, next) {
     mentorService.getAll()
         .then(mentor => res.json(mentor))
@@ -165,11 +80,14 @@ function getById(req, res, next) {
 
 function createSchema(req, res, next) {
     const schema = Joi.object({
-        mentorName: Joi.string().required(),
-        mentorNumber: Joi.string().required(),
+        mentorFirstName: Joi.string().required(),
+        mentorLastName: Joi.string().required(),
         tlfNumber: Joi.string().required(),
         email: Joi.string().email().required(),
         mentorDescription: Joi.string().min(6).required(),
+        industriExpertise: Joi.string().required(),
+        mentorExpertise: Joi.string().required(),
+        workExperience: Joi.string().required()
     });
     validateRequest(req, next, schema);
 }
@@ -183,11 +101,14 @@ function create(req, res, next) {
 
 function updateSchema(req, res, next) {
     const schemaRules = {
-        mentorName: Joi.string().empty(''),
-        mentorNumber: Joi.string().empty(''),
+        mentorFirstName: Joi.string().empty(''),
+        mentorLastName: Joi.string().empty(''),
         tlfNumber: Joi.string().empty(''),
         email: Joi.string().email().empty(''),
-        mentorDescription: Joi.string().empty('')
+        mentorDescription: Joi.string().empty(''),
+        industriExpertise: Joi.string().empty(''),
+        mentorExpertise: Joi.string().empty(''),
+        workExperience: Joi.string().empty('')
     };
   
     const schema = Joi.object(schemaRules).with('password', 'confirmPassword');

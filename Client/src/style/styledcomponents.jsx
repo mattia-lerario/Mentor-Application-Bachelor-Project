@@ -98,15 +98,6 @@ W3Schools.com
 }
 `;
 
-/* ---PROFILE INDEX--- */
-/* File: Index.jsx */
-export const ProfileWrapper = styled.div`
-.Padding{
-    padding: 20px;
-    margin-left: 10px;
-}
-`;
-
 /* ----FORM STYLE ----- */
 export const GlassForm = styled.div`
 
@@ -146,7 +137,7 @@ export const SidebarWrapper = styled.div`
 }
 .Avatar{
     width:120px;
-    border-radius: 0.5rem;
+    border-radius: 50%;
 }
 `;
 
@@ -211,7 +202,6 @@ export const ListWrapper = styled.div`
 }
 .cardBottom{
     border-top: 0.15vw solid #bfbfbf;
-    text-align: center;
 }
 .cardBottom p, .cardBottom button{
     display: inline;
@@ -237,77 +227,161 @@ export const ListWrapper = styled.div`
     margin-left: -1rem;
     margin-right: -1rem;
 }
-
-.Box{
-    padding: 4px;
-    margin: 1.5%;
-    border: 0.1vw solid #bfbfbf;
-    background-color: #e6f2ff;
-    //box-shadow: right bottom fade allsides color;
-    box-shadow: 0.05rem 0.05rem 0.3rem 0.03rem #38507a;
-}
-.Box2{
+.BoxWrapper{
     display:flex;
+    width: 100%;
 }
-
-.MetricsBox{
-    width: 50%;
+.MainBox{
+    display: flex;
+    width: 70%;
+    display: initial;
 }
-.MetricsBox h4, .TimeLog h4, .PRbox h4{
+.Sidebox{
+    float: right;
+    margin-left: 1rem;
+    width: 30%;
+}
+.Box{
+    padding: 0.5rem;
+    background-color: #ecf2f9;
+    border-radius: 3px;
+}
+.PeopleBox table tr td, .PeopleBox table tr th{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align:center;
+}
+.PeopleBox table tr th{
+    color: #38507a;
+    font-size: 3vw;
+}
+.PRbox, .TimeLog, .MetricsBox, .Feed, .Team{
+    margin-top: 1rem;
+}
+.Box h4{
     text-align: center;
     border-bottom: 1px solid #bfbfbf;
-}
-.TimeLog{
-    width: 50%;
 }
 .TimeLog ul{
     margin-left: 1rem;
 }
-.PRbox{
-    width: 97%;
+.Feed .Tooltip .TooltipText {
+    position:relative;
+    margin-right: 0.5rem;
+}
+.Feed h4{
+    padding-bottom: 0.5rem;
+}
+.Feed .TooltipText{
+    right: -2vw;
+    top: 2vw;
+}
+.Feed Link{
+    float: right;
+}
+.Post{
+    background-color: #ffffff;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+#Date{
+    float: right;
+    font-size: 0.7vw;
+}
+#PosterInfo{
+    display: inline-block;
+}
+#PostedBy{
+    font-size: 0.9vw;
+}
+.ProfilePic{
+    border-radius: 50%;
+    width: 5vw;
+}
+.Team{
+}
+.TeamMember{
+    display: inline-block;
+    background-color: #fff;
+    padding: 0.5rem;
+    width: 27%;
+    margin: 0.5rem;
+    border-radius: 4px;
+    height: 80%;
+    text-align: center;
+}
+.TeamMember:hover{
+    //box-shadow: right bottom fade allsides color;
+    box-shadow: 0.1rem 0.1rem 0.3rem 0.04rem #38507a;
+}
+.TeamMember img{
+    width: 100%;
 }
   `;
 
+/* ---POWER RANKING FORM--- */
+/* File: Company/PowerRanking.jsx*/
 export const PRform = styled.div`
-.QuestionBox{
-    margin-top: 2rem;
-    width: 90%;
-    border-bottom: 1px solid black;
-    padding-bottom: 1.5rem;
+.Box{
+    width: 50%;
+    margin-bottom: 1rem;
 }
-.QuestionBox, .Choose{
-    margin-left: 2rem;
-}
-.Choose label{
-    font-size: 2vw;
-}
-.Choose label, .Ranking p, .Comment label, .DateSave label{
-    font-weight: bold;
-    margin-right: 1vw;
-}
-.Question{
-    margin-bottom: 0.5rem;
-}
-.Ranking{
-    display: flex;
-    flex-direction: row;
-    height: 2vw;
-    margin-bottom: 0.5rem;
-}
-.RankingField{
-    width: 3vw;
-}
-.CommentField{
-    width: 90%;
-}
-.DateSave{
-    margin-left: 2rem;
-    margin-top: 2rem;
-    width: 90%;
-}
-.DateField{
+.Date{
     width: 15%;
-    margin-left: 0.5rem;
 }
-
   `;
+
+/* ---PROFILE INFO WRAPPER--- */
+/* File: Profile/Details.jsx */
+export const ProfileWrapper = styled.div`
+.ProfileWrapper{
+    display: flex;
+    margin-top: 1vw;
+}
+.MentorInfoBox{
+    border-radius: 3px;
+    background-color: #ecf2f9;
+    width: 70%;
+    padding: 1vw;
+}
+.Section{
+    margin-top: 2rem;
+}
+.Section h5{
+    border-bottom: 1px solid #48679d;
+}
+.Section ul{
+    margin-left: 1rem;
+}
+img{
+    border-radius: 50%;
+    width: 20vw;
+}
+.ProfileInfo{
+    float: right;
+    margin-left: 1vw;
+}
+.Center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.ContactDetails p{
+    margin: 0;
+}
+.ContactDetails button{
+    border: none;
+    background: none;
+}
+.AreaExpertise{
+    display: inline-block;
+    background-color: #38507a;
+    color: white;
+    border-radius: 3px;
+    width: auto;
+    margin: 0.3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+`;

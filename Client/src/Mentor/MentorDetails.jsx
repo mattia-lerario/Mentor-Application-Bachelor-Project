@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 import { mentorService } from '@/_services';
 
-import {CompanyWrapper} from '../style/styledcomponents';
+import {ProfileWrapper} from '../style/styledcomponents';
+import {AiFillPhone} from 'react-icons/ai';
+import {HiOutlineMail} from 'react-icons/hi';
+import avatar from '../media/avatar.jpg'
 
 
 function MentorDetails({ history, match}) {
@@ -18,25 +21,56 @@ function MentorDetails({ history, match}) {
    
     return (
 
-        <CompanyWrapper>
+        <ProfileWrapper>
+             <section className="ProfileWrapper">
+                    <article className="MentorInfoBox">
 
-            <a href="javascript:history.back()">Go Back</a>
+            <button><a href="javascript:history.back()">Go Back</a></button>
         
             {mentor && mentor.filter(mentor => mentor.id === mentorId).map(mentor => 
-                <article key={mentor.id}>
 
-                    <section>
-                        <h1>{mentor.mentorName}</h1>
-                    </section>
+                <article key = {mentor.id}>
 
-                    <section>
-                        <h4>Bio</h4>
-                        <p>{mentor.mentorDescription}</p>
-                    </section>
-                </article>
+                <img className="Center" src={avatar}></img>
+                <section className="ContactDetails">
+                    <h3 className="Center">{mentor.mentorName}</h3>
+                    <button className="Center"><HiOutlineMail/>{mentor.email}</button>
+                    <button className="Center" /*onClick={phone}*/><AiFillPhone/>123 45 678</button>
+                </section>
+                     
+                 
+                 <section className="Section">
+                     <h5>Bio</h5>
+                     <p>{mentor.mentorDescription}</p>
+                     <p>Description of person(current job, education, experience)</p>
+                 </section>
+                 <section className="Section">
+                     <h5>Skills</h5>
+                     <p>Description of skills</p>
+                 </section>
+                 <section className="Section">
+                     <h5>Areas of expertise:</h5>
+                     <p className="AreaExpertise">Area1</p>
+                     <p className="AreaExpertise">Area2</p>
+                     <p className="AreaExpertise">Area3</p>
+                 </section>
+                 <section className="Section">
+                     <h5>Work experience:</h5>
+                     <dl>
+                         <dt>Job Title 1</dt>
+                             <dd>- Employer/Company</dd>
+                             <p>Description</p>
+                         <dt>Job Title 2</dt>
+                             <dd>- Employer Company</dd>
+                             <p>Description</p>
+                     </dl>
+                 </section>
+             </article>
             )}
+            </article>
+        </section>
 
-        </CompanyWrapper>
+        </ProfileWrapper>
     );
 }    
 

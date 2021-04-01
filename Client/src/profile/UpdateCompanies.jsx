@@ -1,40 +1,26 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import React, { useState } from 'react';
+import { Box, Button, Card, CardContent, CircularProgress, Grid, Step, StepLabel, Stepper } from '@material-ui/core';
+import { Field, Form, Formik } from 'formik';
+import {TextField } from 'formik-material-ui';
+import { object } from 'yup';
+import { accountService, companyService, alertService } from '@/_services';
 import * as Yup from 'yup';
 
-import {accountService, companyService, alertService } from '@/_services';
 // eslint-disable-next-line react/prop-types
 function UpdateCompanies({ history, match }) {
     // eslint-disable-next-line react/prop-types
     const { id } = match.params;
-    const isAddMode = !id;
     const user = accountService.userValue;
     
 
     const initialValues = {
-        companyName: 'n',
+        companyName: 'name',
         companyNumber: '999887766',
         tlfNumber: '999887766',
-        salesRevenue: '100000',
+        salesRevenue: '0',
         companyDescription: 'Big company',
         phase:'1',        
     }
-
-    const validationSchema = Yup.object().shape({
-        companyName: Yup.string()
-            .required('Company Name is required'),
-        companyNumber: Yup.string()
-            .required('Company Number is required'),
-        tlfNumber: Yup.string()
-            .required('Tlf is required'),
-        salesRevenue: Yup.string()
-            .required('Sales Revenue is required'),
-        companyDescription: Yup.string()
-            .required("Description of company is Required"),
-        phase: Yup.string()
-            .required("Phase of company is Required")
-    });
 
  function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
@@ -87,76 +73,101 @@ function UpdateCompanies({ history, match }) {
         }
 
     return (
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-            {({ errors, touched, isSubmitting, setFieldValue }) => {
-                useEffect(() => {
-                    if (!isAddMode) {
-                        // get user and set form fields
-                        companyService.getById(id).then(company => {
-                            const fields = ['companyName', 'companyNumber', 'tlfNumber', 'salesRevenue', 'companyDescription', 'phase'];
-                            fields.forEach(field => setFieldValue(field, company[field], false));
-                        });
-                    }
-                }, []);
+        <Card>
+        <CardContent>
+          <FormikStepper initialValues={initialValues}  onSubmit={onSubmit}>{/*onSubmit={async (values) => {
+              await sleep(3000);
+              console.log('values', values);
+          }}>*/}       
+          <FormikStep label="General information" validationSchema={object({
+              companyName: Yup.string()
+              .required('A name is required'),
+              companyNumber: Yup.string()
+              .required('A company needs a number'),
+          })}>
+              <Box paddingBottom={2} width={800}>
+                <Field fullWidth name="companyName" component={TextField} label="Company Name"/>
+              </Box>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="companyNumber" component={TextField} label="Company number"/>
+              </Box>
+            </FormikStep>
 
-                
+            <FormikStep label="Contact Information" validationSchema={object({
+              tlfNumber: Yup.string()
+              .required('A number is required'),
+              salesRevenue: Yup.string()
+              .required('at least 0'),
+          })}>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="salesRevenue" component={TextField} label="Your company's sales revenue"/>
+              </Box>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="tlfNumber" component={TextField} label="Telefon Number"/>
+              </Box>
+            </FormikStep>
+            <FormikStep label="Experience and expertise" validationSchema={object({
+              companyDescription: Yup.string()
+              .required('A description is required'),
+              phase: Yup.string()
+              .required('at least 1'),
+          })}>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="companyDescription" component={TextField} label="Write you'r Bio"/>
+              </Box>
+              <Box paddingBottom={2}>
+                <Field fullWidth name="phase" component={TextField} label="Phase in program">
+                </Field>
+              </Box>
+            </FormikStep>
+            </FormikStepper>
+        </CardContent>
+      </Card>);
+  }
+  export function FormikStep({ children }) {
+      return <>{children}</>;
+  }
+  export function FormikStepper({ children, ...props }) {
+    const childrenArray = React.Children.toArray(children);
+    const [step, setStep] = useState(0);
+    const currentChild = childrenArray[step];
+    const [completed, setCompleted] = useState(false);
+    function isLastStep() {
+        return step === childrenArray.length - 1;
+    }
+    return (<Formik {...props} validationSchema={currentChild.props.validationSchema} onSubmit={async (values, helpers) => {
+            if (isLastStep()) {
+                await props.onSubmit(values, helpers);
+                setCompleted(true);
+            }
+            else {
+                setStep((s) => s + 1);
+            }
+        }}>
+      {({ isSubmitting }) => (<Form autoComplete="off">
+          <Stepper alternativeLabel activeStep={step}>
+            {childrenArray.map((child, index) => (<Step key={child.props.label} completed={step > index || completed}>
+                <StepLabel>{child.props.label}</StepLabel>
+              </Step>))}
+          </Stepper>
 
-                return (
-                    <Form>
-                        
-                        <div className="form-row">
-                            
-                            <div className="form-group col-5">
-                                <label>Company Name</label>
-                                <Field name="companyName" type="text" className={'form-control' + (errors.companyName && touched.companyName ? ' is-invalid' : '')} />
-                                <ErrorMessage name="companyName" component="div" className="invalid-feedback" />
-                            </div>
-                            <div className="form-group col-5">
-                                <label>Company Number</label>
-                                <Field name="companyNumber" type="text" className={'form-control' + (errors.companyNumber && touched.companyNumber ? ' is-invalid' : '')} />
-                                <ErrorMessage name="companyNumber" component="div" className="invalid-feedback" />
-                            </div>
-                        </div>
-                        <div className="form-row">
-                            <div className="form-group col-7">
-                                <label>Phone Number</label>
-                                <Field name="tlfNumber" type="text" className={'form-control' + (errors.tlfNumber && touched.tlfNumber ? ' is-invalid' : '')} />
-                                <ErrorMessage name="tlfNumber" component="div" className="invalid-feedback" />
-                            </div>
+          {currentChild}
 
-                            <div className="form-group col-7">
-                                <label>Sales Revenue</label>
-                                <Field name="salesRevenue" type="text" className={'form-control' + (errors.salesRevenue && touched.salesRevenue ? ' is-invalid' : '')} />
-                                <ErrorMessage name="salesRevenue" component="div" className="invalid-feedback" />
-                            </div>
-                            <div className="form-group col-7">
-                                <label>Company Description</label>
-                                <Field component="textarea" name="companyDescription" type="text" className={'form-control' + (errors.companyDescription && touched.companyDescription ? ' is-invalid' : '')} />
-                                <ErrorMessage name="companyDescription" component="div" className="invalid-feedback" />
-                            </div>
-                            <div className="form-group col-7">
-                                <label>Phase</label>
-                                <Field name="phase" type="text" className={'form-control' + (errors.phase && touched.phase ? ' is-invalid' : '')} />
-                                <ErrorMessage name="phase" component="div" className="invalid-feedback" />
-                            </div>
-
-
-                        </div>
-                        
-                        <div className="form-group">
-                            <button type="submit" disabled={isSubmitting} className={'Btn BtnMain'}>
-                                {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
-                                Save
-                            </button>
-                            <Link to={isAddMode ? '.' : '..'} className={'Btn BtnSimple'}>Cancel</Link>
-                        </div>
-                        
-                       
-                    </Form>
-                );
-            }}
-        </Formik>
-    );
+          <Grid container spacing={2}>
+            {step > 0 ? (<Grid item>
+                <Button disabled={isSubmitting} variant="contained" color="primary" onClick={() => setStep((s) => s - 1)}>
+                  Back
+                </Button>
+              </Grid>) : null}
+            <Grid item>
+              
+              <Button startIcon={isSubmitting ? <CircularProgress size="1rem"/> : null} disabled={isSubmitting} variant="contained" color="primary" type="submit">
+                {isSubmitting ? 'Submitting' : isLastStep() ? 'Submit' : 'Next'}
+              </Button>
+            </Grid>
+          </Grid>
+        </Form>)}
+    </Formik>);
 }
 
 export { UpdateCompanies };

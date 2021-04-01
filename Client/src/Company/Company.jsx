@@ -9,7 +9,7 @@ import { companyService, accountService } from '@/_services';
 //icons
 import {HiOutlineMail} from 'react-icons/hi';
 import {AiFillPhone, AiOutlineNumber} from 'react-icons/ai';
-import {GrScheduleNew} from 'react-icons/gr';
+import {BiCalendarPlus} from 'react-icons/bi';
 
 // eslint-disable-next-line react/prop-types
 function CompanyList({ match }) {
@@ -69,9 +69,18 @@ function CompanyList({ match }) {
                     </Link>
 
                     <section className="cardBottom">
-                        <button><HiOutlineMail/></button>
-                        <button onClick={phone}><AiFillPhone/></button>
-                        <button onClick={schedule}><GrScheduleNew/></button>
+                        <Link to={`${path}/updateMentor`} className={'Tooltip'}>    
+                            <HiOutlineMail/>
+                            <span className={'TooltipText'}>Send email</span>
+                        </Link>
+                        <Link onClick={phone} className={'Tooltip'}>    
+                            <AiFillPhone/>
+                            <span className={'TooltipText'}>Make call</span>
+                        </Link>
+                        <Link onClick={schedule} className={'Tooltip'}>    
+                            <BiCalendarPlus/>
+                            <span className={'TooltipText'}>Book meeting</span>
+                        </Link>
                         <p><AiOutlineNumber/>{company.phase}</p>
                     </section>                    
                 </article>

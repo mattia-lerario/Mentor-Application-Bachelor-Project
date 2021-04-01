@@ -49,44 +49,6 @@ async function revokeToken({ token, ipAddress }) {
     await refreshToken.save();
 }
 
-/*async function register(params, origin) {
-    // validate
-    if (await db.mentors.findOne({ email: params.email })) {
-        // send already registered error in email to prevent mentorsModel enumeration
-        return await sendAlreadyRegisteredEmail(params.email, origin);
-    }
-
-    // create mentorsModel object
-    const mentorsModel = new db.Mentors(params);
-
-    // first registered mentorsModel is an admin
-    const isFirstmentorsModel = (await db.Mentors.countDocuments({})) === 0;
-    mentorsModel.role = isFirstmentorsModel ? Role.Admin : Role.User;
-    mentorsModel.verificationToken = randomTokenString();
-
-    // hash password
-    mentorsModel.passwordHash = hash(params.password);
-
-    // save mentorsModel
-    await mentorsModel.save();
-
-    // send email
-    await sendVerificationEmail(mentorsModel, origin);
-}*/
-
-/*async function verifyEmail({ token }) {
-    const mentorsModel = await db.Mentors.findOne({ verificationToken: token });
-
-    if (!mentorsModel) throw 'Verification failed';
-
-    mentorsModel.verified = Date.now();
-    mentorsModel.verificationToken = undefined;
-    await mentorsModel.save();
-}*/
-
-/*async function forgotPassword({ email }, origin) {
-    const mentorsModel = await db.Mentors.findOne({ email });
-}*/
 
 async function getAll() {
     const mentorsModels = await db.Mentor.find();
@@ -202,7 +164,7 @@ function randomTokenString() {
   };*/
 
 function basicDetails(mentorsModel) {
-    const {id, mentorName, mentorNumber, tlfNumber,email,mentorDescription, account } = mentorsModel;
-    return {id, mentorName, mentorNumber, tlfNumber,email,mentorDescription, account };
+    const {id, mentorFirstName, mentorLastName, tlfNumber,email,mentorDescription,industriExpertise,mentorExpertise,workExperience,account} = mentorsModel;
+    return {id, mentorFirstName, mentorLastName, tlfNumber,email,mentorDescription,industriExpertise,mentorExpertise,workExperience,account};
 }
 
