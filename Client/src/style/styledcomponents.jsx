@@ -150,18 +150,17 @@ export const ListWrapper = styled.div`
 
 .card{
     flex: 3;
+    width: 30%;
+    height: 15%;
+    margin: 0.5rem;
+    display: inline-block;
     background: linear-gradient(
       to right bottom,
       rgba(255, 255, 255, 0.7),
       rgba(255, 255, 255, 0.3)
         );
-    width: 30%;
-    height: 15%;
-    margin: 0.5rem;
-    display: inline-block;
     //box-shadow: right bottom fade allsides color;
     box-shadow: 0.09rem 0.19rem 0.5rem 0.1rem #38507a;
-    filter: grayscale(50%);
     padding-left: 4px;
     padding-top: 4px;
     padding-right: 5px;
@@ -346,6 +345,10 @@ export const PRform = styled.div`
     justify-content: center;
     margin-right: auto;
     margin-left:auto;
+}
+.Next{
+    display:flex;
+    float: right;
 }
   `;
 
