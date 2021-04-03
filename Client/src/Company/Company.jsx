@@ -52,6 +52,7 @@ function CompanyList({ match }) {
                 {company && company.filter(company => company.leadMentor.includes(mentorId)).map(company => 
                 
                 <article key={company.id} className="card">
+                    
                 <Link className={'noLink'}to={`${path}/companyDetails/${company.id}`}>
                     
                     <section className="cardTop">

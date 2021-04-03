@@ -14,7 +14,7 @@ import {PRform} from '../style/styledcomponents';
 function PowerRanking({history}) {
     
     const [companies, setCompanies] = useState(null);
-    
+   
     useEffect(() => {
         companyService.getAll().then(x => setCompanies(x));
     }, []);
@@ -64,12 +64,6 @@ function PowerRanking({history}) {
         <Card>
         <CardContent>
         <FormikStepper initialValues={initialValues}  onSubmit={onSubmit}>
-              
-              {/*onSubmit={onSubmit}  onSubmit={async (values) => {
-              await sleep(3000);
-              console.log('values', values);
-          }}>*/} 
-
           <FormikStep label="Company and date">
               <Box paddingBottom={2}>
 
@@ -104,7 +98,7 @@ function PowerRanking({history}) {
               </Box>
               <Box className="Box">
                 <InputLabel> Comment for question 1</InputLabel>
-                <TextareaAutosize className="TextArea" name="comment1" rowsMin={3} placeholder="Write a comment"/>
+                <TextareaAutosize className="TextArea" name="comment1" rowsMin={3} component={TextField} placeholder="Write a comment"/>
               </Box>
             </FormikStep>
 {/*--------------------------------------------------Step 2-----------------------------------------------------------*/}
@@ -128,7 +122,7 @@ function PowerRanking({history}) {
                 <Field fullWidth name="question1" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
               <Box paddingBottom={2}>
-                <Field fullWidth name="comment1" component={TextField} label="Comment"/>
+                <Field className="TextArea" fullWidth name="comment1" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
 
