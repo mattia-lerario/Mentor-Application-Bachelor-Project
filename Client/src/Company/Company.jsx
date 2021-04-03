@@ -15,6 +15,7 @@ import {BiCalendarPlus} from 'react-icons/bi';
 function CompanyList({ match }) {
     // eslint-disable-next-line react/prop-types
     const { path } = match;
+    console.log(path)
     const [company, setUsers] = useState(null);
 
     const mentorId = accountService.userValue.mentors[0];

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
+import { Link } from 'react-router-dom';
 import { companyService} from '@/_services';
 
 import {CompanyWrapper} from '../style/styledcomponents';
@@ -12,14 +12,12 @@ import {BsPlusCircleFill} from 'react-icons/bs';
 
 function CompanyDetails({ match }) {
     const { path } = match;
+    
     const [totalHours, setTotalHours] = useState(0);
 
     const { id } = match.params;
     const companyId = id;
     const [company, setUsers] = useState(null);
-
-    const { path } = match;
-
 
     function sumHours(timeLogList) {
         const reducer = (hr, currentValue) => hr + currentValue.hours;   
@@ -57,11 +55,11 @@ function CompanyDetails({ match }) {
                         {company.companyImg} {/*Not working, but is supposed to show the image saved in the database on the specific company */}                    
                     </section>
 
-                    <Link to={`${path}/updateWorkingHoursMentor`} className={'BtnLink'}>
+                    <Link to={`${path}/updateWorkingHoursMentor/${company.id}`} className={'BtnLink'}>
                     <button type="button" className={'Btn BtnMain Right'}>Update Hours</button>
                     </Link>
                     
-                    <Link to={`${path}/powerranking`} className={'BtnLink'}>
+                    <Link to={`${path}/directPowerRanking/${company.id}`} className={'BtnLink'}>
                     <button type="button" className={'Btn BtnMain Right'}>Power ranking</button>
                     </Link>
 
@@ -81,6 +79,7 @@ function CompanyDetails({ match }) {
                             
                             <section className="Box PRbox">
                                 <h4>Section for power ranking</h4>
+                               
                                 {company.powerRanking && company.powerRanking.map(pr =>
                                 <article
                                 key = {pr.date}>
@@ -118,16 +117,15 @@ function CompanyDetails({ match }) {
                             <section className="Box PeopleBox">
                                 <h4>People</h4>
                                 <table>
-                                    <tr>
+            
                                         <th>6</th>
                                         <th>6</th>
                                         <th>6</th>
-                                    </tr>
-                                    <tr>
+                                  
                                         <td>Employees</td>
                                         <td>Advisors</td>
                                         <td>Mentors</td>
-                                    </tr>
+                                  
                                 </table>
                             </section>
                             <section className="Box MetricsBox">

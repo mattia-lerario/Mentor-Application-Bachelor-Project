@@ -327,6 +327,9 @@ export const PRform = styled.div`
     width: 70%;
     margin-bottom: 2rem;
 }
+.NotVisible{
+    display:none;
+}
 .TextArea{
     margin: auto;
     width: 100%;
