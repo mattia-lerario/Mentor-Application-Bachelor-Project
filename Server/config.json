@@ -1,5 +1,5 @@
 ﻿{
-    "connectionString": "mongodb://127.0.0.1/node-mongo-signup-verification-api",
+    "connectionString": "mongodb://localhost/node-mongo-signup-verification-api",
     "secret": "issecret",
     "emailFrom": "mattia@leratechsolutions.com",
     "smtpOptions": {
