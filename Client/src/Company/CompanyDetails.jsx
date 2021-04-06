@@ -140,16 +140,16 @@ function CompanyDetails({ match }) {
                                     </section>
                                 </section>
                             <section className="Box PRbox">
-                                <h4>Section for power ranking</h4>
+                                <h4>Mentor Comments</h4>
                                
                                 {company.powerRanking && company.powerRanking.map(pr =>
                                 <article
                                 key = {pr.date}>
-                                    <p>{pr.question1}</p>
+                                    <p>Question1</p>
                                     <p>{pr.comment1}</p>
                                     { /*<br></br>
                                         <BarChart data={data}></BarChart>*/}
-                                    <p>{pr.question2}</p>
+                                    <p>Question2</p>
                                     <p>{pr.comment2}</p>
                                 </article>
                                 )}
