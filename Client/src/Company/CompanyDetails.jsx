@@ -1,23 +1,34 @@
 import React, { useState, useEffect } from 'react';
-
 import { Link } from 'react-router-dom';
-import { companyService} from '@/_services';
-
+import {BarChart} from '@/_components';
+import { companyService } from '@/_services';
+//style
 import {CompanyWrapper} from '../style/styledcomponents';
-
 //img
 import avatar from '../media/avatar.jpg'
 //icons
 import {BsPlusCircleFill} from 'react-icons/bs';
 
 function CompanyDetails({ match }) {
-    const { path } = match;
+   // const { path } = match;
     
     const [totalHours, setTotalHours] = useState(0);
-
+    const [q1, setQuestion1] = useState(0);
+    const [q2, setQuestion2] = useState(0);
+    const [q3, setQuestion3] = useState(0);
+    const [q4, setQuestion4] = useState(0);
+    const [q5, setQuestion5] = useState(0);
+    const [q6, setQuestion6] = useState(0);
+    const [q7, setQuestion7] = useState(0);
+    const [q8, setQuestion8] = useState(0);
+    let comp = company;
+    const { path } = match;
     const { id } = match.params;
     const companyId = id;
     const [company, setUsers] = useState(null);
+    let graphData = [];
+    
+
 
     function sumHours(timeLogList) {
         const reducer = (hr, currentValue) => hr + currentValue.hours;   
@@ -25,25 +36,69 @@ function CompanyDetails({ match }) {
         setTotalHours(hours);
     }
 
+    function graphDataSet(Ranking) {
+      console.log(Ranking)
+        setQuestion1(parseInt(Ranking.question1));
+        setQuestion2(parseInt(Ranking.question2));
+        setQuestion3(parseInt(Ranking.question3));
+        setQuestion4(parseInt(Ranking.question4));
+        setQuestion5(parseInt(Ranking.question5));
+        setQuestion6(parseInt(Ranking.question6));
+        setQuestion7(parseInt(Ranking.question7));
+        setQuestion8(parseInt(Ranking.question8));
+    }
+   
+         
+    
+
     useEffect(() => {
         companyService.getAll().then(x => setUsers(x));
     }, []);
 
+ 
+
     useEffect(() => {
          
-        async function fetchData() {
+       async function fetchData() {
             
             if(!company)return;
             const comp = (await company.find(c => c.id === companyId));
             
-            sumHours(comp.hoursSpendtOnCompany);
-
-            ranking(comp.powerRanking);
+            graphDataSet(comp.powerRanking[comp.powerRanking.length-1]);
+            sumHours(comp.hoursSpendtOnCompany);            
         }
         fetchData();
-        
+       
     }, [company]);
     
+   graphData = [
+  {
+    label: 'Series 1',
+    data: [
+      { primary: " AS", secondary: q1.toString()},
+      { primary: "Tollit AS", secondary:q2.toString() },
+      { primary: "Smart Cognition AS", secondary: q3.toString() },
+      { primary: "Elevate AS", secondary: q4.toString()},
+      { primary: "LeadX AS", secondary: q5.toString()},
+        { primary: "Boxeez AS", secondary: q6.toString() },
+      { primary: "RoadGuard AS", secondary: q7.toString() },
+      { primary: "Volur AS", secondary: q8.toString() },
+      { primary: "Leratech Solutions", secondary: q1.toString() }
+           ],
+  }
+   ];
+    var chartOptions = {
+    scales: {
+      yAxes: [{
+          ticks: {
+              beginAtZero:true,
+              min: 0,
+              max: 6    
+          }
+        }]
+     }
+}
+        
 
     return (
 
@@ -70,7 +125,7 @@ function CompanyDetails({ match }) {
                     </section>
 
 
-                    <article className="BoxWrapper">
+                    <article key={company.id} className="BoxWrapper">
 
                         <section className="MainBox">
                             <section className="Box Details">
@@ -93,7 +148,7 @@ function CompanyDetails({ match }) {
                                     <p>{pr.comment2}</p>
                                 </article>
                                 )}
-                            </section>
+                            </section>, BarChart
 
                             <section className="Box Feed">
                             <Link to={`${path}/updateMentor`} className={'Tooltip'}>  
@@ -188,8 +243,11 @@ function CompanyDetails({ match }) {
                     </article>
 
                 </article>
-            )}
 
+                
+            )}
+            <BarChart options={chartOptions} companyData={graphData} />
+            
         </CompanyWrapper>
     );
 }    
