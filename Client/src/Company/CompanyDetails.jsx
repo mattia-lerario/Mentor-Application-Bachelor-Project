@@ -35,8 +35,10 @@ function CompanyDetails({ match }) {
             
             if(!company)return;
             const comp = (await company.find(c => c.id === companyId));
-
+            
             sumHours(comp.hoursSpendtOnCompany);
+
+            ranking(comp.powerRanking);
         }
         fetchData();
         
