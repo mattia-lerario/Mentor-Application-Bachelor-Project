@@ -78,11 +78,11 @@ function CompanyDetails({ match }) {
     label: 'Series 1',
     data: [
       { primary: " AS", secondary: q1.toString()},
-      { primary: "Tollit AS", secondary:q2.toString() },
+      { primary: "Tollit AS", secondary:q2.toString()},
       { primary: "Smart Cognition AS", secondary: q3.toString() },
       { primary: "Elevate AS", secondary: q4.toString()},
       { primary: "LeadX AS", secondary: q5.toString()},
-        { primary: "Boxeez AS", secondary: q6.toString() },
+      { primary: "Boxeez AS", secondary: q6.toString() },
       { primary: "RoadGuard AS", secondary: q7.toString() },
       { primary: "Volur AS", secondary: q8.toString() },
       { primary: "Leratech Solutions", secondary: q1.toString() }
@@ -135,7 +135,7 @@ function CompanyDetails({ match }) {
                                 <p>{company.CompanyDetails}</p>
                                 <p>Description</p>
                             </section>
-                            
+                            <BarChart options={chartOptions} companyData={graphData} />
                             <section className="Box PRbox">
                                 <h4>Section for power ranking</h4>
                                 {company.powerRanking && company.powerRanking.map(pr =>
@@ -248,7 +248,7 @@ function CompanyDetails({ match }) {
 
                 
             )}
-            <BarChart options={chartOptions} companyData={graphData} />
+            
             
         </CompanyWrapper>
     );
