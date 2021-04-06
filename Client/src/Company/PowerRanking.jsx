@@ -11,8 +11,9 @@ import * as Yup from 'yup';
 
 import {PRform} from '../style/styledcomponents';
 
-function PowerRanking({history}) {
-    
+function PowerRanking({history,match}) {
+  const { id } = match.params;
+  const isAddMode = !id;
     const [companies, setCompanies] = useState(null);
     
     useEffect(() => {
@@ -46,17 +47,20 @@ function PowerRanking({history}) {
     }
 
    function onSubmit(fields, {setSubmitting }) {
-        console.log(fields.companyId);
-        companyService.createPowerRanking(fields.companyId, fields)    
-        .then(() => {
-            alertService.success('Create successful', { keepAfterRouteChange: true });
-            history.push('.');
-        })
-        .catch(error => {
-            console.log(error);
-            setSubmitting(false);
-            alertService.error(error);
-        });
+     console.log(fields.companyId);
+     
+       companyService.createPowerRanking(fields.companyId, fields)
+         .then(() => {
+           alertService.success('Information Updated', { keepAfterRouteChange: true });
+           // eslint-disable-next-line react/prop-types
+           history.push('.');
+         })
+         .catch(error => {
+           console.log(error);
+           setSubmitting(false);
+           alertService.error(error);
+         });
+     
     }  
 
     return (

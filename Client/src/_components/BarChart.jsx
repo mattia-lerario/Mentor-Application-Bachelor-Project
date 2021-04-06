@@ -1,55 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { accountService,companyService  } from '@/_services';
 import { Chart } from 'react-charts';
 
-
-
-function BarChart({match}) {
- const user = accountService.userValue;
-  
-  
-  
+// eslint-disable-next-line react/prop-types
+function BarChart({companyData}) {
  
-  let [datas, setData] = useState({});
-
+  let [data, setData] = useState(0);
  
 
   useEffect(() => {
-   
-   setData([
-      {
-        label: 'Series 1',
-        data: [
-          { primary: "Baby Sensors AS", secondary: 1 },
-          { primary: "Tollit AS", secondary: 1 },
-          { primary: "Smart Cognition AS", secondary: 1 },
-        ],
-      },
-      {
-        label: 'Series 2',
-        data: [
-          { primary: "Elevate AS", secondary: 3 },
-          { primary: "LeadX AS", secondary: 2 },
-          { primary: "Boxeez AS", secondary: 1 },
-        ],
-      },
-      {
-        label: 'Series 3',
-        data: [
-          { primary: "RoadGuard AS", secondary: 2 },
-          { primary: "Volur AS", secondary: 1 },
-          { primary: "Leratech Solutions", secondary: 1 },
-        ],
-      }
-    ]);
-      
-      
+
+     setData(companyData);
+     
   });
-   
-   
-  
-        
-  
   
   const series = React.useMemo(
     () => ({
@@ -57,25 +19,26 @@ function BarChart({match}) {
     }),
     []
   );
+
   const axes = React.useMemo(
     () => [
-      { primary: true, type: "ordinal", position: "bottom" },
-      { position: "left", type: "linear", stacked: false }
+      { primary: true, type: "ordinal", position: "left" },
+      { position: "bottom", type: "linear", stacked: true },
+      
     ],
     []
   );
+  
+
   return (
-    
     <>
-       
         <div
        style={{
          width: '500px',
-         height: '500px',
+         height: '600px',
        }}
       >
-       
-        <Chart data={datas} series={series} axes={axes} tooltip />
+        <Chart data={data} series={series} axes={axes} tooltip />
        
       </div>
     </>
