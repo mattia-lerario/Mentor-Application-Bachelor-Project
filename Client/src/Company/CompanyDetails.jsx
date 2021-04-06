@@ -81,7 +81,7 @@ function CompanyDetails({ match }) {
       { primary: "Tollit AS", secondary:q2.toString() },
       { primary: "Smart Cognition AS", secondary: q3.toString() },
       { primary: "Elevate AS", secondary: q4.toString()},
-      { primary: "LeadX AS", secondary: 6},
+      { primary: "LeadX AS", secondary: q5.toString()},
         { primary: "Boxeez AS", secondary: q6.toString() },
       { primary: "RoadGuard AS", secondary: q7.toString() },
       { primary: "Volur AS", secondary: q8.toString() },
