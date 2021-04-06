@@ -133,7 +133,12 @@ function CompanyDetails({ match }) {
                                 <p>{company.CompanyDetails}</p>
                                 <p>Description</p>
                             </section>
-                            <BarChart options={chartOptions} companyData={graphData} />
+                            <section className="MainBox">
+                                 <section className="Box Details">
+                                 <h4>Power Ranking Results</h4>
+                                    <BarChart options={chartOptions} companyData={graphData} />
+                                    </section>
+                                </section>
                             <section className="Box PRbox">
                                 <h4>Section for power ranking</h4>
                                
