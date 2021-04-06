@@ -11,16 +11,13 @@ import * as Yup from 'yup';
 
 import {PRform} from '../style/styledcomponents';
 
-function PowerRanking({history,match}) {
-  const { id } = match.params;
-  const isAddMode = !id;
-    const [companies, setCompanies] = useState(null);
-   
-    useEffect(() => {
-        companyService.getAll().then(x => setCompanies(x));
-    }, []);
+function DirectPowerRanking({history, match}) {
+
+    const  {id}  = match.params;
+    const companyId = id;
 
     const initialValues = {
+      
         question1: 1,
         comment1: 'Comment',
         question2: 1,
@@ -47,20 +44,17 @@ function PowerRanking({history,match}) {
     }
 
    function onSubmit(fields, {setSubmitting }) {
-     console.log(fields.companyId);
-     
-       companyService.createPowerRanking(fields.companyId, fields)
-         .then(() => {
-           alertService.success('Information Updated', { keepAfterRouteChange: true });
-           // eslint-disable-next-line react/prop-types
-           history.push('.');
-         })
-         .catch(error => {
-           console.log(error);
-           setSubmitting(false);
-           alertService.error(error);
-         });
-     
+        
+        companyService.createPowerRanking(companyId, fields)    
+        .then(() => {
+            alertService.success('Create successful', { keepAfterRouteChange: true });
+            history.push('/companies/');
+        })
+        .catch(error => {
+            console.log(error);
+            setSubmitting(false);
+            alertService.error(error);
+        });
     }  
 
     return (
@@ -68,20 +62,11 @@ function PowerRanking({history,match}) {
         <Card>
         <CardContent>
         <FormikStepper initialValues={initialValues}  onSubmit={onSubmit}>
-          <FormikStep label="Company and date">
-              <Box paddingBottom={2}>
 
-              <Field name="companyId" as="select" label="Choose company">
-                   
-                    <option key="blank" value="blank"></option>
-                        {companies && companies.map(company =>
-                    <option key={company.id} value ={company.id}>{company.companyName}</option>)}
-              </Field>
-
-              </Box>
+          <FormikStep label="Date">
               <Box className="Box Date">
               <InputLabel id="demo-simple-select-label">Date of examination</InputLabel>
-                <Field fullWidth name="date" type="date" component={TextField}/>
+                <Field fullWidth name="date" type="date" component={TextField}/>              
               </Box>
             </FormikStep>
 
@@ -102,7 +87,8 @@ function PowerRanking({history,match}) {
               </Box>
               <Box className="Box">
                 <InputLabel> Comment for question 1</InputLabel>
-                <TextareaAutosize className="TextArea" name="comment1" rowsMin={3} component={TextField} placeholder="Write a comment"/>
+                <Field className="TextArea" name="comment1" component={TextField} />
+                {/*<TextareaAutosize className="TextArea" name="comment1" component={TextField}/>*/}
               </Box>
             </FormikStep>
 {/*--------------------------------------------------Step 2-----------------------------------------------------------*/}
@@ -116,17 +102,20 @@ function PowerRanking({history,match}) {
               .required('Please give a comment to this rating'),
           })}>
             <Box>
-              <label> Is the positioning of the proiduct offering good enough to make a difference in the market?
-                Do the offering have the needed competitive edge?
-                Is the offering scalable?
-                How unique is the offering compared to others in the market?
+              <label> 
+                  <ul>
+                <li>Is the positioning of the product offering good enough to make a difference in the market?</li>
+                <li>Do the offering have the needed competitive edge?</li>
+                <li>Is the offering scalable?</li>
+                <li>How unique is the offering compared to others in the market?</li>
+                </ul>
               </label>
             </Box>
               <Box paddingBottom={2}>
                 <Field fullWidth name="question1" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
               <Box paddingBottom={2}>
-                <Field className="TextArea" fullWidth name="comment1" component={TextField} label="Comment"/>
+                <Field fullWidth name="comment1" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
 
@@ -334,4 +323,4 @@ function PowerRanking({history,match}) {
     </Formik>);
 }
 
-export { PowerRanking };
+export { DirectPowerRanking };

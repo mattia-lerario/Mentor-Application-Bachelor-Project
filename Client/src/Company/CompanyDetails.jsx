@@ -10,6 +10,8 @@ import avatar from '../media/avatar.jpg'
 import {BsPlusCircleFill} from 'react-icons/bs';
 
 function CompanyDetails({ match }) {
+   // const { path } = match;
+    
     const [totalHours, setTotalHours] = useState(0);
     const [q1, setQuestion1] = useState(0);
     const [q2, setQuestion2] = useState(0);
@@ -60,14 +62,10 @@ function CompanyDetails({ match }) {
        async function fetchData() {
             
             if(!company)return;
-             comp = (await company.find(c => c.id === companyId));
-             graphDataSet(comp.powerRanking[comp.powerRanking.length-2]);
-            sumHours(comp.hoursSpendtOnCompany);
+            const comp = (await company.find(c => c.id === companyId));
             
-            
-            
-            
-            
+            graphDataSet(comp.powerRanking[comp.powerRanking.length-1]);
+            sumHours(comp.hoursSpendtOnCompany);            
         }
         fetchData();
        
@@ -114,11 +112,11 @@ function CompanyDetails({ match }) {
                         {company.companyImg} {/*Not working, but is supposed to show the image saved in the database on the specific company */}                    
                     </section>
 
-                    <Link to={`${path}/updateWorkingHoursMentor`} className={'BtnLink'}>
+                    <Link to={`${path}/updateWorkingHoursMentor/${company.id}`} className={'BtnLink'}>
                     <button type="button" className={'Btn BtnMain Right'}>Update Hours</button>
                     </Link>
                     
-                    <Link to={`${path}/powerranking`} className={'BtnLink'}>
+                    <Link to={`${path}/directPowerRanking/${company.id}`} className={'BtnLink'}>
                     <button type="button" className={'Btn BtnMain Right'}>Power ranking</button>
                     </Link>
 
@@ -138,6 +136,7 @@ function CompanyDetails({ match }) {
                             <BarChart options={chartOptions} companyData={graphData} />
                             <section className="Box PRbox">
                                 <h4>Section for power ranking</h4>
+                               
                                 {company.powerRanking && company.powerRanking.map(pr =>
                                 <article
                                 key = {pr.date}>
@@ -175,16 +174,15 @@ function CompanyDetails({ match }) {
                             <section className="Box PeopleBox">
                                 <h4>People</h4>
                                 <table>
-                                    <tr>
+            
                                         <th>6</th>
                                         <th>6</th>
                                         <th>6</th>
-                                    </tr>
-                                    <tr>
+                                  
                                         <td>Employees</td>
                                         <td>Advisors</td>
                                         <td>Mentors</td>
-                                    </tr>
+                                  
                                 </table>
                             </section>
                             <section className="Box MetricsBox">

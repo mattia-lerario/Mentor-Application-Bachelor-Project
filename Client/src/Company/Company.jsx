@@ -15,6 +15,7 @@ import {BiCalendarPlus} from 'react-icons/bi';
 function CompanyList({ match }) {
     // eslint-disable-next-line react/prop-types
     const { path } = match;
+    console.log(path)
     const [company, setUsers] = useState(null);
 
     const mentorId = accountService.userValue.mentors[0];
@@ -51,6 +52,7 @@ function CompanyList({ match }) {
                 {company && company.filter(company => company.leadMentor.includes(mentorId)).map(company => 
                 
                 <article key={company.id} className="card">
+                    
                 <Link className={'noLink'}to={`${path}/companyDetails/${company.id}`}>
                     
                     <section className="cardTop">
