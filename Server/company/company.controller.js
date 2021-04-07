@@ -112,6 +112,8 @@ function createPowerRanking(req, res, next) {
         .catch(next);
 }
 
+
+
 function powerRankingSchema(req, res, next){
     const schema = Joi.object({
         date: Joi.date().required(),

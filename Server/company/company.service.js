@@ -105,7 +105,31 @@ async function createPowerRankingCompany(params) {
     if (!company) {
         throw 'Company ID = "' + params.id + '" is not found';
     }
+    if (company.powerRanking > 0) {
+        company.powerRanking.findByIdAndUpdate(params.id, { $push: { powerRanking:{
+            question1: params.question1,
+            comment1: params.comment1,
+            question2: params.question2,
+            comment2: params.comment2,
+            question3: params.question3,
+            comment3: params.comment3,
+            question4: params.question4,
+            comment4: params.comment4,
+            question5: params.question5,
+            comment5: params.comment5,
+            question6: params.question6,
+            comment6: params.comment6,
+            question7: params.question7,
+            comment7: params.comment7,
+            question8: params.question8,
+            comment8: params.comment8,
+            quarter: params.quarter,
+            year: params.date
     
+        }} },
+      { new: true, useFindAndModify: true });
+    } else {
+        
     company.powerRanking.push({
         question1: params.question1,
         comment1:params.comment1,
@@ -127,7 +151,7 @@ async function createPowerRankingCompany(params) {
         year: params.date
     
     });
-    
+    }
     // save account
     await company.save();
     return basicDetails(company);

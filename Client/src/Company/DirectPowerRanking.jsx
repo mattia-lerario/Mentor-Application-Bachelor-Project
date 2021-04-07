@@ -9,18 +9,15 @@ import { object } from 'yup';
 import { companyService, alertService } from '@/_services';
 import * as Yup from 'yup';
 
-import {StepFormWrapper} from '../style/styledcomponents';
+import {PRform} from '../style/styledcomponents';
 
-function PowerRanking({history,match}) {
-  const { id } = match.params;
-  const isAddMode = !id;
-    const [companies, setCompanies] = useState(null);
-   
-    useEffect(() => {
-        companyService.getAll().then(x => setCompanies(x));
-    }, []);
+function DirectPowerRanking({history, match}) {
+
+    const  {id}  = match.params;
+    const companyId = id;
 
     const initialValues = {
+      
         question1: 1,
         comment1: 'Comment',
         question2: 1,
@@ -47,48 +44,35 @@ function PowerRanking({history,match}) {
     }
 
    function onSubmit(fields, {setSubmitting }) {
-     console.log(fields.companyId);
-     
-       companyService.createPowerRanking(fields.companyId, fields)
-         .then(() => {
-           alertService.success('Information Updated', { keepAfterRouteChange: true });
-           // eslint-disable-next-line react/prop-types
-           history.push('.');
-         })
-         .catch(error => {
-           console.log(error);
-           setSubmitting(false);
-           alertService.error(error);
-         });
-     
+        
+        companyService.createPowerRanking(companyId, fields)    
+        .then(() => {
+            alertService.success('Create successful', { keepAfterRouteChange: true });
+            history.push('/companies/');
+        })
+        .catch(error => {
+            console.log(error);
+            setSubmitting(false);
+            alertService.error(error);
+        });
     }  
 
     return (
-      <StepFormWrapper>
+      <PRform>
         <Card>
         <CardContent>
         <FormikStepper initialValues={initialValues}  onSubmit={onSubmit}>
-          <FormikStep label="Company and date">
-              <Box className="Date Margin">
-              <label>Choose a company </label>
-              <br/>
-              <Field name="companyId" as="select" label="Choose company" className="DropDown">
-                   
-                    <option key="blank" value="blank"></option>
-                        {companies && companies.map(company =>
-                    <option key={company.id} value ={company.id}>{company.companyName}</option>)}
-              </Field>
 
-              </Box>
-              <Box className="Date Margin">
+          <FormikStep label="Date">
+              <Box className="Box Date">
               <InputLabel id="demo-simple-select-label">Date of examination</InputLabel>
-                <Field fullWidth name="date" type="date" component={TextField}/>
+                <Field fullWidth name="date" type="date" component={TextField}/>              
               </Box>
             </FormikStep>
 
 {/*--------------------------------------------------Step 1-----------------------------------------------------------*/}
               
-          <FormikStep className="Step" label="Question 1" validationSchema={object({
+          <FormikStep label="Question 1" validationSchema={object({
               question1: Yup.number()
               .required('Questions must be answered with a value from 1 to 6')
               .positive('It must be a positive number')
@@ -96,19 +80,15 @@ function PowerRanking({history,match}) {
               comment1: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-          <Box className="Question Margin">
-            <label>
-              Do the team have the necessary drive and execution power to reach the company goals, formal 
-              background to execute key tasks, complementary CV (tech and business), ability to take feedback from mentors and  
-              an overall underatsing of the challenges should be taken into account in building a great company?
-            </label>
+          <Box paddingBottom={1}>
           </Box>
-              <Box className="Rating Margin">
+              <Box className="Box">
                 <Field fullWidth name="question1" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
               <Box className="Box">
                 <InputLabel> Comment for question 1</InputLabel>
-                <TextareaAutosize className="TextArea" name="comment1" rowsMin={3} component={TextField} placeholder="Write a comment"/>
+                <Field className="TextArea" name="comment1" component={TextField} />
+                {/*<TextareaAutosize className="TextArea" name="comment1" component={TextField}/>*/}
               </Box>
             </FormikStep>
 {/*--------------------------------------------------Step 2-----------------------------------------------------------*/}
@@ -121,19 +101,21 @@ function PowerRanking({history,match}) {
               comment1: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-            <Box className="Question Margin">
+            <Box>
               <label> 
-                Is the positioning of the product offering good enough to make a difference in the market?
-                Do the offering have the needed competitive edge?
-                Is the offering scalable?
-                How unique is the offering compared to others in the market?
+                  <ul>
+                <li>Is the positioning of the product offering good enough to make a difference in the market?</li>
+                <li>Do the offering have the needed competitive edge?</li>
+                <li>Is the offering scalable?</li>
+                <li>How unique is the offering compared to others in the market?</li>
+                </ul>
               </label>
             </Box>
-              <Box className="Rating Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="question1" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
               <Box paddingBottom={2}>
-                <Field className="TextArea" fullWidth name="comment1" component={TextField} label="Comment"/>
+                <Field fullWidth name="comment1" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
 
@@ -146,17 +128,17 @@ function PowerRanking({history,match}) {
               comment3: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-            <Box className="Question Margin">
+            <Box>
               <label>
-                Is the target market large enough?
-                Is there attractive follow on market? 
-                Is it possible for the company to grow outside the Nordics? 
+              Is the target market large enough?
+              Is there attractive follow on market? 
+              Is it possible for the company to grow outside the Nordics? 
               </label>
             </Box>
-              <Box className="Rating Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="question3" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box className="Comment Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="comment3" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -169,17 +151,10 @@ function PowerRanking({history,match}) {
               comment4: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-            <Box  className="Question Margin">
-              <label>
-                Is the company on track to deliver on it's milestones?
-                Do the company as a whole have the necessary drive and traction in the market, 
-                customer traction in form of early orders, paid pilots, etc.?
-              </label>
-            </Box>
-              <Box className="Rating Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="question4" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box className="Comment Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="comment4" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -192,16 +167,10 @@ function PowerRanking({history,match}) {
               comment5: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-            <Box className="Question Margin">
-              <label>
-                Do the company have the vision and drive to capture the full potential of it's offering and it's opportunity?
-                Do the company have the ability to be on time with it's work and manage it's daily work the correct way?
-              </label>
-            </Box>
-              <Box className="Rating Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="question5" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box className="Comment Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="comment5" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -215,16 +184,10 @@ function PowerRanking({history,match}) {
               comment6: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-            <Box className="Question Margin">
-              <label>
-                Is it sufficient tech know-how in the company to be able to execute the product vision?
-                Is the company able to put drawing on a paper into coding?
-              </label>
-            </Box>
-              <Box className="Rating Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="question6" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box className="Comment Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="comment6" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -237,16 +200,10 @@ function PowerRanking({history,match}) {
               comment7: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-            <Box className="Question Margin">
-              <label>
-                Do the company have an overview and understanding of it's market?
-                Is the company capuring feedback from the market? (references not only positive)
-              </label>
-            </Box>
-              <Box className="Rating Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="question7" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box className="Comment Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="comment7" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -259,16 +216,10 @@ function PowerRanking({history,match}) {
               comment8: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-            <Box className="Question Margin">
-              <label>
-                Is the company performing on sales growth metrics?
-                Below 20% growth Y/Y is a score = 1. 
-              </label>
-            </Box>
-              <Box className="Rating Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="question8" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box className="Comment Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="comment8" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -281,16 +232,10 @@ function PowerRanking({history,match}) {
               comment9: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-            <Box className="Question Margin">
-              <label>
-                Is the timing right for introducing the offering or is the company too late to the party?
-                How is the competitive picture and has this been done before? 
-              </label>
-            </Box>
-              <Box className="Rating Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="question9" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box className="Comment Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="comment9" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -303,16 +248,10 @@ function PowerRanking({history,match}) {
               comment10: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-            <Box className="Question Margin">
-              <label>
-                Is the company contributing to solving global sustainability challenges? 
-                How well is that captured in their strategy?
-              </label>
-            </Box>
-              <Box className="Rating Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="question10" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box className="Comment Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="comment10" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -325,22 +264,17 @@ function PowerRanking({history,match}) {
               comment11: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-            <Box className="Question Margin">
-              <label>
-
-              </label>
-            </Box>
-              <Box className="Rating Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="question11" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box className="Comment Margin">
+              <Box paddingBottom={2}>
                 <Field fullWidth name="comment11" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
             </FormikStepper>
         </CardContent>
       </Card>
-      </StepFormWrapper>);
+      </PRform>);
   }
   
   export function FormikStep({ children }) {
@@ -389,4 +323,4 @@ function PowerRanking({history,match}) {
     </Formik>);
 }
 
-export { PowerRanking };
+export { DirectPowerRanking };
