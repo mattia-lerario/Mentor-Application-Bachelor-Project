@@ -338,7 +338,8 @@ export const StepFormWrapper = styled.div`
     border: 1px solid #ddd;
 }
 .Comment{
-    width: 50%;
+    text-align: center;
+    width: 80%;
 }
 .Email, .Number{
     width: 30%;

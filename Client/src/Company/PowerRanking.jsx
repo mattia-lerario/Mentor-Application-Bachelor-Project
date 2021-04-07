@@ -106,9 +106,9 @@ function PowerRanking({history,match}) {
               <Box className="Rating Margin">
                 <Field fullWidth name="question1" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box className="Box">
-                <InputLabel> Comment for question 1</InputLabel>
-                <TextareaAutosize className="TextArea" name="comment1" rowsMin={3} component={TextField} placeholder="Write a comment"/>
+              <Box className="Comment Margin">
+                <InputLabel> Comment </InputLabel>
+                <TextareaAutosize className="Comment" name="comment1" rowsMin={3} component={TextField} placeholder="Write a comment"/>
               </Box>
             </FormikStep>
 {/*--------------------------------------------------Step 2-----------------------------------------------------------*/}
@@ -132,8 +132,9 @@ function PowerRanking({history,match}) {
               <Box className="Rating Margin">
                 <Field fullWidth name="question1" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box paddingBottom={2}>
-                <Field className="TextArea" fullWidth name="comment1" component={TextField} label="Comment"/>
+              <Box className="Comment Margin">
+                <InputLabel> Comment </InputLabel>
+                <TextareaAutosize className="Comment" name="comment2" rowsMin={3} component={TextField} placeholder="Write a comment"/>
               </Box>
             </FormikStep>
 
@@ -157,7 +158,8 @@ function PowerRanking({history,match}) {
                 <Field fullWidth name="question3" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
               <Box className="Comment Margin">
-                <Field fullWidth name="comment3" component={TextField} label="Comment"/>
+                <InputLabel> Comment </InputLabel>
+                <TextareaAutosize className="Comment" name="comment3" rowsMin={3} component={TextField} placeholder="Write a comment"/>
               </Box>
             </FormikStep>
 {/*--------------------------------------------------Step 4-----------------------------------------------------------*/}
@@ -180,7 +182,8 @@ function PowerRanking({history,match}) {
                 <Field fullWidth name="question4" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
               <Box className="Comment Margin">
-                <Field fullWidth name="comment4" component={TextField} label="Comment"/>
+                <InputLabel> Comment </InputLabel>
+                <TextareaAutosize className="Comment" name="comment4" rowsMin={3} component={TextField} placeholder="Write a comment"/>
               </Box>
             </FormikStep>
 {/*--------------------------------------------------Step 5-----------------------------------------------------------*/}
@@ -202,7 +205,8 @@ function PowerRanking({history,match}) {
                 <Field fullWidth name="question5" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
               <Box className="Comment Margin">
-                <Field fullWidth name="comment5" component={TextField} label="Comment"/>
+                <InputLabel> Comment </InputLabel>
+                <TextareaAutosize className="Comment" name="comment5" rowsMin={3} component={TextField} placeholder="Write a comment"/>
               </Box>
             </FormikStep>
 
@@ -225,7 +229,8 @@ function PowerRanking({history,match}) {
                 <Field fullWidth name="question6" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
               <Box className="Comment Margin">
-                <Field fullWidth name="comment6" component={TextField} label="Comment"/>
+                <InputLabel> Comment </InputLabel>
+                <TextareaAutosize className="Comment" name="comment6" rowsMin={3} component={TextField} placeholder="Write a comment"/>
               </Box>
             </FormikStep>
 {/*--------------------------------------------------Step 7-----------------------------------------------------------*/}
@@ -247,7 +252,8 @@ function PowerRanking({history,match}) {
                 <Field fullWidth name="question7" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
               <Box className="Comment Margin">
-                <Field fullWidth name="comment7" component={TextField} label="Comment"/>
+                <InputLabel> Comment </InputLabel>
+                <TextareaAutosize className="Comment" name="comment7" rowsMin={3} component={TextField} placeholder="Write a comment"/>
               </Box>
             </FormikStep>
 {/*--------------------------------------------------Step 8-----------------------------------------------------------*/}
@@ -269,7 +275,8 @@ function PowerRanking({history,match}) {
                 <Field fullWidth name="question8" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
               <Box className="Comment Margin">
-                <Field fullWidth name="comment8" component={TextField} label="Comment"/>
+                <InputLabel> Comment </InputLabel>
+                <TextareaAutosize className="Comment" name="comment8" rowsMin={3} component={TextField} placeholder="Write a comment"/>
               </Box>
             </FormikStep>
 {/*--------------------------------------------------Step 9-----------------------------------------------------------*/}
@@ -291,7 +298,8 @@ function PowerRanking({history,match}) {
                 <Field fullWidth name="question9" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
               <Box className="Comment Margin">
-                <Field fullWidth name="comment9" component={TextField} label="Comment"/>
+                <InputLabel> Comment </InputLabel>
+                <TextareaAutosize className="Comment" name="comment9" rowsMin={3} component={TextField} placeholder="Write a comment"/>
               </Box>
             </FormikStep>
 {/*--------------------------------------------------Step 10-----------------------------------------------------------*/}
@@ -313,7 +321,8 @@ function PowerRanking({history,match}) {
                 <Field fullWidth name="question10" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
               <Box className="Comment Margin">
-                <Field fullWidth name="comment10" component={TextField} label="Comment"/>
+                <InputLabel> Comment </InputLabel>
+                <TextareaAutosize className="Comment" name="comment10" rowsMin={3} component={TextField} placeholder="Write a comment"/>
               </Box>
             </FormikStep>
 {/*--------------------------------------------------Step 11-----------------------------------------------------------*/}
@@ -334,7 +343,8 @@ function PowerRanking({history,match}) {
                 <Field fullWidth name="question11" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
               <Box className="Comment Margin">
-                <Field fullWidth name="comment11" component={TextField} label="Comment"/>
+                <InputLabel> Comment </InputLabel>
+                <TextareaAutosize className="Comment" name="comment11" rowsMin={3} component={TextField} placeholder="Write a comment"/>
               </Box>
             </FormikStep>
             </FormikStepper>
