@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 
 import { accountService, alertService } from '@/_services';
 
-function ResetPassword({ history }) {
+function ResetPassword({ ...history }) {
     const TokenStatus = {
         Validating: 'Validating',
         Valid: 'Valid',

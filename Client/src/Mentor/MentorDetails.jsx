@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { mentorService } from '@/_services';
 
+import { Link } from 'react-router-dom';
 import {ProfileWrapper} from '../style/styledcomponents';
 import {AiFillPhone} from 'react-icons/ai';
 import {HiOutlineMail} from 'react-icons/hi';
@@ -25,7 +26,7 @@ function MentorDetails({ history, match}) {
              <section className="ProfileWrapper">
                     <article className="MentorInfoBox">
 
-            <button><a href="javascript:history.back()">Go Back</a></button>
+            <Link to="/mentors" className={'BtnSimple BtnBack'}>Back</Link>
         
             {mentor && mentor.filter(mentor => mentor.id === mentorId).map(mentor => 
 

@@ -52,9 +52,9 @@ function Sidebar(){
         </aside>
       </SidebarWrapper>
     )
-  
-    }
- /*if(user.role === "Mentor"){
+  }
+
+  if(user.role === "Mentor"){
 
     return (
       <SidebarWrapper>
