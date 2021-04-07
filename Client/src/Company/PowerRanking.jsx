@@ -9,7 +9,7 @@ import { object } from 'yup';
 import { companyService, alertService } from '@/_services';
 import * as Yup from 'yup';
 
-import {PRform} from '../style/styledcomponents';
+import {PRform, PRFormBtnWrapper} from '../style/styledcomponents';
 
 function PowerRanking({history,match}) {
   const { id } = match.params;
@@ -69,7 +69,7 @@ function PowerRanking({history,match}) {
         <CardContent>
         <FormikStepper initialValues={initialValues}  onSubmit={onSubmit}>
           <FormikStep label="Company and date">
-              <Box paddingBottom={2}>
+              <Box className="Box">
 
               <Field name="companyId" as="select" label="Choose company">
                    
@@ -122,10 +122,10 @@ function PowerRanking({history,match}) {
                 How unique is the offering compared to others in the market?
               </label>
             </Box>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="question1" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field className="TextArea" fullWidth name="comment1" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -146,10 +146,10 @@ function PowerRanking({history,match}) {
               Is it possible for the company to grow outside the Nordics? 
               </label>
             </Box>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="question3" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="comment3" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -162,10 +162,10 @@ function PowerRanking({history,match}) {
               comment4: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="question4" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="comment4" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -178,10 +178,10 @@ function PowerRanking({history,match}) {
               comment5: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="question5" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="comment5" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -195,10 +195,10 @@ function PowerRanking({history,match}) {
               comment6: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="question6" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="comment6" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -211,10 +211,10 @@ function PowerRanking({history,match}) {
               comment7: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="question7" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="comment7" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -227,10 +227,10 @@ function PowerRanking({history,match}) {
               comment8: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="question8" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="comment8" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -243,10 +243,10 @@ function PowerRanking({history,match}) {
               comment9: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="question9" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="comment9" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -259,10 +259,10 @@ function PowerRanking({history,match}) {
               comment10: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="question10" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="comment10" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -275,10 +275,10 @@ function PowerRanking({history,match}) {
               comment11: Yup.string()
               .required('Please give a comment to this rating'),
           })}>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="question11" type="number" component={TextField} label="Rate from 1-6"/>
               </Box>
-              <Box paddingBottom={2}>
+              <Box className="Box">
                 <Field fullWidth name="comment11" component={TextField} label="Comment"/>
               </Box>
             </FormikStep>
@@ -316,7 +316,7 @@ function PowerRanking({history,match}) {
           </Stepper>
 
           {currentChild}
-
+          <PRFormBtnWrapper>
           <Grid container spacing={2}>
             {step > 0 ? (<Grid item>
                 <Button disabled={isSubmitting} variant="contained" color="primary" onClick={() => setStep((s) => s - 1)}>
@@ -325,11 +325,12 @@ function PowerRanking({history,match}) {
               </Grid>) : null}
             <Grid item>
               
-              <Button startIcon={isSubmitting ? <CircularProgress size="1rem"/> : null} disabled={isSubmitting} variant="contained" color="primary" type="submit">
+              <Button className="NextSubmitBtn" startIcon={isSubmitting ? <CircularProgress size="1rem"/> : null} disabled={isSubmitting} variant="contained" color="primary" type="submit">
                 {isSubmitting ? 'Submitting' : isLastStep() ? 'Submit' : 'Next'}
               </Button>
             </Grid>
           </Grid>
+          </PRFormBtnWrapper>
         </Form>)}
     </Formik>);
 }
