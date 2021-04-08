@@ -338,7 +338,8 @@ export const StepFormWrapper = styled.div`
     border: 1px solid #ddd;
 }
 .Comment{
-    width: 50%;
+    text-align: center;
+    width: 80%;
 }
 .Email, .Number{
     width: 30%;
@@ -361,6 +362,26 @@ export const StepFormWrapper = styled.div`
     float: right;
 }
   `;
+
+  
+/* ---POWER RANKING FORM--- */
+/* File: Company/PowerRanking.jsx*/
+export const StepFormButtonsWrapper = styled.div`
+    .Button{
+        float: right;
+        color: white;
+        background-color: #38507a;
+        margin: 0.5rem;
+    }
+    .Button:hover{
+        background-color: #283957;
+    }
+    .Next{
+        float: right;
+        text-align: right;
+    }
+
+`;
 
 /* ---PROFILE INFO WRAPPER--- */
 /* File: Profile/Details.jsx */
