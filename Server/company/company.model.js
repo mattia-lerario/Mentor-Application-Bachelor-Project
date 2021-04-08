@@ -51,7 +51,7 @@ const schema = new Schema({
         comment10: {type:String},
         comment11: {type:String},
         quarter: {type: Number, min: 0, max: 6},
-        year: {type: Date}, 
+        year: {type: Date, default: Date.now},
         }],
         developCheckList:[
         {

@@ -116,7 +116,6 @@ function createPowerRanking(req, res, next) {
 
 function powerRankingSchema(req, res, next){
     const schema = Joi.object({
-        date: Joi.date().required(),
         question1: Joi.number().required(),
         question2: Joi.number().required(),
         question3: Joi.number().required(),

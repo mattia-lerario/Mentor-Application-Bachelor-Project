@@ -63,9 +63,10 @@ function CompanyDetails({ match }) {
             
             if(!company)return;
             const comp = (await company.find(c => c.id === companyId));
-            
+           
+            sumHours(comp.hoursSpendtOnCompany); 
             graphDataSet(comp.powerRanking[comp.powerRanking.length-1]);
-            sumHours(comp.hoursSpendtOnCompany);            
+            //sumHours(comp.hoursSpendtOnCompany);            
         }
         fetchData();
        
@@ -75,15 +76,15 @@ function CompanyDetails({ match }) {
   {
     label: 'Series 1',
     data: [
-      { primary: " AS", secondary: q1.toString()},
-      { primary: "Tollit AS", secondary:q2.toString() },
-      { primary: "Smart Cognition AS", secondary: q3.toString() },
-      { primary: "Elevate AS", secondary: q4.toString()},
-      { primary: "LeadX AS", secondary: q5.toString()},
-        { primary: "Boxeez AS", secondary: q6.toString() },
-      { primary: "RoadGuard AS", secondary: q7.toString() },
-      { primary: "Volur AS", secondary: q8.toString() },
-      { primary: "Leratech Solutions", secondary: q1.toString() }
+      { primary: "Question 1", secondary: q1.toString()},
+      { primary: "Question 2", secondary:q2.toString() },
+      { primary: "Question 3", secondary: q3.toString() },
+      { primary: "Question 4", secondary: q4.toString()},
+      { primary: "Question 5", secondary: q5.toString()},
+        { primary: "Question 6", secondary: q6.toString() },
+      { primary: "Question 7", secondary: q7.toString() },
+      { primary: "Question 8", secondary: q8.toString() },
+      { primary: "Question 1", secondary: q1.toString() }
            ],
   }
    ];
@@ -148,7 +149,7 @@ function CompanyDetails({ match }) {
                                     <p>{pr.comment2}</p>
                                 </article>
                                 )}
-                            </section>, BarChart
+                            </section>
 
                             <section className="Box Feed">
 

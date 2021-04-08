@@ -123,9 +123,7 @@ async function createPowerRankingCompany(params) {
             comment7: params.comment7,
             question8: params.question8,
             comment8: params.comment8,
-            quarter: params.quarter,
-            year: params.date
-    
+            quarter: params.quarter,    
         }} },
       { new: true, useFindAndModify: true });
     } else {
@@ -147,9 +145,7 @@ async function createPowerRankingCompany(params) {
         comment7:params.comment7,
         question8: params.question8,
         comment8:params.comment8,
-        quarter:params.quarter,
-        year: params.date
-    
+        quarter:params.quarter,    
     });
     }
     // save account
