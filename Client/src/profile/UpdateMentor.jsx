@@ -49,7 +49,7 @@ function UpdateMentor({ history, match }) {
         
             mentorService.create(user.id, fields)
             .then(() => {
-                alertService.success('Create successful', { keepAfterRouteChange: true });
+                alertService.success('Create successful', { keepAfterRouteChange: true});
                 // eslint-disable-next-line react/prop-types
                 history.push('.');
             })
