@@ -151,12 +151,13 @@ function CompanyDetails({ match }) {
                             </section>, BarChart
 
                             <section className="Box Feed">
+
                             <Link to={`${path}/updateMentor`} className={'Tooltip'}>  
                                 <BsPlusCircleFill/> 
                                 <span className={'TooltipText'}>Add post</span>
                             </Link>
+                            
                                 <h4>Feed</h4>
-
                                 <section className="Post">
                                     <section id="PosterInfo">
                                         <img className="ProfilePic" src={avatar}></img>
