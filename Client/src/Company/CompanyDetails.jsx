@@ -10,7 +10,7 @@ import avatar from '../media/avatar.jpg'
 import {BsPlusCircleFill} from 'react-icons/bs';
 
 function CompanyDetails({ match }) {
-   // const { path } = match;
+    const { path } = match;
     
     const [totalHours, setTotalHours] = useState(0);
     const [q1, setQuestion1] = useState(0);
@@ -22,7 +22,7 @@ function CompanyDetails({ match }) {
     const [q7, setQuestion7] = useState(0);
     const [q8, setQuestion8] = useState(0);
     let comp = company;
-    const { path } = match;
+    //const { path } = match;
     const { id } = match.params;
     const companyId = id;
     const [company, setUsers] = useState(null);

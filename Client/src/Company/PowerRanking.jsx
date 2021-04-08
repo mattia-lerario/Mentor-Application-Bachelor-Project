@@ -9,7 +9,7 @@ import { object } from 'yup';
 import { companyService, alertService } from '@/_services';
 import * as Yup from 'yup';
 
-import {StepFormWrapper,  PRFormBtnWrapper} from '../style/styledcomponents';
+import {StepFormWrapper} from '../style/styledcomponents';
 
 function PowerRanking({history,match}) {
   const { id } = match.params;
@@ -370,7 +370,6 @@ function PowerRanking({history,match}) {
           </Stepper>
 
           {currentChild}
-          <PRFormBtnWrapper>
           <Grid container spacing={2}>
             {step > 0 ? (<Grid item>
                 <Button disabled={isSubmitting} variant="contained" color="primary" onClick={() => setStep((s) => s - 1)}>
@@ -384,7 +383,6 @@ function PowerRanking({history,match}) {
               </Button>
             </Grid>
           </Grid>
-          </PRFormBtnWrapper>
         </Form>)}
     </Formik>);
 }

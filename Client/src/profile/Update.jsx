@@ -74,6 +74,14 @@ function Update({ history }) {
                         <section  className="Center">
                             <h1>Update Profile</h1>
                             <div className="FormRow">
+                                
+                                <div className="form-group">
+                                    <label for="file">File upload</label>
+                                    <input id="file" name="file" type="file" onChange={(event) => {
+                                        setFieldValue("file", event.currentTarget.files[0]);
+                                        }} className="form-control" />
+                                </div>
+
                                 <div>
                                     <label>Title</label>
                                     <Field name="title" as="select" className={'FormGroups' + (errors.title && touched.title ? ' is-invalid' : '')}>

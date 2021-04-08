@@ -9,7 +9,7 @@ import { object } from 'yup';
 import { companyService, alertService } from '@/_services';
 import * as Yup from 'yup';
 
-import {PRform} from '../style/styledcomponents';
+import {StepFormWrapper} from '../style/styledcomponents';
 
 function DirectPowerRanking({history, match}) {
 
@@ -58,7 +58,7 @@ function DirectPowerRanking({history, match}) {
     }  
 
     return (
-      <PRform>
+      <StepFormWrapper>
         <Card>
         <CardContent>
         <FormikStepper initialValues={initialValues}  onSubmit={onSubmit}>
@@ -274,7 +274,7 @@ function DirectPowerRanking({history, match}) {
             </FormikStepper>
         </CardContent>
       </Card>
-      </PRform>);
+      </StepFormWrapper>);
   }
   
   export function FormikStep({ children }) {
