@@ -40,7 +40,6 @@ function DirectPowerRanking({history, match}) {
         comment10: ' Write Comment here',
         question11: 1,
         comment11: ' Write Comment here',
-        date: '',
     }
 
    function onSubmit(fields, {setSubmitting }) {
@@ -62,13 +61,6 @@ function DirectPowerRanking({history, match}) {
         <Card>
         <CardContent>
         <FormikStepper initialValues={initialValues}  onSubmit={onSubmit}>
-
-          <FormikStep label="Date">
-              <Box className="Box Date">
-              <InputLabel id="demo-simple-select-label">Date of examination</InputLabel>
-                <Field fullWidth name="date" type="date" component={TextField}/>              
-              </Box>
-            </FormikStep>
 
 {/*--------------------------------------------------Step 1-----------------------------------------------------------*/}
               
