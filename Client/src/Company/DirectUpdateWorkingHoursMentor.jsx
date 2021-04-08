@@ -78,7 +78,7 @@ function DirectUpdateWorkingHoursMentor({ history,match }) {
                                 {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
                                 Save
                             </button>
-                            <Link to={isAddMode ? '.' : '..'} className={'BtnSimple'}>Cancel</Link>
+                            <Link to={"/companies/companyDetails/" + companyId} className={'BtnSimple'}>Cancel</Link>
                             </div>
                     </Form> 
                 );
