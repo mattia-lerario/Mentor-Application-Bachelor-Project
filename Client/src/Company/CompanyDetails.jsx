@@ -138,17 +138,19 @@ function CompanyDetails({ match }) {
                             <section className="Box PRbox">
                                 <h4>Section for power ranking</h4>
                                
+                                <BarChart options={chartOptions} companyData={graphData} />
+
+                                {/* 
                                 {company.powerRanking && company.powerRanking.map(pr =>
                                 <article
                                 key = {pr.date}>
                                     <p>{pr.question1}</p>
                                     <p>{pr.comment1}</p>
-                                    { /*<br></br>
-                                        <BarChart data={data}></BarChart>*/}
                                     <p>{pr.question2}</p>
                                     <p>{pr.comment2}</p>
                                 </article>
                                 )}
+                                    */}
                             </section>
 
                             <section className="Box Feed">
@@ -176,15 +178,16 @@ function CompanyDetails({ match }) {
                             <section className="Box PeopleBox">
                                 <h4>People</h4>
                                 <table>
-            
+                                    <tr>
                                         <th>6</th>
                                         <th>6</th>
                                         <th>6</th>
-                                  
+                                    </tr>
+                                    <tr>
                                         <td>Employees</td>
                                         <td>Advisors</td>
                                         <td>Mentors</td>
-                                  
+                                    </tr>
                                 </table>
                             </section>
                             <section className="Box MetricsBox">
@@ -248,7 +251,6 @@ function CompanyDetails({ match }) {
 
                 
             )}
-            <BarChart options={chartOptions} companyData={graphData} />
             
         </CompanyWrapper>
     );
