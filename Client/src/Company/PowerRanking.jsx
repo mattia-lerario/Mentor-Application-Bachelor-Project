@@ -9,7 +9,7 @@ import { object } from 'yup';
 import { companyService, alertService } from '@/_services';
 import * as Yup from 'yup';
 
-import {StepFormWrapper} from '../style/styledcomponents';
+import {StepFormWrapper, StepFormButtonsWrapper} from '../style/styledcomponents';
 
 function PowerRanking({history,match}) {
   const { id } = match.params;
@@ -108,7 +108,7 @@ function PowerRanking({history,match}) {
               </Box>
               <Box className="Comment Margin">
                 <InputLabel> Comment </InputLabel>
-                <TextareaAutosize className="Comment" name="comment1" rowsMin={3} component={TextField} placeholder="Write a comment"/>
+                <TextareaAutosize className="Comment" name="comment1" rowsMin={3} placeholder="Write a comment"/>
               </Box>
             </FormikStep>
 {/*--------------------------------------------------Step 2-----------------------------------------------------------*/}
@@ -381,20 +381,21 @@ function PowerRanking({history,match}) {
           </Stepper>
 
           {currentChild}
-
-          <Grid container spacing={2}>
-            {step > 0 ? (<Grid item>
-                <Button disabled={isSubmitting} variant="contained" color="primary" onClick={() => setStep((s) => s - 1)}>
-                  Back
-                </Button>
+          
+          <StepFormButtonsWrapper>
+            <Grid container>
+              {step > 0 ? (<Grid item>
+                  <Button disabled={isSubmitting} variant="contained" className="Button" onClick={() => setStep((s) => s - 1)}>
+                    Back
+                  </Button>
               </Grid>) : null}
-            <Grid item>
-              
-              <Button startIcon={isSubmitting ? <CircularProgress size="1rem"/> : null} disabled={isSubmitting} variant="contained" color="primary" type="submit">
-                {isSubmitting ? 'Submitting' : isLastStep() ? 'Submit' : 'Next'}
-              </Button>
+              <Grid item>
+                <Button startIcon={isSubmitting ? <CircularProgress size="1rem"/> : null} disabled={isSubmitting} variant="contained" className="Button Next" type="submit">
+                  {isSubmitting ? 'Submitting' : isLastStep() ? 'Submit' : 'Next'}
+                </Button>
+              </Grid>
             </Grid>
-          </Grid>
+          </StepFormButtonsWrapper>
         </Form>)}
     </Formik>);
 }

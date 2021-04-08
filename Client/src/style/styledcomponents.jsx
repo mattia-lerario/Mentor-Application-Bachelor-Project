@@ -363,6 +363,26 @@ export const StepFormWrapper = styled.div`
 }
   `;
 
+  
+/* ---POWER RANKING FORM--- */
+/* File: Company/PowerRanking.jsx*/
+export const StepFormButtonsWrapper = styled.div`
+    .Button{
+        float: right;
+        color: white;
+        background-color: #38507a;
+        margin: 0.5rem;
+    }
+    .Button:hover{
+        background-color: #283957;
+    }
+    .Next{
+        float: right;
+        text-align: right;
+    }
+
+`;
+
 /* ---PROFILE INFO WRAPPER--- */
 /* File: Profile/Details.jsx */
 export const ProfileWrapper = styled.div`
