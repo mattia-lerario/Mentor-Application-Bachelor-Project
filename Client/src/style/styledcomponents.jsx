@@ -330,12 +330,16 @@ export const StepFormWrapper = styled.div`
     text-align: center;
 }
 .DropDown{
+    width: 100%;
     border-radius: 4px;
     display: block;
     margin: 5px 10px 5px 0;
     padding: 5px;
     background-color: #fff;
     border: 1px solid #ddd;
+}
+.DropDown option{
+    height: 5rem;
 }
 .Comment{
     text-align: center;
