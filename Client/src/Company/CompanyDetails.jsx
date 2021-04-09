@@ -134,9 +134,14 @@ function CompanyDetails({ match }) {
                                 <p>{company.CompanyDetails}</p>
                                 <p>Description</p>
                             </section>
-                            
+                            <section className="MainBox">
+                                 <section className="Box Details">
+                                 <h4>Power Ranking Results</h4>
+                                    <BarChart options={chartOptions} companyData={graphData} />
+                                    </section>
+                                </section>
                             <section className="Box PRbox">
-                                <h4>Section for power ranking</h4>
+                                <h4>Mentor Comments</h4>
                                
                                 <BarChart options={chartOptions} companyData={graphData} />
 
@@ -144,7 +149,7 @@ function CompanyDetails({ match }) {
                                 {company.powerRanking && company.powerRanking.map(pr =>
                                 <article
                                 key = {pr.date}>
-                                    <p>{pr.question1}</p>
+                                    <p>Question1</p>
                                     <p>{pr.comment1}</p>
                                     <p>{pr.question2}</p>
                                     <p>{pr.comment2}</p>

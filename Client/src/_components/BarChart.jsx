@@ -35,10 +35,13 @@ function BarChart({companyData}) {
         <div
        style={{
          width: '500px',
-         height: '600px',
+          height: '600px',
+          margin: '20px',
+          padding:'20px',
+         background:'darkslategray',
        }}
       >
-        <Chart data={data} series={series} axes={axes} tooltip />
+        <Chart data={data} series={series} axes={axes} tooltip dark />
        
       </div>
     </>

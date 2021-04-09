@@ -5,7 +5,7 @@ import { Chart } from 'react-charts';
 async function MyChart() {
     
     //const companyId = ids.companies;
-  //  const company = await companyService.getAll();
+  //const company = await companyService.getAll();
     
    
    
