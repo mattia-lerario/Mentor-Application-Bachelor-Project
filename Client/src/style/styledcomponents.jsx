@@ -100,12 +100,11 @@ W3Schools.com
 
 /* ----FORM STYLE ----- */
 export const GlassForm = styled.div`
-
 .CardHeaderLogin{
     text-decoration: underline;
     text-align: center;
 }
-.CardBodyLogin{
+.CardBodyLogin, .Email{
     width 20rem;
     margin: auto auto;
 }
@@ -150,18 +149,17 @@ export const ListWrapper = styled.div`
 
 .card{
     flex: 3;
+    width: 30%;
+    height: 15%;
+    margin: 0.5rem;
+    display: inline-block;
     background: linear-gradient(
       to right bottom,
       rgba(255, 255, 255, 0.7),
       rgba(255, 255, 255, 0.3)
         );
-    width: 30%;
-    height: 15%;
-    margin: 0.5rem;
-    display: inline-block;
     //box-shadow: right bottom fade allsides color;
     box-shadow: 0.09rem 0.19rem 0.5rem 0.1rem #38507a;
-    filter: grayscale(50%);
     padding-left: 4px;
     padding-top: 4px;
     padding-right: 5px;
@@ -321,22 +319,69 @@ export const ListWrapper = styled.div`
 
 /* ---POWER RANKING FORM--- */
 /* File: Company/PowerRanking.jsx*/
-export const PRform = styled.div`
-.Box{
-    margin: auto;
-    width: 70%;
-    margin-bottom: 2rem;
+export const StepFormWrapper = styled.div`
+.Margin{
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
 }
-.TextArea{
-    margin: auto;
-    width: 100%;
-    margin-bottom: 2rem;
+.Question{
+    width: 80%;
+    text-align: center;
+}
+.DropDown{
+    border-radius: 4px;
+    display: block;
+    margin: 5px 10px 5px 0;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.Comment{
+    text-align: center;
+    width: 80%;
+}
+.Email, .Number{
+    width: 30%;
 }
 .Date{
     width: 15%;
-    margin: auto;
+    margin-top: 2rem;
+}
+.Rating{
+    width:10%;
+}
+.Step{
+    text-align:center;
+    justify-content: center;
+    margin-right: auto;
+    margin-left:auto;
+}
+.Next{
+    display:flex;
+    float: right;
 }
   `;
+
+  
+/* ---POWER RANKING FORM--- */
+/* File: Company/PowerRanking.jsx*/
+export const StepFormButtonsWrapper = styled.div`
+    .Button{
+        float: right;
+        color: white;
+        background-color: #38507a;
+        margin: 0.5rem;
+    }
+    .Button:hover{
+        background-color: #283957;
+    }
+    .Next{
+        float: right;
+        text-align: right;
+    }
+
+`;
 
 /* ---PROFILE INFO WRAPPER--- */
 /* File: Profile/Details.jsx */

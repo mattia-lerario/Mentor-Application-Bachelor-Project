@@ -9,7 +9,7 @@ import { object } from 'yup';
 import { companyService, alertService } from '@/_services';
 import * as Yup from 'yup';
 
-import {PRform} from '../style/styledcomponents';
+import {StepFormWrapper} from '../style/styledcomponents';
 
 function DirectPowerRanking({history, match}) {
 
@@ -40,7 +40,6 @@ function DirectPowerRanking({history, match}) {
         comment10: ' Write Comment here',
         question11: 1,
         comment11: ' Write Comment here',
-        date: '',
     }
 
    function onSubmit(fields, {setSubmitting }) {
@@ -58,17 +57,10 @@ function DirectPowerRanking({history, match}) {
     }  
 
     return (
-      <PRform>
+      <StepFormWrapper>
         <Card>
         <CardContent>
         <FormikStepper initialValues={initialValues}  onSubmit={onSubmit}>
-
-          <FormikStep label="Date">
-              <Box className="Box Date">
-              <InputLabel id="demo-simple-select-label">Date of examination</InputLabel>
-                <Field fullWidth name="date" type="date" component={TextField}/>              
-              </Box>
-            </FormikStep>
 
 {/*--------------------------------------------------Step 1-----------------------------------------------------------*/}
               
@@ -274,7 +266,7 @@ function DirectPowerRanking({history, match}) {
             </FormikStepper>
         </CardContent>
       </Card>
-      </PRform>);
+      </StepFormWrapper>);
   }
   
   export function FormikStep({ children }) {
