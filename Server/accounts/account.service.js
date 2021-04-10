@@ -116,6 +116,7 @@ async function verifyEmail({ token }) {
     account.verified = Date.now();
     account.verificationToken = undefined;
     await account.save();
+   
 }
 
 async function forgotPassword({ email }, origin) {
