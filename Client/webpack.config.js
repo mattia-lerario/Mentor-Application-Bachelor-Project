@@ -40,7 +40,7 @@ module.exports = {
     externals: {
         // global app config object
         config: JSON.stringify({
-            apiUrl: 'https://leratech.tech:4000'
+            apiUrl: 'https://leratech.tech:443'
         })
     }
 }
