@@ -16,7 +16,8 @@ function Update({ history }) {
         lastName: user.lastName,
         email: user.email,
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        profileImage:null,
     };
 
     const validationSchema = Yup.object().shape({
@@ -41,6 +42,7 @@ function Update({ history }) {
     function onSubmit(fields, { setStatus, setSubmitting }) {
         setStatus();
         console.log(user.id);
+        console.log(fields,"sss");
         accountService.update(user.id, fields)
 
             .then(() => {
@@ -48,8 +50,8 @@ function Update({ history }) {
                 // eslint-disable-next-line react/prop-types
                 history.push('.');
             })
-            
-          .catch(error => {
+            .catch(error => {
+              
                 setSubmitting(false);
                 alertService.error(error);
                 console.log(error)
@@ -58,6 +60,7 @@ function Update({ history }) {
 
     
     const [isDeleting, setIsDeleting] = useState(false);
+    
     function onDelete() {
         if (confirm('Are you sure?')) {
             setIsDeleting(true);
@@ -69,18 +72,19 @@ function Update({ history }) {
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
             {({ errors, touched, isSubmitting }) => (
+
                 <FormWrapper>
+                   
                     <Form>
                         <section  className="Center">
                             <h1>Update Profile</h1>
                             <div className="FormRow">
                                 
                                 <div className="form-group">
-                                    <label for="file">File upload</label>
-                                    <input id="file" name="file" type="file" onChange={(event) => {
-                                        setFieldValue("file", event.currentTarget.files[0]);
-                                        }} className="form-control" />
+                                    <label htmlFor="file">File upload</label>
+                                    <input id="profileImage" name="profileImage" type="file" className="form-control" onChange={(e, selected) => setFieldValue('profileImage',selected.files[0])} />
                                 </div>
+                                <div>{touched.profileImage && errors.profileImage ? errors.profileImage: null }</div>
 
                                 <div>
                                     <label>Title</label>
@@ -138,7 +142,8 @@ function Update({ history }) {
                                 </button>
                                 <Link to="." className={'BtnSimple'}>Cancel</Link>
                         </section>
-                    </Form>
+                        </Form>
+                  
                 </FormWrapper>
                 
             )}
