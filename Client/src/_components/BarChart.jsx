@@ -1,6 +1,5 @@
 import React, { useEffect, useState} from 'react';
 import { Chart } from 'react-charts';
-import { saveAs } from 'file-saver'; 
 // eslint-disable-next-line react/prop-types
 function BarChart({companyData}) {
  
