@@ -13,19 +13,18 @@ function BarChart({companyData}) {
      
   });
 
- function saveChart() {
+  /*
        //save to png
        document.getElementById("Download").addEventListener('click', function(){
-  /*Get image of canvas element*/
+
   var url_base64jpg = document.getElementById("barChartD").toBase64Image();
-  /*get download button (tag: <a></a>) */
+
   var a =  document.getElementById("Download");
-  /*insert chart image url to download button (tag: <a></a>) */
+
          a.href = url_base64jpg;
-         
-});
-   }
-  
+        
+}); 
+*/   
   const series = React.useMemo(
     () => ({
       type: "bar",
