@@ -13,7 +13,7 @@ function BarChart({companyData}) {
      
   });
 
- function saveChart() => {
+ function saveChart() {
        //save to png
        document.getElementById("Download").addEventListener('click', function(){
   /*Get image of canvas element*/
