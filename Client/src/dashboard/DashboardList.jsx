@@ -20,8 +20,8 @@ function DashboardList() {
                 <h1>All Companies</h1>
 
                 {company && company.map(company =>
-
-                <article className="card" key= {company.id}/*onClick={() => alert(company.companyName)}*/>
+                <Link className={'noLink'}to={`${path}/companyDetails/${company.id}`}>
+                <article className="card" key= {company.id}>
                     
                     <section className="cardTop">
                         <img className="cardImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 
@@ -37,6 +37,8 @@ function DashboardList() {
                     </section>
 
                 </article>
+                </Link>
+
                 )}              
         </ListWrapper>
         
