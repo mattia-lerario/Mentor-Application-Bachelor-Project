@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 //Styling
 import {ListWrapper} from '../style/styledcomponents';
 import { companyService } from '@/_services';
+
+import { Link } from 'react-router-dom';
 //icons
 import {AiOutlineNumber} from 'react-icons/ai';
 
-function DashboardList() {
-    //const { path } = match;
+function DashboardList({ match }) {
+    const { path } = match;
     const [company, setUsers] = useState(null);
 
     useEffect(() => {
