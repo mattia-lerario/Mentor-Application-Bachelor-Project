@@ -1,13 +1,17 @@
-import React, {useEffect,useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import { NavLink, Route } from 'react-router-dom';
 import { accountService,companyService  } from '@/_services';
-import {BarChart} from '@/_components';
-
+import { BarChart } from '@/_components';
+import { CompanyDetails } from '../Company/CompanyDetails';
+import { Company } from '../Company';
+import { CompanyWrapper } from '../style/styledcomponents';
+import { Role } from '@/_helpers';
 function Home() {
     const user = accountService.userValue;
-    
-    const companyId = user.companies.id;
-    const [company, setUsers] = useState(null);
   
+    const companyId = user.companies[0];
+    const [company, setUsers] = useState(null);
+
     const graphData = [
   {
     label: 'Series 1',
@@ -34,17 +38,28 @@ function Home() {
     ],
   }
 ];
-
+  console.log(companyId);
   
     
     
-    return (
+  return (
+      
+     
         <section className="main mainMargin scrollhost">
-            <h1>Hi {user.name} </h1>
-            
-                <BarChart companyData={graphData}></BarChart>
-            <br/>    
+      <h1>Hi {user.name} </h1>
+        {
+          user.role === Role.Company &&
+        <NavLink className={'noLink'} to={`/companies/companyDetails/${companyId}`} >
+          <div><p>Go to Company Details</p></div>
+          </NavLink>
+      }
+      
+      {
+          user.role === Role.Mentor &&
+          <NavLink className={'noLink'} to={`/companies/companyDetails/${companyId}`} />
+        }
         </section>
+  
     );
 }
 

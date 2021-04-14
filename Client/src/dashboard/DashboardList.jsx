@@ -22,7 +22,7 @@ function DashboardList({ match }) {
                 <h1>All Companies</h1>
 
                 {company && company.map(company =>
-                <Link className={'noLink'}to={`${path}/companyDetails/${company.id}`}>
+                <Link className={'noLink'}to={`/companies/companyDetails/${company.id}`}>
                 <article className="card" key= {company.id}>
                     
                     <section className="cardTop">
