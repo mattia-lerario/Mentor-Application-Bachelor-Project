@@ -48,7 +48,7 @@ function Nav() {
     );
 }
 
-function AdminNav({ ...match }) {
+function AdminNav({ match }) {
     const { path } = match;
 
     return (
