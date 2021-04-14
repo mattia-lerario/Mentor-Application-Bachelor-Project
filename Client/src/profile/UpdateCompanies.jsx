@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Button, Card, CardContent, CircularProgress, Grid, Step, StepLabel, Stepper } from '@material-ui/core';
 import { Field, Form, Formik } from 'formik';
-import {TextField } from 'formik-material-ui';
+import {SimpleFileUpload, TextField } from 'formik-material-ui';
 import { object } from 'yup';
 import { accountService, companyService, alertService } from '@/_services';
 import * as Yup from 'yup';
@@ -19,7 +19,8 @@ function UpdateCompanies({ history, match }) {
         tlfNumber: '999887766',
         salesRevenue: '0',
         companyDescription: 'Big company',
-        phase:'1',        
+        phase: '1',
+        
     }
 
  function onSubmit(fields, { setStatus, setSubmitting }) {

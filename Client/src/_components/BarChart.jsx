@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
 import { Chart } from 'react-charts';
-
 // eslint-disable-next-line react/prop-types
 function BarChart({companyData}) {
  
@@ -12,10 +11,22 @@ function BarChart({companyData}) {
      setData(companyData);
      
   });
-  
+
+  /*
+       //save to png
+       document.getElementById("Download").addEventListener('click', function(){
+
+  var url_base64jpg = document.getElementById("barChartD").toBase64Image();
+
+  var a =  document.getElementById("Download");
+
+         a.href = url_base64jpg;
+        
+}); 
+*/   
   const series = React.useMemo(
     () => ({
-      type: "bar"
+      type: "bar",
     }),
     []
   );
@@ -28,6 +39,8 @@ function BarChart({companyData}) {
     ],
     []
   );
+
+
   
 
   return (
@@ -41,9 +54,16 @@ function BarChart({companyData}) {
          background:'darkslategray',
        }}
       >
-        <Chart data={data} series={series} axes={axes} tooltip dark />
+        
+   <Chart id="barChartD" data={data} series={series} axes={axes} tooltip dark />
        
+               
+      
+                  
+       
+        
       </div>
+      <a id="Download" download="chart.jpg" href="" className="btn btn-primary float-right bg-flat-color-1">Download As Image</a>
     </>
   );
 }
