@@ -2,10 +2,10 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { MyChart } from '../_components/MyChart';
 import { DashboardList } from './DashboardList';
-import { CompanyDetails } from './CompanyDetails';
+import { CompanyDetails } from './CompanyDetail';
 
 
-function Dashboard({ ...match }) {
+function Dashboard({ match }) {
 
 
     const { path } = match;
@@ -17,7 +17,7 @@ function Dashboard({ ...match }) {
                 <Route path={`${path}/chart`} component={MyChart} />
                 <Route path={`${path}/companies`} component={Dashboard} />
                 <Route path={`${path}/mentors`} component={Dashboard} />
-                <Route path={`${path}/companyDetails/:id`} component={CompanyDetails} />
+                <Route path={`${path}/companyDetail/:id`} component={CompanyDetails} />
             </Switch>
         </section>
     );
