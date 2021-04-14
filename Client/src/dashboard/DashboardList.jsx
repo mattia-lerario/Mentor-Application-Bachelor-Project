@@ -5,6 +5,7 @@ import { companyService } from '@/_services';
 
 import { Link } from 'react-router-dom';
 //icons
+
 import {AiOutlineNumber} from 'react-icons/ai';
 
 function DashboardList({ match }) {
@@ -22,7 +23,7 @@ function DashboardList({ match }) {
                 <h1>All Companies</h1>
 
                 {company && company.map(company =>
-                <Link className={'noLink'}to={`/companies/companyDetails/${company.id}`}>
+                <Link className={'noLink'}to={`${path}/companyDetail/${company.id}`}>
                 <article className="card" key= {company.id}>
                     
                     <section className="cardTop">

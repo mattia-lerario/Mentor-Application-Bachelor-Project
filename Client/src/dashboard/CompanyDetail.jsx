@@ -9,30 +9,16 @@ import avatar from '../media/avatar.jpg'
 //icons
 import {BsPlusCircleFill} from 'react-icons/bs';
 
-function CompanyDetails({ match }) {
-    const { path } = match;        
-    
+function CompanyDetails({match}) {
+    const { id } = match.params;
+    const companyId = id;
+    const [company, setUsers] = useState(null);
+        
 
     useEffect(() => {
         companyService.getAll().then(x => setUsers(x));
     }, []);
 
- 
-
-    useEffect(() => {
-         
-       async function fetchData() {
-            
-            if(!company)return;
-            const comp = (await company.find(c => c.id === companyId));
-           
-            sumHours(comp.hoursSpendtOnCompany); 
-            graphDataSet(comp.powerRanking[comp.powerRanking.length-1]);
-            //sumHours(comp.hoursSpendtOnCompany);            
-        }
-        fetchData();
-       
-    }, [company]);
         
 
     return (
@@ -106,7 +92,6 @@ function CompanyDetails({ match }) {
                                     )}
                                 </ul>
                                     <p><b>Total time used on {company.companyName}</b></p>
-                                    <p>{totalHours}</p>
                             </section>
 
                             <section className="Box Team">
