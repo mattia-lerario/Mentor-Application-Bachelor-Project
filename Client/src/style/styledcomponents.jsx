@@ -18,6 +18,7 @@ List of what elements are getting styled here, in listed order:
 /* ---MENU--- */
 /* File: Nav.jsx */
 export const MenuWrapper = styled.div`
+
 //---makes the background of the menu slategrey
 .MenuBar{
     display:flex;
@@ -29,7 +30,6 @@ export const MenuWrapper = styled.div`
     height: 2vw;
     padding: 0.5rem;
     margin-buttom: 0.5rem;
-    margin-top: -1rem;
 }
 //---making the text in the menu white
 .NavLink{
@@ -52,7 +52,7 @@ export const MenuWrapper = styled.div`
 #AdminLink:hover{
 }
 .Logout{
-}
+} 
 `;
 
 
@@ -114,29 +114,59 @@ export const GlassForm = styled.div`
 /* Files: Nav.jsx, Sidebar.jsx */
 export const SidebarWrapper = styled.div`
 
-//Light blue backgroundcolor and width on the sidebar-menu
-.Sidebar{
-    padding: 1rem;
-    height: 100%;
-    border-top-left-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    border-right: 0.3vw solid #38507a;
-}
-.SideLink {
-    display: block;
+z-index: 1;
+height: 3vw;
+display: flex;
+justify-content: start;
+align-items: center; 
+box-sizing: border-box;
+margin: 0;
+padding 0;
+.menu-bars{
+    margin-left: 2vw;
+    font-size: 2vw;
+    background: none;
     color: black;
 }
-.SideLink:hover {
-    text-decoration: none;
-    font-weight: bolder;
+//Light blue backgroundcolor and width on the sidebar-menu
+.Sidebar{
+    z-index: 1;
+    background-color: #38507a;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: 850ms;
 }
-.Avatar{
-    width:120px;
-    border-radius: 50%;
+.Sidebar.active{
+    left: 0;
+    transition: 350ms;
+}
+.Sidebar.active li{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 8px 5px;
+    list-style: none;
+    height: 5vw;
+}
+.Sidebar li{
+    border-radius: 4px;
+}
+.SideLink {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5vw;
+    display: flex;
+    align-items: center;
+    padding: 0px 16px;
+}
+.Sidebar li:hover {
+    text-decoration: none;
+    background-color: #7d97b2;
 }
 `;
 

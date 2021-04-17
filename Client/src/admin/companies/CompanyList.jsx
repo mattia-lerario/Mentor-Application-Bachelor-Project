@@ -28,7 +28,7 @@ function CompanyList({ match }) {
         <section>
             <Link to="/admin" className={'BtnSimple BtnBack'}>Back</Link>
             <h1>All Companies</h1>
-            <p>ss</p>
+            <p>To assign a mentor to a company you have to edit the company.</p>
            
             <table className={'Table'}>
                 <thead>
