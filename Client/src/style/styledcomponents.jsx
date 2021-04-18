@@ -103,6 +103,7 @@ export const GlassForm = styled.div`
 .CardHeaderLogin{
     text-decoration: underline;
     text-align: center;
+    z-index: 1;
 }
 .CardBodyLogin, .Email{
     width 20rem;
@@ -464,10 +465,32 @@ img{
     display: inline-block;
     background-color: #38507a;
     color: white;
-    border-radius: 3px;
+    border-radius: 1px;
     width: auto;
-    margin: 0.3rem;
+    margin: 0.2rem;
     padding-left: 1rem;
     padding-right: 1rem;
+}
+.teamMemberCard{
+    background-color: #afb9c9;
+    width: 20%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 1px;
+    margin: 5px;
+    //box-shadow: right bottom fade allsides color;
+    box-shadow: 1px 1px 3px 0.3px #38507a;
+}
+.teamMemberCard img{
+    width: 5rem;
+    border-radius: 50%;
+    margin: 7%;
+}
+.teamMemberCard dd, .teamMemberCard dt, .teamMemberCard p{
+    overflow-wrap: break-word;
+}
+.Team{
+    display: flex;
+    flex-wrap: wrap;
 }
 `;

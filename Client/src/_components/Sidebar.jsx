@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Route, Link } from 'react-router-dom';
-import avatar from '../media/avatar.jpg';
+
 import {SidebarWrapper} from '../style/styledcomponents';
 import { Role } from '@/_helpers';
 import { accountService } from '@/_services';
 
 //React Icons
 import {GoGraph} from 'react-icons/go';
-import {FaBars, FaCheckCircle} from 'react-icons/fa';
-import {AiOutlineClose, AiOutlineUserAdd} from 'react-icons/ai';
-import {MdAssignmentInd} from 'react-icons/md';
+import {FaBars, FaCheckCircle, FaHourglassHalf, FaUserEdit, FaUserCog} from 'react-icons/fa';
+import {AiOutlineClose} from 'react-icons/ai';
+import {MdAssignmentInd, MdPersonAdd} from 'react-icons/md';
 import {HiOutlineViewGridAdd} from 'react-icons/hi';
+import {BsGraphUp} from 'react-icons/bs';
 
-//import { accountService } from '@/_services';
 function Sidebar(){
   
   const [sidebar, setSidebar] = useState(false);
@@ -47,7 +47,7 @@ function Sidebar(){
           
           {user.role === Role.Admin &&
             <li>
-              <NavLink to="/admin/users/add" className="SideLink"><AiOutlineUserAdd /> Add user</NavLink>
+              <NavLink to="/admin/users/add" className="SideLink"><MdPersonAdd /> Add user</NavLink>
             </li>
           }
           {user.role === Role.Admin &&
@@ -65,14 +65,47 @@ function Sidebar(){
               <NavLink to="/admin" className="SideLink"><FaCheckCircle /> Approve hours</NavLink>
             </li>
           }
+
           {user.role === Role.Mentor &&
             <li>
-              <NavLink to="/home" className="SideLink"><GoGraph/> Submit power ranking</NavLink>
+              <NavLink to="/companies/powerranking" className="SideLink"><GoGraph/> Submit power ranking</NavLink>
             </li>
           }
           {user.role === Role.Mentor &&
             <li>
-              <NavLink to="/home" className="SideLink"><GoGraph/> Submit power ranking</NavLink>
+              <NavLink to="/companies/updateWorkingHoursMentor" className="SideLink"><FaHourglassHalf/> Submit hours</NavLink>
+            </li>
+          }
+          {user.role === Role.Mentor &&
+            <li>
+              <NavLink to="/profile/updateMentor" className="SideLink"><FaUserEdit/> Edit profile</NavLink>
+            </li>
+          }
+          {user.role === Role.Mentor &&
+            <li>
+              <NavLink to="/profile/update" className="SideLink"><FaUserCog/> Update account</NavLink>
+            </li>
+          }
+
+          
+          {user.role === Role.Company &&
+            <li>
+              <NavLink to="/home" className="SideLink"><BsGraphUp/> Add KPI</NavLink>
+            </li>
+          }
+          {user.role === Role.Company &&
+            <li>
+              <NavLink to="/home" className="SideLink"><MdPersonAdd/> Add team member</NavLink>
+            </li>
+          }
+          {user.role === Role.Company &&
+            <li>
+              <NavLink to="/profile/updateMentor" className="SideLink"><FaUserEdit/> Edit profile</NavLink>
+            </li>
+          }
+          {user.role === Role.Company &&
+            <li>
+              <NavLink to="/profile/update" className="SideLink"><FaUserCog/> Update Account</NavLink>
             </li>
           }
          
@@ -81,72 +114,6 @@ function Sidebar(){
     </SidebarWrapper>
     </>
   )
-{/*
-  if(user.role === "Admin"){
-
-    return (
-      <SidebarWrapper>
-        <aside className="Sidebar">
-          <ul className="SideList">
-            
-            <img className="Avatar" src={avatar}></img>
-            <NavLink to="/profile" className="SideLink"><CgProfile /> Profile</NavLink>
-          
-              <NavLink to="/dashboard" className="SideLink"><RiDashboardFill /> Dashboard</NavLink>
-        
-              <NavLink to="/home" className="SideLink"><GoGraph/> Power ranking</NavLink>
-            
-            
-          </ul>
-        </aside>
-      </SidebarWrapper>
-    )
-  }
-
-  if(user.role === "Mentor"){
-
-    return (
-      <SidebarWrapper>
-        <aside className="Sidebar">
-          <ul className="SideList">
-            
-            <img className="Avatar" src={avatar}></img>
-              <NavLink to="/profile" className="SideLink"><CgProfile /> Profile</NavLink>
-         
-              <NavLink to="/dashboard" className="SideLink"><RiDashboardFill /> Dashboard</NavLink>
-        
-              <NavLink to="/home" className="SideLink"><GoGraph/> Power ranking</NavLink>
-            
-              <NavLink to="/home" className="SideLink"><BiCalendarPlus/> Book meeting</NavLink>
-          
-              <NavLink to="/home" className="SideLink"><MdSchedule/> My schedule</NavLink>
-            
-          </ul>
-        </aside>
-      </SidebarWrapper>
-    )
-  }
-  if(user.role === "Company"){
-
-    return (
-      <SidebarWrapper>
-        <aside className="Sidebar">
-          <ul className="SideList">
-            
-            <img className="Avatar" src={avatar}></img>
-              <NavLink to="/profile" className="SideLink"><CgProfile /> Profile</NavLink>
-         
-              <NavLink to="/dashboard" className="SideLink"><RiDashboardFill /> Dashboard</NavLink>
-            
-              <NavLink to="/home" className="SideLink"><BiCalendarPlus/> Book meeting</NavLink>
-          
-              <NavLink to="/home" className="SideLink"><MdSchedule/> My schedule</NavLink>
-            
-          </ul>
-        </aside>
-      </SidebarWrapper>
-    )*/
-  }
 }
 
 

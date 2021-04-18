@@ -6,7 +6,7 @@ import { Role } from '@/_helpers';
 import { accountService } from '@/_services';
 import {Sidebar } from '@/_components';
 
-//Icons
+//React Icons
 import {CgProfile} from 'react-icons/cg';
 import {AiFillHome} from 'react-icons/ai';
 import {RiDashboardFill} from 'react-icons/ri';
@@ -28,32 +28,33 @@ function Nav() {
     return (
         <MenuWrapper>
         <nav className="MenuBar">
-        <Sidebar/>
-                <section className="MenuLinks">
-                    <NavLink exact to="/" className="NavLink"><AiFillHome/> Home</NavLink>
-                    <NavLink to="/profile" className="NavLink"><CgProfile/> Profile</NavLink>  
-                        
-                    {user.role === Role.Admin &&
-                        <NavLink to="/dashboard" className="NavLink"><RiDashboardFill/> Companies</NavLink> 
-                    }
-                    {user.role === Role.Admin &&
-                        <NavLink to="/admin" className="NavLink"><GrUserAdmin/> Admin</NavLink>
-                    }
-                    {/*<Route path="/admin" component={AdminNav} /> */}
-                    {user.role === Role.Admin &&
-                        <NavLink to="/mentors" className="NavLink"><FaUsers/> Mentors</NavLink>
-                    }
-                    {user.role === Role.Mentor &&
-                        <NavLink to="/companies" className="NavLink"><RiDashboardFill/> Companies</NavLink>
-                    }
-                    <a onClick={accountService.logout} className="NavLink Logout"><GrLogout/> Logout</a>
-                </section>
-            </nav>
+            <Sidebar />
+            <section className="MenuLinks">
+                <NavLink exact to="/" className="NavLink"><AiFillHome/> Home</NavLink>
+                <NavLink to="/profile" className="NavLink"><CgProfile/> Profile</NavLink>  
+                    
+                {user.role === Role.Admin &&
+                    <NavLink to="/dashboard" className="NavLink"><RiDashboardFill/> Companies</NavLink> 
+                }
+                {user.role === Role.Admin &&
+                    <NavLink to="/admin" className="NavLink"><GrUserAdmin/> Admin</NavLink>
+                }
+                {/*<Route path="/admin" component={AdminNav} /> */}
+                {user.role === Role.Admin &&
+                    <NavLink to="/mentors" className="NavLink"><FaUsers/> Mentors</NavLink>
+                }
+                {user.role === Role.Mentor &&
+                    <NavLink to="/companies" className="NavLink"><RiDashboardFill/> Companies</NavLink>
+                }
+                <a onClick={accountService.logout} className="NavLink Logout"><GrLogout/> Logout</a>
+            </section>
+        </nav>
 
         </MenuWrapper>
     );
 }
 
+{/*
 function AdminNav({ ...match }) {
     const { path } = match;
 
@@ -61,5 +62,6 @@ function AdminNav({ ...match }) {
                 <NavLink to={`${path}/users`} className="NavLink" id="AdminLink">Users</NavLink>
     );
 }
+*/}
 
 export { Nav }; 

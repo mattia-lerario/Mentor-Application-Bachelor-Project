@@ -51,8 +51,6 @@ return (
         return (
          
         <article className={'app-container'}>
-            
-            
             <Alert />
             <Switch>
                 <Redirect from="/:url*(/+)" to={pathname.slice(0, -1)} />
@@ -62,6 +60,7 @@ return (
                 <PrivateRoute path="/companies" component={Company} />
                 <PrivateRoute path="/mentors" component={Mentor} />
                 <PrivateRoute path="/profile" component={Profile} />
+
                 <PrivateRoute path="/admin" roles={[Role.Admin]} component={Admin} />
 
                 <Route path="/account" component={Account} />

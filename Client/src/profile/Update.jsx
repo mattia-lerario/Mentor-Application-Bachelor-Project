@@ -72,7 +72,7 @@ function Update({ history }) {
                 <FormWrapper>
                     <Form>
                         <section  className="Center">
-                            <h1>Update Profile</h1>
+                            <h1>Update account</h1>
                             <div className="FormRow">
                                 
                                 <div className="form-group">
