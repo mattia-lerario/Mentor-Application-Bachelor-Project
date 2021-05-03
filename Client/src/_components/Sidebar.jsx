@@ -17,16 +17,12 @@ function Sidebar(){
   
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
-
-  
   const [user, setUser] = useState({});
     
   useEffect(() => {
       const subscription = accountService.user.subscribe(x => setUser(x));
-      return subscription.unsubscribe;
+      //return subscription.unsubscribe;
   }, []);
-
-  //const user = accountService.userValue;
 
   return (
     <>
