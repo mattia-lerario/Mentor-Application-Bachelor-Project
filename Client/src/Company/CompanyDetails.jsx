@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
 import {BarChart} from '@/_components';
 import { companyService } from '@/_services';
 //style
@@ -8,6 +9,7 @@ import {CompanyWrapper} from '../style/styledcomponents';
 import avatar from '../media/avatar.jpg'
 //icons
 import {BsPlusCircleFill} from 'react-icons/bs';
+
 
 function CompanyDetails({ match }) {
     const { path } = match;
@@ -27,7 +29,6 @@ function CompanyDetails({ match }) {
     const companyId = id;
     const [company, setUsers] = useState(null);
     let graphData = [];
-    
 
 
     function sumHours(timeLogList) {
@@ -262,3 +263,4 @@ function CompanyDetails({ match }) {
 }    
 
 export { CompanyDetails };
+
