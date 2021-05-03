@@ -19,13 +19,14 @@ List of what elements are getting styled here, in listed order:
 /* File: Nav.jsx */
 export const MenuWrapper = styled.div`
 
-//---makes the background of the menu slategrey
 .MenuBar{
     display:flex;
     padding: 1rem;
+    width: 100%;
 }
 //---displays the links horizontal(inline). 
 .MenuLinks{
+    width: 100%;
     display: inline;
     height: 2vw;
     padding: 0.5rem;
@@ -38,21 +39,11 @@ export const MenuWrapper = styled.div`
     margin-left: 1rem;
     border-radius: 0.3rem;
     font-size: 1.2rem;
-    flex-direnction: row;
 }
 //---gives the links a underscore and grey-color when hovered.
 .NavLink:hover{
     text-decoration: #38507a underline 0.3vw;
 }
-// ---ADMIN-MENU---
-//adding the background-color for the Admin-menu
-#AdminLink{
-    color: black;
-}
-#AdminLink:hover{
-}
-.Logout{
-} 
 `;
 
 
@@ -123,6 +114,7 @@ align-items: center;
 box-sizing: border-box;
 margin: 0;
 padding 0;
+
 .menu-bars{
     margin-left: 2vw;
     font-size: 2vw;
@@ -180,7 +172,7 @@ export const ListWrapper = styled.div`
 
 .card{
     flex: 3;
-    width: 30%;
+    width: 25%;
     height: 15%;
     margin: 0.5rem;
     display: inline-block;
@@ -190,14 +182,15 @@ export const ListWrapper = styled.div`
       rgba(255, 255, 255, 0.3)
         );
     //box-shadow: right bottom fade allsides color;
-    box-shadow: 0.09rem 0.19rem 0.5rem 0.1rem #38507a;
+    box-shadow: 0.05rem 0.1rem 0.3rem 0.01rem #38507a;
     padding-left: 4px;
     padding-top: 4px;
     padding-right: 5px;
     margin-left: 2rem;
     margin-top: 1rem;
+    border-radius: 0;
   }
-  .card:hover{
+.card:hover{
     border: solid #38507a;
     //box-shadow: right bottom fade allsides color;
     box-shadow: 0.2rem 0.3rem 0.5rem 0.1rem #38507a;
