@@ -90,27 +90,35 @@ function AddEditMentor({ history, match }) {
                                     <ErrorMessage name="companyNumber" component="div" className="invalid-feedback" />
                                 </div>
                             </div>
+
+                            
                             <div className="form-row">
+                                {/* Not neccessary for a mentor to submit all this information about a company if the company themselves are supposed to add this info.
                                 <div className="form-group col-7">
                                     <label>Phone Number</label>
-                                    <Field name="tlfNumber" type="text" className={'form-control' + (errors.tlfNumber && touched.tlfNumber ? ' is-invalid' : '')} />
+                                    <Field name="tlfNumber" type="text" className={'form-control' + (//errors.tlfNumber && touched.tlfNumber ? ' is-invalid' : '')} />
                                     <ErrorMessage name="tlfNumber" component="div" className="invalid-feedback" />
+                                </div>
+                                <div className="form-group col-7">
+                                    <label>Email</label>
+                                    <Field name="email" type="text" className={'form-control' + (//errors.email && touched.email ? ' is-invalid' : '')} />
+                                    <ErrorMessage name="email" component="div" className="invalid-feedback" />
                                 </div>
     
                                 <div className="form-group col-7">
                                     <label>Sales Revenue</label>
-                                    <Field name="salesRevenue" type="text" className={'form-control' + (errors.salesRevenue && touched.salesRevenue ? ' is-invalid' : '')} />
+                                    <Field name="salesRevenue" type="text" className={'form-control' + (//errors.salesRevenue && touched.salesRevenue ? ' is-invalid' : '')} />
                                     <ErrorMessage name="salesRevenue" component="div" className="invalid-feedback" />
                                 </div>
                                 <div className="form-group col-7">
                                     <label>Company Description</label>
-                                    <Field component="textarea" name="companyDescription" type="text" className={'form-control' + (errors.companyDescription && touched.companyDescription ? ' is-invalid' : '')} />
+                                    <Field component="textarea" name="companyDescription" type="text" className={'form-control' + (//errors.companyDescription && touched.companyDescription ? ' is-invalid' : '')} />
                                     <ErrorMessage name="companyDescription" component="div" className="invalid-feedback" />
                                 </div>
                                 <div className="form-group col-7">
                                     <label>Phase</label>
 
-                                    <Field name="phase" as="select" className={'form-control' + (errors.phase && touched.phase ? ' is-invalid' : '')}>
+                                    <Field name="phase" as="select" className={'form-control' + (//errors.phase && touched.phase ? ' is-invalid' : '')}>
                                     <option value="">Unknown</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -121,7 +129,7 @@ function AddEditMentor({ history, match }) {
 
                                     <ErrorMessage name="phase" component="div" className="invalid-feedback" />
                                 </div>
-                                
+                                */}
 
                                 <div className="form-group col-7">
                                     <label>Assign Mentor</label>
