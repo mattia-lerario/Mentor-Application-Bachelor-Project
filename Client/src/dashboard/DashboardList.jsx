@@ -20,7 +20,8 @@ function DashboardList({ match }) {
 
     return (
         <ListWrapper>
-                <h1>All Companies</h1>
+                <h1>Company Dashboard</h1>
+                <p>All registred companies.</p>
 
                 {company && company.map(company =>
                 <Link className={'noLink'}to={`${path}/companyDetail/${company.id}`}>

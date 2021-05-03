@@ -18,6 +18,7 @@ function UpdateCompanies({ history, match }) {
         companyNumber: '999887766',
         tlfNumber: '999887766',
         salesRevenue: '0',
+       // email: user.email,
         companyDescription: 'Big company',
         phase: '1',
         

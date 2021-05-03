@@ -34,7 +34,7 @@ function MentorDetails({ history, match}) {
 
                 <img className="Center" src={avatar}></img>
                 <section className="ContactDetails">
-                    <h3 className="Center">{mentor.mentorName}</h3>
+                    <h3 className="Center">{mentor.mentorFirstName} {mentor.mentorLastName}</h3>
                     <button className="Center"><HiOutlineMail/>{mentor.email}</button>
                     <button className="Center" /*onClick={phone}*/><AiFillPhone/>123 45 678</button>
                 </section>

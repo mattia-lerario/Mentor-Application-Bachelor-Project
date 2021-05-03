@@ -23,10 +23,9 @@ function AddEditMentor({ history, match }) {
         companyName: '',
         companyNumber: '',
         tlfNumber: '',
-        email: '',
         salesRevenue: '',
         companyDescription: '',
-        leadMentor: '',
+        leadMentor: ' ',
     }
 
     const validationSchema = Yup.object().shape({
@@ -36,9 +35,6 @@ function AddEditMentor({ history, match }) {
             .required('Company Number is required'),
         tlfNumber: Yup.string()
             .required('Tlf is required'),
-        email: Yup.string()
-            .email('Email is invalid')
-            .required('Email is required'),
         salesRevenue: Yup.string()
             .required('Sales Revenue is required'),
         companyDescription: Yup.string()
@@ -73,7 +69,7 @@ function AddEditMentor({ history, match }) {
                     useEffect(() => {                        
                             // get user and set form fields
                             companyService.getById(id).then(company => {
-                                const fields = ['companyName', 'companyNumber', 'tlfNumber', 'email', 'salesRevenue', 'companyDescription','phase','leadMentor'];
+                                const fields = ['companyName', 'companyNumber', 'tlfNumber', 'salesRevenue', 'companyDescription','phase','leadMentor'];
                                 fields.forEach(field => setFieldValue(field, company[field], false));
                             });                      
                     }, []);
@@ -100,11 +96,6 @@ function AddEditMentor({ history, match }) {
                                     <Field name="tlfNumber" type="text" className={'form-control' + (errors.tlfNumber && touched.tlfNumber ? ' is-invalid' : '')} />
                                     <ErrorMessage name="tlfNumber" component="div" className="invalid-feedback" />
                                 </div>
-                                <div className="form-group col-7">
-                                    <label>Email</label>
-                                    <Field name="email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
-                                    <ErrorMessage name="email" component="div" className="invalid-feedback" />
-                                </div>
     
                                 <div className="form-group col-7">
                                     <label>Sales Revenue</label>
@@ -117,7 +108,7 @@ function AddEditMentor({ history, match }) {
                                     <ErrorMessage name="companyDescription" component="div" className="invalid-feedback" />
                                 </div>
                                 <div className="form-group col-7">
-                                    <label>Quarter</label>
+                                    <label>Phase</label>
 
                                     <Field name="phase" as="select" className={'form-control' + (errors.phase && touched.phase ? ' is-invalid' : '')}>
                                     <option value="">Unknown</option>

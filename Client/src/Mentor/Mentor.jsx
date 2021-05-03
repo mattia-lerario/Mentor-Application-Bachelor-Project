@@ -19,8 +19,8 @@ function MentorList({match}) {
     return (
         <ListWrapper>
         <div>
-            <h2>All Mentors in the system</h2>
-            <p>Click on the mentor to see details more details</p>  
+           
+            <p>Click on the mentor to see more details</p>  
 
             {mentor && mentor.map(mentor =>
              <Link className={'noLink'}to={`${path}/mentorDetails/${mentor.id}`}>
@@ -29,14 +29,11 @@ function MentorList({match}) {
 
                 <section className="cardTop">
                     {<img className="cardImg" src={avatar}></img>}
-                </section>
-
-                <section>
-                    <h4 className="companyName">{mentor.mentorName}</h4>                    
+                    <h4 className="companyName">{mentor.mentorFirstName} {mentor.mentorLastName}</h4>      
                 </section>
 
                 <section className="cardMetric">
-                    <p>Mentor Number: {mentor.mentorNumber}</p>
+                  
                     <p>Description: {mentor.mentorDescription}</p>
                 </section>
                 

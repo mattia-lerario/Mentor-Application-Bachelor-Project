@@ -23,12 +23,7 @@ function Details({ match }) {
             <ProfileWrapper>
                 <section className="ProfileWrapper">
                     <article className="MentorInfoBox">
-                        
-                        <Link to={`${path}/updateMentor`} className={'Tooltip'}>    
-                            <BsPencil/>
-                            <span className={'TooltipText'}>Update mentor information</span>
-                        </Link>
-
+                     
                         <img className="Center" src={avatar}></img>
                         <section className="ContactDetails">
                             <h3 className="Center">{user.firstName} {user.lastName}</h3>
