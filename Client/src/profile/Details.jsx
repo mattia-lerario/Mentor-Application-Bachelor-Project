@@ -26,7 +26,7 @@ function Details({ match }) {
                         
                         <Link to={`${path}/updateMentor`} className={'Tooltip'}>    
                             <BsPencil/>
-                            <span className={'TooltipText'}>Update mentor information</span>
+                            <span className={'TooltipText'}>Update admin information</span>
                         </Link>
 
                         <img className="Center" src={avatar}></img>
@@ -73,7 +73,7 @@ function Details({ match }) {
                     </article>
                 
                     <article className="ProfileInfo">
-                        <h2>Profile Information</h2>
+                        <h2>Account Information</h2>
                         <p>
                             <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
                             <strong>Email: </strong> {user.email}<br />
@@ -131,23 +131,36 @@ function Details({ match }) {
                                 <p className="AreaExpertise">Area2</p>
                                 <p className="AreaExpertise">Area3</p>
                             </section>
+                            
                             <section className="Section">
                                 <h5>Work experience:</h5>
-                                <dl>
-                                    <dt>Job Title 1</dt>
-                                        <dd>- Employer/Company</dd>
+                                <section className="Team">
+                                    <dl className="teamMemberCard">
+                                        <dt>Job Title 1</dt>
+                                        <dd>- Duration</dd>
+                                        <p>Employer /Company</p>
                                         <p>Description</p>
-                                    <dt>Job Title 2</dt>
-                                        <dd>- Employer Company</dd>
+                                    </dl>
+                                    <dl className="teamMemberCard">
+                                        <dt>Job Title 1</dt>
+                                        <dd>- Duration</dd>
+                                        <p>Employer /Company</p>
                                         <p>Description</p>
-                                </dl>
+                                    </dl>
+                                    <dl className="teamMemberCard">
+                                        <dt>Job Title 1</dt>
+                                        <dd>- Duration</dd>
+                                        <p>Employer /Company</p>
+                                        <p>Description</p>
+                                    </dl>
+                                </section>
                             </section>
                         </article>
                         )}
                     </article>
                 
                     <article className="ProfileInfo">
-                        <h2>Profile Information</h2>
+                        <h2>Account Information</h2>
                         <p>
                             <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
                             <strong>Email: </strong> {user.email}<br />
@@ -172,68 +185,80 @@ function Details({ match }) {
 
         return (
             <ProfileWrapper>
-            <section className="ProfileWrapper">
-                <article className="MentorInfoBox">
-                    
-                    <Link to={`${path}/updateCompanies`} className={'Tooltip'}>    
-                        <BsPencil/>
-                        <span className={'TooltipText'}>Update company information</span>
-                    </Link>
+                <section className="ProfileWrapper">
+                    <article className="MentorInfoBox">
+                        
+                        <Link to={`${path}/updateMentor`} className={'Tooltip'}>    
+                            <BsPencil/>
+                            <span className={'TooltipText'}>Update mentor information</span>
+                        </Link>
 
-                    <img className="Center" src={avatar}></img>
-                    <section className="ContactDetails">
-                        <h3 className="Center">{user.firstName} {user.lastName}</h3>
-                        <button className="Center"><HiOutlineMail/> {user.email}</button>
-                        <button className="Center" /*onClick={phone}*/><AiFillPhone/> 123 45 678</button>
-                    </section>
+                        <img className="Center" src={avatar}></img>
+                        <section className="ContactDetails">
+                            <h3 className="Center">{user.firstName}</h3>
+                            <button className="Center"><HiOutlineMail/> {user.email}</button>
+                            <button className="Center" /*onClick={phone}*/><AiFillPhone/> 123 45 678</button>
+                        </section>
 
-                    {roleUser && roleUser.filter(company => company.id === user.companies[0]).map(company => 
-                    
-                    <article key = {company.id}>
-                        <section className="Section">
-                            <h5>Bio</h5>
-                            <p>{company.companyDescription}</p>
-                            <p>Description of person(current job, education, experience)</p>
-                        </section>
-                        <section className="Section">
-                            <h5>Skills</h5>
-                            <p>Description of skills</p>
-                        </section>
-                        <section className="Section">
-                            <h5>Areas of expertise:</h5>
-                            <p className="AreaExpertise">Area1</p>
-                            <p className="AreaExpertise">Area2</p>
-                            <p className="AreaExpertise">Area3</p>
-                        </section>
-                        <section className="Section">
-                            <h5>Work experience:</h5>
-                            <dl>
-                                <dt>Job Title 1</dt>
-                                    <dd>- Employer/Company</dd>
-                                    <p>Description</p>
-                                <dt>Job Title 2</dt>
-                                    <dd>- Employer Company</dd>
-                                    <p>Description</p>
-                            </dl>
-                        </section>
+                        {roleUser && roleUser.filter(company => company.id === user.companies[0]).map(company => 
+                        
+                        <article key = {company.id}>
+                            <h2>Your Company Information</h2>
+                            
+                            <section className="Section">
+                                <h5>Bio</h5>
+                                <p>{company.companyDescription}</p>
+                            </section>
+                            
+                            <section className="Section">
+                                <h5>Areas of expertise</h5>
+                                <p className="AreaExpertise">Area1</p>
+                                <p className="AreaExpertise">Area2</p>
+                                <p className="AreaExpertise">Area3</p>
+                            </section>
+
+                            <section className="Section">
+                                <h5>Team</h5>
+                                <section className="Team">
+                                    <dl className="teamMemberCard">
+                                        <dt>Name</dt>
+                                        <img src={avatar} alt="img"/>
+                                        <dd>- Work title</dd>
+                                        <p>Description</p>
+                                    </dl>
+                                    <dl className="teamMemberCard">
+                                        <dt>Name</dt>
+                                        <img src={avatar} alt="img"/>
+                                        <dd>- Work title</dd>
+                                        <p>Description</p>
+                                    </dl>
+                                    <dl className="teamMemberCard">
+                                        <dt>Name</dt>
+                                        <img src={avatar} alt="img"/>
+                                        <dd>- Work title</dd>
+                                        <p>Description</p>
+                                    </dl>
+                                </section>
+                            </section>
+
+                        </article>
+                        )}       
                     </article>
-                    )}
-                </article>
-            
-                <article className="ProfileInfo">
-                    <h2>Profile Information</h2>
-                    <p>
-                        <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
-                        <strong>Email: </strong> {user.email}<br />
-                        <strong>Role: </strong>{user.role}
-                    </p>              
-                    
-                    <Link to={`${path}/update`} className={'BtnLink'}>
-                        <button className={'Btn BtnMain'}>Update Account</button>
-                    </Link>
-                </article>
-            </section>   
-        </ProfileWrapper>        
+                
+                    <article className="ProfileInfo">
+                        <h2>Account Information</h2>
+                        <p>
+                            <strong>Name: </strong> {user.title} {user.firstName} {user.lastName}<br />
+                            <strong>Email: </strong> {user.email}<br />
+                            <strong>Role: </strong>{user.role}
+                        </p>              
+                        
+                        <Link to={`${path}/update`} className={'BtnLink'}>
+                            <button className={'Btn BtnMain'}>Update Account</button>
+                        </Link>
+                    </article>
+                </section>   
+            </ProfileWrapper>    
         );
 }
 }
