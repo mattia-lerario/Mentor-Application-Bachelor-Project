@@ -18,19 +18,18 @@ List of what elements are getting styled here, in listed order:
 /* ---MENU--- */
 /* File: Nav.jsx */
 export const MenuWrapper = styled.div`
-
+//---makes the background of the menu slategrey
 .MenuBar{
     display:flex;
     padding: 1rem;
-    width: 100%;
 }
 //---displays the links horizontal(inline). 
 .MenuLinks{
-    width: 100%;
     display: inline;
     height: 2vw;
     padding: 0.5rem;
     margin-buttom: 0.5rem;
+    margin-top: -1rem;
 }
 //---making the text in the menu white
 .NavLink{
@@ -39,10 +38,20 @@ export const MenuWrapper = styled.div`
     margin-left: 1rem;
     border-radius: 0.3rem;
     font-size: 1.2rem;
+    flex-direnction: row;
 }
 //---gives the links a underscore and grey-color when hovered.
 .NavLink:hover{
     text-decoration: #38507a underline 0.3vw;
+}
+// ---ADMIN-MENU---
+//adding the background-color for the Admin-menu
+#AdminLink{
+    color: black;
+}
+#AdminLink:hover{
+}
+.Logout{
 }
 `;
 
@@ -94,7 +103,6 @@ export const GlassForm = styled.div`
 .CardHeaderLogin{
     text-decoration: underline;
     text-align: center;
-    z-index: 1;
 }
 .CardBodyLogin, .Email{
     width 20rem;
@@ -106,60 +114,29 @@ export const GlassForm = styled.div`
 /* Files: Nav.jsx, Sidebar.jsx */
 export const SidebarWrapper = styled.div`
 
-z-index: 1;
-height: 3vw;
-display: flex;
-justify-content: start;
-align-items: center; 
-box-sizing: border-box;
-margin: 0;
-padding 0;
-
-.menu-bars{
-    margin-left: 2vw;
-    font-size: 2vw;
-    background: none;
-    color: black;
-}
 //Light blue backgroundcolor and width on the sidebar-menu
 .Sidebar{
-    z-index: 1;
-    background-color: #38507a;
-    width: 20%;
+    padding: 1rem;
     height: 100%;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
     display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: -100%;
-    transition: 850ms;
-}
-.Sidebar.active{
-    left: 0;
-    transition: 350ms;
-}
-.Sidebar.active li{
-    display: flex;
-    justify-content: start;
+    flex: 1;
+    flex-direction: column;
     align-items: center;
-    padding: 8px 5px;
-    list-style: none;
-    height: 5vw;
-}
-.Sidebar li{
-    border-radius: 4px;
+    border-right: 0.3vw solid #38507a;
 }
 .SideLink {
-    text-decoration: none;
-    color: white;
-    font-size: 1.5vw;
-    display: flex;
-    align-items: center;
-    padding: 0px 16px;
+    display: block;
+    color: black;
 }
-.Sidebar li:hover {
+.SideLink:hover {
     text-decoration: none;
-    background-color: #7d97b2;
+    font-weight: bolder;
+}
+.Avatar{
+    width:120px;
+    border-radius: 50%;
 }
 `;
 
@@ -172,7 +149,7 @@ export const ListWrapper = styled.div`
 
 .card{
     flex: 3;
-    width: 25%;
+    width: 30%;
     height: 15%;
     margin: 0.5rem;
     display: inline-block;
@@ -182,15 +159,14 @@ export const ListWrapper = styled.div`
       rgba(255, 255, 255, 0.3)
         );
     //box-shadow: right bottom fade allsides color;
-    box-shadow: 0.05rem 0.1rem 0.3rem 0.01rem #38507a;
+    box-shadow: 0.09rem 0.19rem 0.5rem 0.1rem #38507a;
     padding-left: 4px;
     padding-top: 4px;
     padding-right: 5px;
     margin-left: 2rem;
     margin-top: 1rem;
-    border-radius: 0;
   }
-.card:hover{
+  .card:hover{
     border: solid #38507a;
     //box-shadow: right bottom fade allsides color;
     box-shadow: 0.2rem 0.3rem 0.5rem 0.1rem #38507a;
@@ -354,16 +330,12 @@ export const StepFormWrapper = styled.div`
     text-align: center;
 }
 .DropDown{
-    width: 100%;
     border-radius: 4px;
     display: block;
     margin: 5px 10px 5px 0;
     padding: 5px;
     background-color: #fff;
     border: 1px solid #ddd;
-}
-.DropDown option{
-    height: 5rem;
 }
 .Comment{
     text-align: center;
@@ -458,32 +430,10 @@ img{
     display: inline-block;
     background-color: #38507a;
     color: white;
-    border-radius: 1px;
+    border-radius: 3px;
     width: auto;
-    margin: 0.2rem;
+    margin: 0.3rem;
     padding-left: 1rem;
     padding-right: 1rem;
-}
-.teamMemberCard{
-    background-color: #afb9c9;
-    width: 20%;
-    text-align: center;
-    padding: 10px;
-    border-radius: 1px;
-    margin: 5px;
-    //box-shadow: right bottom fade allsides color;
-    box-shadow: 1px 1px 3px 0.3px #38507a;
-}
-.teamMemberCard img{
-    width: 5rem;
-    border-radius: 50%;
-    margin: 7%;
-}
-.teamMemberCard dd, .teamMemberCard dt, .teamMemberCard p{
-    overflow-wrap: break-word;
-}
-.Team{
-    display: flex;
-    flex-wrap: wrap;
 }
 `;
