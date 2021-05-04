@@ -6,33 +6,20 @@ import { accountService } from '@/_services';
 function List({ match }) {
     const { path } = match;
     const [users, setUsers] = useState(null);
-    
 
     useEffect(() => {
         accountService.getAll().then(x => setUsers(x));
     }, []);
 
     function deleteUser(id) {
-
         setUsers(users.map(x => {
             if (x.id === id) { x.isDeleting = true; }
             return x;
         }));
         
-        /*users && users.map( users =>
-        console.log(users.role));
-        
-        /*if(user.role = mentor){
-            mentorService.delete(id);
-        }  
-
-        if(user.role === company){
-            companyService.delete(id);
-        }*/
-        
         accountService.delete(id).then(() => {
             setUsers(users => users.filter(x => x.id !== id));
-        });      
+        });
     }
 
     return (
