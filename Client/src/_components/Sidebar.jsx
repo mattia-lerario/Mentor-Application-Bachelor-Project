@@ -12,8 +12,16 @@ import {BiCalendarPlus} from 'react-icons/bi';
 import {MdSchedule} from 'react-icons/md';
 //import { accountService } from '@/_services';
 function Sidebar(){
-
-  //const user = accountService.userValue;
+  
+  const [sidebar, setSidebar] = useState(false);
+  const showSidebar = () => setSidebar(!sidebar);
+  const [user, setUser] = useState({});
+    
+  useEffect(() => {
+      const subscription = accountService.user.subscribe(x => setUser(x));
+      //return subscription.unsubscribe;
+      //
+  }, []);
 
   return (
     <SidebarWrapper>
