@@ -52,7 +52,6 @@ return (
          
         <article className={'app-container'}>
             
-            <Sidebar/>
             <Alert />
             <Switch>
                 <Redirect from="/:url*(/+)" to={pathname.slice(0, -1)} />

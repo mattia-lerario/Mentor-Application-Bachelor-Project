@@ -54,14 +54,4 @@ function Nav() {
     );
 }
 
-{/*
-function AdminNav({ ...match }) {
-    const { path } = match;
-
-    return (
-                <NavLink to={`${path}/users`} className="NavLink" id="AdminLink">Users</NavLink>
-    );
-}
-*/}
-
 export { Nav }; 
