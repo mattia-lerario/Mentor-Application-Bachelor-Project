@@ -6,7 +6,8 @@ import { companyService } from '@/_services';
 //style
 import {CompanyWrapper} from '../style/styledcomponents';
 //img
-import avatar from '../media/avatar.jpg'
+import avatar from '../media/avatar.jpg';
+import companyImg from '../media/company.jpg';
 //icons
 import {BsPlusCircleFill} from 'react-icons/bs';
 
@@ -110,8 +111,8 @@ function CompanyDetails({ match }) {
             {company && company.filter(company => company.id === companyId).map(company => 
                 <article key={company.id}>
 
-                    <section className="headerImg">
-                        {company.companyImg} {/*Not working, but is supposed to show the image saved in the database on the specific company */}                    
+                    <section>
+                        <img className="headerImg" src={companyImg}></img>
                     </section>
 
                     <Link to={`${path}/updateWorkingHoursMentor/${company.id}`} className={'BtnLink'}>
@@ -122,41 +123,40 @@ function CompanyDetails({ match }) {
                     <button type="button" className={'Btn BtnMain Right'}>Power ranking</button>
                     </Link>
 
+                    {/*
                     <section>
                         <h1>{company.companyName}</h1>
                     </section>
+                    */}
 
 
                     <article key={company.id} className="BoxWrapper">
 
                         <section className="MainBox">
                             <section className="Box Details">
-                                <h4>Details</h4>
+                                <h4>Details about {company.companyName}</h4>
                                 <p>{company.CompanyDetails}</p>
                                 <p>Description</p>
                             </section>
-                            <section className="MainBox">
-                                 <section className="Box Details">
-                                 <h4>Power Ranking Results</h4>
+                            <section className="Box PRbox">
+                                <section className="Box Details">
+                                    <h4>Power Ranking Results</h4>
                                     <BarChart options={chartOptions} companyData={graphData} />
-                                    </section>
                                 </section>
+                            </section>
                             <section className="Box PRbox">
                                 <h4>Mentor Comments</h4>
-                               
+                                {/*
                                 <BarChart options={chartOptions} companyData={graphData} />
-
-                                {/* 
+                                */}
+                                
                                 {company.powerRanking && company.powerRanking.map(pr =>
                                 <article
                                 key = {pr.date}>
-                                    <p>Question1</p>
-                                    <p>{pr.comment1}</p>
-                                    <p>{pr.question2}</p>
-                                    <p>{pr.comment2}</p>
+                                    <p> Comment: {pr.comment1}</p>
                                 </article>
                                 )}
-                                    */}
+                                    
                             </section>
 
                             <section className="Box Feed">

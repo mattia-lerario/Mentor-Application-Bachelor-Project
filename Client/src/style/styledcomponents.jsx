@@ -178,7 +178,7 @@ export const ListWrapper = styled.div`
     display: flex;
 }
 .cardImg{
-    background-image: url("https://images.frandroid.com/wp-content/uploads/2013/01/Samsung-Logo.jpg");
+    background-image: url("https://images.frandroid.com/wp-content/uploads/2013/01/samsung.jpg");
     background-position: center;
     background-size: 100%;
     height: 4rem;
@@ -216,8 +216,7 @@ export const ListWrapper = styled.div`
   
 .headerImg{
     width: 103%;
-    height: 18vw;
-    background-image: url("https://images.frandroid.com/wp-content/uploads/2013/01/Samsung-Logo.jpg");
+    height: 20vw;
     background-size: 100%;
     margin-bottom: 1vw;
     border-top-right-radius: 0.5rem;
