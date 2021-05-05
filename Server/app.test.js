@@ -1,10 +1,11 @@
+/*
 const request = require('supertest');
 const express = require('express');
 
 const app = express();
 
 const appGet=app.get('/mentor', function(req, res) {
-  res.status(200).json({ mentorFirstName: 'Mentor' });
+  res.status(20).json({ mentorFirstName: 'Mentor' });
 });
 
 const appPost=app.post('/mentor', function(req, res) {
@@ -32,3 +33,4 @@ request(appGet)
   .end(function(err, res) {
     if (err) throw err;
   });
+*/

@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { accountService } from '@/_services';
+import { accountService, companyService, mentorService} from '@/_services';
 
 function List({ match }) {
     const { path } = match;
     const [users, setUsers] = useState(null);
+    const [mentors, setMentors] = useState(null);
+    const [companies, setCompanies] = useState(null);
     
 
     useEffect(() => {
         accountService.getAll().then(x => setUsers(x));
+        companyService.getAll().then(x => setCompanies(x));
+        mentorService.getAll().then(x => setMentors(x));
     }, []);
 
     function deleteUser(id) {
@@ -19,8 +23,12 @@ function List({ match }) {
             return x;
         }));
         
-        /*users && users.map( users =>
-        console.log(users.role));
+       // users && users.filter(user => user.mentor === "Mentor" ||user.role === "Mentor").map()
+        
+      /* if(user.mentors != null)
+        mentors && mentors.filter(mentor=>mentor.id === user.mentors[0]).map( users =>
+            
+        console.log(users.mentors));
         
         /*if(user.role = mentor){
             mentorService.delete(id);
