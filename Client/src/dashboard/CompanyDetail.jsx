@@ -5,7 +5,9 @@ import { companyService } from '@/_services';
 //style
 import {CompanyWrapper} from '../style/styledcomponents';
 //img
-import avatar from '../media/avatar.jpg'
+import avatar from '../media/avatar.jpg';
+import companyImg from '../media/company.jpg';
+
 //icons
 import {BsPlusCircleFill} from 'react-icons/bs';
 
@@ -28,8 +30,8 @@ function CompanyDetails({match}) {
             {company && company.filter(company => company.id === companyId).map(company => 
                 <article key={company.id}>
 
-                    <section className="headerImg">
-                        {company.companyImg}                     
+                    <section>
+                        <img className="headerImg" src={companyImg}></img>                     
                     </section>
 
                     <section>

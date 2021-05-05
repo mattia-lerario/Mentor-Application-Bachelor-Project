@@ -5,8 +5,9 @@ import { companyService } from '@/_services';
 
 import { Link } from 'react-router-dom';
 //icons
-
 import {AiOutlineNumber} from 'react-icons/ai';
+//img
+import avatar from '../media/avatar.jpg';
 
 function DashboardList({ match }) {
     const { path } = match;
@@ -28,8 +29,7 @@ function DashboardList({ match }) {
                 <article className="card" key= {company.id}>
                     
                     <section className="cardTop">
-                        <img className="cardImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 
-                        Tanken var å kunne legge ved et bilde som respresenterer bedriften når man legger de til i databasen. -Tora.*/}                        
+                        <img className="cardImg" src={avatar}></img>
                         <h4 className="companyName">{company.companyName}</h4>
                     <p><AiOutlineNumber/>{company.phase}</p>
 
