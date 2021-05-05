@@ -88,7 +88,7 @@ function UpdateMentor({ history, match }) {
               mentorLastName: Yup.string()
               .required('A mentor needs a last name'),
               mentorDescription: Yup.string()
-              .required('Please write something to describe yourself.'),
+              .required('Please write somthing to describe yourself.'),
           })}>
               <Box className="Comment Margin">
                 <Field fullWidth name="mentorFirstName" component={TextField} label="First Name"/>

@@ -77,7 +77,7 @@ function Update({ history }) {
                    
                     <Form>
                         <section  className="Center">
-                            <h1>Update account</h1>
+                            <h1>Update Profile</h1>
                             <div className="FormRow">
                                 <div>
                                     <label>Title</label>

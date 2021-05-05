@@ -56,8 +56,11 @@ function CompanyList({ match }) {
                 <Link className={'noLink'}to={`${path}/companyDetails/${company.id}`}>
                     
                     <section className="cardTop">
-                        <img className="cardImg">{company.companyImg}</img>
-                        <h4 className="companyName">{company.companyName}</h4>                            
+                        <img className="cardImg">{company.companyImg}</img>                         
+                    </section>
+
+                    <section>
+                    <h4 className="companyName">{company.companyName}</h4>                    
                     </section>
 
                     <section className="cardMetric">

@@ -17,7 +17,6 @@ function List({ match }) {
     }, []);
 
     function deleteUser(id) {
-
         setUsers(users.map(x => {
             if (x.id === id) { x.isDeleting = true; }
             return x;
@@ -40,7 +39,7 @@ function List({ match }) {
         
         accountService.delete(id).then(() => {
             setUsers(users => users.filter(x => x.id !== id));
-        });      
+        });
     }
 
     return (
