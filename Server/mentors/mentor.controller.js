@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
-const validateRequest = require('_middleware/validate-request');
-const authorize = require('_middleware/authorize')
-const Role = require('_helpers/role');
+const validateRequest = require('../_middleware/validate-request');
+const authorize = require('../_middleware/authorize')
+const Role = require('../_helpers/role');
 const mentorService = require('./mentor.service');
 //const accountService = require('../accounts/account.service');
 

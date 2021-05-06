@@ -1,4 +1,4 @@
-/*
+
 const request = require('supertest');
 const express = require('express');
 
@@ -33,4 +33,3 @@ request(appGet)
   .end(function(err, res) {
     if (err) throw err;
   });
-*/
