@@ -81,11 +81,13 @@ function getById(id) {
 }
 
 function create(params) {
-    return fetchWrapper.post(baseUrl, params);
+    //return fetchWrapper.post(baseUrl, params);
+    return fetchWrapper.post(`${baseUrl}/create`, params);
+    //${baseUrl}/validate-reset-token`
 }
 
 function update(id, params) {
-    return fetchWrapper.put(`${baseUrl}/${id}`, params)
+    return fetchWrapper.put(`${baseUrl}/update/${id}`, params)
         .then(user => {
             // update stored user if the logged in user updated their own record
             if (user.id === userSubject.value.id) {
