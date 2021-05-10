@@ -77,7 +77,7 @@ function getAll() {
 }
 
 function getById(id) {
-    return fetchWrapper.get(`${baseUrl}/${id}`);
+    return fetchWrapper.get(`${baseUrl}/getById/${id}`);
 }
 
 function create(params) {

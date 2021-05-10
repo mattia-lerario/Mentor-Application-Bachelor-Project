@@ -16,7 +16,7 @@ router.post('/forgot-password', forgotPasswordSchema, forgotPassword);
 router.post('/validate-reset-token', validateResetTokenSchema, validateResetToken);
 router.post('/reset-password', resetPasswordSchema, resetPassword);
 router.get('/', authorize(Role.Admin), getAll);
-router.get('/:id', authorize(), getById);
+router.get('/getById/:id', getById);
 router.post('/create', createSchema, create);
 router.put('/update/:id', updateSchema, update);
 router.delete('/:id', _delete);
@@ -157,9 +157,9 @@ function getAll(req, res, next) {
 
 function getById(req, res, next) {
     // users can get their own account and admins can get any account
-    if (req.params.id !== req.user.id && req.user.role !== Role.Admin) {
+  /*  if (req.params.id !== req.user.id && req.user.role !== Role.Admin) {
         return res.status(401).json({ message: 'Unauthorized' });
-    }
+    }*/
 
     accountService.getById(req.params.id)
         .then(account => account ? res.json(account) : res.sendStatus(404))

@@ -49,7 +49,9 @@ it('register a new admin account should give 200', async () => {
       console.log('DB does not yet exist, skipping collection dropping')
     }*/
 
-    const registerNew = await supertest(server).post('/accounts/create').send({title: admin.title, firstName: admin.firstName, lastName: admin.lastName, email: admin.email, password: admin.password, confirmPassword: admin.confirmPassword, role: admin.role});
+    const registerNew = await supertest(server)
+    .post('/accounts/create')
+    .send({title: admin.title, firstName: admin.firstName, lastName: admin.lastName, email: admin.email, password: admin.password, confirmPassword: admin.confirmPassword, role: admin.role});
   
     expect(registerNew.status).toEqual(200);
   });
@@ -57,8 +59,9 @@ it('register a new admin account should give 200', async () => {
   //Register CompanyUser
   it('register a new company account should give 200', async () => {
 
-    const registerNewCompany = await supertest(server).post('/accounts/create').send({title: companyUser.title, 
-        firstName: companyUser.firstName, lastName: companyUser.lastName, 
+    const registerNewCompany = await supertest(server)
+    .post('/accounts/create')
+    .send({title: companyUser.title, firstName: companyUser.firstName, lastName: companyUser.lastName, 
         email: companyUser.email, password: companyUser.password, 
         confirmPassword: companyUser.confirmPassword, role: companyUser.role});
   
@@ -68,7 +71,9 @@ it('register a new admin account should give 200', async () => {
 //Register MentorUser
   it('register a new mentor should give 200', async () => {
 
-    const registerNewMentor = await supertest(server).post('/accounts/create').send({title: mentorUser.title, firstName: mentorUser.firstName, lastName: mentorUser.lastName, email: mentorUser.email, password: mentorUser.password, confirmPassword: mentorUser.confirmPassword, role: mentorUser.role});
+    const registerNewMentor = await supertest(server)
+    .post('/accounts/create')
+    .send({title: mentorUser.title, firstName: mentorUser.firstName, lastName: mentorUser.lastName, email: mentorUser.email, password: mentorUser.password, confirmPassword: mentorUser.confirmPassword, role: mentorUser.role});
   
     expect(registerNewMentor.status).toEqual(200);
   });
@@ -76,8 +81,9 @@ it('register a new admin account should give 200', async () => {
   //Failed create
   it('register a new user should give error 500', async () => {
     
-    const registerNewCompany = await supertest(server).post('/accounts/create').send({firstName: admin.firstName, lastName: admin.lastName, email: admin.email, password: admin.password, confirmPassword: admin.confirmPassword, role: admin.role});
-  
+    const registerNewCompany = await supertest(server)
+    .post('/accounts/create')
+    .send({firstName: admin.firstName, lastName: admin.lastName, email: admin.email, password: admin.password, confirmPassword: admin.confirmPassword, role: admin.role});
     expect(registerNewCompany.status).toEqual(500);
   });
 
@@ -85,29 +91,40 @@ it('register a new admin account should give 200', async () => {
 //-----------------------------------------------------------Log in test---------------------------------------------
 
 let token = "";
+
 let accountId ="";
 let accountMentorId ="";
 let accountCompanyId ="";
 
 it('Registered user should login with right credentials', async () => {
    
-    const data = await supertest(server).post("/accounts/authenticate").send({email: admin.email, password: admin.password}).expect(200);
+    const data = await supertest(server)
+    .post("/accounts/authenticate")
+    .send({email: admin.email, password: admin.password})
+    .expect(200);
     //console.log(data.body);
     token = data.body.jwtToken;
     accountId = data.body.id;
 })
 
+
+let companyToken = "";
 it('Registered company user should login with right credentials', async () => {
    
-    const companyData = await supertest(server).post("/accounts/authenticate").send({email: companyUser.email, password: companyUser.password}).expect(200);
+    const companyData = await supertest(server)
+    .post("/accounts/authenticate").send({email: companyUser.email, password: companyUser.password})
+    .expect(200);
     //console.log(data.body);
-    token = companyData.body.jwtToken;
+    companyToken = companyData.body.jwtToken;
     accountCompanyId = companyData.body.id;
 })
 
 it('Registered mentor user should login with right credentials', async () => {
    
-    const mentorData = await supertest(server).post("/accounts/authenticate").send({email: mentorUser.email, password: mentorUser.password}).expect(200);
+    const mentorData = await supertest(server)
+    .post("/accounts/authenticate")
+    .send({email: mentorUser.email, password: mentorUser.password})
+    .expect(200);
     //console.log(data.body);
     token = mentorData.body.jwtToken;
     accountMentorId = mentorData.body.id;
@@ -115,47 +132,114 @@ it('Registered mentor user should login with right credentials', async () => {
 
 it('Registered user should not login with wrong credentials', async () => {
    
-    const data1 = await supertest(server).post("/accounts/authenticate").send({email: "t", password: "t"}).expect(500);
+    const data1 = await supertest(server)
+    .post("/accounts/authenticate")
+    .send({email: "t", password: "t"})
+    .expect(500);
     //console.log(data);
 });
 
 
   //-----------------------------------------------Update test----------------------------------------------
 
-  it('Account should be updated and respond with the status of 200', async () => {
+it('Account should be updated and respond with the status of 200', async () => {
    
-    const data = await supertest(server).put("/accounts/update/" + accountId).send({firstName: admin.firstName, lastName: admin.lastName, email: admin.email, password: admin.password, confirmPassword: admin.confirmPassword, role: admin.role}).expect(200);
+    const data = await supertest(server)
+    .put("/accounts/update/" + accountId)
+    .send({firstName: "New Name", lastName: admin.lastName, email: admin.email, password: admin.password, confirmPassword: admin.confirmPassword, role: admin.role})
+    .expect(200);
     //console.log(data);
+});
+
+it('Company account should be updated and respond with the status of 200', async () => {
+   
+    const data = await supertest(server)
+    .put("/accounts/update/" + accountCompanyId)
+    .send({firstName: "New Name", lastName: companyUser.lastName, email: companyUser.email, password: companyUser.password, confirmPassword: companyUser.confirmPassword, role: companyUser.role})
+    .expect(200);
+  
+});
+
+it('Mentor account should be updated and respond with the status of 200', async () => {
+   
+    const data = await supertest(server)
+    .put("/accounts/update/" + accountMentorId)
+    .send({firstName: "New Name", lastName: mentorUser.lastName, email: mentorUser.email, password: mentorUser.password, confirmPassword: mentorUser.confirmPassword, role: mentorUser.role})
+    .expect(200);
+  
 });
 
 it('Tries to update with missing credentials, should respond with 500', async () => {
    
-    const data = await supertest(server).put("/accounts/update/" + accountId).send({lastName: 1, email: admin.email, password: admin.password, confirmPassword: admin.confirmPassword}).expect(500);
+    const data = await supertest(server)
+    .put("/accounts/update/" + accountId)
+    .send({lastName: 1, email: admin.email, password: admin.password, confirmPassword: admin.confirmPassword})
+    .expect(500);
     //console.log(data);
 });
 
 it('Update unsimilar password, should respond with 500', async () => {
    
-    const data = await supertest(server).put("/accounts/update/" + accountId).send({password: admin.password, confirmPassword: admin.confirmPassword +"d"}).expect(500);
+    const data = await supertest(server)
+    .put("/accounts/update/" + accountId)
+    .send({password: admin.password, confirmPassword: admin.confirmPassword +"d"})
+    .expect(500);
     //console.log(data);
 });
 
+
+//------------------------------------------Fetch user tests------------------------------------------------
+it('Fetch company account, fetching user data', async () => {
+    const data = await supertest(server)
+      .get('/accounts/getById/' + accountCompanyId)
+      .send()
+      .set({ Cookie: `${companyToken}` })
+      .expect(200);
+
+      console.log(data.body);
+  });
+
+  it('Fetch mentor account, fetching user data', async () => {
+    const data = await supertest(server)
+      .get('/accounts/getById/' + accountMentorId)
+      .send()
+     // .set({ Cookie: `${companyToken}` })
+      .expect(200);
+  });
+
+  it('Fetch admin account, fetching user data', async () => {
+    const data = await supertest(server)
+      .get('/accounts/getById/' + accountId)
+      .send()
+      .set({ Cookie: `${token}` })
+      .expect(200);
+  });
+
+  it('Get account by ID responds with the right ID.', async () => {
+    
+    const getCompanyId = await supertest(server)
+    .get('/accounts/getById/' + accountCompanyId)
+    .send()
+    
+    console.log("Trigger", getCompanyId.body.id);
+    expect(getCompanyId.body.id).toEqual(accountCompanyId);
+  });
 
 //-----------------------------------------Delete test----------------------------------------------------------------------
 it('Registered admin should be deleted from the system', async () => {
-    console.log("Admin   " + accountMentorId);
-    const data = await supertest(server).delete("/accounts/"+ accountId).expect(200);
-    
+    const data = await supertest(server)
+    .delete("/accounts/"+ accountId)
+    .expect(200); 
 });
 
 it('Registered company should be deleted from the system', async () => {
-
-    const data = await supertest(server).delete("/accounts/"+ accountCompanyId).expect(200);
-    //console.log(data);
+    const data = await supertest(server)
+    .delete("/accounts/"+ accountCompanyId)
+    .expect(200);
 });
 
 it('Registered mentor should be deleted from the system', async () => {
-    console.log("Mentor  "+ accountMentorId);
-    const data = await supertest(server).delete("/accounts/"+ accountMentorId).expect(200);
-    //console.log(data);
+    const data = await supertest(server)
+    .delete("/accounts/"+ accountMentorId)
+    .expect(200);
 });
