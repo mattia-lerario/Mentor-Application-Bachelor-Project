@@ -11,6 +11,9 @@ import {HiOutlineMail} from 'react-icons/hi';
 import {AiFillPhone, AiOutlineNumber} from 'react-icons/ai';
 import {BiCalendarPlus} from 'react-icons/bi';
 
+
+import avatar from '../media/avatar.jpg';
+
 // eslint-disable-next-line react/prop-types
 function CompanyList({ match }) {
     // eslint-disable-next-line react/prop-types
@@ -56,7 +59,7 @@ function CompanyList({ match }) {
                 <Link className={'noLink'}to={`${path}/companyDetails/${company.id}`}>
                     
                     <section className="cardTop">
-                        <img className="cardImg">{company.companyImg}</img>                         
+                        <img className="cardImg" src={avatar}></img>                         
                     </section>
 
                     <section>

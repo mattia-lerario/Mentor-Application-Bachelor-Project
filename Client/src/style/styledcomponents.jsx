@@ -176,25 +176,24 @@ export const ListWrapper = styled.div`
     height: 15%;
     margin: 0.5rem;
     display: inline-block;
-    background: linear-gradient(
-      to right bottom,
-      rgba(255, 255, 255, 0.7),
-      rgba(255, 255, 255, 0.3)
-        );
+    background: #38507a;
     //box-shadow: right bottom fade allsides color;
-    box-shadow: 0.05rem 0.1rem 0.3rem 0.01rem #38507a;
+    box-shadow: 0.05rem 0.1rem 0.3rem 0.01rem #273855;
     padding-left: 4px;
     padding-top: 4px;
     padding-right: 5px;
     margin-left: 2rem;
     margin-top: 1rem;
-    border-radius: 0;
+    border-radius: 0.05;
+    border: 1.5px solid #273855;
+    color: white;
   }
 .card:hover{
-    border: solid #38507a;
+    border: solid #273855;
     //box-shadow: right bottom fade allsides color;
-    box-shadow: 0.2rem 0.3rem 0.5rem 0.1rem #38507a;
+    box-shadow: 0.2rem 0.3rem 0.5rem 0.1rem #273855;
     filter: grayscale(0%);
+    background-color: #273855;
 }
 .cardTop{
     border-bottom: 0.15vw solid #bfbfbf;
@@ -207,6 +206,7 @@ export const ListWrapper = styled.div`
     height: 4rem;
     width: 4.5rem;
     border-radius: 50%;
+    border: 2px solid white;
 }
 .companyName{
     flex: 3;
@@ -214,9 +214,11 @@ export const ListWrapper = styled.div`
     margin-left: 0.5vw;
     margin-top: 1vw;
     font-size: 1.3vw;
+    color: white;
 }
 .cardMetric, .cardBottom{
     margin: 1rem;
+    color: white;
 }
 .cardMetric{
     height: 15vw;
@@ -229,7 +231,9 @@ export const ListWrapper = styled.div`
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     border: 0;
-    background: none;
+}
+.Tooltip, .TooltipText{
+    color:white;
 }
 
   `;
