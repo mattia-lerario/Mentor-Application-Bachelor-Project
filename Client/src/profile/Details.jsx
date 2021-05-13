@@ -102,15 +102,15 @@ function Details({ match }) {
                         </Link>
 
                         <img className="Center" src={avatar}></img>
+                        {roleUser && roleUser.filter(mentor => mentor.id === user.mentors[0]).map(mentor => 
+                        <article key = {mentor.id}>
                         <section className="ContactDetails">
                             <h3 className="Center">{user.firstName} {user.lastName}</h3>
                             <button className="Center"><HiOutlineMail/> {user.email}</button>
-                            <button className="Center" /*onClick={phone}*/><AiFillPhone/> 123 45 678</button>
+                            <button className="Center" /*onClick={phone}*/><AiFillPhone/> {mentor.tlfNumber}</button>
                         </section>
-
-                        {roleUser && roleUser.filter(mentor => mentor.id === user.mentors[0]).map(mentor => 
                         
-                        <article key = {mentor.id}>
+                     
                             <section className="Section">
                                 <h5>Bio</h5>
                                 <p>{mentor.mentorDescription}</p>
