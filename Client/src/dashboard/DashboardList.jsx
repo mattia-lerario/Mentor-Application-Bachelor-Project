@@ -6,6 +6,7 @@ import { companyService } from '@/_services';
 import { Link } from 'react-router-dom';
 //icons
 import {AiOutlineNumber} from 'react-icons/ai';
+import {HiOutlineMail} from 'react-icons/hi';
 //img
 import avatar from '../media/avatar.jpg';
 
@@ -31,13 +32,22 @@ function DashboardList({ match }) {
                     <section className="cardTop">
                         <img className="cardImg" src={avatar}></img>
                         <h4 className="companyName">{company.companyName}</h4>
-                    <p><AiOutlineNumber/>{company.phase}</p>
-
                     </section>
 
                     <section className="cardMetric">
                         <p>Sales Revenue: {company.salesRevenue}</p>
                         <p>Company number: {company.companyDescription}</p>
+                    </section>
+                    
+                    <section className="cardBottom">
+                        <Link to={`${path}/updateMentor`} className={'Tooltip'}>    
+                            <HiOutlineMail/>
+                            <span className={'TooltipText'}>Send email</span>
+                        </Link>
+                        <Link className={'Tooltip Left'}>    
+                            <p><AiOutlineNumber/>{company.phase}</p>
+                            <span className={'TooltipText'}>Phase</span>
+                        </Link>
                     </section>
 
                 </article>
