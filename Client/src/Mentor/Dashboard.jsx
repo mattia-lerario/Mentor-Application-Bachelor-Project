@@ -11,6 +11,9 @@ import {HiOutlineMail} from 'react-icons/hi';
 import {AiFillPhone, AiOutlineNumber} from 'react-icons/ai';
 import {GrScheduleNew} from 'react-icons/gr';
 
+
+import avatar from '../media/avatar.jpg';
+
 function AssignedCompaniesList() {
     
     const [company, setUsers] = useState(null);
@@ -43,7 +46,7 @@ function AssignedCompaniesList() {
 
                 <article className="card" key={company.id} onClick={() => alert(company.companyName)}>
                     <section className="cardImg">
-                        <img className="companyImg">{company.companyImg}</img> {/*Får ikke denne til å fungere. 
+                        <img className="companyImg" src={avatar}></img> {/*Får ikke denne til å fungere. 
                         Tanken var å kunne legge ved et bilde som respresenterer bedriften når man legger de til i databasen. -Tora.*/}
                         
                         {/*
